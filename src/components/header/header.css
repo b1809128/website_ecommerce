@@ -1,0 +1,51 @@
+.header{
+    height: 80px;
+    position: sticky;
+    top: 0;
+    z-index: 999;
+    background-color:#fff;
+    font-size: 1.2rem;
+}
+
+.header__main{
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 0 0 0 ;
+}
+
+.scroll{
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+}
+
+.header__logo{
+    font-weight: 600;
+    color: #eb0028;
+}
+
+.header__menu{
+    display: flex;
+}
+
+.header__menu-list{
+    display: flex;
+    align-items: center;
+    list-style: none;
+    
+}
+
+.header__menu-item{
+    padding: 0 12px;
+}
+
+.logo-image{
+    width:100px;
+    height:30px;
+}
+
+
+.cart-icon{
+    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
