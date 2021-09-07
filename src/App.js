@@ -8,6 +8,7 @@ import Header from "./components/header/Header";
 import Footer from "./components/footer/Footer";
 import ScrollTop from "./components/scrolltop/ScrollTop";
 import Login from "./pages/Login/Login";
+import Register from "./pages/Register/Register";
 function App() {
   return (
     <div>
@@ -22,6 +23,9 @@ function App() {
             </Route>
             <Route path="/sign-in">
                 <Login />
+            </Route>
+            <Route path="/sign-up">
+                <Register />
             </Route>
         </Switch>
         <Footer/>

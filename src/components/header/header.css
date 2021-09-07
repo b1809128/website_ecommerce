@@ -57,6 +57,14 @@
     justify-content: center;
 }
 
+.nav-item__border{
+    border-bottom: 2px solid #eb0028;
+}
+
+.nav-item:hover{
+    border-bottom: 2px solid #eb0028;
+}
+
 .menu-icon {
     display: none;
 }
@@ -75,7 +83,7 @@
         
     }
     .nav-menu.active {
-        background: #999;
+        background: rgba(0, 0, 0, 0.9);
         left: 0;
         opacity: 1;
         transition: all 0.6s ease;
@@ -88,6 +96,10 @@
         width: 100%;
         display: table;
         font-size: 2rem;
+    }
+
+    .nav-item:hover{
+        border:none;
     }
     .navbar-logo {
         position: absolute;

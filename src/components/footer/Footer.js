@@ -19,7 +19,7 @@ function Footer() {
   return (
     <div className="footer-container" id="footer">
       <div className="footer-first-content">
-        <div data-aos="fade-down" className="footer-search-content-text">
+        <div className="footer-search-content-text">
           <p className="footer-search-content-text-item">
             FREE SHIPPING INNER CITY
           </p>

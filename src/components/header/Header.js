@@ -36,6 +36,9 @@ export default function Header() {
   }, []);
 
 
+  const [clickElement, setClickElement] = useState(false);
+  const handleClickElement = () => setClickElement(!clickElement);
+
   return (
     <div className={scrollTop ? "navbar scroll": "navbar"}>
       <div className="navbar-container container">
