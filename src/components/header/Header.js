@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import {FaShoppingCart} from "react-icons/fa";
+import { FaShoppingCart, FaTimes, FaBars } from "react-icons/fa";
 import "./header.css";
 
 export default function Header() {
@@ -15,62 +15,82 @@ export default function Header() {
 
   window.addEventListener("scroll", changeBackgroundColor);
 
+  const [click, setClick] = useState(false);
+  const [button, setButton] = useState(true);
+
+  const handleClick = () => setClick(!click);
+  const closeMobileMenu = () => setClick(false);
+
+  const showButton = () => {
+    if (window.innerWidth <= 960) {
+      setButton(false);
+    } else {
+      setButton(true);
+    }
+  };
+
+  window.addEventListener("resize", showButton);
+
+  useEffect(() => {
+    showButton();
+  }, []);
+
+
   return (
-    <div className={scrollTop ? "header scroll" : "header"}>
-      <div className="grid wide">
-        <div className="row header__main">
-          <div className="header__logo">
-            <img src="./images/logo.png" className="logo-image"/>
+    <div className={scrollTop ? "navbar scroll": "navbar"}>
+      <div className="navbar-container container">
+          <div className="navbar-logo" onClick={closeMobileMenu}>
+            <img src="./images/logo.png" className="navbar-logo__image" />
           </div>
-          <div className="header__menu">
-            <ul className="header__menu-list">
-              <li className="header__menu-item">
-                <Link className="link" href="/">
+          <div className="menu-icon" onClick={handleClick}>
+              {click ? <FaTimes /> : <FaBars />}
+            </div>
+          {/* --- */}
+          <ul className={click ? "nav-menu active" : "nav-menu"}>
+              <li className="nav-item">
+                <a className="link" href="/">
                   Home
-                </Link>
+                </a>
               </li>
-              <li className="header__menu-item">
+              <li className="nav-item">
                 <a className="link" href="#categories">
                   Categories
                 </a>
-              </li>              
-              <li className="header__menu-item">
+              </li>
+              <li className="nav-item">
                 <a className="link" href="#services">
                   Service
                 </a>
               </li>
-              <li className="header__menu-item">
+              <li className="nav-item">
                 <a className="link" href="#blog">
                   Blog
                 </a>
               </li>
-              <li className="header__menu-item">
+              <li className="nav-item">
                 <a className="link" href="#footer">
                   About Us
                 </a>
               </li>
             </ul>
-          </div>
-          <div className="header__action">
-            <ul className="header__menu-list">
-              <li className="header__menu-item">
+            {/* --- */}
+            <ul className="nav-menu">
+              <li className="nav-item">
                 <Link className="link" to="/sign-in">
                   Sign In
                 </Link>
               </li>
-              <li className="header__menu-item">
+              <li className="nav-item">
                 <Link className="link" to="/sign-up">
                   Sign Up
                 </Link>
               </li>
-              <li className="header__menu-item">
+              <li className="nav-item">
                 <Link className="link" to="/cart">
-                  <FaShoppingCart className="cart-icon"/>
+                  <FaShoppingCart />
                 </Link>
               </li>
             </ul>
-          </div>
-        </div>
       </div>
     </div>
   );

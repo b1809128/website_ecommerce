@@ -1,0 +1,42 @@
+.range-bar{
+    height:60px;
+    background-image: linear-gradient(#7c0715,#eb0028);
+    border-bottom-left-radius: 16px;
+    border-bottom-right-radius: 16px;
+    box-shadow: 0px 4px 8px 0 rgba(0, 0, 0, 0.5);
+    font-size:1.2rem;
+}
+
+.range-bar-text{
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.range-bar-text-list{
+    display: flex;
+    list-style: none;
+    padding: 16px 0;
+}
+
+.range-bar-text-item{
+    padding: 0 12px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    color: #f1f1f1;   
+}
+
+.range-bar-text-item:hover{
+    opacity: 0.5;
+}
+
+.range-bar-text-item:first-child{
+    color: #f1f1f1;    
+    font-weight: 600;
+}
+
+.range-bar-icon{
+    color: rgba(0, 0, 0, 0.2);
+}

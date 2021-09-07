@@ -1,8 +1,12 @@
 .product {
-  margin: 12px 12px ;
+  margin: 12px;
   border-radius: 10px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.5);
   position: relative;
+  background-color:#fff;
+  display: flex;
+  flex-direction: column;
+  width: 20%;
 }
 
 .product-image__img {
@@ -67,3 +71,4 @@
   font-weight: 700;
   font-size:1.2rem;
 }
+

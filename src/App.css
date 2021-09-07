@@ -7,10 +7,26 @@
 .link{
   color: #333;
   text-decoration:none;
+  cursor: pointer;
+}
+
+.link__btn{
+  color:#eb0028;
+  text-decoration:none;
+  display:flex;
+  width: 100%;
+  height:100%;
+  justify-content: center;
+  align-items: center;
 }
 
 .link:hover{
   color: #eb0028;
+}
+
+.link__btn:hover{
+  color: #fff;
+  cursor: pointer;
 }
 
 .btn{
@@ -23,6 +39,7 @@
   outline: none;
   border: 1px solid #eb0028;
   width: 150px;
+  /* padding: 0 12px; */
   height: 30px;
   margin: 10px auto;
   

@@ -1,0 +1,24 @@
+.location-bar{
+    display: flex;
+    width: 100%;
+    background-color: #fff;
+    height: 50px;
+}
+
+.location-bar-list{
+    display: flex;
+    align-items: center;
+    list-style: none;
+
+}
+
+.location-bar-item{
+    padding: 0 4px;
+    display: flex;
+    align-items: center;
+}
+
+.location-bar-item:first-child{
+    color: #eb0028;
+    font-weight:600;
+}

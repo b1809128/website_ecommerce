@@ -3,6 +3,10 @@
     border-radius:8px;
     box-shadow: 0 4px 8px rgba(0,0,0,.8);
     margin:0 12px;
+    display: flex;
+    flex-direction: column;
+    width: 25%;
+    
 }
 
 .comment-image__img{
@@ -14,7 +18,7 @@
 .comment-text,
 .comment-star,
 .comment-link{
-    padding: 8px 10px;
+    padding: 4px 10px;
 }
 
 .comment-text{

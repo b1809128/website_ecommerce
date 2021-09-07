@@ -1,0 +1,22 @@
+.brand-bar{
+    height:50px;
+    width: 100%;
+    background-color: #fff;
+    display: flex;
+    align-items: center;
+}
+
+.brand-bar-list{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    list-style: none;
+}
+
+.brand-bar-item{
+    padding:0 8px;
+}
+
+.brand-bar-icon{
+    color: #eb0028;
+}

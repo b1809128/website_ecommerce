@@ -7,7 +7,7 @@ export default function Product({
     price
 }){
     return (
-        <div className="product col l-2-4 m-6 c-12">
+        <div className="product">
             <div className="product-image">
                 <img src={image} className="product-image__img"/>
                 <div className="product-image__modal">

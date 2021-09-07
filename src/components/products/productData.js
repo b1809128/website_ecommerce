@@ -65,7 +65,7 @@ export const productEleven = {
 }
 
 export const productTwelve = {
-    image: "./images/product_12.png",
+    image: "./images/product_12.jpg",
     name:"Apple Beats Solo3 Wireless Headphone",
     price:"6.990.000 VND"
 }

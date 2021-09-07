@@ -3,7 +3,7 @@ import './comment.css';
 
 export default function Comment(){
     return (
-        <div className="comment col l-3 m-6 c-12">
+        <div className="comment">
             <div className="comment-image">
                 <img src="./images/logo_apple.jpg" className="comment-image__img"/>                
             </div>

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import "./introduce.css";
 import { introduceData } from "./introduceData";
 import { FaAngleLeft, FaAngleRight } from "react-icons/fa";
@@ -20,7 +20,7 @@ export default function Introduce({ data }) {
     return null;
   }
   return (
-    <div className="introduce-wrapper">
+    <div id="services" className="introduce-wrapper">
       <FaAngleLeft className="push-left" onClick={prevSlide} />
       <FaAngleRight className="push-right" onClick={nextSlide} />
       <img

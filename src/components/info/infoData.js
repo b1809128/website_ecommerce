@@ -13,11 +13,11 @@ export const infoDataTwo = {
 export const infoDataThree = {
     heading: "New HeadPhone 9/2021",
     name: "HEADPHONE", 
-    image:  "./images/info_3.png" 
+    image:  "./images/product_12.jpg" 
 }
 
 export const infoDataFour = {
     heading: "Watch new technology in 2021",
     name: "WATCH", 
-    image:  "./images/info_4.png" 
+    image:  "./images/info_4.jpg" 
 }
