@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { FaShoppingCart, FaTimes, FaBars } from "react-icons/fa";
+import { FaShoppingCart, FaTimes, FaBars, FaUserAlt,FaSearch } from "react-icons/fa";
 import "./header.css";
 
 export default function Header() {
@@ -36,8 +36,8 @@ export default function Header() {
   }, []);
 
 
-  const [clickElement, setClickElement] = useState(false);
-  const handleClickElement = () => setClickElement(!clickElement);
+  // const [clickElement, setClickElement] = useState(false);
+  // const handleClickElement = () => setClickElement(!clickElement);
 
   return (
     <div className={scrollTop ? "navbar scroll": "navbar"}>
@@ -79,13 +79,13 @@ export default function Header() {
             {/* --- */}
             <ul className="nav-menu">
               <li className="nav-item">
-                <Link className="link" to="/sign-in">
-                  Sign In
+                <Link className="link" to="/search">
+                  <FaSearch/>
                 </Link>
               </li>
               <li className="nav-item">
-                <Link className="link" to="/sign-up">
-                  Sign Up
+                <Link className="link" to="/sign-in">
+                  <FaUserAlt/>
                 </Link>
               </li>
               <li className="nav-item">

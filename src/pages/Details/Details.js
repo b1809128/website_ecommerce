@@ -12,6 +12,9 @@ import RangeBar from "../../components/rangebar/RangeBar";
 import LocationBar from "../../components/locationbar/LocationBar";
 import "./details.css";
 import BrandBar from "../../components/brandbar/BrandBar";
+import ImageSlider from "../../components/slide/ImageSlider";
+import { SliderData } from "../../components/slide/SliderData";
+
 export default function Details() {
   useEffect(() => {
     Aos.init({
@@ -22,27 +25,28 @@ export default function Details() {
     <div className="details">
       <div className="container">
         <div className="details__row">
-        <LocationBar />
-        <BrandBar/>
-        <RangeBar />
-        <div className="row">
-          <Product {...productOne} />
-          <Product {...productFour} />
-          <Product {...productSix} />
-          <Product {...productSeven} />
-        </div>
-        <div className="row">
-          <Product {...productOne} />
-          <Product {...productFour} />
-          <Product {...productSix} />
-          <Product {...productSeven} />
-        </div>
-        <div className="row">
-          <Product {...productOne} />
-          <Product {...productFour} />
-          <Product {...productSix} />
-          <Product {...productSeven} />
-        </div>
+          <LocationBar />
+          <BrandBar />
+          <RangeBar />
+          <div className="row">
+            <Product {...productOne} />
+            <Product {...productFour} />
+            <Product {...productSix} />
+            <Product {...productSeven} />
+          </div>
+          <div className="row">
+            <Product {...productOne} />
+            <Product {...productFour} />
+            <Product {...productSix} />
+            <Product {...productSeven} />
+          </div>
+          <div className="row">
+            <Product {...productOne} />
+            <Product {...productFour} />
+            <Product {...productSix} />
+            <Product {...productSeven} />
+          </div>
+          <ImageSlider slides={SliderData} />
         </div>
       </div>
     </div>

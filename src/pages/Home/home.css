@@ -1,8 +1,13 @@
 .home{
-    width: 100%;
-    margin: 30px 0;
+  width: 100%;
+  margin-bottom: 30px;
 }
-
+.home-section {
+  width: 100%;
+    max-width: 1200px;
+    margin-right: auto;
+    margin-left: auto;
+}
 .row{
   display: flex;
   flex-wrap: wrap;
