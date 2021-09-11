@@ -8,12 +8,13 @@ import {
   productSix,
   productSeven,
 } from "../../components/products/productData";
-import RangeBar from "../../components/rangebar/RangeBar";
-import LocationBar from "../../components/locationbar/LocationBar";
+import RangeBar from "../../components/bar/rangebar/RangeBar";
+import LocationBar from "../../components/bar/locationbar/LocationBar";
 import "./details.css";
-import BrandBar from "../../components/brandbar/BrandBar";
-import ImageSlider from "../../components/slide/ImageSlider";
-import { SliderData } from "../../components/slide/SliderData";
+import BrandBar from "../../components/bar/brandbar/BrandBar";
+import ImageSlider from "../../components/main/slide/ImageSlider";
+import { SliderData } from "../../components/main/slide/SliderData";
+import SlideProduct from "../../components/main/slideproduct/SlideProduct"
 
 export default function Details() {
   useEffect(() => {
@@ -23,7 +24,7 @@ export default function Details() {
   }, []);
   return (
     <div className="details">
-      <div className="container">
+      <div className="details-section">
         <div className="details__row">
           <LocationBar />
           <BrandBar />
@@ -46,7 +47,8 @@ export default function Details() {
             <Product {...productSix} />
             <Product {...productSeven} />
           </div>
-          <ImageSlider slides={SliderData} />
+          {/* <ImageSlider slides={SliderData} /> */}
+          <SlideProduct/>
         </div>
       </div>
     </div>

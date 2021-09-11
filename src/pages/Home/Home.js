@@ -3,13 +3,10 @@ import Aos from "aos";
 import "aos/dist/aos.css";
 
 import "./home.css";
-import IntroduceTop from "../../components/introducetop/IntroduceTop"
-import Info from "../../components/info/Info";
+import IntroduceTop from "../../components/main/introducetop/IntroduceTop";
+import Info from "../../components/main/info/Info";
 import Product from "../../components/products/Product";
-import {
-  infoDataOne,
-  infoDataTwo,
-} from "../../components/info/infoData";
+import { infoDataOne, infoDataTwo } from "../../components/main/info/infoData";
 import {
   productOne,
   productFour,
@@ -20,44 +17,47 @@ import {
   productEleven,
   productTwelve,
 } from "../../components/products/productData";
-import Introduce from "../../components/introduce/Introduce";
-import { introduceData } from "../../components/introduce/introduceData";
-
-import Comment from "../../components/comment/Comment";
+import Introduce from "../../components/main/introduce/Introduce";
+import { introduceData } from "../../components/main/introduce/introduceData";
+import BrandBar from "../../components/bar/brandbar/BrandBar";
+import Comment from "../../components/main/comment/Comment";
 
 export default function Home() {
   useEffect(() => {
     Aos.init({
-      duration: 1500,
+      duration: 2000,
     });
   }, []);
   return (
     <div className="home">
       <div className="home-section">
         <div className="home__row">
-          <IntroduceTop/>
-            <div id="categories" className="row">
+          <IntroduceTop />
+          <div id="categories">
+            <BrandBar />
+          </div>
+          <div className="row">
             <Info {...infoDataOne} />
             <Info {...infoDataTwo} />
           </div>
-          <div data-aos="fade-down" className="row">
+          <div data-aos="fade-up" className="row">
             <Product {...productOne} />
             <Product {...productFour} />
             <Product {...productSix} />
             <Product {...productSeven} />
           </div>
-          <div id="categories" className="row">
+          <div className="row">
             <Info {...infoDataOne} />
             <Info {...infoDataTwo} />
           </div>
-          <div data-aos="fade-down" className="row">
+          <div data-aos="fade-up" className="row">
             <Product {...productNine} />
             <Product {...productTen} />
             <Product {...productEleven} />
             <Product {...productTwelve} />
           </div>
           <Introduce data={introduceData} />
-          <div data-aos="fade-down" id="blog" className="row">
+          <div data-aos="fade-up" id="blog" className="row">
             <Comment />
             <Comment />
             <Comment />

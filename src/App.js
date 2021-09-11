@@ -9,6 +9,7 @@ import Footer from "./components/footer/Footer";
 import ScrollTop from "./components/scrolltop/ScrollTop";
 import Login from "./pages/Login/Login";
 import Register from "./pages/Register/Register";
+import ProductDetails from "./pages/ProductDetails/ProductDetails";
 function App() {
   return (
     <div>
@@ -20,6 +21,9 @@ function App() {
             </Route>
             <Route path="/details">
                 <Details />
+            </Route>
+            <Route path="/product-details">
+                <ProductDetails />
             </Route>
             <Route path="/sign-in">
                 <Login />

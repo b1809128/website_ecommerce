@@ -8,7 +8,7 @@
   
   .introduce-top-image {
     width: 100%;
-    
+    height:545px;
     border-radius:8px;
   }
   
@@ -37,6 +37,7 @@
     align-items: center;
     justify-content: center;
     cursor: pointer;
+    text-decoration: underline;
   }
 
   .introduce-top-text__link:hover{

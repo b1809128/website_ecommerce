@@ -1,5 +1,5 @@
 import "./brandbar.css";
-import { FaMobileAlt, FaHeadphonesAlt } from "react-icons/fa";
+import { FaMobileAlt, FaHeadphonesAlt, FaLaptop,FaUsb } from "react-icons/fa";
 import {MdWatch} from "react-icons/md";
 export default function BrandBar(){
     return(
@@ -14,6 +14,11 @@ export default function BrandBar(){
                 <li className="brand-bar-item"><FaHeadphonesAlt className="brand-bar-icon"/> Samsung</li>
                 <li className="brand-bar-item"><MdWatch className="brand-bar-icon"/> Apple</li>
                 <li className="brand-bar-item"><MdWatch className="brand-bar-icon"/> Samsung</li>
+                <li className="brand-bar-item"><FaLaptop className="brand-bar-icon"/> Apple</li>
+                <li className="brand-bar-item"><FaLaptop className="brand-bar-icon"/> Dell</li>
+                <li className="brand-bar-item"><FaLaptop className="brand-bar-icon"/> HP</li>
+                <li className="brand-bar-item"><FaLaptop className="brand-bar-icon"/> MSI</li>
+                <li className="brand-bar-item"><FaUsb className="brand-bar-icon"/> Kingston</li>
             </ul>
         </div>
     );

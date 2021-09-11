@@ -1,5 +1,6 @@
 import './product.css';
-import {FaBookmark, FaCartPlus,FaPen} from 'react-icons/fa'
+import {FaBookmark, FaCartPlus,FaPen} from 'react-icons/fa';
+import {Link} from "react-router-dom";
 
 export default function Product({
     image,
@@ -20,7 +21,7 @@ export default function Product({
             </div>
             <p className="product-name link">{name}</p>
             <p className="product-price">{price}</p>
-            <button className="btn">Buy Now</button>
+            <button className="btn"><Link to="/product-details" className="link__btn">Buy Now</Link></button>
         </div>
     );
 }
