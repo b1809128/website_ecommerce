@@ -1,0 +1,96 @@
+.check{
+    width: 100%;
+    margin-bottom: 30px;
+}
+
+.check-section {
+  width: 100%;
+    max-width: 1200px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.row{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 12px 0 ;
+  
+}
+
+.check__row{
+  align-items: center;
+}
+
+/* Form */
+
+.check__form, .check__method{
+    width: 600px;
+    display: flex;
+    flex-direction: column;
+    color: #333;
+}
+
+.check__form-title, .check__method-title{
+    font-family: monospace;
+    text-decoration: underline;
+    color:#eb0028;
+}
+
+.form-block{
+    display: flex;
+    flex-direction: column;
+    margin: 12px 0;
+}
+
+
+.form-flex{
+    display: flex;
+    align-items: center;
+    margin: 12px 0;
+}
+
+
+.form-input{
+    height:40px;
+    width: 80%;
+}
+
+textarea{
+    height:200px;
+    width: 80%;
+}
+
+
+/* Right */
+.form-flex__product{
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+.form-flex__product-img{
+    width:100px;
+    height:100px;
+}
+
+.form-flex__product-info{
+    display: flex;
+    flex-direction: column;
+}
+
+
+.form-flex__price{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 12px 0 ;
+}
+
+.form-flex__price-value{
+    color: #eb0028;
+}
+
+p{
+    padding:0;
+}

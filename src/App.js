@@ -10,6 +10,8 @@ import ScrollTop from "./components/scrolltop/ScrollTop";
 import Login from "./pages/Login/Login";
 import Register from "./pages/Register/Register";
 import ProductDetails from "./pages/ProductDetails/ProductDetails";
+import Cart from "./pages/Cart/Cart";
+import CheckOut from "./pages/CheckOut/CheckOut";
 function App() {
   return (
     <div>
@@ -30,6 +32,12 @@ function App() {
             </Route>
             <Route path="/sign-up">
                 <Register />
+            </Route>
+            <Route path="/cart">
+                <Cart />
+            </Route>
+            <Route path="/check-out">
+                <CheckOut />
             </Route>
         </Switch>
         <Footer/>

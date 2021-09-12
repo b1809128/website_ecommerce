@@ -165,10 +165,7 @@ export default function ProductDetails() {
               </p>
               <p>
                 At the entrance of the earth, at our customers. The pressure of
-                life is always a lot, it is a nice valley. Cras felis nunc
-                commodo eu convallis vitae interdum non nisl. Maecenas ac est
-                sit amet augue pharetra convallis nec danos dui. Cras suscipit
-                quam et turpis eleifend vitae malesuada magna congue. We give it
+                life is always a lot, it is a nice valley. We give it
                 to the bears. But from my life, from my survey and the price of
                 the game. Pellentesque nulla eros accumsan quis justo at
                 tincidunt lobortis denimes loremous. The bed of the weekend
@@ -183,6 +180,8 @@ export default function ProductDetails() {
                   textAlign: "center",
                   color: "#eb0028",
                   fontSize: "1.4rem",
+                  fontFamily:"monospace",
+                  textDecoration:"underline"
                 }}
               >
                 Specifications

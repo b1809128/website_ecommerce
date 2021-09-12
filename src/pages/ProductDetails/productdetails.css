@@ -92,7 +92,7 @@
 }
 
 .product-details-choose__item-select {
-  width: 150px;
+  width: 100px;
   height: 30px;
 }
 
@@ -122,16 +122,18 @@ p {
 /* Content */
 
 .product-details-posts {
-  width: 70%;
-  display: block;
+  width: 900px;
+  display: flex;
+  flex-direction: column;
   color: #333;
   padding: 24px 32px;
 }
 
 .product-details-specifications {
   padding: 12px;
-  width: 30%;
-  display: block;
+  width: 300px;
+  display: flex;
+  flex-direction: column;
   box-shadow:  0 0 3px rgba(0, 0, 0, 0.5);
 }
 
