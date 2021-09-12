@@ -6,7 +6,7 @@ import "./home.css";
 import IntroduceTop from "../../components/main/introducetop/IntroduceTop";
 import Info from "../../components/main/info/Info";
 import Product from "../../components/products/Product";
-import { infoDataOne, infoDataTwo } from "../../components/main/info/infoData";
+import { infoDataOne, infoDataTwo, infoDataThree, infoDataFour } from "../../components/main/info/infoData";
 import {
   productOne,
   productFour,
@@ -47,8 +47,8 @@ export default function Home() {
             <Product {...productSeven} />
           </div>
           <div className="row">
-            <Info {...infoDataOne} />
-            <Info {...infoDataTwo} />
+            <Info {...infoDataThree} />
+            <Info {...infoDataFour} />
           </div>
           <div data-aos="fade-up" className="row">
             <Product {...productNine} />

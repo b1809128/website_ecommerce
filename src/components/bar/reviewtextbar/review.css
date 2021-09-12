@@ -1,0 +1,28 @@
+.review-bar{
+    display: flex;
+    width: 100%;
+    background-color: #f1f1f1;
+    height: 60px;
+    margin: 24px 0;
+}
+
+.review-bar-list{
+    display: flex;
+
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    list-style: none;
+
+}
+
+.review-bar-item{
+    padding: 0 12px;
+    display: flex;
+    align-items: center;
+}
+
+.review-bar-item:first-child{
+    color: #eb0028;
+    font-weight:600;
+}

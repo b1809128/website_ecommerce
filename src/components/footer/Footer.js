@@ -6,7 +6,6 @@ import {
   FaInstagram,
   FaYoutube,
   FaGoogle,
-  FaConnectdevelop,
 } from "react-icons/fa";
 import {a} from "react-router-dom";
 import "./footer.css";
