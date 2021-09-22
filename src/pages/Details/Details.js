@@ -7,13 +7,19 @@ import "./details.css";
 import BrandBar from "../../components/bar/brandbar/BrandBar";
 import SlideProduct from "../../components/main/slideproduct/SlideProduct"
 import { slideProductData } from "../../components/main/slideproduct/slideProductData";
+import { productsData } from "../../data";
 
-export default function Details({data}) {
+export default function Details() {
   useEffect(() => {
     Aos.init({
       duration: 2000,
     });
   }, []);
+
+  productsData.map((data, index)=>{
+    console.log(data.attribute);
+  })
+  
   return (
     <div className="details">
       <div className="details-section">

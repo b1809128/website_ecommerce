@@ -10,6 +10,12 @@
   color: #333;
 }
 
+@media screen and (max-width:960px){
+  .product{
+    width: 100%;
+  }
+}
+
 .product-image__img {
   height: 220px;
   width: 100%;

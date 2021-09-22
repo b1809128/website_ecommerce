@@ -6,7 +6,12 @@ import "./home.css";
 import IntroduceTop from "../../components/main/introducetop/IntroduceTop";
 import Info from "../../components/main/info/Info";
 import Product from "../../components/products/Product";
-import { infoDataOne, infoDataTwo, infoDataThree, infoDataFour } from "../../components/main/info/infoData";
+import {
+  infoDataOne,
+  infoDataTwo,
+  infoDataThree,
+  infoDataFour,
+} from "../../components/main/info/infoData";
 import {
   productOne,
   productFour,
@@ -30,9 +35,9 @@ export default function Home() {
   }, []);
   return (
     <div className="home">
+      <IntroduceTop />
       <div className="home-section">
         <div className="home__row">
-          <IntroduceTop />
           <div id="categories">
             <BrandBar />
           </div>
