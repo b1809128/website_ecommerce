@@ -12,6 +12,12 @@
     /* box-shadow: 0 0 3px rgba(0,0,0,.5); */
 }
 
+@media screen and (max-width:960px){
+    .info__wrapper{
+        width: 100%;
+    }
+}
+
 .info__image-img{
     width: 200px;
     height: 200px;
