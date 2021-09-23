@@ -165,12 +165,12 @@ export default function ProductDetails() {
               </p>
               <p>
                 At the entrance of the earth, at our customers. The pressure of
-                life is always a lot, it is a nice valley. We give it
-                to the bears. But from my life, from my survey and the price of
-                the game. Pellentesque nulla eros accumsan quis justo at
-                tincidunt lobortis denimes loremous. The bed of the weekend
-                hangs in the bed, so that the dishes are pure cushion. The
-                author is very important.
+                life is always a lot, it is a nice valley. We give it to the
+                bears. But from my life, from my survey and the price of the
+                game. Pellentesque nulla eros accumsan quis justo at tincidunt
+                lobortis denimes loremous. The bed of the weekend hangs in the
+                bed, so that the dishes are pure cushion. The author is very
+                important.
               </p>
             </div>
             <div className="product-details-specifications">
@@ -180,8 +180,8 @@ export default function ProductDetails() {
                   textAlign: "center",
                   color: "#eb0028",
                   fontSize: "1.4rem",
-                  fontFamily:"monospace",
-                  textDecoration:"underline"
+                  fontFamily: "monospace",
+                  textDecoration: "underline",
                 }}
               >
                 Specifications

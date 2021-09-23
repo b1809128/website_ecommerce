@@ -46,5 +46,13 @@
 
 
 @media screen and (max-width:960px){
+    .info__text-heading{
+        font-size: 1rem;
+        font-weight: 400;
+        padding: 0 0 12px 0 ;
+    }
+    .info__text-name{
+        font-size:1.5rem;
+    }
     
 }

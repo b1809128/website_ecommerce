@@ -175,4 +175,11 @@ p {
   .product-details__btn-item {
     margin: 0 8px;
   }
+
+  .product-details-push-left,.product-details-push-right{
+    display: none;
+  }
+  .product-details-posts,.product-details-specifications{
+    width: 100%;
+  }
 }

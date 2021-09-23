@@ -13,6 +13,13 @@
     -webkit-line-clamp: 1;
 }
 
+@media screen and (max-width:960px){
+    .brand-bar{
+        height:80px;
+        margin-top: 20px;
+    }
+}
+
 .brand-bar-list{
     height:100%;
     display: flex;

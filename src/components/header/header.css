@@ -84,7 +84,7 @@
         
     }
     .nav-menu.active {
-        background: rgba(0, 0, 0, 0.9);
+        background: #fff;
         left: 0;
         opacity: 1;
         transition: all 0.6s ease;
@@ -106,16 +106,20 @@
         position: absolute;
         top: 0;
         left: 0;
-        transform: translate(25%, 50%);
+        transform: translate(25%, 20%);
     }
 
     .menu-icon {
-        display: block;
+        display: flex;
         position: absolute;
         top: 0;
-        right: 0;
+        right: -100px;
         transform: translate(-100%, 60%);
         font-size: 1.8rem;
         cursor: pointer;
     }
+    .menu-icon__item{
+        padding: 0 8px;
+    }
+    
 }

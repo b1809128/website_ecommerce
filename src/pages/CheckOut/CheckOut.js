@@ -10,7 +10,7 @@ export default function CheckOut() {
           <div className="row">
             <div className="check__form">
               <h2 className="check__form-title">Order</h2>
-              <form>
+              <form className="form-section">
                 <div className="form-block">
                   <label for="name">Full name*</label>
                   <input

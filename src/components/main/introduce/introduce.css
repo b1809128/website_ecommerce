@@ -65,10 +65,7 @@
 
 
 @media  screen and (max-width:960px){
-  .introduce-company__text {
-    height:200px;
-    overflow-y: hidden;
-    text-align: justify;
-    overflow-x: hidden;
+  .introduce-wrapper{
+    display: none;
   }
 }
