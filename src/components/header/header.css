@@ -113,7 +113,7 @@
         display: flex;
         position: absolute;
         top: 0;
-        right: -100px;
+        right: -130px;
         transform: translate(-100%, 60%);
         font-size: 1.8rem;
         cursor: pointer;

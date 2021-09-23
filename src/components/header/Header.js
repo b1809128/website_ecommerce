@@ -72,27 +72,27 @@ export default function Header() {
         {/* --- */}
         <ul className={click ? "nav-menu active" : "nav-menu"}>
           <li className="nav-item">
-            <a className="link" href="/">
+            <a className="link" href="/" onClick={handleClick}>
               Home
             </a>
           </li>
           <li className="nav-item">
-            <a className="link" href="#categories">
+            <a className="link" href="#categories" onClick={handleClick}>
               Categories
             </a>
           </li>
           <li className="nav-item">
-            <a className="link" href="#services">
+            <a className="link" href="#services" onClick={handleClick}>
               Service
             </a>
           </li>
           <li className="nav-item">
-            <a className="link" href="#blog">
+            <a className="link" href="#blog" onClick={handleClick}>
               Blog
             </a>
           </li>
           <li className="nav-item">
-            <a className="link" href="#footer">
+            <a className="link" href="#footer" onClick={handleClick}>
               About Us
             </a>
           </li>

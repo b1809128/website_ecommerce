@@ -21,10 +21,9 @@ export default function ProductDetails() {
     setCurrent(current === 0 ? length - 1 : current - 1);
   };
 
-  // handleClick
-  // const [click, setClick] = useState(false);
-  // const handleClick = () => setClick(!click);
-  // const nohandleClick = () => setClick(click);
+  const nowSlide = () => {
+    setCurrent(current === length - 1 ? 0 : current + 1);
+  };
 
   return (
     <div className="product-details">
@@ -37,11 +36,15 @@ export default function ProductDetails() {
                 <div className="product-details-image__left">
                   {array.map((data, index) => {
                     return (
-                      <img
-                        src={data.image}
-                        alt="product color"
-                        className="product-details-image__left-item"
-                      />
+                      <>
+                        {index === current}
+                        <img
+                          src={data.image}
+                          alt="product color"
+                          className="product-details-image__left-item"
+                          onClick={nowSlide}
+                        />
+                      </>
                     );
                   })}
                 </div>

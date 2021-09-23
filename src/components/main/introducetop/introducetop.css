@@ -8,7 +8,7 @@
 
 @media  screen and (max-width:960px){
   .introduce-top-wrapper{
-    max-height: 150px;
+    display: none;
   }
 }
 

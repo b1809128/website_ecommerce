@@ -38,10 +38,10 @@ export default function Home() {
       <IntroduceTop />
       <div className="home-section">
         <div className="home__row">
-          <div id="categories">
+          
             <BrandBar />
-          </div>
-          <div className="row">
+          
+          <div id="categories" className="row">
             <Info {...infoDataOne} />
             <Info {...infoDataTwo} />
           </div>
