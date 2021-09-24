@@ -5,28 +5,18 @@ import "aos/dist/aos.css";
 import "./home.css";
 import IntroduceTop from "../../components/main/introducetop/IntroduceTop";
 import Info from "../../components/main/info/Info";
-import Product from "../../components/products/Product";
 import {
   infoDataOne,
   infoDataTwo,
   infoDataThree,
   infoDataFour,
 } from "../../components/main/info/infoData";
-import {
-  productOne,
-  productFour,
-  productSix,
-  productSeven,
-  productNine,
-  productTen,
-  productEleven,
-  productTwelve,
-} from "../../components/products/productData";
 import Introduce from "../../components/main/introduce/Introduce";
 import { introduceData } from "../../components/main/introduce/introduceData";
 import BrandBar from "../../components/bar/brandbar/BrandBar";
 import Comment from "../../components/main/comment/Comment";
-
+import ProductNoneAPI from "../../components/products/ProductNoneAPI";
+import { productsData } from "../../data";
 export default function Home() {
   useEffect(() => {
     Aos.init({
@@ -38,28 +28,27 @@ export default function Home() {
       <IntroduceTop />
       <div className="home-section">
         <div className="home__row">
-          
-            <BrandBar />
-          
+          <BrandBar />
+
           <div id="categories" className="row">
             <Info {...infoDataOne} />
             <Info {...infoDataTwo} />
           </div>
           <div data-aos="fade-up" className="row">
-            <Product {...productOne} />
-            <Product {...productFour} />
-            <Product {...productSix} />
-            <Product {...productSeven} />
+            <ProductNoneAPI id={0} data={productsData} />
+            <ProductNoneAPI id={3} data={productsData} />
+            <ProductNoneAPI id={4} data={productsData} />
+            <ProductNoneAPI id={6} data={productsData} />
           </div>
           <div className="row">
             <Info {...infoDataThree} />
             <Info {...infoDataFour} />
           </div>
           <div data-aos="fade-up" className="row">
-            <Product {...productNine} />
-            <Product {...productTen} />
-            <Product {...productEleven} />
-            <Product {...productTwelve} />
+            <ProductNoneAPI id={8} data={productsData} />
+            <ProductNoneAPI id={9} data={productsData} />
+            <ProductNoneAPI id={12} data={productsData} />
+            <ProductNoneAPI id={14} data={productsData} />
           </div>
           <Introduce data={introduceData} />
           <div data-aos="fade-up" id="blog" className="row">

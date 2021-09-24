@@ -6,7 +6,7 @@ import LocationBar from "../../components/bar/locationbar/LocationBar";
 import "./details.css";
 import BrandBar from "../../components/bar/brandbar/BrandBar";
 import SlideProduct from "../../components/main/slideproduct/SlideProduct"
-import { slideProductData } from "../../components/main/slideproduct/slideProductData";
+import ProductNoneAPI from "../../components/products/ProductNoneAPI";
 import { productsData } from "../../data";
 
 export default function Details() {
@@ -16,9 +16,6 @@ export default function Details() {
     });
   }, []);
 
-  productsData.map((data, index)=>{
-    console.log(data.attribute);
-  })
   
   return (
     <div className="details">
@@ -28,13 +25,10 @@ export default function Details() {
           <BrandBar />
           <RangeBar />
           <div className="row">
-            {slideProductData.map(data => {
-              return data.case;
-            })}            
+            <ProductNoneAPI id={""} data={productsData}/>
           </div>
           <SlideProduct/>
           
-          {/* <ImageSlider slides={SliderData} /> */}
         </div>
       </div>
     </div>

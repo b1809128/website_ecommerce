@@ -48,7 +48,9 @@ export default function Header() {
     <div className={scrollTop ? "navbar scroll" : "navbar"}>
       <div className="navbar-container container">
         <div className="navbar-logo" onClick={closeMobileMenu}>
-          <img src="./images/logo.png" className="navbar-logo__image" />
+          <Link to="/">
+            <img src="./images/logo.png" className="navbar-logo__image" />
+          </Link>
         </div>
         <div className="menu-icon">
           <div className="menu-icon__item">
