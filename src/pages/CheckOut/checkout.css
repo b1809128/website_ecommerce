@@ -36,6 +36,7 @@
     font-family: monospace;
     text-decoration: underline;
     color:#eb0028;
+    
 }
 
 .form-section{
@@ -100,4 +101,19 @@ textarea{
 
 p{
     padding:0;
+}
+
+@media screen and (max-width:960px){
+    .form-section{
+        
+        padding:0 50px;
+    }
+    .form-input{
+        width: 100%;
+    }
+
+    .check__form-title, .check__method-title{
+        padding:0 50px;
+        
+    }
 }

@@ -1,4 +1,5 @@
 import { FaAngleRight } from "react-icons/fa";
+import {Link} from "react-router-dom";
 import LocationBar from "../../components/bar/locationbar/LocationBar";
 import "./checkout.css";
 export default function CheckOut() {
@@ -77,7 +78,7 @@ export default function CheckOut() {
             {/* Check method */}
             <div className="check__method">
               <h2 className="check__method-title">Your Invoice</h2>
-              <form>
+              <form className="form-section">
                 <div className="form-block">
                   <div class="form-flex__product">
                     <img
@@ -102,7 +103,7 @@ export default function CheckOut() {
                 <div className="form-flex">
                     <input type="radio" className="method"/> Payment on delivery
                 </div>
-                <button className="btn">ORDER <FaAngleRight/></button>
+                <button className="btn"><Link to="/" className="link__btn">ORDER <FaAngleRight/></Link></button>
               </form>
             </div>
           </div>

@@ -17,7 +17,7 @@ export const infoDataThree = {
 }
 
 export const infoDataFour = {
-    heading: "Watch new technology in 2021",
+    heading: "Watch New Technology",
     name: "WATCH", 
     image:  "./images/info_4.jpg" 
 }

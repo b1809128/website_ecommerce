@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { FaAngleLeft, FaAngleRight } from "react-icons/fa";
-import {useParams} from "react-router-dom";
+import {useParams,Link} from "react-router-dom";
 import LocationBar from "../../components/bar/locationbar/LocationBar";
 import ReviewBar from "../../components/bar/reviewtextbar/ReviewBar";
 import "./productdetails.css";
@@ -141,10 +141,10 @@ export default function ProductDetails({data}) {
               </p>
               <div className="product-details__btn">
                 <button className="btn product-details__btn-item">
-                  Add to cart
+                  <Link to="/" className="link__btn">Add to cart</Link>
                 </button>
                 <button className="btn product-details__btn-item">
-                  Buy Now
+                <Link to="/cart" className="link__btn">Buy Now</Link>
                 </button>
               </div>
             </div>
