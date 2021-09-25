@@ -29,7 +29,7 @@ export default function ProductNoneAPI({ data, id }) {
           <p className="product-name link">{data[id].attribute.name}</p>
           <p className="product-price">{data[id].attribute.price}</p>
           <button className="btn">
-            <Link to="/product-details" className="link__btn">
+            <Link to={"/product-details/"+id} className="link__btn">
               Buy Now
             </Link>
           </button>
@@ -39,7 +39,7 @@ export default function ProductNoneAPI({ data, id }) {
   } else {
     return (
       <>
-        {data.map((data) => (
+        {data.map((data, index) => (
           <div className="product">
             <div className="product-image">
               <img src={data.attribute.image} className="product-image__img" />
@@ -60,7 +60,7 @@ export default function ProductNoneAPI({ data, id }) {
             <p className="product-name link">{data.attribute.name}</p>
             <p className="product-price">{data.attribute.price}</p>
             <button className="btn">
-              <Link to="/product-details" className="link__btn">
+              <Link to={"/product-details/"+index} className="link__btn">
                 Buy Now
               </Link>
             </button>

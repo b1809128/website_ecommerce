@@ -16,11 +16,9 @@
     padding: 0 4px;
     display: flex;
     align-items: center;
-    font-size: 1.2rem;
+    font-size: 1rem;
     font-weight: 600;
+    text-transform: uppercase;
+    color: #eb0028;
 }
 
-.location-bar-item:first-child{
-    color: #eb0028;
-    font-weight:600;
-}

@@ -12,6 +12,7 @@ import Register from "./pages/Register/Register";
 import ProductDetails from "./pages/ProductDetails/ProductDetails";
 import Cart from "./pages/Cart/Cart";
 import CheckOut from "./pages/CheckOut/CheckOut";
+import { productsData } from "./data";
 function App() {
   return (
     <div>
@@ -24,8 +25,8 @@ function App() {
             <Route path="/details">
                 <Details />
             </Route>
-            <Route path="/product-details">
-                <ProductDetails />
+            <Route path="/product-details/:id">
+                <ProductDetails data={productsData}/>
             </Route>
             <Route path="/sign-in">
                 <Login />
