@@ -11,7 +11,6 @@ export default function ProductDetails({ data }) {
   // console.log(data[id-1])
   const array = [...data[id].attribute.image];
 
-  console.log(array);
   const [current, setCurrent] = useState(0);
   const length = array.length;
 
@@ -23,10 +22,7 @@ export default function ProductDetails({ data }) {
     setCurrent(current === 0 ? length - 1 : current - 1);
   };
 
-  const nowSlide = () => {
-    setCurrent(current === length - 1 ? 0 : current + 1);
-  };
-
+  
   return (
     <div className="product-details">
       <div className="product-details-section">
@@ -44,7 +40,7 @@ export default function ProductDetails({ data }) {
                           src={data}
                           alt="product color"
                           className="product-details-image__left-item"
-                          onClick={nowSlide}
+                          onClick={nextSlide}
                         />
                       </>
                     );

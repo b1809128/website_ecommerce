@@ -114,7 +114,8 @@
 
 p {
   text-align: justify;
-  padding-bottom: 8px;
+  margin: 4px 0;
+  
 }
 
 /* Content */
