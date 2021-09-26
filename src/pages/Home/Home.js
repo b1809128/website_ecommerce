@@ -28,7 +28,7 @@ export default function Home() {
       <IntroduceTop />
       <div className="home-section">
         <div className="home__row">
-          <BrandBar />
+          <BrandBar/>
 
           <div id="categories" className="row">
             <Info {...infoDataOne} />

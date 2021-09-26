@@ -1,20 +1,17 @@
 import React, { useState } from "react";
 import { FaAngleLeft, FaAngleRight } from "react-icons/fa";
-import {useParams,Link} from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import LocationBar from "../../components/bar/locationbar/LocationBar";
 import ReviewBar from "../../components/bar/reviewtextbar/ReviewBar";
 import "./productdetails.css";
 
-export default function ProductDetails({data}) {
+export default function ProductDetails({ data }) {
   // Them param id vao duong dan
-  const {id} = useParams();
+  const { id } = useParams();
   // console.log(data[id-1])
-  const firstImage= data[id].attribute.image
-  const array = [
-    { id: 0, image: firstImage },
-    { id: 1, image: "/images/products/product_2.jpg" },
-    { id: 2, image: "/images/products/product_3.jpg" },
-  ];
+  const array = [...data[id].attribute.image];
+
+  console.log(array);
   const [current, setCurrent] = useState(0);
   const length = array.length;
 
@@ -44,7 +41,7 @@ export default function ProductDetails({data}) {
                       <>
                         {index === current}
                         <img
-                          src={data.image}
+                          src={data}
                           alt="product color"
                           className="product-details-image__left-item"
                           onClick={nowSlide}
@@ -68,7 +65,7 @@ export default function ProductDetails({data}) {
                         {index === current && (
                           <img
                             id="demoLarge"
-                            src={data.image}
+                            src={data}
                             alt="product color"
                             className="product-details-image__right-item"
                           />
@@ -80,8 +77,12 @@ export default function ProductDetails({data}) {
               </div>
             </div>
             <div className="product-details-right-info">
-              <h2 className="product-details-name">{data[id].attribute.name}</h2>
-              <h3 className="product-details-price">{data[id].attribute.price} VND</h3>
+              <h2 className="product-details-name">
+                {data[id].attribute.name}
+              </h2>
+              <h3 className="product-details-price">
+                {data[id].attribute.price} VND
+              </h3>
               <p className="product-details-description">
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt a
                 doloribus iste natus et facere? dolor sit amet consectetur
@@ -123,7 +124,8 @@ export default function ProductDetails({data}) {
                 />
               </div>
               <p>
-                <span className="product-details-text__bold">Brand:</span> {data[id].attribute.brand}
+                <span className="product-details-text__bold">Brand:</span>{" "}
+                {data[id].attribute.brand}
               </p>
               <p>
                 <span className="product-details-text__bold">
@@ -141,10 +143,14 @@ export default function ProductDetails({data}) {
               </p>
               <div className="product-details__btn">
                 <button className="btn product-details__btn-item">
-                  <Link to="/" className="link__btn">Add to cart</Link>
+                  <Link to="/" className="link__btn">
+                    Add to cart
+                  </Link>
                 </button>
                 <button className="btn product-details__btn-item">
-                <Link to="/cart" className="link__btn">Buy Now</Link>
+                  <Link to="/cart" className="link__btn">
+                    Buy Now
+                  </Link>
                 </button>
               </div>
             </div>
@@ -195,8 +201,8 @@ export default function ProductDetails({data}) {
                 Specifications
               </p>
               <div className="product-details-specifications-image">
-              <img
-                  src={data[id].attribute.image}
+                <img
+                  src={data[id].attribute.image[0]}
                   alt="Product Details"
                   className="product-details-specifications-image__img"
                 />
@@ -220,10 +226,12 @@ export default function ProductDetails({data}) {
                 {data[id].details.specifications.CPU}
               </p>
               <p>
-                <span className="product-details-text__bold">ROM:</span>{data[id].details.specifications.ROM}
+                <span className="product-details-text__bold">ROM:</span>
+                {data[id].details.specifications.ROM}
               </p>
               <p>
-                <span className="product-details-text__bold">RAM:</span>{data[id].details.specifications.RAM}
+                <span className="product-details-text__bold">RAM:</span>
+                {data[id].details.specifications.RAM}
               </p>
               <p>
                 <span className="product-details-text__bold">
@@ -238,7 +246,8 @@ export default function ProductDetails({data}) {
                 {data[id].details.specifications.SIM}
               </p>
               <p>
-                <span className="product-details-text__bold">Weight:</span>{data[id].details.specifications.weight}
+                <span className="product-details-text__bold">Weight:</span>
+                {data[id].details.specifications.weight}
               </p>
               <p>
                 <span className="product-details-text__bold">

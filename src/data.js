@@ -3,7 +3,11 @@ export const productsData = [
     id: 1,
     attribute: {
       name: "IPhone 12 ProMax 512GB",
-      image: "/images/products/product_1.jpg",
+      image: [
+        "/images/products/product_1.jpg",
+        "/images/products/product_2.jpg",
+        "/images/products/product_3.jpg",
+      ],
       price: "35.550.000",
       brand: "Apple",
       type: "Phone",
@@ -31,7 +35,11 @@ export const productsData = [
     id: 2,
     attribute: {
       name: "IPhone 12 ProMax 256GB",
-      image: "/images/products/product_2.jpg",
+      image: [
+        "/images/products/product_2.jpg",
+        "/images/products/product_1.jpg",
+        "/images/products/product_3.jpg",
+      ],
       price: "31.850.000",
       brand: "Apple",
       type: "Phone",
@@ -58,7 +66,11 @@ export const productsData = [
     id: 3,
     attribute: {
       name: "IPhone 12 Mini 256GB",
-      image: "/images/products/product_3.jpg",
+      image: [
+        "/images/products/product_3.jpg",
+        "/images/products/product_2.jpg",
+        "/images/products/product_1.jpg",
+      ],
       price: "15.550.000",
       brand: "Apple",
       type: "Phone",
@@ -85,7 +97,10 @@ export const productsData = [
     id: 4,
     attribute: {
       name: "Samsung Galaxy Z Fold 5G 2021",
-      image: "/images/products/product_4.jpg",
+      image: [
+        "/images/products/product_4.jpg",
+        "https://cdn.tgdd.vn/Products/Images/42/226099/samsung-galaxy-z-fold-2-den-600x600.jpg",
+      ],
       price: "45.890.000",
       brand: "Samsung",
       type: "Phone",
@@ -112,7 +127,10 @@ export const productsData = [
     id: 5,
     attribute: {
       name: "Apple M1 - MacBook Air 13 512GB 2020",
-      image: "/images/products/product_5.jpg",
+      image: [
+        "/images/products/product_5.jpg",
+        "https://cdn.tgdd.vn/Products/Images/44/231250/macbook-air-m1-2020-gray-600x600.jpg",
+      ],
       price: "30.590.000",
       brand: "Apple",
       type: "Laptop",
@@ -139,7 +157,10 @@ export const productsData = [
     id: 6,
     attribute: {
       name: "Apple M1 - MacBook Pro 13' 512GB 2020 ",
-      image: "/images/products/product_6.jpg",
+      image: [
+        "/images/products/product_6.jpg",
+        "https://cdn.tgdd.vn/Products/Images/44/236131/apple-macbook-pro-m1-2020-z11c000cj-600x600.jpg",
+      ],
       price: "35.750.000",
       brand: "Apple",
       type: "Laptop",
@@ -166,7 +187,10 @@ export const productsData = [
     id: 7,
     attribute: {
       name: "Laptop Dell XPS 13 9310 2 in 1 ",
-      image: "/images/products/product_7.jpg",
+      image: [
+        "/images/products/product_7.jpg",
+        "https://hanoicomputercdn.com/media/product/60448_laptop_dell_xps_13_9310_2_in_1_70260716_win10_bac_2.png",
+      ],
       price: "41.680.000",
       brand: "Dell",
       type: "Laptop",
@@ -193,7 +217,10 @@ export const productsData = [
     id: 8,
     attribute: {
       name: "Laptop MSI GP65 Leopard",
-      image: "/images/products/product_8.jpg",
+      image: [
+        "/images/products/product_8.jpg",
+        "https://cdn.tgdd.vn/Products/Images/44/242201/msi-gf66-11uc-i7-224vn-600x600.jpg",
+      ],
       price: "37.990.000",
       brand: "MSI",
       type: "Laptop",
@@ -221,7 +248,10 @@ export const productsData = [
     id: 9,
     attribute: {
       name: "Apple Watch SE (4G) 44mm",
-      image: "/images/products/product_9.jpg",
+      image: [
+        "/images/products/product_9.jpg",
+        "https://hoanghamobile.com/i/preview/Uploads/2021/01/12/watch-se-lte-gold-loop.png",
+      ],
       price: "9.190.000",
       brand: "Apple",
       type: "Watch",
@@ -247,7 +277,11 @@ export const productsData = [
     id: 10,
     attribute: {
       name: "Apple Watch Series 6 GPS + Cellular, 44mm Stainless Steel With Sport Band",
-      image: "/images/products/product_10.jpg",
+      image: [
+        "/images/products/product_10.jpg",
+        "https://hoanghamobile.com/i/preview/Uploads/2021/01/12/se-lte-silver.png",
+        "https://hoanghamobile.com/i/preview/Uploads/2021/01/12/se-lte-gold.png",
+      ],
       price: "17.750.000",
       brand: "Apple",
       type: "Watch",
@@ -273,7 +307,10 @@ export const productsData = [
     id: 11,
     attribute: {
       name: "Samsung Galaxy Watch 4 Classic 42mm LTE",
-      image: "/images/products/product_11.jpg",
+      image: [
+        "/images/products/product_11.jpg",
+        "https://hoanghamobile.com/i/preview/Uploads/2021/08/20/watch-4-classic-smail-7.png",
+      ],
       price: "9.490.000",
       brand: "Samsung",
       type: "Watch",
@@ -299,7 +336,11 @@ export const productsData = [
     id: 12,
     attribute: {
       name: "Samsung Galaxy Watch 3 41mm",
-      image: "/images/products/product_12.jpg",
+      image: [
+        "/images/products/product_12.jpg",
+        "https://hoanghamobile.com/i/preview/Uploads/2021/06/25/r850-22333.png",
+        "https://hoanghamobile.com/i/preview/Uploads/2021/06/25/image-removebg-preview.png",
+      ],
       price: "5.250.000",
       brand: "Samsung",
       type: "Watch",
@@ -325,7 +366,10 @@ export const productsData = [
     id: 13,
     attribute: {
       name: "Apple AirPods Pro",
-      image: "/images/products/product_13.jpg",
+      image: [
+        "/images/products/product_13.jpg",
+        "https://hoanghamobile.com/i/preview/Uploads/2020/10/27/image-removebg-preview%20(33).png",
+      ],
       price: "4.990.000",
       brand: "Apple",
       type: "HeadPhone",
@@ -351,7 +395,10 @@ export const productsData = [
     id: 14,
     attribute: {
       name: "Apple Beats Solo3 Wireless",
-      image: "/images/products/product_14.jpg",
+      image: [
+        "/images/products/product_14.jpg",
+        "https://hoanghamobile.com/i/preview/Uploads/2020/10/27/image-removebg-preview%20(37).png",
+      ],
       price: "9.650.000",
       brand: "Apple",
       type: "HeadPhone",
@@ -377,7 +424,10 @@ export const productsData = [
     id: 15,
     attribute: {
       name: "Sony True Wireless WF-1000XM4",
-      image: "/images/products/product_15.jpg",
+      image: [
+        "/images/products/product_15.jpg",
+        "https://hoanghamobile.com/i/preview/Uploads/2021/06/10/image-removebg-preview-17.png",
+      ],
       price: "6.990.000",
       brand: "Sony",
       type: "HeadPhone",
@@ -403,7 +453,10 @@ export const productsData = [
     id: 16,
     attribute: {
       name: "Sony True Wireless WF-1000XM3",
-      image: "/images/products/product_16.jpg",
+      image: [
+        "/images/products/product_16.jpg",
+        "https://hoanghamobile.com/i/preview/Uploads/2020/11/07/tai-nghe-true-wireless-sony-wf-1000xm3.png",
+      ],
       price: "3.650.000",
       brand: "Sony",
       type: "HeadPhone",

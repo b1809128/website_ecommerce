@@ -10,7 +10,7 @@ export default function ProductNoneAPI({ data, id }) {
           <div className="product-image">
             <img
               alt="productimage"
-              src={data[id].attribute.image}
+              src={data[id].attribute.image[0]}
               className="product-image__img"
             />
             <div className="product-image__modal">
@@ -43,7 +43,7 @@ export default function ProductNoneAPI({ data, id }) {
         {data.map((data, index) => (
           <div className="product">
             <div className="product-image">
-              <img alt="productimage" src={data.attribute.image} className="product-image__img" />
+              <img alt="productimage" src={data.attribute.image[0]} className="product-image__img" />
               <div className="product-image__modal">
                 <ul className="product-image__modal-list">
                   <li className="product-image__modal-list-item link">

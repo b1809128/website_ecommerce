@@ -48,6 +48,10 @@
     outline: none;
     margin: 0 auto;
   }
+
+  .register-btn{
+    margin-top:12px;
+  }
   
 
   @media screen and (max-width:960px){
