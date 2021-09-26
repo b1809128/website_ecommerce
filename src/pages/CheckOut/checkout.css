@@ -116,4 +116,7 @@ p{
         padding:0 50px;
         
     }
+    textarea{
+        width: 100%;
+    }
 }

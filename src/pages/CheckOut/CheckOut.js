@@ -98,10 +98,10 @@ export default function CheckOut() {
                 </div>
                 <h2 className="check__method-title">Payment Methods</h2>
                 <div className="form-flex">
-                    <input type="radio" className="method"/> Payment on delivery
+                    <input type="radio" className="method"/> Payment On Delivery
                 </div>
                 <div className="form-flex">
-                    <input type="radio" className="method"/> Payment on delivery
+                    <input type="radio" className="method"/> Payment Via Card
                 </div>
                 <button className="btn"><Link to="/" className="link__btn">ORDER <FaAngleRight/></Link></button>
               </form>
