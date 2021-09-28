@@ -15,8 +15,7 @@
 
 @media screen and (max-width:960px){
     .brand-bar{
-        height:80px;
-        margin-top: 20px;
+       display: none;
     }
 }
 
