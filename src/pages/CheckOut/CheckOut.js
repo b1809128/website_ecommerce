@@ -82,6 +82,7 @@ export default function CheckOut() {
                 <div className="form-block">
                   <div class="form-flex__product">
                     <img
+                      alt="flexproduct"
                       src="images/products/product_1.jpg"
                       className="form-flex__product-img"
                     />
