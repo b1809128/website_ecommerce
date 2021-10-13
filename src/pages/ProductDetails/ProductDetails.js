@@ -22,6 +22,12 @@ export default function ProductDetails({ data }) {
     setCurrent(current === 0 ? length - 1 : current - 1);
   };
 
+  // const [test,setImage] = useState(0);
+  // const chooseImage =()=>{    
+  //   let elements = document.querySelectorAll(".product-details-image__left-item");
+  //   console.log(elements[0].getAttribute("src"))
+  // }
+  // chooseImage()
   
   return (
     <div className="product-details">
@@ -41,6 +47,7 @@ export default function ProductDetails({ data }) {
                           alt="product color"
                           className="product-details-image__left-item"
                           onClick={nextSlide}
+                          index={index}
                         />
                       </>
                     );
