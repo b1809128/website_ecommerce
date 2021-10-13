@@ -28,7 +28,7 @@ export default function ProductDetails({ data }) {
   //   console.log(elements[0].getAttribute("src"))
   // }
   // chooseImage()
-  
+  const testcase = "database";
   return (
     <div className="product-details">
       <div className="product-details-section">
