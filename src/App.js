@@ -10,6 +10,7 @@ import ScrollTop from "./components/scrolltop/ScrollTop";
 import Login from "./pages/Login/Login";
 import Register from "./pages/Register/Register";
 import ProductDetails from "./pages/ProductDetails/ProductDetails";
+import ProductDetailsAPI from "./pages/ProductDetails/ProductDetailsAPI";
 import Cart from "./pages/Cart/Cart";
 import CheckOut from "./pages/CheckOut/CheckOut";
 import { productsData } from "./data";
@@ -27,6 +28,9 @@ function App() {
             </Route>
             <Route path="/product-details/:id">
                 <ProductDetails data={productsData}/>
+            </Route>
+            <Route path="/product-details-api/:id">
+                <ProductDetailsAPI />
             </Route>
             <Route path="/sign-in">
                 <Login />
