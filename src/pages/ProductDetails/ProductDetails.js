@@ -1,6 +1,9 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { FaAngleLeft, FaAngleRight } from "react-icons/fa";
 import { useParams, Link } from "react-router-dom";
+import { useLocation } from "react-router";
+import axios from "axios";
+
 import LocationBar from "../../components/bar/locationbar/LocationBar";
 import ReviewBar from "../../components/bar/reviewtextbar/ReviewBar";
 import "./productdetails.css";
@@ -22,13 +25,18 @@ export default function ProductDetails({ data }) {
     setCurrent(current === 0 ? length - 1 : current - 1);
   };
 
-  // const [test,setImage] = useState(0);
-  // const chooseImage =()=>{    
-  //   let elements = document.querySelectorAll(".product-details-image__left-item");
-  //   console.log(elements[0].getAttribute("src"))
-  // }
-  // chooseImage()
-  const testcase = "database";
+  //Axios get Data
+  const location = useLocation();
+  const path = location.pathname;
+  console.log("new path: " + path);
+  useEffect(() => {
+    const getAll = async () => {
+      const response = await axios.get("http://localhost:5000/product");
+      console.log(response.data);
+    };
+    getAll();
+  }, []);
+
   return (
     <div className="product-details">
       <div className="product-details-section">
