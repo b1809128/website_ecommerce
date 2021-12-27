@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
-import { useLocation } from "react-router";
 import axios from "axios";
 
 import LocationBar from "../../components/bar/locationbar/LocationBar";
@@ -13,9 +12,9 @@ export default function ProductDetailsAPI() {
 
   //Axios get Data
   const [product, setProduct] = useState([]);
-  const location = useLocation();
-  const path = location.pathname;
-  console.log("new path: " + path);
+  // const location = useLocation();
+  // const path = location.pathname;
+  // console.log("new path: " + path);
   useEffect(() => {
     const getAll = async () => {
       const response = await axios.get(
@@ -24,7 +23,11 @@ export default function ProductDetailsAPI() {
       setProduct(response.data);
     };
     getAll();
-  }, []);
+  },[]);
+
+  const test = product.map(data => {return JSON.parse(data.MoTa)})
+
+  // console.log((test));
 
   return (
     <>
@@ -52,7 +55,9 @@ export default function ProductDetailsAPI() {
                   </div>
                   <div className="product-details-right-info">
                     <h2 className="product-details-name">{data.TenHH}</h2>
-                    <h3 className="product-details-price">{new Intl.NumberFormat().format(data.Gia)} VND</h3>
+                    <h3 className="product-details-price">
+                      {new Intl.NumberFormat().format(data.Gia)} VND
+                    </h3>
                     <p className="product-details-description">
                       Lorem ipsum dolor sit amet consectetur adipisicing elit.
                       Sunt a doloribus iste natus et facere? dolor sit amet
@@ -96,13 +101,13 @@ export default function ProductDetailsAPI() {
                     </div>
                     <p>
                       <span className="product-details-text__bold">Brand:</span>{" "}
-                      {data.MaLoaiHang}
+                      {test[0].Brand}
                     </p>
                     <p>
                       <span className="product-details-text__bold">
                         Product type:
                       </span>{" "}
-                      {data.MaLoaiHang}
+                      {test[0].Type}
                     </p>
                     <p>
                       <span className="product-details-text__bold">
@@ -183,51 +188,51 @@ export default function ProductDetailsAPI() {
                       <span className="product-details-text__bold">
                         Screen technology:
                       </span>
-                      {data.TenHH}
+                      {test[0].Screen}
                     </p>
                     <p>
                       <span className="product-details-text__bold">
                         Operating System:
                       </span>
-                      {data.TenHH}
+                      {test[0].OS}
                     </p>
                     <p>
                       <span className="product-details-text__bold">
                         Processor Chip (CPU):
                       </span>
-                      {data.TenHH}
+                      {test[0].CPU}
                     </p>
                     <p>
                       <span className="product-details-text__bold">ROM:</span>
-                      {data.TenHH}
+                      {test[0].ROM}
                     </p>
                     <p>
                       <span className="product-details-text__bold">RAM:</span>
-                      {data.TenHH}
+                      {test[0].RAM}
                     </p>
                     <p>
                       <span className="product-details-text__bold">
                         Mobile network:
                       </span>
-                      {data.TenHH}
+                      {test[0].Network}
                     </p>
                     <p>
                       <span className="product-details-text__bold">
                         Number of sim slots:
                       </span>
-                      {data.TenHH}
+                      {test[0].SIM}
                     </p>
                     <p>
                       <span className="product-details-text__bold">
                         Weight:
                       </span>
-                      {data.TenHH}
+                      {test[0].Weight}
                     </p>
                     <p>
                       <span className="product-details-text__bold">
                         Battery capacity:
                       </span>
-                      {data.TenHH}
+                      {test[0].Battery}
                     </p>
                   </div>
                 </div>
