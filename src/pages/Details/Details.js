@@ -23,7 +23,7 @@ export default function Details() {
   const [product, setProduct] = useState([]);
   useEffect(() => {
     const getAll = async () => {
-      const response = await axios.get("http://localhost:5000/product");
+      const response = await axios.get("http://localhost:5000/product/all");
       setProduct(response.data);
     };
     getAll();

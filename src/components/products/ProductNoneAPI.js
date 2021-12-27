@@ -28,7 +28,7 @@ export default function ProductNoneAPI({ data, id }) {
             </div>
           </div>
           <p className="product-name link">{data[id].attribute.name}</p>
-          <p className="product-price">{data[id].attribute.price} VND</p>
+          <p className="product-price">{new Intl.NumberFormat().format(data[id].attribute.price)} VND</p>
           <button className="btn">
             <Link to={"/product-details/"+id} className="link__btn">
               Buy Now
@@ -59,7 +59,7 @@ export default function ProductNoneAPI({ data, id }) {
               </div>
             </div>
             <p className="product-name link">{data.attribute.name}</p>
-            <p className="product-price">{data.attribute.price} VND</p>
+            <p className="product-price">{new Intl.NumberFormat().format(data.attribute.price)} VND</p>
             <button className="btn">
               <Link to={"/product-details/"+index} className="link__btn">
                 Buy Now

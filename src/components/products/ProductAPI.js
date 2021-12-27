@@ -5,7 +5,10 @@ import { Link } from "react-router-dom";
 export default function ProductAPI({ data }) {
   // console.log(data);
   // console.log(data.map(db=>{return db.MSHH}))
-  // const pathImage = "http://localhost:5000/images/";
+  const test = data.map((db) => {
+    return JSON.parse(db.PATH);
+  });
+  // console.log(test[0][0]);
   return (
     <>
       {data.map((data, index) => (
@@ -13,7 +16,7 @@ export default function ProductAPI({ data }) {
           <div className="product-image">
             <img
               alt="productimage"
-              src={data.HinhAnh}
+              src={test[index][0]}
               className="product-image__img"
             />
             <div className="product-image__modal">
@@ -31,9 +34,12 @@ export default function ProductAPI({ data }) {
             </div>
           </div>
           <p className="product-name link">{data.TenHH}</p>
-          <p className="product-price">{data.Gia} VND</p>
+          <p className="product-price">{new Intl.NumberFormat().format(data.Gia)} VND</p>
           <button className="btn">
-            <Link to={"/product-details-api/" + data.MSHH} className="link__btn">
+            <Link
+              to={"/product-details-api/" + data.MSHH}
+              className="link__btn"
+            >
               Buy Now
             </Link>
           </button>

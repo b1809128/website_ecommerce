@@ -52,7 +52,7 @@ export default function ProductDetailsAPI() {
                   </div>
                   <div className="product-details-right-info">
                     <h2 className="product-details-name">{data.TenHH}</h2>
-                    <h3 className="product-details-price">{data.Gia} VND</h3>
+                    <h3 className="product-details-price">{new Intl.NumberFormat().format(data.Gia)} VND</h3>
                     <p className="product-details-description">
                       Lorem ipsum dolor sit amet consectetur adipisicing elit.
                       Sunt a doloribus iste natus et facere? dolor sit amet

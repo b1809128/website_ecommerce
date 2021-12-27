@@ -92,7 +92,7 @@ export default function ProductDetails({ data }) {
                 {data[id].attribute.name}
               </h2>
               <h3 className="product-details-price">
-                {data[id].attribute.price} VND
+                {new Intl.NumberFormat().format(data[id].attribute.price)} VND
               </h3>
               <p className="product-details-description">
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt a

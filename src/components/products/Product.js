@@ -20,7 +20,7 @@ export default function Product({
                 </div>
             </div>
             <p className="product-name link">{name}</p>
-            <p className="product-price">{price}</p>
+            <p className="product-price">{new Intl.NumberFormat().format(price)}</p>
             <button className="btn"><Link to="/product-details" className="link__btn">Buy Now</Link></button>
         </div>
     );
