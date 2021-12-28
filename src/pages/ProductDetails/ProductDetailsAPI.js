@@ -21,10 +21,12 @@ export default function ProductDetailsAPI() {
     getAll();
   }, []);
 
-  
   const pathImages = product.map((data) => {
     return JSON.parse(data.PATH);
   });
+
+  //Onclick Events
+  const [click, setClick] = useState(0);
 
   return (
     <>
@@ -46,6 +48,7 @@ export default function ProductDetailsAPI() {
                                 src={data}
                                 alt="product color"
                                 className="product-details-image__left-item"
+                                onClick={() => setClick(index)}
                                 index={index}
                               />
                             </>
@@ -56,7 +59,7 @@ export default function ProductDetailsAPI() {
                       <div className="product-details-image__right">
                         <img
                           id="demoLarge"
-                          src={data.HinhAnh}
+                          src={JSON.parse(data.PATH)[click]}
                           alt="product color"
                           className="product-details-image__right-item"
                         />
@@ -189,7 +192,7 @@ export default function ProductDetailsAPI() {
                     </p>
                     <div className="product-details-specifications-image">
                       <img
-                        src={data.HinhAnh}
+                        src={JSON.parse(data.PATH)[0]}
                         alt="Product Details"
                         className="product-details-specifications-image__img"
                       />

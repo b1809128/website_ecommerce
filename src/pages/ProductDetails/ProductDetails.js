@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { FaAngleLeft, FaAngleRight } from "react-icons/fa";
 import { useParams, Link } from "react-router-dom";
 import { useLocation } from "react-router";
 import axios from "axios";
@@ -15,15 +14,6 @@ export default function ProductDetails({ data }) {
   const array = [...data[id].attribute.image];
 
   const [current, setCurrent] = useState(0);
-  const length = array.length;
-
-  const nextSlide = () => {
-    setCurrent(current === length - 1 ? 0 : current + 1);
-  };
-
-  const prevSlide = () => {
-    setCurrent(current === 0 ? length - 1 : current - 1);
-  };
 
   //Axios get Data
   const location = useLocation();
@@ -49,41 +39,23 @@ export default function ProductDetails({ data }) {
                   {array.map((data, index) => {
                     return (
                       <>
-                        {index === current}
                         <img
                           src={data}
                           alt="product color"
                           className="product-details-image__left-item"
-                          onClick={nextSlide}
-                          index={index}
+                          onClick={() => setCurrent(index)}
                         />
                       </>
                     );
                   })}
                 </div>
                 <div className="product-details-image__right">
-                  <FaAngleLeft
-                    className="product-details-push-left"
-                    onClick={prevSlide}
+                  <img
+                    id="demoLarge"
+                    src={data[id].attribute.image[current]}
+                    alt="product color"
+                    className="product-details-image__right-item"
                   />
-                  <FaAngleRight
-                    className="product-details-push-right"
-                    onClick={nextSlide}
-                  />
-                  {array.map((data, index) => {
-                    return (
-                      <>
-                        {index === current && (
-                          <img
-                            id="demoLarge"
-                            src={data}
-                            alt="product color"
-                            className="product-details-image__right-item"
-                          />
-                        )}
-                      </>
-                    );
-                  })}
                 </div>
               </div>
             </div>

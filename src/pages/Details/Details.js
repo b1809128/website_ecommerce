@@ -23,12 +23,11 @@ export default function Details() {
   const [product, setProduct] = useState([]);
   useEffect(() => {
     const getAll = async () => {
-      const response = await axios.get("http://localhost:5000/product/all");
+      const response = await axios.get("http://localhost:5000/product/");
       setProduct(response.data);
     };
     getAll();
   }, []);
-  console.log("this is details " + product);
   return (
     <div className="details">
       <div className="details-section">
@@ -40,7 +39,7 @@ export default function Details() {
             <ProductNoneAPI id={""} data={productsData} />
           </div>
           <div className="row">
-            <ProductAPI id={""} data={product} />
+            <ProductAPI data={product} />
           </div>
           <SlideProduct />
         </div>
