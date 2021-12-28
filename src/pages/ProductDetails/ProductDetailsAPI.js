@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import axios from "axios";
-
 import LocationBar from "../../components/bar/locationbar/LocationBar";
 import ReviewBar from "../../components/bar/reviewtextbar/ReviewBar";
 import "./productdetails.css";
@@ -12,9 +11,6 @@ export default function ProductDetailsAPI() {
 
   //Axios get Data
   const [product, setProduct] = useState([]);
-  // const location = useLocation();
-  // const path = location.pathname;
-  // console.log("new path: " + path);
   useEffect(() => {
     const getAll = async () => {
       const response = await axios.get(
@@ -23,11 +19,12 @@ export default function ProductDetailsAPI() {
       setProduct(response.data);
     };
     getAll();
-  },[]);
+  }, []);
 
-  const test = product.map(data => {return JSON.parse(data.MoTa)})
-
-  // console.log((test));
+  
+  const pathImages = product.map((data) => {
+    return JSON.parse(data.PATH);
+  });
 
   return (
     <>
@@ -42,6 +39,19 @@ export default function ProductDetailsAPI() {
                     <div className="product-details-image">
                       <div className="product-details-image__left">
                         {/* Image Array here */}
+                        {pathImages[0].map((data, index) => {
+                          return (
+                            <>
+                              <img
+                                src={data}
+                                alt="product color"
+                                className="product-details-image__left-item"
+                                index={index}
+                              />
+                            </>
+                          );
+                          // console.log(data)
+                        })}
                       </div>
                       <div className="product-details-image__right">
                         <img
@@ -101,13 +111,13 @@ export default function ProductDetailsAPI() {
                     </div>
                     <p>
                       <span className="product-details-text__bold">Brand:</span>{" "}
-                      {test[0].Brand}
+                      {JSON.parse(data.MoTa).Brand}
                     </p>
                     <p>
                       <span className="product-details-text__bold">
                         Product type:
                       </span>{" "}
-                      {test[0].Type}
+                      {JSON.parse(data.MoTa).Type}
                     </p>
                     <p>
                       <span className="product-details-text__bold">
@@ -188,51 +198,51 @@ export default function ProductDetailsAPI() {
                       <span className="product-details-text__bold">
                         Screen technology:
                       </span>
-                      {test[0].Screen}
+                      {JSON.parse(data.MoTa).Screen}
                     </p>
                     <p>
                       <span className="product-details-text__bold">
                         Operating System:
                       </span>
-                      {test[0].OS}
+                      {JSON.parse(data.MoTa).OS}
                     </p>
                     <p>
                       <span className="product-details-text__bold">
                         Processor Chip (CPU):
                       </span>
-                      {test[0].CPU}
+                      {JSON.parse(data.MoTa).CPU}
                     </p>
                     <p>
                       <span className="product-details-text__bold">ROM:</span>
-                      {test[0].ROM}
+                      {JSON.parse(data.MoTa).ROM}
                     </p>
                     <p>
                       <span className="product-details-text__bold">RAM:</span>
-                      {test[0].RAM}
+                      {JSON.parse(data.MoTa).RAM}
                     </p>
                     <p>
                       <span className="product-details-text__bold">
                         Mobile network:
                       </span>
-                      {test[0].Network}
+                      {JSON.parse(data.MoTa).Network}
                     </p>
                     <p>
                       <span className="product-details-text__bold">
                         Number of sim slots:
                       </span>
-                      {test[0].SIM}
+                      {JSON.parse(data.MoTa).SIM}
                     </p>
                     <p>
                       <span className="product-details-text__bold">
                         Weight:
                       </span>
-                      {test[0].Weight}
+                      {JSON.parse(data.MoTa).Weight}
                     </p>
                     <p>
                       <span className="product-details-text__bold">
                         Battery capacity:
                       </span>
-                      {test[0].Battery}
+                      {JSON.parse(data.MoTa).Battery}
                     </p>
                   </div>
                 </div>
