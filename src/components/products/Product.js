@@ -10,7 +10,7 @@ export default function Product({
     return (
         <div className="product">
             <div className="product-image">
-                <img src={image} className="product-image__img"/>
+                <img src={image} className="product-image__img" alt={name}/>
                 <div className="product-image__modal">
                     <ul className="product-image__modal-list">
                         <li className="product-image__modal-list-item link"><FaBookmark/></li>

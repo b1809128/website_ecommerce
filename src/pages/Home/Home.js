@@ -39,6 +39,7 @@ export default function Home() {
             <ProductNoneAPI id={3} data={productsData} />
             <ProductNoneAPI id={4} data={productsData} />
             <ProductNoneAPI id={6} data={productsData} />
+            <ProductNoneAPI id={6} data={productsData} />
           </div>
           <div className="row">
             <Info {...infoDataThree} />
@@ -49,9 +50,11 @@ export default function Home() {
             <ProductNoneAPI id={9} data={productsData} />
             <ProductNoneAPI id={12} data={productsData} />
             <ProductNoneAPI id={14} data={productsData} />
+            <ProductNoneAPI id={14} data={productsData} />
           </div>
           <Introduce data={introduceData} />
           <div data-aos="fade-up" id="blog" className="row">
+            <Comment />
             <Comment />
             <Comment />
             <Comment />

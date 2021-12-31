@@ -10,12 +10,12 @@
     margin-left: auto;
 }
 
-.row{
+/* .row{
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: left;
   
-}
+} */
 
 .details__row{
   align-items: center;
