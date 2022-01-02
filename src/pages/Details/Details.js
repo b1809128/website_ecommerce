@@ -6,11 +6,13 @@ import LocationBar from "../../components/bar/locationbar/LocationBar";
 import "./details.css";
 import BrandBar from "../../components/bar/brandbar/BrandBar";
 import SlideProduct from "../../components/main/slideproduct/SlideProduct";
-import ProductNoneAPI from "../../components/products/ProductNoneAPI";
 import ProductAPI from "../../components/products/ProductAPI";
 
-import { productsData } from "../../data";
 import axios from "axios";
+import { useLocation } from "react-router-dom";
+//Import API Dynamic
+// import ProductNoneAPI from "../../components/products/ProductNoneAPI";
+// import { productsData } from "../../data";
 
 export default function Details() {
   useEffect(() => {
@@ -18,26 +20,40 @@ export default function Details() {
       duration: 2000,
     });
   }, []);
-
+  //Query Parameters
+  const query = new URLSearchParams(useLocation().search);
+  const sortBy = query.get("sortBy");
   //Fetch API
   const [product, setProduct] = useState([]);
+
+  // useEffect(() => {
+  //   const fetch = async () => {
+  //     const response = await axios.get(
+  //       `http://localhost:5000/product/sort/price/${sortBy}`
+  //     );
+  //     setProduct(response.data);
+  //   };
+  //   fetch();
+  // }, []);
+
   useEffect(() => {
-    const getAll = async () => {
-      const response = await axios.get("http://localhost:5000/product/");
-      setProduct(response.data);
+    const fetch = async () => {
+      const allProducts = await axios.get(`http://localhost:5000/product/all?sortBy=${sortBy}`);
+      setProduct(allProducts.data);
     };
-    getAll();
-  }, []);
+    fetch();
+  }, [sortBy]);
+
   return (
     <div className="details">
       <div className="details-section">
         <div className="details__row">
           <LocationBar />
           <BrandBar />
-          <RangeBar />
-          <div className="row">
+          <RangeBar data={sortBy} />
+          {/* <div className="row">
             <ProductNoneAPI id={""} data={productsData} />
-          </div>
+          </div> */}
           <div className="row">
             <ProductAPI data={product} />
           </div>

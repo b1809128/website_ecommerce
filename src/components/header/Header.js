@@ -49,7 +49,7 @@ export default function Header() {
       <div className="navbar-container container">
         <div className="navbar-logo" onClick={closeMobileMenu}>
           <Link to="/">
-            <img src="/images/logo.png" className="navbar-logo__image" />
+            <img alt="" src="/images/logo.png" className="navbar-logo__image" />
           </Link>
         </div>
         <div className="menu-icon">
@@ -101,10 +101,18 @@ export default function Header() {
         </ul>
         {/* --- */}
         <ul className="nav-menu">
-          <li className="nav-item">
-            <Link className="link" to="/search">
-              <FaSearch />
-            </Link>
+          <li className="">
+            <form className="nav-bar__form">
+              <input
+                type="text"
+                className="nav-bar__form-input"
+                placeholder="Search"
+                name="search"
+              />
+              <button className="nav-bar__form-submit" type="submit">
+                <FaSearch className="nav-bar-icon" />
+              </button>
+            </form>
           </li>
           <li className="nav-item">
             <Link className="link" to="/sign-in">
