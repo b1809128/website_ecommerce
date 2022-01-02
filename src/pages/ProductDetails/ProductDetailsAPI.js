@@ -19,7 +19,7 @@ export default function ProductDetailsAPI() {
       setProduct(response.data);
     };
     getAll();
-  }, []);
+  }, [id]);
 
   const pathImages = product.map((data) => {
     return JSON.parse(data.PATH);
@@ -72,10 +72,7 @@ export default function ProductDetailsAPI() {
                       {new Intl.NumberFormat().format(data.Gia)} VND
                     </h3>
                     <p className="product-details-description">
-                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                      Sunt a doloribus iste natus et facere? dolor sit amet
-                      consectetur adipisicing elit. Sunt a doloribus iste natus
-                      et facere?
+                      {JSON.parse(data.MoTa).Description}
                     </p>
                     <div className="product-details-choose">
                       <div className="product-details-choose__item">

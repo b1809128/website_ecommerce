@@ -23,26 +23,25 @@ export default function Details() {
   //Query Parameters
   const query = new URLSearchParams(useLocation().search);
   const sortBy = query.get("sortBy");
+  const brandID = query.get("brand");
   //Fetch API
   const [product, setProduct] = useState([]);
-
-  // useEffect(() => {
-  //   const fetch = async () => {
-  //     const response = await axios.get(
-  //       `http://localhost:5000/product/sort/price/${sortBy}`
-  //     );
-  //     setProduct(response.data);
-  //   };
-  //   fetch();
-  // }, []);
-
+  const [brand, setBrand] = useState([])
   useEffect(() => {
     const fetch = async () => {
       const allProducts = await axios.get(`http://localhost:5000/product/all?sortBy=${sortBy}`);
+      const brandFilter = await axios.get(`http://localhost:5000/product/group/${brandID}`);
       setProduct(allProducts.data);
+      setBrand(brandFilter.data);
     };
     fetch();
-  }, [sortBy]);
+  }, [brandID,sortBy]);
+
+  var flag = false;
+  if(brandID){
+    flag = true;
+  }
+  console.log(flag)
 
   return (
     <div className="details">
@@ -55,7 +54,7 @@ export default function Details() {
             <ProductNoneAPI id={""} data={productsData} />
           </div> */}
           <div className="row">
-            <ProductAPI data={product} />
+            <ProductAPI data={flag ? brand : product} />
           </div>
           <SlideProduct />
         </div>

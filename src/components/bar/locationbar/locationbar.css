@@ -22,3 +22,7 @@
     color: #eb0028;
 }
 
+.location-bar-item__link{
+    color: #eb0028;
+    text-decoration: none;
+}
