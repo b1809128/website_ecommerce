@@ -1,7 +1,21 @@
 import "./register.css";
 import { FaUserAlt, FaLock } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import { useState } from "react";
+import axios from "axios";
 export default function RegisterForm() {
+  const [userReg, setUserReg] = useState("");
+  const [passwordReg, setPasswordReg] = useState("");
+  const register = async () => {
+    await axios
+      .post("http://localhost:5000/auth/register", {
+        user: userReg,
+        password: passwordReg
+      })
+      // .then((response) => {
+      //   console.log(response);
+      // });
+  };
   return (
     <div className="register-wrapper">
       <form className="register-form">
@@ -13,6 +27,7 @@ export default function RegisterForm() {
           type="text"
           placeholder="Email or Username"
           className="register-input"
+          onChange={(e) => setUserReg(e.target.value)}
         />
         <div className="register-text">
           <FaLock /> Password:
@@ -21,17 +36,20 @@ export default function RegisterForm() {
           type="password"
           placeholder="Password"
           className="register-input"
+          onChange={(e) => setPasswordReg(e.target.value)}
         />
         <div className="register-text">
           <FaLock /> Confirm Password:
         </div>
         <input
-          type="password"
+          type="text"
           placeholder="Password"
           className="register-input"
         />
         <div className="register-btn">
-          <button className="btn">Sign Up</button>
+          <button onClick={register} className="btn">
+            Sign Up
+          </button>
         </div>
         <p className="register-text-none">
           {" "}
