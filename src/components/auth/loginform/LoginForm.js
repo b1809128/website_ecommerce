@@ -1,34 +1,26 @@
 import "./login.css";
 import { FaUserAlt, FaLock } from "react-icons/fa";
 import { Link } from "react-router-dom";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import axios from "axios";
 export default function LoginForm() {
   const [user, setUser] = useState("");
   const [password, setPassword] = useState("");
-  // const [loginStatus, setLoginStatus] = useState("");
-  const signin = () => {
-    axios.post("http://localhost:5000/login", {
-      user: user,
-      password: password,
-    });
-    // .then((response) => {
-    //   if (response.data) {
-    //     setLoginStatus(response.data);
-    //   } else {
-    //     setLoginStatus(response.data[0].user);
-    //   }
-    // });
+  const signin = async(e) => {
+    e.preventDefault();
+    try {
+      const res = await axios
+      .post("http://localhost:5000/auth/login", {
+        user: user,
+        password: password,
+      })
+      console.log(res);
+    } catch (error) {
+      
+    }
+    
   };
 
-  useEffect(() => {
-    const fetch = async () => {
-      const test = await axios.get("http://localhost:5000/login");
-      console.log(test);
-    };
-    fetch();
-  }, []);
-  // console.log(loginStatus)
   return (
     <div className="login-wrapper">
       <form className="login-form">

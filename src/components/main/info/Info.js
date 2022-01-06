@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/alt-text */
 import "./info.css";
 import {Link} from "react-router-dom";
 export default function Info({ heading, name, image }) {

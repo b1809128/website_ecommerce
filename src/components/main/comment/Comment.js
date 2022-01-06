@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/alt-text */
 import { FaLongArrowAltRight, FaStar, FaStarHalf } from 'react-icons/fa';
 import './comment.css';
 

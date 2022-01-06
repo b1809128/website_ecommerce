@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/img-redundant-alt */
 import { Link } from "react-router-dom";
 import LocationBar from "../../components/bar/locationbar/LocationBar";
 import "./cart.css";
