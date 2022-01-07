@@ -1,27 +1,40 @@
 import "./register.css";
 import { FaUserAlt, FaLock } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { TiDelete } from "react-icons/ti";
+import { Link, useHistory } from "react-router-dom";
 // import { Redirect } from "react-router";
 import { useState } from "react";
 import axios from "axios";
 export default function RegisterForm() {
   const [userReg, setUserReg] = useState("");
   const [passwordReg, setPasswordReg] = useState("");
-  // const [regStatus, setRegStatus] = useState("");
-  const register = async () => {
-    await axios
-      .post("http://localhost:5000/auth/register", {
-        user: userReg,
-        password: passwordReg,
-      })
-      // .then((response) => {
-      //   if (response) {
-      //     setRegStatus(true);
-      //   }
-      // });
+  const [regStatus, setRegStatus] = useState(false);
+  const register = async (e) => {
+    e.preventDefault();
+    try {
+      if (userReg && passwordReg) {
+        setRegStatus(false);
+        await axios.post("http://localhost:5000/auth/register", {
+          user: userReg,
+          password: passwordReg,
+        });
+        getAlert();
+      } else {
+        setRegStatus(true);
+      }
+    } catch (error) {
+      console.error(error);
+    }
   };
-  // if (regStatus) return <Redirect to="/" />;
-  // console.log(regStatus)
+
+  const history = useHistory();
+  const getAlert = () => {
+    alert("You have successfully registered");
+    history.push("/sign-in");
+  };
+
+  //Redirect
+
   return (
     <div className="register-wrapper">
       <form className="register-form">
@@ -35,6 +48,17 @@ export default function RegisterForm() {
           className="register-input"
           onChange={(e) => setUserReg(e.target.value)}
         />
+        {regStatus ? (
+          <div className="register-validate" style={{ display: "flex" }}>
+            <TiDelete />
+            Information must be filled out!
+          </div>
+        ) : (
+          <div className="register-validate">
+            <TiDelete />
+            Information must be filled out!
+          </div>
+        )}
         <div className="register-text">
           <FaLock /> Password:
         </div>
@@ -44,10 +68,22 @@ export default function RegisterForm() {
           className="register-input"
           onChange={(e) => setPasswordReg(e.target.value)}
         />
+        {regStatus ? (
+          <div className="register-validate" style={{ display: "flex" }}>
+            <TiDelete />
+            Information must be filled out!
+          </div>
+        ) : (
+          <div className="register-validate">
+            <TiDelete />
+            Information must be filled out!
+          </div>
+        )}
         <div className="register-text">
           <FaLock /> Confirm Password:
         </div>
         <input type="text" placeholder="Password" className="register-input" />
+
         <div className="register-btn">
           <button onClick={register} className="btn">
             Sign Up

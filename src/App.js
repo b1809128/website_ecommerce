@@ -14,6 +14,7 @@ import ProductDetailsAPI from "./pages/ProductDetails/ProductDetailsAPI";
 import Cart from "./pages/Cart/Cart";
 import CheckOut from "./pages/CheckOut/CheckOut";
 import { productsData } from "./data";
+import Profile from "./pages/Profile/Profile";
 function App() {
   return (
     <div>
@@ -43,6 +44,9 @@ function App() {
             </Route>
             <Route path="/check-out">
                 <CheckOut />
+            </Route>
+            <Route path="/profile">
+                <Profile authorized={true} />
             </Route>
         </Switch>
         <Footer/>

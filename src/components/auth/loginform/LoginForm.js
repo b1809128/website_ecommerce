@@ -1,24 +1,48 @@
 import "./login.css";
 import { FaUserAlt, FaLock } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { TiDelete } from "react-icons/ti";
+import { Link, useHistory } from "react-router-dom";
 import { useState } from "react";
 import axios from "axios";
+import crypto from "crypto";
 export default function LoginForm() {
   const [user, setUser] = useState("");
   const [password, setPassword] = useState("");
-  const signin = async(e) => {
+  const [validate, setValidate] = useState(false);
+  //Redirect
+  const history = useHistory();
+
+  const signin = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios
-      .post("http://localhost:5000/auth/login", {
+      var hashPash = crypto.createHash("md5").update(password).digest("hex");
+      const res = await axios.post("http://localhost:5000/auth/login", {
         user: user,
-        password: password,
-      })
+        password: hashPash,
+      });
+      if (res.data.wrongPassword || res.data.wrongUser) {
+        setValidate(true);
+      } else {
+        setValidate(false);
+        localStorage.setItem("userID", res.data.result[0].user);
+        // history.push("/profile");
+      }
       console.log(res);
     } catch (error) {
-      
+      console.log(error);
     }
-    
+  };
+
+  const logout = async (e) => {
+    e.preventDefault();
+    try {
+      const res = await axios.get("http://localhost:5000/auth/logout");
+      console.log(res);
+      localStorage.setItem("userID", res.data)
+      history.push("/");
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
@@ -34,6 +58,17 @@ export default function LoginForm() {
           className="login-input"
           onChange={(e) => setUser(e.target.value)}
         />
+        {validate ? (
+          <div className="login-validate" style={{ display: "flex" }}>
+            <TiDelete />
+            Incorrect user or password. Please try again !
+          </div>
+        ) : (
+          <div className="login-validate">
+            <TiDelete />
+            Incorrect user or password. Please try again !
+          </div>
+        )}
         <div className="login-text">
           <FaLock /> Password:
         </div>
@@ -43,9 +78,23 @@ export default function LoginForm() {
           className="login-input"
           onChange={(e) => setPassword(e.target.value)}
         />
+        {validate ? (
+          <div className="login-validate" style={{ display: "flex" }}>
+            <TiDelete />
+            Incorrect user or password. Please try again !
+          </div>
+        ) : (
+          <div className="login-validate">
+            <TiDelete />
+            Incorrect user or password. Please try again !
+          </div>
+        )}
         <p className="login-text-none link"> Forget Password</p>
         <button className="btn" onClick={signin}>
           Sign In
+        </button>
+        <button className="btn" onClick={logout}>
+          Sign Out
         </button>
         <p className="login-text-none">
           {" "}
