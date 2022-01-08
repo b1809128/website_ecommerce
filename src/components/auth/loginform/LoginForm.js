@@ -25,21 +25,9 @@ export default function LoginForm() {
       } else {
         setValidate(false);
         localStorage.setItem("userID", res.data.result[0].user);
-        // history.push("/profile");
+        history.push("/");
       }
       console.log(res);
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
-  const logout = async (e) => {
-    e.preventDefault();
-    try {
-      const res = await axios.get("http://localhost:5000/auth/logout");
-      console.log(res);
-      localStorage.setItem("userID", res.data)
-      history.push("/");
     } catch (error) {
       console.log(error);
     }
@@ -92,9 +80,6 @@ export default function LoginForm() {
         <p className="login-text-none link"> Forget Password</p>
         <button className="btn" onClick={signin}>
           Sign In
-        </button>
-        <button className="btn" onClick={logout}>
-          Sign Out
         </button>
         <p className="login-text-none">
           {" "}

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import {
   FaShoppingCart,
   FaTimes,
@@ -7,7 +7,9 @@ import {
   FaUserAlt,
   FaSearch,
 } from "react-icons/fa";
+import { FiLogOut } from "react-icons/fi";
 import "./header.css";
+import axios from "axios";
 
 export default function Header() {
   const [scrollTop, setScrollTop] = useState(false);
@@ -41,8 +43,33 @@ export default function Header() {
     showButton();
   }, []);
 
-  // const [clickElement, setClickElement] = useState(false);
-  // const handleClickElement = () => setClickElement(!clickElement);
+  //Local Storage
+  const local = localStorage.getItem("userID");
+  const [localNotExist, setLocalNotExist] = useState(false);
+  useEffect(() => {
+    const getLocal = () =>{
+      if (local) {
+        setLocalNotExist(false);
+      }
+    }
+    getLocal()
+  })
+  //LogOut
+  var history = useHistory();
+  const logout = async (e) => {
+    try {
+      e.preventDefault();
+      const res = await axios.get("http://localhost:5000/auth/logout");
+      // console.log(res)
+      if (res.data) {
+        setLocalNotExist(true);
+        localStorage.removeItem("userID");
+        history.push("/");
+      }
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
   return (
     <div className={scrollTop ? "navbar scroll" : "navbar"}>
@@ -114,11 +141,41 @@ export default function Header() {
               </button>
             </form>
           </li>
-          <li className="nav-item">
-            <Link className="link" to="/sign-in">
-              <FaUserAlt />
-            </Link>
-          </li>
+          {!localNotExist ? (
+            <li className="nav-item">
+              <Link className="link" to="/profile">
+                {local}
+              </Link>
+            </li>
+          ) : (
+            <li className="nav-item" style={{ display: "none" }}>
+              <Link className="link" to="/sign-in">
+                {local}
+              </Link>
+            </li>
+          )}
+          {!localNotExist ? (
+            (
+              <li className="nav-item" style={{ display: "none" }}>
+                <Link className="link" to="/sign-in">
+                  <FaUserAlt />
+                </Link>
+              </li>
+            ) && (
+              <li className="nav-item">
+                <div className="link" onClick={logout}>
+                  <FiLogOut />
+                </div>
+              </li>
+            )
+          ) : (
+            <li className="nav-item">
+              <Link className="link" to="/sign-in">
+                <FaUserAlt />
+              </Link>
+            </li>
+          )}
+
           <li className="nav-item">
             <Link className="link" to="/cart">
               <FaShoppingCart />
