@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { Link, useHistory } from "react-router-dom";
 import {
   FaShoppingCart,
@@ -6,10 +6,12 @@ import {
   FaBars,
   FaUserAlt,
   FaSearch,
+  FaUserCheck,
 } from "react-icons/fa";
 import { FiLogOut } from "react-icons/fi";
 import "./header.css";
 import axios from "axios";
+import { AuthContext } from "../../context/AuthContext";
 
 export default function Header() {
   const [scrollTop, setScrollTop] = useState(false);
@@ -43,17 +45,9 @@ export default function Header() {
     showButton();
   }, []);
 
-  //Local Storage
-  const local = localStorage.getItem("userID");
-  const [localNotExist, setLocalNotExist] = useState(false);
-  useEffect(() => {
-    const getLocal = () =>{
-      if (local) {
-        setLocalNotExist(false);
-      }
-    }
-    getLocal()
-  })
+  //Local Storage -> Context API
+  const { user, dispatch } = useContext(AuthContext);
+
   //LogOut
   var history = useHistory();
   const logout = async (e) => {
@@ -62,14 +56,15 @@ export default function Header() {
       const res = await axios.get("http://localhost:5000/auth/logout");
       // console.log(res)
       if (res.data) {
-        setLocalNotExist(true);
-        localStorage.removeItem("userID");
+        dispatch({ type: "LOGOUT" });
         history.push("/");
       }
     } catch (error) {
       console.error(error);
     }
   };
+  // console.log("line 1:" + user);
+  // console.log(user !== null);
 
   return (
     <div className={scrollTop ? "navbar scroll" : "navbar"}>
@@ -127,61 +122,70 @@ export default function Header() {
           </li>
         </ul>
         {/* --- */}
-        <ul className="nav-menu">
-          <li className="">
-            <form className="nav-bar__form">
-              <input
-                type="text"
-                className="nav-bar__form-input"
-                placeholder="Search"
-                name="search"
-              />
-              <button className="nav-bar__form-submit" type="submit">
-                <FaSearch className="nav-bar-icon" />
-              </button>
-            </form>
-          </li>
-          {!localNotExist ? (
+        {user ? (
+          <ul className="nav-menu">
+            <li className="">
+              <form className="nav-bar__form">
+                <input
+                  type="text"
+                  className="nav-bar__form-input"
+                  placeholder="Search"
+                  name="search"
+                />
+                <button className="nav-bar__form-submit" type="submit">
+                  <FaSearch className="nav-bar-icon" />
+                </button>
+              </form>
+            </li>
+
             <li className="nav-item">
               <Link className="link" to="/profile">
-                {local}
+                <FaUserCheck />
+                {user}
               </Link>
             </li>
-          ) : (
-            <li className="nav-item" style={{ display: "none" }}>
-              <Link className="link" to="/sign-in">
-                {local}
+
+            <li className="nav-item">
+              <div className="link" onClick={logout}>
+                <FiLogOut />
+              </div>
+            </li>
+
+            <li className="nav-item">
+              <Link className="link" to="/cart">
+                <FaShoppingCart />
               </Link>
             </li>
-          )}
-          {!localNotExist ? (
-            (
-              <li className="nav-item" style={{ display: "none" }}>
-                <Link className="link" to="/sign-in">
-                  <FaUserAlt />
-                </Link>
-              </li>
-            ) && (
-              <li className="nav-item">
-                <div className="link" onClick={logout}>
-                  <FiLogOut />
-                </div>
-              </li>
-            )
-          ) : (
+          </ul>
+        ) : (
+          <ul className="nav-menu">
+            <li className="">
+              <form className="nav-bar__form">
+                <input
+                  type="text"
+                  className="nav-bar__form-input"
+                  placeholder="Search"
+                  name="search"
+                />
+                <button className="nav-bar__form-submit" type="submit">
+                  <FaSearch className="nav-bar-icon" />
+                </button>
+              </form>
+            </li>
+
             <li className="nav-item">
               <Link className="link" to="/sign-in">
                 <FaUserAlt />
               </Link>
             </li>
-          )}
 
-          <li className="nav-item">
-            <Link className="link" to="/cart">
-              <FaShoppingCart />
-            </Link>
-          </li>
-        </ul>
+            <li className="nav-item">
+              <Link className="link" to="/cart">
+                <FaShoppingCart />
+              </Link>
+            </li>
+          </ul>
+        )}
       </div>
     </div>
   );

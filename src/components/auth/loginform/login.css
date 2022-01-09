@@ -13,6 +13,7 @@
 }
 
 .login-text-none {
+  display: flex;
   margin-left: 40px;
   padding: 12px 0;
 }
