@@ -41,7 +41,7 @@ export default function Details() {
   if(brandID){
     flag = true;
   }
-  console.log(flag)
+  // console.log(flag)
 
   return (
     <div className="details">

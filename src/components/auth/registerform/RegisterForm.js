@@ -8,32 +8,34 @@ import axios from "axios";
 export default function RegisterForm() {
   const [userReg, setUserReg] = useState("");
   const [passwordReg, setPasswordReg] = useState("");
-  const [regStatus, setRegStatus] = useState(false);
+  const [stateUser, setStateUser] = useState(false);
+  const [statePassword, setStatePassword] = useState(false);
   const register = async (e) => {
     e.preventDefault();
     try {
-      if (userReg && passwordReg) {
-        setRegStatus(false);
+      if (!userReg) {
+        setStateUser(true);
+      } else if (!passwordReg) {
+        setStatePassword(true);
+      }
+      else {
         await axios.post("http://localhost:5000/auth/register", {
           user: userReg,
           password: passwordReg,
         });
         getAlert();
-      } else {
-        setRegStatus(true);
       }
     } catch (error) {
       console.error(error);
     }
   };
 
+  //Redirect
   const history = useHistory();
   const getAlert = () => {
     alert("You have successfully registered");
     history.push("/sign-in");
   };
-
-  //Redirect
 
   return (
     <div className="register-wrapper">
@@ -48,7 +50,7 @@ export default function RegisterForm() {
           className="register-input"
           onChange={(e) => setUserReg(e.target.value)}
         />
-        {regStatus ? (
+        {stateUser ? (
           <div className="register-validate" style={{ display: "flex" }}>
             <TiDelete />
             Information must be filled out!
@@ -68,7 +70,7 @@ export default function RegisterForm() {
           className="register-input"
           onChange={(e) => setPasswordReg(e.target.value)}
         />
-        {regStatus ? (
+        {statePassword ? (
           <div className="register-validate" style={{ display: "flex" }}>
             <TiDelete />
             Information must be filled out!

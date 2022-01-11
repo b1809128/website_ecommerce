@@ -139,9 +139,9 @@ export default function Header() {
             </li>
 
             <li className="nav-item">
+              <FaUserCheck />
               <Link className="link" to="/profile">
-                <FaUserCheck />
-                {user}
+                {user.result[0].user}
               </Link>
             </li>
 
