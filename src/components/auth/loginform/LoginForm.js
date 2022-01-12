@@ -45,7 +45,7 @@ export default function LoginForm() {
           dispatch({ type: "LOGIN_SUCCESS", payload: res.data });
           history.push("/");
         }
-        console.log(res);
+        // console.log(res);
       }
     } catch (error) {
       console.log(error);

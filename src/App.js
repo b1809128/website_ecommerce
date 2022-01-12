@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React from "react";
 import "./App.css";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Home from "./pages/Home/Home";
@@ -14,9 +14,8 @@ import Cart from "./pages/Cart/Cart";
 import CheckOut from "./pages/CheckOut/CheckOut";
 import { productsData } from "./data";
 import Profile from "./pages/Profile/Profile";
-import { AuthContext } from "./context/AuthContext";
+import Admin from "./pages/Admin/Admin";
 function App() {
-  const { user } = useContext(AuthContext);
   return (
     <div>
       <Router>
@@ -47,7 +46,10 @@ function App() {
             <CheckOut />
           </Route>
           <Route path="/profile">
-            {user ? <Profile authorized={true} /> : <Login />}
+            <Profile />
+          </Route>
+          <Route path="/admin">
+            <Admin />
           </Route>
         </Switch>
         <Footer />
