@@ -56,8 +56,8 @@ export default function Header() {
       const res = await axios.get("http://localhost:5000/auth/logout");
       // console.log(res)
       if (res.data) {
-        dispatch({ type: "LOGOUT" });
         history.push("/");
+        dispatch({ type: "LOGOUT" });
       }
     } catch (error) {
       console.error(error);
