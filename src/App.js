@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import "./App.css";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Home from "./pages/Home/Home";
@@ -16,7 +16,9 @@ import { productsData } from "./data";
 import Profile from "./pages/Profile/Profile";
 import Admin from "./pages/Admin/Admin";
 import Search from "./pages/Search/Search";
+import { AuthContext } from "./context/AuthContext";
 function App() {
+  const { user } = useContext(AuthContext);
   return (
     <div>
       <Router>
@@ -46,12 +48,8 @@ function App() {
           <Route path="/check-out">
             <CheckOut />
           </Route>
-          <Route path="/profile">
-            <Profile />
-          </Route>
-          <Route path="/admin">
-            <Admin />
-          </Route>
+          <Route path="/profile">{user ? <Profile /> : <Login />}</Route>
+          <Route path="/admin">{user ? <Admin /> : <Login />}</Route>
           <Route path="/search">
             <Search />
           </Route>

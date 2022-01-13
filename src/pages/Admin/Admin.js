@@ -2,12 +2,13 @@ import React, { useContext, useEffect, useState } from "react";
 import { Redirect } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
 import axios from "axios";
-import TableCustomer from "../../components/table/TableCustomer"
+import TableCustomer from "../../components/table/TableCustomer";
 import "./Admin.css";
 function Admin() {
   const { user } = useContext(AuthContext);
   const [authorized, setAuthorized] = useState(true);
   const [customerData, setCustomerData] = useState([]);
+
   useEffect(() => {
     const fetch = async () => {
       const res = await axios.post("http://localhost:5000/auth/admin", {
@@ -21,17 +22,15 @@ function Admin() {
         setAuthorized(false);
         // setAuthText(res.data.message);
       }
-      const res2 = await axios.get("http://localhost:5000/manage/customer")
-      setCustomerData(res2.data)
+      const res2 = await axios.get("http://localhost:5000/manage/customer");
+      setCustomerData(res2.data);
     };
     fetch();
   }, [user.token]);
-  // console.log(user);
   if (!authorized) {
     // alert("You are not authorized !");
     return <Redirect to="/sign-in" />;
   }
-  // console.log(customerData)
   return (
     <div className="admin">
       <div className="admin-section">
@@ -51,13 +50,12 @@ function Admin() {
           <div className="admin__col-6">
             <div className="admin__item-lg">
               <h1>PRODUCT</h1>
-              
             </div>
           </div>
           <div className="admin__col-4">
             <div className="admin__item-lg">
               <h1>USER</h1>
-              <TableCustomer props={customerData}/>
+              <TableCustomer props={customerData} />
             </div>
           </div>
         </div>

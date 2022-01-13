@@ -25,8 +25,6 @@ export default function Details() {
   //Fetch API
   const [product, setProduct] = useState(localStorageData);
   if(!localStorageData) setProduct([])
-  console.log(product);
-  console.log(localStorageData);
 
   return (
     <div className="details">
