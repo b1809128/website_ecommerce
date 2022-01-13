@@ -63,8 +63,26 @@ export default function Header() {
       console.error(error);
     }
   };
-  // console.log("line 1:" + user);
-  // console.log(user !== null);
+
+  //Search Engine
+  const [tagName, setTagName] = useState("");
+  const searchSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const res = await axios.get(
+        `http://localhost:5000/product/search?tag=${tagName}`
+      );
+      // console.log(res);
+      if (res.data) {
+        localStorage.setItem("tagName", JSON.stringify(res.data));
+        history.push("/search");
+      } else {
+        alert("Cannot find product !");
+      }
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
   return (
     <div className={scrollTop ? "navbar scroll" : "navbar"}>
@@ -131,8 +149,9 @@ export default function Header() {
                   className="nav-bar__form-input"
                   placeholder="Search"
                   name="search"
+                  onChange={(e) => setTagName(e.target.value)}
                 />
-                <button className="nav-bar__form-submit" type="submit">
+                <button className="nav-bar__form-submit" onClick={searchSubmit}>
                   <FaSearch className="nav-bar-icon" />
                 </button>
               </form>
@@ -166,8 +185,9 @@ export default function Header() {
                   className="nav-bar__form-input"
                   placeholder="Search"
                   name="search"
+                  onChange={(e) => setTagName(e.target.value)}
                 />
-                <button className="nav-bar__form-submit" type="submit">
+                <button className="nav-bar__form-submit" onClick={searchSubmit}>
                   <FaSearch className="nav-bar-icon" />
                 </button>
               </form>

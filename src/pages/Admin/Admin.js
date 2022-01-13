@@ -22,7 +22,7 @@ function Admin() {
         // setAuthText(res.data.message);
       }
       const res2 = await axios.get("http://localhost:5000/manage/customer")
-      setCustomerData(res2)
+      setCustomerData(res2.data)
     };
     fetch();
   }, [user.token]);

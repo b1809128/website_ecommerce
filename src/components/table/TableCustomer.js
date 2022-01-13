@@ -1,7 +1,7 @@
 import React from "react";
 import "./table.css";
 function TableCustomer({ props }) {
-  console.log(props.data);
+  console.log(props);
 
   return (
     <>
@@ -14,17 +14,17 @@ function TableCustomer({ props }) {
           </tr>
         </thead>
         <tbody>
-          {/* {props.data.map((data) => {
+          {props.map((data, index) => {
             return (
               <>
                 <tr>
-                  <td>{data.id}</td>
+                  <td>{(index += 1)}</td>
                   <td>{data.user}</td>
                   <td>{data.password}</td>
                 </tr>
               </>
             );
-          })} */}
+          })}
         </tbody>
       </table>
     </>

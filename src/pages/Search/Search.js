@@ -3,12 +3,10 @@ import Aos from "aos";
 import "aos/dist/aos.css";
 import RangeBar from "../../components/bar/rangebar/RangeBar";
 import LocationBar from "../../components/bar/locationbar/LocationBar";
-import "./details.css";
+import "../Details/details.css";
 import BrandBar from "../../components/bar/brandbar/BrandBar";
 import SlideProduct from "../../components/main/slideproduct/SlideProduct";
 import ProductAPI from "../../components/products/ProductAPI";
-
-import axios from "axios";
 import { useLocation } from "react-router-dom";
 //Import API Dynamic
 /* import ProductNoneAPI from "../../components/products/ProductNoneAPI";
@@ -23,29 +21,12 @@ export default function Details() {
   //Query Parameters
   const query = new URLSearchParams(useLocation().search);
   const sortBy = query.get("sortBy");
-  const brandID = query.get("brand");
+  const localStorageData = JSON.parse(localStorage.getItem("tagName"));
   //Fetch API
-  const [product, setProduct] = useState([]);
-  const [brand, setBrand] = useState([]);
-  useEffect(() => {
-    const fetch = async () => {
-      const allProducts = await axios.get(
-        `http://localhost:5000/product/all?sortBy=${sortBy}`
-      );
-      const brandFilter = await axios.get(
-        `http://localhost:5000/product/group/${brandID}`
-      );
-      setProduct(allProducts.data);
-      setBrand(brandFilter.data);
-    };
-    fetch();
-  }, [brandID, sortBy]);
-
-  var flag = false;
-  if (brandID) {
-    flag = true;
-  }
-  // console.log(flag)
+  const [product, setProduct] = useState(localStorageData);
+  if(!localStorageData) setProduct([])
+  console.log(product);
+  console.log(localStorageData);
 
   return (
     <div className="details">
@@ -54,11 +35,8 @@ export default function Details() {
           <LocationBar />
           <BrandBar />
           <RangeBar data={sortBy} />
-          {/* <div className="row">
-            <ProductNoneAPI id={""} data={productsData} />
-          </div> */}
           <div className="row">
-            <ProductAPI data={flag ? brand : product} />
+            <ProductAPI data={product} />
           </div>
           <SlideProduct />
         </div>

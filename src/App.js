@@ -15,6 +15,7 @@ import CheckOut from "./pages/CheckOut/CheckOut";
 import { productsData } from "./data";
 import Profile from "./pages/Profile/Profile";
 import Admin from "./pages/Admin/Admin";
+import Search from "./pages/Search/Search";
 function App() {
   return (
     <div>
@@ -50,6 +51,9 @@ function App() {
           </Route>
           <Route path="/admin">
             <Admin />
+          </Route>
+          <Route path="/search">
+            <Search />
           </Route>
         </Switch>
         <Footer />
