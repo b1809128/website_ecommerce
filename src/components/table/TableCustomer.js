@@ -8,7 +8,7 @@ function TableCustomer({ props }) {
       <table className="table">
         <thead>
           <tr>
-            <th style={{ textAlign: "center"}}>STT</th>
+            <th style={{ textAlign: "center" }}>STT</th>
             <th>UserName</th>
             <th>Role</th>
           </tr>
@@ -18,7 +18,7 @@ function TableCustomer({ props }) {
             return (
               <>
                 <tr>
-                  <td style={{ textAlign: "center"}}>{(index += 1)}</td>
+                  <td style={{ textAlign: "center" }}>{(index += 1)}</td>
                   <td>{data.user}</td>
                   <td>{data.role}</td>
                 </tr>

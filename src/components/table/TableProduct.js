@@ -9,7 +9,7 @@ function TableProduct({ props }) {
       <table className="table">
         <thead>
           <tr>
-            <th style={{ textAlign: "center"}}>STT</th>
+            <th style={{ textAlign: "center" }}>STT</th>
             <th>ID PRODUCT</th>
             <th>NAME</th>
             <th>IMAGES</th>
@@ -23,7 +23,7 @@ function TableProduct({ props }) {
             return (
               <>
                 <tr>
-                  <td style={{ textAlign: "center"}}>{(index += 1)}</td>
+                  <td style={{ textAlign: "center" }}>{(index += 1)}</td>
                   <td>{data.MSHH}</td>
                   <td>{data.TenHH}</td>
                   <td>
@@ -36,7 +36,9 @@ function TableProduct({ props }) {
                   <td style={{ textAlign: "center", fontWeight: "700" }}>
                     {data.SoLuongHang}
                   </td>
-                  <td style={{ textAlign: "right"}}>{new Intl.NumberFormat().format(data.Gia)} VND</td>
+                  <td style={{ textAlign: "right" }}>
+                    {new Intl.NumberFormat().format(data.Gia)} VND
+                  </td>
                 </tr>
               </>
             );

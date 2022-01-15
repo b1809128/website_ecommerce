@@ -29,7 +29,9 @@ function Admin() {
       }
       const res2 = await axios.get("http://localhost:5000/manage/customer");
       setCustomerData(res2.data);
-      const res3 = await axios.get("http://localhost:5000/product/all?sortBy=PRICE_ASC");
+      const res3 = await axios.get(
+        "http://localhost:5000/product/all?sortBy=PRICE_ASC"
+      );
       setProductData(res3.data);
       const res4 = await axios.get("http://localhost:5000/product/bestsale");
       setBestSaleData(res4.data);

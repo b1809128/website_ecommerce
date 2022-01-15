@@ -5,7 +5,7 @@ export default function Chart({ title, data }) {
   return (
     <div className="chart">
       <h1 className="admin__title">{title}</h1>
-      <img src={data} alt="chart" className="chart__image"/>
+      <img src={data} alt="chart" className="chart__image" />
     </div>
   );
 }
