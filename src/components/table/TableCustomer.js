@@ -1,16 +1,16 @@
 import React from "react";
 import "./table.css";
 function TableCustomer({ props }) {
-  console.log(props);
+  // console.log(props);
 
   return (
     <>
-      <table>
+      <table className="table">
         <thead>
           <tr>
-            <th>id</th>
-            <th>username</th>
-            <th>password</th>
+            <th style={{ textAlign: "center"}}>STT</th>
+            <th>UserName</th>
+            <th>Role</th>
           </tr>
         </thead>
         <tbody>
@@ -18,9 +18,9 @@ function TableCustomer({ props }) {
             return (
               <>
                 <tr>
-                  <td>{(index += 1)}</td>
+                  <td style={{ textAlign: "center"}}>{(index += 1)}</td>
                   <td>{data.user}</td>
-                  <td>{data.password}</td>
+                  <td>{data.role}</td>
                 </tr>
               </>
             );
