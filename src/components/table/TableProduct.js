@@ -10,11 +10,11 @@ function TableProduct({ props }) {
         <thead>
           <tr>
             <th style={{ textAlign: "center" }}>STT</th>
-            <th>ID PRODUCT</th>
-            <th>NAME</th>
-            <th>IMAGES</th>
-            <th>QUANTITY</th>
-            <th>PRICE</th>
+            <th>Id Product</th>
+            <th>Name</th>
+            <th>Images</th>
+            <th>Quantity</th>
+            <th>Price</th>
           </tr>
         </thead>
         <tbody>

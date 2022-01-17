@@ -19,6 +19,7 @@ import ProductNoneAPI from "../../components/products/ProductNoneAPI";
 import { productsData } from "../../data";
 export default function Home() {
   useEffect(() => {
+    window.scrollTo(0,0)
     Aos.init({
       duration: 2000,
     });

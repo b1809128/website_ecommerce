@@ -14,6 +14,7 @@ import { useLocation } from "react-router-dom";
 */
 export default function Details() {
   useEffect(() => {
+    window.scrollTo(0,0)
     Aos.init({
       duration: 2000,
     });

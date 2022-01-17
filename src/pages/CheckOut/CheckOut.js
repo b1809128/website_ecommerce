@@ -1,8 +1,12 @@
+import React, { useEffect } from "react";
 import { FaAngleRight } from "react-icons/fa";
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 import LocationBar from "../../components/bar/locationbar/LocationBar";
 import "./checkout.css";
 export default function CheckOut() {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   return (
     <div className="check">
       <div className="check-section">
@@ -93,18 +97,22 @@ export default function CheckOut() {
                     </div>
                   </div>
                   <div className="form-flex__price">
-                        <h3>Subtotal:</h3>
-                        <p className="form-flex__price-value">27.990.000 VND</p>
+                    <h3>Subtotal:</h3>
+                    <p className="form-flex__price-value">27.990.000 VND</p>
                   </div>
                 </div>
                 <h2 className="check__method-title">Payment Methods</h2>
                 <div className="form-flex">
-                    <input type="radio" className="method"/> Payment On Delivery
+                  <input type="radio" className="method" /> Payment On Delivery
                 </div>
                 <div className="form-flex">
-                    <input type="radio" className="method"/> Payment Via Card
+                  <input type="radio" className="method" /> Payment Via Card
                 </div>
-                <button className="btn"><Link to="/" className="link__btn">ORDER <FaAngleRight/></Link></button>
+                <button className="btn">
+                  <Link to="/" className="link__btn">
+                    ORDER <FaAngleRight />
+                  </Link>
+                </button>
               </form>
             </div>
           </div>

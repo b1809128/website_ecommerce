@@ -20,6 +20,7 @@ export default function ProductDetails({ data }) {
   const path = location.pathname;
   console.log("new path: " + path);
   useEffect(() => {
+    window.scrollTo(0,0)
     const getAll = async () => {
       const response = await axios.get("http://localhost:5000/product");
       console.log(response.data);

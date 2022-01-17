@@ -1,18 +1,35 @@
-import React from "react";
-import "./table.css";
+// import React, { useState, useEffect } from "react";
+// import axios from "axios";
 import { MdDeleteForever } from "react-icons/md";
 import { FaEdit } from "react-icons/fa";
-function TableCustomer({ props }) {
-  // console.log(props);
-
+import "./table.css";
+function TableOrder({ props }) {
+  // const [idOrder, setIdOrder] = useState(0);
+  // console.log(idOrder);
+  // useEffect(() => {
+  //   const delOrder = async () => {
+  //     try {
+  //       const result = await axios.delete(
+  //         `http://localhost:5000/manage/order/delete/${idOrder}`
+  //       );
+  //       console.log(result);
+  //     } catch (error) {
+  //       console.log(error);
+  //     }
+  //   };
+  //   if (idOrder > 0) {
+  //     delOrder();
+  //   }
+  // });
   return (
     <>
       <table className="table">
         <thead>
           <tr>
-            <th style={{ textAlign: "center" }}>STT</th>
-            <th>UserName</th>
-            <th>Role</th>
+            <th style={{ textAlign: "center" }}>Order</th>
+            <th>User</th>
+            <th>Staff</th>
+            <th>Created</th>
             <th>Action</th>
           </tr>
         </thead>
@@ -21,9 +38,12 @@ function TableCustomer({ props }) {
             return (
               <>
                 <tr>
-                  <td style={{ textAlign: "center" }}>{(index += 1)}</td>
-                  <td>{data.user}</td>
-                  <td>{data.role}</td>
+                  <td style={{ textAlign: "center" }}>{data.id_order}</td>
+                  <td>{data.id}</td>
+                  <td>{data.id_staff}</td>
+                  <td style={{ textAlign: "left", fontWeight: "700" }}>
+                    {new Date(data.created_at).toDateString()}
+                  </td>
                   <td
                     style={{
                       textAlign: "center",
@@ -54,4 +74,4 @@ function TableCustomer({ props }) {
   );
 }
 
-export default TableCustomer;
+export default TableOrder;

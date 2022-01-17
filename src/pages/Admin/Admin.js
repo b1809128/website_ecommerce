@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import { Redirect } from "react-router-dom";
+import { Redirect, Link } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
 import axios from "axios";
 import TableCustomer from "../../components/table/TableCustomer";
@@ -7,14 +7,18 @@ import TableProduct from "../../components/table/TableProduct";
 import Chart from "../../components/chart/Chart";
 import "./Admin.css";
 import LocationBar from "../../components/bar/locationbar/LocationBar";
-import { chartData } from "./chartData";
+import { chartData } from "../../components/chart/chartData";
+import TableOrder from "../../components/table/TableOrder";
+import { FaEdit } from "react-icons/fa";
 function Admin() {
   const { user } = useContext(AuthContext);
   const [authorized, setAuthorized] = useState(true);
   const [customerData, setCustomerData] = useState([]);
   const [productData, setProductData] = useState([]);
   const [bestSaleData, setBestSaleData] = useState([]);
+  const [orderData, setOrderData] = useState([]);
   useEffect(() => {
+    window.scrollTo(0, 0);
     const fetch = async () => {
       const res1 = await axios.post("http://localhost:5000/auth/admin", {
         token: user.token,
@@ -35,6 +39,8 @@ function Admin() {
       setProductData(res3.data);
       const res4 = await axios.get("http://localhost:5000/product/bestsale");
       setBestSaleData(res4.data);
+      const res5 = await axios.get("http://localhost:5000/manage/order");
+      setOrderData(res5.data);
     };
     fetch();
   }, [user.token]);
@@ -54,35 +60,66 @@ function Admin() {
         <div className="admin__row">
           <div className="admin__col-6">
             <div className="admin__item-sm">
-              <Chart title={dataSet[0].title} data={dataSet[0].data} />
+              <Chart
+                title={dataSet[0].title}
+                color={dataSet[0].color}
+                data={dataSet[0].data}
+              />
             </div>
             <div className="admin__item-sm">
-              <Chart title={dataSet[1].title} data={dataSet[1].data} />
+              <Chart
+                title={dataSet[1].title}
+                color={dataSet[1].color}
+                data={dataSet[1].data}
+              />
             </div>
             <div className="admin__item-sm">
-              <Chart title={dataSet[2].title} data={dataSet[2].data} />
+              <Chart
+                title={dataSet[2].title}
+                color={dataSet[2].color}
+                data={dataSet[2].data}
+              />
             </div>
             <div className="admin__item-sm">
-              <Chart title={dataSet[3].title} data={dataSet[3].data} />
+              <Chart
+                title={dataSet[3].title}
+                color={dataSet[3].color}
+                data={dataSet[3].data}
+              />
             </div>
           </div>
           <div className="admin__col-4">
             <div className="admin__item-lg">
-              <Chart title={dataSet[4].title} data={dataSet[4].data} />
-              <Chart title={dataSet[5].title} data={dataSet[5].data} />
+              <Chart
+                title={dataSet[4].title}
+                color={dataSet[4].color}
+                data={dataSet[4].data}
+              />
+              <Chart
+                title={dataSet[5].title}
+                color={dataSet[5].color}
+                data={dataSet[5].data}
+              />
             </div>
           </div>
         </div>
         <div className="admin__row">
           <div className="admin__col-6">
             <div className="admin__item-lg">
-              <h1 className="admin__title">PRODUCT</h1>
+              <div className="admin__header">
+                <h1 className="admin__title">PRODUCT</h1>
+                <Link to="/edit" className="link">
+                  <FaEdit />
+                </Link>
+              </div>
               <TableProduct props={productData} />
             </div>
           </div>
           <div className="admin__col-4">
             <div className="admin__item-lg">
-              <h1 className="admin__title">USER</h1>
+              <div className="admin__header">
+                <h1 className="admin__title">USER</h1>
+              </div>
               <TableCustomer props={customerData} />
             </div>
           </div>
@@ -96,18 +133,13 @@ function Admin() {
           </div>
           <div className="admin__col-4">
             <div className="admin__item-lg">
-              <h1 className="admin__title">USER</h1>
-              <TableCustomer props={customerData} />
+              <h1 className="admin__title">ORDER</h1>
+              <TableOrder props={orderData} />
             </div>
           </div>
         </div>
       </div>
     </div>
-    // <div>
-    //   Admin Message:
-    //   <p>{user.result[0].user}</p>
-    //   <p>{authText}</p>
-    // </div>
   );
 }
 

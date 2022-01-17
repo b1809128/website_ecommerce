@@ -9,3 +9,11 @@
   width: 100%;
   height: 120px;
 }
+
+
+.chart__title {
+  font-family: monospace;
+  font-size: 1.4rem;
+  /* color: #eb0028; */
+  text-decoration: underline;
+}
