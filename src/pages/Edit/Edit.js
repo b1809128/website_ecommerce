@@ -27,6 +27,76 @@ export default function Edit() {
     };
     fetch();
   }, [user.token]);
+
+  //Create Product
+  const [idProduct, setIdProduct] = useState("");
+  const [nameProduct, setNameProduct] = useState("");
+  const [priceProduct, setPriceProduct] = useState("");
+  const [quantityProduct, setQuantityProduct] = useState("");
+  const [descProduct, setDescProduct] = useState("");
+  const [typeProduct, setTypeProduct] = useState("");
+  const [tagProduct, setTagProduct] = useState("");
+
+  //Create function
+  const createHandle = async () => {
+    try {
+      const res = await axios.post("http://localhost:5000/manage/product/add", {
+        MSHH: idProduct,
+        TenHH: nameProduct,
+        Gia: priceProduct,
+        SoLuongHang: quantityProduct,
+        Mota: JSON.parse(descProduct),
+        MaLoaiHang: typeProduct,
+        tags: `'${tagProduct}'`,
+      });
+      if (res.data) {
+        alert(res.data);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  //Upload Images
+  const [idProductUpload, setIdProductUpload] = useState("");
+  const [imageProductUpload, setImageProductUpload] = useState({});
+
+  //Upload function
+  const uploadHandle = async () => {
+    try {
+      const res = await axios.post(
+        "http://localhost:5000/manage/image/upload",
+        {
+          MSHH: idProductUpload,
+          PATH: JSON.parse(imageProductUpload),
+        }
+      );
+      if (res.data) {
+        alert(res.data);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  //Delete Product
+  const [idProductDelete, setIdProductDelete] = useState("");
+  const deleteHandle =  async() => {
+    // console.log(idProductDelete);
+    try {
+      const res = await axios.delete(
+        `http://localhost:5000/manage/product/delete/${idProductDelete}`
+      );
+      if (res.data) {
+        alert(res.data);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  //Delete function
+
   if (!authorized) {
     // alert("You are not authorized !");
     return <Redirect to="/sign-in" />;
@@ -47,15 +117,17 @@ export default function Edit() {
                     id="name"
                     placeholder="Product ID"
                     className="form-input"
+                    onChange={(e) => setIdProduct(e.target.value)}
                   />
                 </div>
                 <div className="form-block">
-                  <label for="name">Product name*</label>
+                  <label for="name">Product Name*</label>
                   <input
                     type="text"
                     id="name"
-                    placeholder="Product name"
+                    placeholder="Product Name"
                     className="form-input"
+                    onChange={(e) => setNameProduct(e.target.value)}
                   />
                 </div>
 
@@ -66,6 +138,7 @@ export default function Edit() {
                     id="price"
                     className="form-input"
                     placeholder="10.000.000 VND"
+                    onChange={(e) => setPriceProduct(e.target.value)}
                   />
                 </div>
 
@@ -76,20 +149,42 @@ export default function Edit() {
                     type="text"
                     id="quantity"
                     placeholder="Quantity"
+                    onChange={(e) => setQuantityProduct(e.target.value)}
+                  />
+                </div>
+
+                <div className="form-block">
+                  <label for="type">Type*</label>
+                  <input
+                    className="form-input"
+                    type="text"
+                    id="type"
+                    placeholder="AP - APPLE"
+                    onChange={(e) => setTypeProduct(e.target.value)}
                   />
                 </div>
 
                 <div className="form-block">
                   <label for="phone">Tags*</label>
-                  <input type="text" id="tag" className="form-input" />
+                  <input
+                    type="text"
+                    id="tag"
+                    className="form-input"
+                    onChange={(e) => setTagProduct(e.target.value)}
+                  />
                 </div>
 
                 <div className="form-block">
                   <label for="notes">Description</label>
-                  <textarea id="notes"></textarea>
+                  <textarea
+                    id="notes"
+                    onChange={(e) => setDescProduct(e.target.value)}
+                  ></textarea>
                 </div>
                 <div className="form-flex__btn">
-                  <button className="btn">Create</button>
+                  <button className="btn" onClick={createHandle}>
+                    Create
+                  </button>
                   <button className="btn">Update</button>
                 </div>
               </form>
@@ -105,15 +200,21 @@ export default function Edit() {
                     id="name"
                     placeholder="Product ID"
                     className="form-input"
+                    onChange={(e) => setIdProductUpload(e.target.value)}
                   />
                 </div>
                 <div className="form-block">
                   <label for="notes">Images / URL</label>
                   <input type="file" className="form-input" />
-                  <textarea id="notes"></textarea>
+                  <textarea
+                    id="notes"
+                    onChange={(e) => setImageProductUpload(e.target.value)}
+                  ></textarea>
                 </div>
                 <div className="form-flex__btn">
-                  <button className="btn">Upload</button>
+                  <button className="btn" onClick={uploadHandle}>
+                    Upload
+                  </button>
                 </div>
               </form>
               <h2 className="check__form-title">Delete</h2>
@@ -125,10 +226,11 @@ export default function Edit() {
                     id="name"
                     placeholder="Product ID"
                     className="form-input"
+                    onChange={(e) =>setIdProductDelete(e.target.value)}
                   />
                 </div>
                 <div className="form-flex__btn">
-                  <button className="btn">Delete</button>
+                  <button className="btn" onClick={deleteHandle}>Delete</button>
                 </div>
               </form>
             </div>
