@@ -1,26 +1,31 @@
-// import React, { useState, useEffect } from "react";
-// import axios from "axios";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 import { MdDeleteForever } from "react-icons/md";
 import { FaEdit } from "react-icons/fa";
 import "./table.css";
-function TableOrder({ props }) {
-  // const [idOrder, setIdOrder] = useState(0);
+import { Link } from "react-router-dom";
+function TableOrder() {
+  const [dataProps, setDataProps] = useState([]);
+  const [idOrder, setIdOrder] = useState(0);
+
   // console.log(idOrder);
-  // useEffect(() => {
-  //   const delOrder = async () => {
-  //     try {
-  //       const result = await axios.delete(
-  //         `http://localhost:5000/manage/order/delete/${idOrder}`
-  //       );
-  //       console.log(result);
-  //     } catch (error) {
-  //       console.log(error);
-  //     }
-  //   };
-  //   if (idOrder > 0) {
-  //     delOrder();
-  //   }
-  // });
+  useEffect(() => {
+    const delOrder = async (idOrder) => {
+      if (idOrder === 0) {
+        let res = await axios.get("http://localhost:5000/manage/order");
+        setDataProps(res.data);
+      } else if (idOrder > 0) {
+        try {
+          await axios.delete(
+            `http://localhost:5000/manage/order/delete/${idOrder}`
+          );
+          setIdOrder(0);
+        } catch (error) {}
+      }
+    };
+    delOrder(idOrder);
+  });
+
   return (
     <>
       <table className="table">
@@ -34,7 +39,7 @@ function TableOrder({ props }) {
           </tr>
         </thead>
         <tbody>
-          {props.map((data, index) => {
+          {dataProps.map((data, index) => {
             return (
               <>
                 <tr>
@@ -52,16 +57,20 @@ function TableOrder({ props }) {
                       margin: "10px 0",
                     }}
                   >
-                    <FaEdit
-                      style={{
-                        color: "#28a745",
-                      }}
-                    />
+                    <Link to="/edit">
+                      <FaEdit
+                        style={{
+                          color: "#28a745",
+                        }}
+                      />
+                    </Link>
                     <MdDeleteForever
                       style={{
                         color: "#eb0028",
                       }}
-                      // onClick={() => setIdOrder(data.id_order)}
+                      onClick={() => {
+                        setIdOrder(data.id_order);
+                      }}
                     />
                   </td>
                 </tr>

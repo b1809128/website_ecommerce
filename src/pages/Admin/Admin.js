@@ -13,10 +13,8 @@ import { FaEdit } from "react-icons/fa";
 function Admin() {
   const { user } = useContext(AuthContext);
   const [authorized, setAuthorized] = useState(true);
-  const [customerData, setCustomerData] = useState([]);
   const [productData, setProductData] = useState([]);
   const [bestSaleData, setBestSaleData] = useState([]);
-  const [orderData, setOrderData] = useState([]);
   useEffect(() => {
     window.scrollTo(0, 0);
     const fetch = async () => {
@@ -31,16 +29,12 @@ function Admin() {
         setAuthorized(false);
         // setAuthText(res.data.message);
       }
-      const res2 = await axios.get("http://localhost:5000/manage/customer");
-      setCustomerData(res2.data);
-      const res3 = await axios.get(
+      const res2 = await axios.get(
         "http://localhost:5000/product/all?sortBy=PRICE_ASC"
       );
-      setProductData(res3.data);
-      const res4 = await axios.get("http://localhost:5000/product/bestsale");
-      setBestSaleData(res4.data);
-      const res5 = await axios.get("http://localhost:5000/manage/order");
-      setOrderData(res5.data);
+      setProductData(res2.data);
+      const res3 = await axios.get("http://localhost:5000/product/bestsale");
+      setBestSaleData(res3.data);
     };
     fetch();
   }, [user.token]);
@@ -109,7 +103,11 @@ function Admin() {
               <div className="admin__header">
                 <h1 className="admin__title">PRODUCT</h1>
                 <Link to="/edit" className="link">
-                  <FaEdit />
+                  <FaEdit
+                    style={{
+                      color: "#28a745",
+                    }}
+                  />
                 </Link>
               </div>
               <TableProduct props={productData} />
@@ -120,7 +118,7 @@ function Admin() {
               <div className="admin__header">
                 <h1 className="admin__title">USER</h1>
               </div>
-              <TableCustomer props={customerData} />
+              <TableCustomer />
             </div>
           </div>
         </div>
@@ -134,7 +132,7 @@ function Admin() {
           <div className="admin__col-4">
             <div className="admin__item-lg">
               <h1 className="admin__title">ORDER</h1>
-              <TableOrder props={orderData} />
+              <TableOrder />
             </div>
           </div>
         </div>

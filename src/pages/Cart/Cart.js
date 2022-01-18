@@ -2,7 +2,11 @@
 import { Link } from "react-router-dom";
 import LocationBar from "../../components/bar/locationbar/LocationBar";
 import "./cart.css";
+import React, { useEffect } from "react";
 export default function Cart() {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   return (
     <div className="cart">
       <div className="cart-section">
@@ -91,7 +95,11 @@ export default function Cart() {
           </div>
           <div className="row">
             <div className="cart__shipping">
-              <button className="btn"><Link to="/" className="link__btn">CONTINUE SHOPPING</Link></button>
+              <button className="btn">
+                <Link to="/" className="link__btn">
+                  CONTINUE SHOPPING
+                </Link>
+              </button>
               <div className="cart__shipping-select">
                 <input type="radio" className="cart__shipping-select-item" />
                 Shipping (+5%)
@@ -119,7 +127,11 @@ export default function Cart() {
             </div>
           </div>
           <div className="row">
-          <button className="btn"><Link to="/check-out" className="link__btn">GO TO CHECKOUT</Link></button>
+            <button className="btn">
+              <Link to="/check-out" className="link__btn">
+                GO TO CHECKOUT
+              </Link>
+            </button>
           </div>
         </div>
       </div>
