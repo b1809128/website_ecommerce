@@ -1,12 +1,11 @@
 import React, { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../context/AuthContext";
 import axios from "axios";
-import { Redirect } from "react-router-dom";
-// import { FaAngleRight } from "react-icons/fa";
-// import { Link } from "react-router-dom";
+import { Redirect, Link } from "react-router-dom";
 import LocationBar from "../../components/bar/locationbar/LocationBar";
 import "../CheckOut/checkout.css";
 import "./edit.css";
+import { AiOutlineCopy, AiOutlineRollback } from "react-icons/ai";
 export default function Edit() {
   const { user } = useContext(AuthContext);
   const [authorized, setAuthorized] = useState(true);
@@ -19,10 +18,8 @@ export default function Edit() {
       //   console.log(res);
       if (res1.data.logged) {
         setAuthorized(true);
-        // setAuthText(res.data.message);
       } else {
         setAuthorized(false);
-        // setAuthText(res.data.message);
       }
     };
     fetch();
@@ -38,6 +35,7 @@ export default function Edit() {
   const [tagProduct, setTagProduct] = useState("");
 
   //Create function
+  //Must be parse to JSON after push to server
   const createHandle = async () => {
     try {
       const res = await axios.post("http://localhost:5000/manage/product/add", {
@@ -48,6 +46,10 @@ export default function Edit() {
         Mota: JSON.parse(descProduct),
         MaLoaiHang: typeProduct,
         tags: `'${tagProduct}'`,
+      });
+      await axios.post("http://localhost:5000/manage/image/upload", {
+        MSHH: idProduct,
+        PATH: JSON.parse(imageProductUpload),
       });
       if (res.data) {
         alert(res.data);
@@ -81,8 +83,9 @@ export default function Edit() {
 
   //Delete Product
   const [idProductDelete, setIdProductDelete] = useState("");
-  const deleteHandle =  async() => {
-    // console.log(idProductDelete);
+
+  //Delete function
+  const deleteHandle = async () => {
     try {
       const res = await axios.delete(
         `http://localhost:5000/manage/product/delete/${idProductDelete}`
@@ -95,7 +98,47 @@ export default function Edit() {
     }
   };
 
-  //Delete function
+  //Update Customer
+  const [roleCustomer, setRoleCustomer] = useState("");
+  const [usernameCustomer, setUsernameCustomer] = useState("");
+  //Update Customer function
+  const updateCustomerHandle = async () => {
+    try {
+      const response = await axios.patch(
+        `http://localhost:5000/manage/customer/updateonly/${usernameCustomer}`,
+        {
+          user: usernameCustomer,
+          role: roleCustomer,
+        }
+      );
+      alert(response.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  //FIXME:Copy to clipboard function
+  const copyArray = [
+    '["https://cdn.hoanghamobile.com/i/productlist/ts/Uploads/2021/09/15/image-removebg-preview-15.png","https://cdn.hoanghamobile.com/i/productlist/ts/Uploads/2021/02/25/iphon12.png"]',
+    {
+      Description:
+        "Nhắc tới Apple, người dùng sẽ luôn nghĩ tới những thiết bị iPhone đẳng cấp, mang trên mình một thiết kế vô cùng sang trọng, hiện đại và thời thượng. Và iPhone 12 Series của năm nay cũng không phải là một ngoại lệ. Mẫu iPhone 12 64GB sở hữu một thiết kế đã được “lột xác” hoàn toàn so với các thế hệ tiền nhiệm trước đây.",
+      Brand: "Apple",
+      Type: "Phone",
+      Coor: "white",
+      Memory: 512,
+      Screen:
+        "OLED Resolution: 1284 x 2778 Pixels, 3 cameras 12 MP, 12 MP Wide screen: 6.7",
+      OS: "iOS 14",
+      CPU: "Apple A14 Bionic 6 cores",
+      ROM: "512GB",
+      RAM: "6GB",
+      Network: "5G",
+      SIM: "1 Nano SIM & 1 eSIM",
+      Weight: "228g",
+      Battery: "3687mAh",
+    },
+  ];
 
   if (!authorized) {
     // alert("You are not authorized !");
@@ -107,7 +150,22 @@ export default function Edit() {
         <div className="check__row">
           <LocationBar />
           <div className="row">
+            <Link
+              to="/admin"
+              className="link"
+              style={{
+                color: "#eb0028",
+                fontSize: "1.2rem",
+                fontWeight: "700",
+              }}
+            >
+              <AiOutlineRollback />
+              Back to Admin
+            </Link>
+          </div>
+          <div className="row">
             <div className="check__form">
+              {/* Product method */}
               <h2 className="check__form-title">Product</h2>
               <form className="form-section">
                 <div className="form-block">
@@ -170,16 +228,60 @@ export default function Edit() {
                     type="text"
                     id="tag"
                     className="form-input"
+                    placeholder="Phone,Apple,New2022"
                     onChange={(e) => setTagProduct(e.target.value)}
                   />
                 </div>
-
                 <div className="form-block">
-                  <label for="notes">Description</label>
-                  <textarea
-                    id="notes"
-                    onChange={(e) => setDescProduct(e.target.value)}
-                  ></textarea>
+                  <div
+                    className="relative"
+                    style={{ display: "flex", flexDirection: "column" }}
+                  >
+                    <label for="images">Images*</label>
+                    <textarea
+                      className="form-input textarea-sm "
+                      placeholder='Example: ["https://cdn.hoanghamobile.com/i/productlist/ts/Uploads/2021/09/15/image-removebg-preview-15.png"]'
+                      onChange={(e) => setImageProductUpload(e.target.value)}
+                    ></textarea>
+                    <button
+                      className="copy-btn"
+                      onClick={(e) => {
+                        e.preventDefault();
+                        navigator.clipboard.writeText(copyArray[0]);
+                      }}
+                    >
+                      <AiOutlineCopy />
+                    </button>
+                  </div>
+                </div>
+                <div className="form-block">
+                  <div
+                    className="relative"
+                    style={{ display: "flex", flexDirection: "column" }}
+                  >
+                    <label for="notes">Description</label>
+                    <textarea
+                      // className="textarea-sm"
+                      placeholder='Example: {                      
+                        "Brand": "Apple",
+                        "Type": "Phone",
+                        "Color": "white",
+                        ...
+                    }'
+                      onChange={(e) => setDescProduct(e.target.value)}
+                    ></textarea>
+                    <button
+                      className="copy-btn"
+                      onClick={(e) => {
+                        e.preventDefault();
+                        navigator.clipboard.writeText(
+                          JSON.stringify(copyArray[1])
+                        );
+                      }}
+                    >
+                      <AiOutlineCopy />
+                    </button>
+                  </div>
                 </div>
                 <div className="form-flex__btn">
                   <button className="btn" onClick={createHandle}>
@@ -189,8 +291,8 @@ export default function Edit() {
                 </div>
               </form>
             </div>
-            {/* Delete,Upload method */}
             <div className="check__method">
+              {/*Upload method */}
               <h2 className="check__method-title">Upload</h2>
               <form className="form-section">
                 <div className="form-block">
@@ -204,12 +306,26 @@ export default function Edit() {
                   />
                 </div>
                 <div className="form-block">
-                  <label for="notes">Images / URL</label>
-                  <input type="file" className="form-input" />
-                  <textarea
-                    id="notes"
-                    onChange={(e) => setImageProductUpload(e.target.value)}
-                  ></textarea>
+                  <div
+                    className="relative"
+                    style={{ display: "flex", flexDirection: "column" }}
+                  >
+                    <label for="images">Images*</label>
+                    <textarea
+                      className="form-input textarea-sm "
+                      placeholder='Example: ["https://cdn.hoanghamobile.com/i/productlist/ts/Uploads/2021/09/15/image-removebg-preview-15.png"]'
+                      onChange={(e) => setImageProductUpload(e.target.value)}
+                    ></textarea>
+                    <button
+                      className="copy-btn"
+                      onClick={(e) => {
+                        e.preventDefault();
+                        navigator.clipboard.writeText(copyArray[0]);
+                      }}
+                    >
+                      <AiOutlineCopy />
+                    </button>
+                  </div>
                 </div>
                 <div className="form-flex__btn">
                   <button className="btn" onClick={uploadHandle}>
@@ -217,6 +333,7 @@ export default function Edit() {
                   </button>
                 </div>
               </form>
+              {/* Delete method */}
               <h2 className="check__form-title">Delete</h2>
               <form className="form-section">
                 <div className="form-block">
@@ -226,47 +343,26 @@ export default function Edit() {
                     id="name"
                     placeholder="Product ID"
                     className="form-input"
-                    onChange={(e) =>setIdProductDelete(e.target.value)}
+                    onChange={(e) => setIdProductDelete(e.target.value)}
                   />
                 </div>
                 <div className="form-flex__btn">
-                  <button className="btn" onClick={deleteHandle}>Delete</button>
+                  <button className="btn" onClick={deleteHandle}>
+                    Delete
+                  </button>
                 </div>
               </form>
-            </div>
-          </div>
-          <div className="row">
-            {/* Customer method */}
-            <div className="check__form">
+              {/* Customer method */}
               <h2 className="check__form-title">Customer</h2>
               <form className="form-section">
                 <div className="form-block">
-                  <label for="name">Customer ID*</label>
-                  <input
-                    type="text"
-                    id="name"
-                    placeholder="Customer ID"
-                    className="form-input"
-                  />
-                </div>
-
-                <div className="form-block">
                   <label for="email">Username*</label>
                   <input
-                    type="email"
+                    type="text"
                     id="email"
                     className="form-input"
                     placeholder="Username"
-                  />
-                </div>
-
-                <div className="form-block">
-                  <label for="adress">Password*</label>
-                  <input
-                    className="form-input"
-                    type="text"
-                    id="adress"
-                    placeholder="Password"
+                    onChange={(e) => setUsernameCustomer(e.target.value)}
                   />
                 </div>
 
@@ -277,15 +373,16 @@ export default function Edit() {
                     id="role"
                     placeholder="Role"
                     className="form-input"
+                    onChange={(e) => setRoleCustomer(e.target.value)}
                   />
                 </div>
                 <div className="form-flex__btn">
-                  <button className="btn">Update</button>
+                  <button className="btn" onClick={updateCustomerHandle}>
+                    Update
+                  </button>
                 </div>
               </form>
-            </div>
-            {/* Order method */}
-            <div className="check__method">
+              {/* Order method */}
               <h2 className="check__method-title">Order</h2>
               <form className="form-section">
                 <div className="form-block">

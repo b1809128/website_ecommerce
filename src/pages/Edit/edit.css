@@ -4,3 +4,27 @@
   align-items: center;
   margin: 12px 0;
 }
+
+.textarea-sm{
+  height:100px;
+}
+.textarea-lg{
+  height:400px;
+}
+
+.relative{
+  position: relative;
+}
+
+.copy-btn {
+  position: absolute;
+  right: 24%;
+  top: 20%;
+  color: #eb0028;
+  cursor: pointer;
+  outline: none;
+  border: none;
+  background-color:#fff;
+}
+
+
