@@ -117,12 +117,12 @@ export default function Edit() {
     }
   };
 
-  //FIXME:Copy to clipboard function
+  //TODO:Copy to clipboard function
   const copyArray = [
-    '["https://cdn.hoanghamobile.com/i/productlist/ts/Uploads/2021/09/15/image-removebg-preview-15.png","https://cdn.hoanghamobile.com/i/productlist/ts/Uploads/2021/02/25/iphon12.png"]',
+    '["https://cdn.hoanghamobile.com/i/productlist/ts/Uploads/2021/09/15/image-removebg-preview-15.png","",""]',
     {
       Description:
-        "Nhắc tới Apple, người dùng sẽ luôn nghĩ tới những thiết bị iPhone đẳng cấp, mang trên mình một thiết kế vô cùng sang trọng, hiện đại và thời thượng. Và iPhone 12 Series của năm nay cũng không phải là một ngoại lệ. Mẫu iPhone 12 64GB sở hữu một thiết kế đã được “lột xác” hoàn toàn so với các thế hệ tiền nhiệm trước đây.",
+        "",
       Brand: "Apple",
       Type: "Phone",
       Coor: "white",
@@ -139,6 +139,54 @@ export default function Edit() {
       Battery: "3687mAh",
     },
   ];
+
+  //TODO: Update Order function
+  const [idOrderUpdate, setIdOrderUpdate] = useState("");
+  const [idStaffOrderUpdate, setIdStaffOrderUpdate] = useState("");
+  const [idProductOrderUpdate, setIdProductOrderUpdate] = useState("");
+  const [quantityOrderUpdate, setQuantityOrderUpdate] = useState("");
+  const [statusOrderUpdate, setStatusOrderUpdate] = useState("");
+
+  const updateOrderHandle = async () => {
+    const arrayOrder = [
+      idOrderUpdate,
+      idStaffOrderUpdate,
+      idProductOrderUpdate,
+      quantityOrderUpdate,
+      statusOrderUpdate,
+    ];
+    var newArrayOrder = [];
+    for (let i = 0; i < arrayOrder.length; i++) {
+      if (arrayOrder[i] !== "") {
+        newArrayOrder.push(arrayOrder[i]);
+      }
+    }
+    if (newArrayOrder.length === 5) {
+      try {
+        const res = await axios.patch(
+          `http://localhost:5000/manage/order/updateonly/${idOrderUpdate}`,
+          { id_staff: idStaffOrderUpdate, status: statusOrderUpdate }
+        );
+        await axios.patch(
+          `http://localhost:5000/manage/order/details/updateonly/${idOrderUpdate}`,
+          { MSHH: idProductOrderUpdate, SoLuong: quantityOrderUpdate }
+        );
+        alert(res.data);
+      } catch (error) {
+        console.log(error);
+      }
+    } else {
+      try {
+        const res = await axios.patch(
+          `http://localhost:5000/manage/order/updateonly/${idOrderUpdate}`,
+          { status: statusOrderUpdate }
+        );
+        alert(res.data);
+      } catch (error) {
+        console.log(error);
+      }
+    }
+  };
 
   if (!authorized) {
     // alert("You are not authorized !");
@@ -275,7 +323,7 @@ export default function Edit() {
                       onClick={(e) => {
                         e.preventDefault();
                         navigator.clipboard.writeText(
-                          JSON.stringify(copyArray[1])
+                          JSON.stringify(copyArray[1], undefined,2)
                         );
                       }}
                     >
@@ -290,10 +338,40 @@ export default function Edit() {
                   <button className="btn">Update</button>
                 </div>
               </form>
+              {/* Customer method */}
+              <h2 className="check__form-title">Customer</h2>
+              <form className="form-section">
+                <div className="form-block">
+                  <label for="email">Username*</label>
+                  <input
+                    type="text"
+                    id="email"
+                    className="form-input"
+                    placeholder="Username"
+                    onChange={(e) => setUsernameCustomer(e.target.value)}
+                  />
+                </div>
+
+                <div className="form-block">
+                  <label for="role">Role*</label>
+                  <input
+                    type="text"
+                    id="role"
+                    placeholder="Role"
+                    className="form-input"
+                    onChange={(e) => setRoleCustomer(e.target.value)}
+                  />
+                </div>
+                <div className="form-flex__btn">
+                  <button className="btn" onClick={updateCustomerHandle}>
+                    Update
+                  </button>
+                </div>
+              </form>
             </div>
             <div className="check__method">
               {/*Upload method */}
-              <h2 className="check__method-title">Upload</h2>
+              <h2 className="check__method-title">Upload Images</h2>
               <form className="form-section">
                 <div className="form-block">
                   <label for="name">Product ID*</label>
@@ -334,7 +412,7 @@ export default function Edit() {
                 </div>
               </form>
               {/* Delete method */}
-              <h2 className="check__form-title">Delete</h2>
+              <h2 className="check__form-title">Delete Product</h2>
               <form className="form-section">
                 <div className="form-block">
                   <label for="name">Product ID*</label>
@@ -352,36 +430,7 @@ export default function Edit() {
                   </button>
                 </div>
               </form>
-              {/* Customer method */}
-              <h2 className="check__form-title">Customer</h2>
-              <form className="form-section">
-                <div className="form-block">
-                  <label for="email">Username*</label>
-                  <input
-                    type="text"
-                    id="email"
-                    className="form-input"
-                    placeholder="Username"
-                    onChange={(e) => setUsernameCustomer(e.target.value)}
-                  />
-                </div>
 
-                <div className="form-block">
-                  <label for="role">Role*</label>
-                  <input
-                    type="text"
-                    id="role"
-                    placeholder="Role"
-                    className="form-input"
-                    onChange={(e) => setRoleCustomer(e.target.value)}
-                  />
-                </div>
-                <div className="form-flex__btn">
-                  <button className="btn" onClick={updateCustomerHandle}>
-                    Update
-                  </button>
-                </div>
-              </form>
               {/* Order method */}
               <h2 className="check__method-title">Order</h2>
               <form className="form-section">
@@ -392,48 +441,54 @@ export default function Edit() {
                     id="name"
                     placeholder="Order ID"
                     className="form-input"
+                    onChange={(e) => setIdOrderUpdate(e.target.value)}
                   />
                 </div>
 
                 <div className="form-block">
-                  <label for="email">Customer ID*</label>
-                  <input
-                    type="email"
-                    id="email"
-                    className="form-input"
-                    placeholder="Customer ID"
-                  />
-                </div>
-
-                <div className="form-block">
-                  <label for="adress">Staff ID*</label>
+                  <label for="adress">Staff ID</label>
                   <input
                     className="form-input"
                     type="text"
                     id="adress"
                     placeholder="Staff ID"
+                    onChange={(e) => setIdStaffOrderUpdate(e.target.value)}
                   />
                 </div>
                 <div className="form-block">
-                  <label for="adress">Product ID*</label>
+                  <label for="adress">Product ID</label>
                   <input
                     className="form-input"
                     type="text"
                     id="adress"
                     placeholder="Product ID"
+                    onChange={(e) => setIdProductOrderUpdate(e.target.value)}
                   />
                 </div>
                 <div className="form-block">
-                  <label for="adress">Quantity*</label>
+                  <label for="adress">Quantity</label>
                   <input
                     className="form-input"
                     type="text"
                     id="adress"
                     placeholder="Quantity"
+                    onChange={(e) => setQuantityOrderUpdate(e.target.value)}
+                  />
+                </div>
+                <div className="form-block">
+                  <label for="adress">Status</label>
+                  <input
+                    className="form-input"
+                    type="text"
+                    id="adress"
+                    placeholder="Yet/Not yet"
+                    onChange={(e) => setStatusOrderUpdate(e.target.value)}
                   />
                 </div>
                 <div className="form-flex__btn">
-                  <button className="btn">Update</button>
+                  <button className="btn" onClick={updateOrderHandle}>
+                    Update
+                  </button>
                 </div>
               </form>
             </div>

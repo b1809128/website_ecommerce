@@ -25,7 +25,9 @@ function TableOrder() {
     };
     delOrder(idOrder);
   });
-
+  // console.log(dataProps)
+  // const orderMap = dataProps;
+  // console.log(orderMap)
   return (
     <>
       <table className="table">
@@ -35,11 +37,13 @@ function TableOrder() {
             <th>User</th>
             <th>Staff</th>
             <th>Created</th>
+            <th>Status</th>
             <th>Action</th>
           </tr>
         </thead>
         <tbody>
           {dataProps.map((data, index) => {
+            // console.log(JSON.parse(data.status))
             return (
               <>
                 <tr>
@@ -49,6 +53,7 @@ function TableOrder() {
                   <td style={{ textAlign: "left", fontWeight: "700" }}>
                     {new Date(data.created_at).toDateString()}
                   </td>
+                  <td>{data.status}</td>
                   <td
                     style={{
                       textAlign: "center",
