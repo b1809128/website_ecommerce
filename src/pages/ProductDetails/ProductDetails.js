@@ -8,7 +8,7 @@ import ReviewBar from "../../components/bar/reviewtextbar/ReviewBar";
 import "./productdetails.css";
 
 export default function ProductDetails({ data }) {
-  // Them param id vao duong dan
+  // Them param id vao duong dan url/:id
   const { id } = useParams();
   // console.log(data[id-1])
   const array = [...data[id].attribute.image];

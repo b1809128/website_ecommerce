@@ -5,7 +5,8 @@ import { Redirect, Link } from "react-router-dom";
 import LocationBar from "../../components/bar/locationbar/LocationBar";
 import "../CheckOut/checkout.css";
 import "./edit.css";
-import { AiOutlineCopy, AiOutlineRollback } from "react-icons/ai";
+import { AiOutlineCopy } from "react-icons/ai";
+import { BiArrowBack } from "react-icons/bi";
 export default function Edit() {
   const { user } = useContext(AuthContext);
   const [authorized, setAuthorized] = useState(true);
@@ -121,8 +122,7 @@ export default function Edit() {
   const copyArray = [
     '["https://cdn.hoanghamobile.com/i/productlist/ts/Uploads/2021/09/15/image-removebg-preview-15.png","",""]',
     {
-      Description:
-        "",
+      Description: "",
       Brand: "Apple",
       Type: "Phone",
       Coor: "white",
@@ -207,13 +207,13 @@ export default function Edit() {
                 fontWeight: "700",
               }}
             >
-              <AiOutlineRollback />
+              <BiArrowBack />
               Back to Admin
             </Link>
           </div>
           <div className="row">
             <div className="check__form">
-              {/* Product method */}
+              {/*TODO: Product method */}
               <h2 className="check__form-title">Product</h2>
               <form className="form-section">
                 <div className="form-block">
@@ -323,7 +323,7 @@ export default function Edit() {
                       onClick={(e) => {
                         e.preventDefault();
                         navigator.clipboard.writeText(
-                          JSON.stringify(copyArray[1], undefined,2)
+                          JSON.stringify(copyArray[1], undefined, 2)
                         );
                       }}
                     >
@@ -338,7 +338,7 @@ export default function Edit() {
                   <button className="btn">Update</button>
                 </div>
               </form>
-              {/* Customer method */}
+              {/*TODO: Customer method */}
               <h2 className="check__form-title">Customer</h2>
               <form className="form-section">
                 <div className="form-block">
@@ -370,7 +370,7 @@ export default function Edit() {
               </form>
             </div>
             <div className="check__method">
-              {/*Upload method */}
+              {/*TODO:Upload method */}
               <h2 className="check__method-title">Upload Images</h2>
               <form className="form-section">
                 <div className="form-block">
@@ -411,7 +411,7 @@ export default function Edit() {
                   </button>
                 </div>
               </form>
-              {/* Delete method */}
+              {/*TODO: Delete method */}
               <h2 className="check__form-title">Delete Product</h2>
               <form className="form-section">
                 <div className="form-block">
@@ -431,7 +431,7 @@ export default function Edit() {
                 </div>
               </form>
 
-              {/* Order method */}
+              {/*TODO:Order method */}
               <h2 className="check__method-title">Order</h2>
               <form className="form-section">
                 <div className="form-block">

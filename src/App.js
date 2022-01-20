@@ -18,6 +18,7 @@ import Admin from "./pages/Admin/Admin";
 import Search from "./pages/Search/Search";
 import { AuthContext } from "./context/AuthContext";
 import Edit from "./pages/Edit/Edit";
+import OrderDetails from "./pages/OrderDetails/OrderDetails"
 function App() {
   const { user } = useContext(AuthContext);
   return (
@@ -55,6 +56,7 @@ function App() {
             <Search />
           </Route>
           <Route path="/edit">{user ? <Edit /> : <Login />}</Route>
+          <Route path="/order-details">{user ? <OrderDetails /> : <Login />}</Route>
         </Switch>
         <Footer />
         <ScrollTop />

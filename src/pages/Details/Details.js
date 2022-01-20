@@ -21,7 +21,7 @@ export default function Details() {
       duration: 2000,
     });
   }, []);
-  //Query Parameters
+  //Query Parameters url?abc=1
   const query = new URLSearchParams(useLocation().search);
   const sortBy = query.get("sortBy");
   const brandID = query.get("brand");

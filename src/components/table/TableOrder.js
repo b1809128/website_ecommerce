@@ -25,9 +25,6 @@ function TableOrder() {
     };
     delOrder(idOrder);
   });
-  // console.log(dataProps)
-  // const orderMap = dataProps;
-  // console.log(orderMap)
   return (
     <>
       <table className="table">
@@ -62,7 +59,12 @@ function TableOrder() {
                       margin: "10px 0",
                     }}
                   >
-                    <Link to="/edit">
+                    <Link
+                      to={{
+                        pathname: "/order-details",
+                        search: `?id=${data.id_order}`,
+                      }}
+                    >
                       <FaEdit
                         style={{
                           color: "#28a745",
