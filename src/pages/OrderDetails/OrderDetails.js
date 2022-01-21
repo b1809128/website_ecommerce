@@ -7,27 +7,34 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 export default function OrderDetails() {
   const query = new URLSearchParams(useLocation().search);
-  const id = query.get("id");
+  const idOrderQuery = query.get("id_order");
+  const idCustomerQuery = query.get("id");
   const [propsData, setPropsData] = useState([]);
   const [orderData, setOrderData] = useState([]);
+  const [customerData, setCustomerData] = useState([]);
+
   // const [customerData,setCustomerData] = useState([]);
   //TODO: get id customer
   useEffect(() => {
     window.scrollTo(0, 0);
     const fetch = async () => {
       const result = await axios.get(
-        `http://localhost:5000/manage/order/details/${id}`
+        `http://localhost:5000/manage/order/details/${idOrderQuery}`
       );
       const result2 = await axios.get(
-        `http://localhost:5000/manage/order/${id}`
+        `http://localhost:5000/manage/order/${idOrderQuery}`
+      );
+      const result3 = await axios.get(
+        `http://localhost:5000/customer/address/${idCustomerQuery}`
       );
       setPropsData(result.data);
       setOrderData(result2.data);
+      setCustomerData(result3.data);
     };
     fetch();
-  }, [id]);
+  }, [idCustomerQuery, idOrderQuery]);
   var s = 0;
-
+  console.log(customerData);
   //TODO: update order function
   const [idOrderUpdate, setIdOrderUpdate] = useState("");
   const [idStaffOrderUpdate, setIdStaffOrderUpdate] = useState("");
@@ -129,11 +136,11 @@ export default function OrderDetails() {
                   <ul className="cart__total-list">
                     <li className="cart__total-item">
                       <p className="cart__total-item-text">ID Order: </p>
-                      <p className="cart__total-item-value">{data.id_order}</p>
+                      <p className="">{data.id_order}</p>
                     </li>
                     <li className="cart__total-item">
-                      <p className="cart__total-item-text">ID Order: </p>
-                      <p className="cart__total-item-value">{data.id}</p>
+                      <p className="cart__total-item-text">ID Customer: </p>
+                      <p className="">{data.id}</p>
                     </li>
                     <li className="cart__total-item">
                       <p className="cart__total-item-text">Sales Man: </p>
@@ -147,28 +154,34 @@ export default function OrderDetails() {
                     </li>
                     <li className="cart__total-item">
                       <p className="cart__total-item-text">Status: </p>
-                      <p className="">{data.status}</p>
+                      <p className="cart__total-item-value">{data.status}</p>
                     </li>
                     <li className="cart__total-item">
                       <p className="cart__total-item-text">Total: </p>
-                      <p className="cart__total-item-value">
+                      <p className="">
                         {new Intl.NumberFormat().format(s)} VND
                       </p>
                     </li>
+                  </ul>
+                );
+              })}
+              {customerData.map((data) => {
+                return (
+                  <ul className="cart__total-list">
                     <li className="cart__total-item">
                       <p className="cart__total-item-text">Phone Number: </p>
-                      <p className="cart__total-item-value">
+                      <p className="">
                         {data.phonenumber}
                       </p>
                     </li>
                     <li className="cart__total-item">
                       <p className="cart__total-item-text">Email: </p>
-                      <p className="cart__total-item-value">{data.email}</p>
+                      <p className="">{data.email}</p>
                     </li>
                     <li className="cart__total-item">
                       <p className="cart__total-item-text">Address: </p>
-                      <p className="cart__total-item-value">
-                        {data.adressdetails}
+                      <p className="">
+                        {data.addressdetails}
                       </p>
                     </li>
                   </ul>

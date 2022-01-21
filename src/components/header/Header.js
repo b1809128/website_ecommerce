@@ -89,7 +89,7 @@ export default function Header() {
       <div className="navbar-container container">
         <div className="navbar-logo" onClick={closeMobileMenu}>
           <Link to="/">
-            <img alt="" src="/images/logo.png" className="navbar-logo__image" />
+            <img alt="" src="/images/logo/logo.png" className="navbar-logo__image" />
           </Link>
         </div>
         <div className="menu-icon">

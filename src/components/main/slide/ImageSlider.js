@@ -32,6 +32,7 @@ const ImageSlider = ({ slides }) => {
             key={index}
           >
             {index === current && (
+              // eslint-disable-next-line jsx-a11y/img-redundant-alt
               <img src={slide.image} alt="travel image" className="image" />
             )}
           </div>

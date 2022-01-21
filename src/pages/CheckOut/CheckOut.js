@@ -108,6 +108,77 @@ export default function CheckOut() {
                 <div className="form-flex">
                   <input type="radio" className="method" /> Payment Via Card
                 </div>
+                <div className="form-flex">
+                  <div className="form-flex">
+                    <input type="radio" className="method" />
+                    <img
+                      src="./images/logo/vietcombank.jpg"
+                      style={{
+                        wwidth: "100px",
+                        height: "70px",
+                        boxShadow: "0 4px 8px rgba(0,0,0,.45)",
+                        margin: "0 12px",borderRadius: "6px"
+                      }}
+                      alt="bank"
+                    />
+                    
+                    <input type="radio" className="method" />
+                    <img
+                      src="./images/logo/viettin.jpg"
+                      style={{
+                        width: "100px",
+                        height: "70px",
+                        boxShadow: "0 4px 8px rgba(0,0,0,.45)",
+                        margin: "0 12px",borderRadius: "6px"
+                      }}
+                      alt="bank"
+                    />
+                  </div>
+                  <input type="radio" className="method" />
+                  <img
+                    src="./images/logo/bidv.jpg"
+                    style={{
+                      width: "100px",
+                        height: "70px",
+                      boxShadow: "0 4px 8px rgba(0,0,0,.45)",
+                      margin: "0 12px",borderRadius: "6px"
+                    }}
+                    alt="bank"
+                  />
+                  <input type="radio" className="method" />
+                  <img
+                    src="./images/logo/vib.jpg"
+                    style={{
+                      width: "100px",
+                        height: "70px",
+                      boxShadow: "0 4px 8px rgba(0,0,0,.45)",
+                      margin: "0 12px",borderRadius: "6px"
+                    }}
+                    alt="bank"
+                  />
+                  <input type="radio" className="method" />
+                    <img
+                      src="./images/logo/mbbank.jpg"
+                      style={{
+                        width: "100px",
+                        height: "70px",
+                        boxShadow: "0 4px 8px rgba(0,0,0,.45)",
+                        margin: "0 12px",borderRadius: "6px"
+                      }}
+                      alt="bank"
+                    />
+                    <input type="radio" className="method" />
+                    <img
+                      src="./images/logo/tpbank.jpg"
+                      style={{
+                        width: "100px",
+                        height: "70px",
+                        boxShadow: "0 4px 8px rgba(0,0,0,.45)",
+                        margin: "0 12px",borderRadius: "6px"
+                      }}
+                      alt="bank"
+                    />
+                </div>
                 <button className="btn">
                   <Link to="/" className="link__btn">
                     ORDER <FaAngleRight />

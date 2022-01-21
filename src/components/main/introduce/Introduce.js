@@ -24,7 +24,7 @@ export default function Introduce({ data }) {
       <FaAngleLeft className="push-left" onClick={prevSlide} />
       <FaAngleRight className="push-right" onClick={nextSlide} />
       <img
-        src="./images/slide_5.jpg"
+        src="https://images.samsung.com/is/image/samsung/assets/vn/home/luxo2022/The-Freestyle-HomeKV_PC_02.jpg?imwidth=1366"
         alt="Slide introduce"
         className="introduce-image"
       />

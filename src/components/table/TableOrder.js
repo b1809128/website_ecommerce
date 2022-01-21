@@ -62,7 +62,7 @@ function TableOrder() {
                     <Link
                       to={{
                         pathname: "/order-details",
-                        search: `?id=${data.id_order}`,
+                        search: `?id_order=${data.id_order}&id=${data.id}`,
                       }}
                     >
                       <FaEdit
