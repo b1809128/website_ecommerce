@@ -1,0 +1,33 @@
+.order-details__row {
+  display: flex;
+  width: 100%;
+}
+
+.order-details__form-section {
+  width: 100%;
+  margin: 0 100px;
+}
+
+.order-details__form-block {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  margin: 12px 0;
+}
+
+.order-details__form-flex {
+  display: flex;
+  align-items: center;
+  margin: 12px 0;
+}
+
+.order-details__form-input {
+  height: 40px;
+  width: 100%;
+}
+
+.order-details__form-flex__btn{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+}

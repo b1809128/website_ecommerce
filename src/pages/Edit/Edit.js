@@ -141,7 +141,7 @@ export default function Edit() {
   ];
 
   //TODO: Update Order function
-  const [idOrderUpdate, setIdOrderUpdate] = useState("");
+  /*const [idOrderUpdate, setIdOrderUpdate] = useState("");
   const [idStaffOrderUpdate, setIdStaffOrderUpdate] = useState("");
   const [idProductOrderUpdate, setIdProductOrderUpdate] = useState("");
   const [quantityOrderUpdate, setQuantityOrderUpdate] = useState("");
@@ -187,7 +187,7 @@ export default function Edit() {
       }
     }
   };
-
+*/
   if (!authorized) {
     // alert("You are not authorized !");
     return <Redirect to="/sign-in" />;
@@ -338,36 +338,6 @@ export default function Edit() {
                   <button className="btn">Update</button>
                 </div>
               </form>
-              {/*TODO: Customer method */}
-              <h2 className="check__form-title">Customer</h2>
-              <form className="form-section">
-                <div className="form-block">
-                  <label for="email">Username*</label>
-                  <input
-                    type="text"
-                    id="email"
-                    className="form-input"
-                    placeholder="Username"
-                    onChange={(e) => setUsernameCustomer(e.target.value)}
-                  />
-                </div>
-
-                <div className="form-block">
-                  <label for="role">Role*</label>
-                  <input
-                    type="text"
-                    id="role"
-                    placeholder="Role"
-                    className="form-input"
-                    onChange={(e) => setRoleCustomer(e.target.value)}
-                  />
-                </div>
-                <div className="form-flex__btn">
-                  <button className="btn" onClick={updateCustomerHandle}>
-                    Update
-                  </button>
-                </div>
-              </form>
             </div>
             <div className="check__method">
               {/*TODO:Upload method */}
@@ -430,9 +400,38 @@ export default function Edit() {
                   </button>
                 </div>
               </form>
+              {/*TODO: Customer method */}
+              <h2 className="check__form-title">Customer</h2>
+              <form className="form-section">
+                <div className="form-block">
+                  <label for="email">Username*</label>
+                  <input
+                    type="text"
+                    id="email"
+                    className="form-input"
+                    placeholder="Username"
+                    onChange={(e) => setUsernameCustomer(e.target.value)}
+                  />
+                </div>
 
+                <div className="form-block">
+                  <label for="role">Role*</label>
+                  <input
+                    type="text"
+                    id="role"
+                    placeholder="Role"
+                    className="form-input"
+                    onChange={(e) => setRoleCustomer(e.target.value)}
+                  />
+                </div>
+                <div className="form-flex__btn">
+                  <button className="btn" onClick={updateCustomerHandle}>
+                    Update
+                  </button>
+                </div>
+              </form>
               {/*TODO:Order method */}
-              <h2 className="check__method-title">Order</h2>
+              {/*<h2 className="check__method-title">Order</h2>
               <form className="form-section">
                 <div className="form-block">
                   <label for="name">Order ID*</label>
@@ -490,7 +489,7 @@ export default function Edit() {
                     Update
                   </button>
                 </div>
-              </form>
+                    </form>*/}
             </div>
           </div>
         </div>
