@@ -25,7 +25,7 @@ export default function OrderDetails() {
         `http://localhost:5000/manage/order/${idOrderQuery}`
       );
       const result3 = await axios.get(
-        `http://localhost:5000/customer/address/${idCustomerQuery}`
+        `http://localhost:5000/customer/all/${idCustomerQuery}`
       );
       setPropsData(result.data);
       setOrderData(result2.data);
@@ -34,7 +34,7 @@ export default function OrderDetails() {
     fetch();
   }, [idCustomerQuery, idOrderQuery]);
   var s = 0;
-  console.log(customerData);
+  // console.log(customerData);
   //TODO: update order function
   const [idOrderUpdate, setIdOrderUpdate] = useState("");
   const [idStaffOrderUpdate, setIdStaffOrderUpdate] = useState("");
@@ -170,9 +170,7 @@ export default function OrderDetails() {
                   <ul className="cart__total-list">
                     <li className="cart__total-item">
                       <p className="cart__total-item-text">Phone Number: </p>
-                      <p className="">
-                        {data.phonenumber}
-                      </p>
+                      <p className="">{data.phonenumber}</p>
                     </li>
                     <li className="cart__total-item">
                       <p className="cart__total-item-text">Email: </p>
@@ -180,9 +178,7 @@ export default function OrderDetails() {
                     </li>
                     <li className="cart__total-item">
                       <p className="cart__total-item-text">Address: </p>
-                      <p className="">
-                        {data.addressdetails}
-                      </p>
+                      <p className="">{data.addressdetails}</p>
                     </li>
                   </ul>
                 );
@@ -232,13 +228,14 @@ export default function OrderDetails() {
               </div>
               <div className="order-details__form-block">
                 <label for="adress">Status</label>
-                <input
+                <select
                   className="order-details__form-input"
-                  type="text"
-                  id="adress"
-                  placeholder="Yet/Not yet"
+                  value={statusOrderUpdate}
                   onChange={(e) => setStatusOrderUpdate(e.target.value)}
-                />
+                >
+                  <option value="Completed">Completed</option>
+                  <option value="Not Yet">Not Yet</option>
+                </select>
               </div>
               <div className="order-details__form-flex__btn">
                 <button className="btn" onClick={updateOrderHandle}>

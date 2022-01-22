@@ -10,12 +10,21 @@ import { BiArrowBack } from "react-icons/bi";
 export default function Edit() {
   const { user } = useContext(AuthContext);
   const [authorized, setAuthorized] = useState(true);
+  const [allProduct, setAllProduct] = useState([]);
+  const [allCustomer, setAllCustomer] = useState([]);
+  //TODO: Auto fetchAPI
   useEffect(() => {
     window.scrollTo(0, 0);
     const fetch = async () => {
       const res1 = await axios.post("http://localhost:5000/auth/admin", {
         token: user.token,
       });
+
+      const res2 = await axios.get("http://localhost:5000/product/all");
+      setAllProduct(res2.data);
+
+      const res3 = await axios.get("http://localhost:5000/manage/customer");
+      setAllCustomer(res3.data);
       //   console.log(res);
       if (res1.data.logged) {
         setAuthorized(true);
@@ -26,7 +35,7 @@ export default function Edit() {
     fetch();
   }, [user.token]);
 
-  //Create Product
+  //TODO: Create Product function
   const [idProduct, setIdProduct] = useState("");
   const [nameProduct, setNameProduct] = useState("");
   const [priceProduct, setPriceProduct] = useState("");
@@ -35,8 +44,7 @@ export default function Edit() {
   const [typeProduct, setTypeProduct] = useState("");
   const [tagProduct, setTagProduct] = useState("");
 
-  //Create function
-  //Must be parse to JSON after push to server
+  //FIXME: Must be parse to JSON after push to server
   const createHandle = async () => {
     try {
       const res = await axios.post("http://localhost:5000/manage/product/add", {
@@ -60,11 +68,10 @@ export default function Edit() {
     }
   };
 
-  //Upload Images
+  //TODO: Upload Images function
   const [idProductUpload, setIdProductUpload] = useState("");
   const [imageProductUpload, setImageProductUpload] = useState({});
 
-  //Upload function
   const uploadHandle = async () => {
     try {
       const res = await axios.post(
@@ -82,10 +89,9 @@ export default function Edit() {
     }
   };
 
-  //Delete Product
+  //TODO: Delete Product function
   const [idProductDelete, setIdProductDelete] = useState("");
 
-  //Delete function
   const deleteHandle = async () => {
     try {
       const res = await axios.delete(
@@ -99,10 +105,10 @@ export default function Edit() {
     }
   };
 
-  //Update Customer
+  //TODO: Update Customer function
   const [roleCustomer, setRoleCustomer] = useState("");
   const [usernameCustomer, setUsernameCustomer] = useState("");
-  //Update Customer function
+
   const updateCustomerHandle = async () => {
     try {
       const response = await axios.patch(
@@ -140,54 +146,6 @@ export default function Edit() {
     },
   ];
 
-  //TODO: Update Order function
-  /*const [idOrderUpdate, setIdOrderUpdate] = useState("");
-  const [idStaffOrderUpdate, setIdStaffOrderUpdate] = useState("");
-  const [idProductOrderUpdate, setIdProductOrderUpdate] = useState("");
-  const [quantityOrderUpdate, setQuantityOrderUpdate] = useState("");
-  const [statusOrderUpdate, setStatusOrderUpdate] = useState("");
-
-  const updateOrderHandle = async () => {
-    const arrayOrder = [
-      idOrderUpdate,
-      idStaffOrderUpdate,
-      idProductOrderUpdate,
-      quantityOrderUpdate,
-      statusOrderUpdate,
-    ];
-    var newArrayOrder = [];
-    for (let i = 0; i < arrayOrder.length; i++) {
-      if (arrayOrder[i] !== "") {
-        newArrayOrder.push(arrayOrder[i]);
-      }
-    }
-    if (newArrayOrder.length === 5) {
-      try {
-        const res = await axios.patch(
-          `http://localhost:5000/manage/order/updateonly/${idOrderUpdate}`,
-          { id_staff: idStaffOrderUpdate, status: statusOrderUpdate }
-        );
-        await axios.patch(
-          `http://localhost:5000/manage/order/details/updateonly/${idOrderUpdate}`,
-          { MSHH: idProductOrderUpdate, SoLuong: quantityOrderUpdate }
-        );
-        alert(res.data);
-      } catch (error) {
-        console.log(error);
-      }
-    } else {
-      try {
-        const res = await axios.patch(
-          `http://localhost:5000/manage/order/updateonly/${idOrderUpdate}`,
-          { status: statusOrderUpdate }
-        );
-        alert(res.data);
-      } catch (error) {
-        console.log(error);
-      }
-    }
-  };
-*/
   if (!authorized) {
     // alert("You are not authorized !");
     return <Redirect to="/sign-in" />;
@@ -345,13 +303,21 @@ export default function Edit() {
               <form className="form-section">
                 <div className="form-block">
                   <label for="name">Product ID*</label>
-                  <input
-                    type="text"
-                    id="name"
-                    placeholder="Product ID"
+                  <select
                     className="form-input"
+                    value={idProductUpload}
                     onChange={(e) => setIdProductUpload(e.target.value)}
-                  />
+                  >
+                    {allProduct.map((data, index) => {
+                      return (
+                        <>
+                          <option value={data.MSHH}>
+                            {index} - {data.MSHH.toUpperCase()}
+                          </option>
+                        </>
+                      );
+                    })}
+                  </select>
                 </div>
                 <div className="form-block">
                   <div
@@ -386,13 +352,21 @@ export default function Edit() {
               <form className="form-section">
                 <div className="form-block">
                   <label for="name">Product ID*</label>
-                  <input
-                    type="text"
-                    id="name"
-                    placeholder="Product ID"
+                  <select
                     className="form-input"
+                    value={idProductDelete}
                     onChange={(e) => setIdProductDelete(e.target.value)}
-                  />
+                  >
+                    {allProduct.map((data, index) => {
+                      return (
+                        <>
+                          <option value={data.MSHH}>
+                            {index} - {data.MSHH.toUpperCase()}
+                          </option>
+                        </>
+                      );
+                    })}
+                  </select>
                 </div>
                 <div className="form-flex__btn">
                   <button className="btn" onClick={deleteHandle}>
@@ -405,13 +379,21 @@ export default function Edit() {
               <form className="form-section">
                 <div className="form-block">
                   <label for="email">Username*</label>
-                  <input
-                    type="text"
-                    id="email"
+                  <select
                     className="form-input"
-                    placeholder="Username"
+                    value={usernameCustomer}
                     onChange={(e) => setUsernameCustomer(e.target.value)}
-                  />
+                  >
+                    {allCustomer.map((data, index) => {
+                      return (
+                        <>
+                          <option value={data.user}>
+                            {index} - {data.user.toUpperCase()}
+                          </option>
+                        </>
+                      );
+                    })}
+                  </select>
                 </div>
 
                 <div className="form-block">
@@ -430,66 +412,6 @@ export default function Edit() {
                   </button>
                 </div>
               </form>
-              {/*TODO:Order method */}
-              {/*<h2 className="check__method-title">Order</h2>
-              <form className="form-section">
-                <div className="form-block">
-                  <label for="name">Order ID*</label>
-                  <input
-                    type="text"
-                    id="name"
-                    placeholder="Order ID"
-                    className="form-input"
-                    onChange={(e) => setIdOrderUpdate(e.target.value)}
-                  />
-                </div>
-
-                <div className="form-block">
-                  <label for="adress">Staff ID</label>
-                  <input
-                    className="form-input"
-                    type="text"
-                    id="adress"
-                    placeholder="Staff ID"
-                    onChange={(e) => setIdStaffOrderUpdate(e.target.value)}
-                  />
-                </div>
-                <div className="form-block">
-                  <label for="adress">Product ID</label>
-                  <input
-                    className="form-input"
-                    type="text"
-                    id="adress"
-                    placeholder="Product ID"
-                    onChange={(e) => setIdProductOrderUpdate(e.target.value)}
-                  />
-                </div>
-                <div className="form-block">
-                  <label for="adress">Quantity</label>
-                  <input
-                    className="form-input"
-                    type="text"
-                    id="adress"
-                    placeholder="Quantity"
-                    onChange={(e) => setQuantityOrderUpdate(e.target.value)}
-                  />
-                </div>
-                <div className="form-block">
-                  <label for="adress">Status</label>
-                  <input
-                    className="form-input"
-                    type="text"
-                    id="adress"
-                    placeholder="Yet/Not yet"
-                    onChange={(e) => setStatusOrderUpdate(e.target.value)}
-                  />
-                </div>
-                <div className="form-flex__btn">
-                  <button className="btn" onClick={updateOrderHandle}>
-                    Update
-                  </button>
-                </div>
-                    </form>*/}
             </div>
           </div>
         </div>
