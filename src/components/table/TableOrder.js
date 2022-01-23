@@ -61,7 +61,7 @@ function TableOrder() {
                   >
                     <Link
                       to={{
-                        pathname: "/order-details",
+                        pathname: "/admin-order-details",
                         search: `?id_order=${data.id_order}&id=${data.id}`,
                       }}
                     >

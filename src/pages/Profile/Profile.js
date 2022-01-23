@@ -82,31 +82,41 @@ export default function Profile() {
               <div className="profile__section">
                 {orderData.map((data) => {
                   return (
-                    <div className="profile__order">
-                      <ul className="cart__total-list">
-                        <li className="cart__total-item">
-                          <p className="cart__total-item-text">ID Order: </p>
-                          <p className="">#{data.id_order}</p>
-                        </li>
-                        <li className="cart__total-item">
-                          <p className="cart__total-item-text">ID Staff: </p>
-                          <p className="">{data.id_staff}</p>
-                        </li>
-                        <li className="cart__total-item">
-                          <p className="cart__total-item-text">Created At: </p>
-                          <p className="">
-                            {new Date(data.created_at).toDateString()}
-                          </p>
-                        </li>
+                    <Link
+                      to={{
+                        pathname: "/order-details",
+                        search: `?id_order=${data.id_order}&id=${data.id}`,
+                      }}
+                      className="profile__link"
+                    >
+                      <div className="profile__order">
+                        <ul className="cart__total-list">
+                          <li className="cart__total-item">
+                            <p className="cart__total-item-text">ID Order: </p>
+                            <p className="">#{data.id_order}</p>
+                          </li>
+                          <li className="cart__total-item">
+                            <p className="cart__total-item-text">ID Staff: </p>
+                            <p className="">{data.id_staff}</p>
+                          </li>
+                          <li className="cart__total-item">
+                            <p className="cart__total-item-text">
+                              Created At:{" "}
+                            </p>
+                            <p className="">
+                              {new Date(data.created_at).toDateString()}
+                            </p>
+                          </li>
 
-                        <li className="cart__total-item">
-                          <p className="cart__total-item-text">Status: </p>
-                          <p className="cart__total-item-value">
-                            {data.status}
-                          </p>
-                        </li>
-                      </ul>
-                    </div>
+                          <li className="cart__total-item">
+                            <p className="cart__total-item-text">Status: </p>
+                            <p className="cart__total-item-value">
+                              {data.status}
+                            </p>
+                          </li>
+                        </ul>
+                      </div>
+                    </Link>
                   );
                 })}
               </div>

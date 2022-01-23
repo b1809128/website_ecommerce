@@ -32,6 +32,10 @@
   cursor: pointer;
 }
 
+.profile__link{
+  text-decoration: none;
+}
+
 .profile__order:hover {
   /* background-color: rgba(255, 0, 0, 0.25); */
   animation-name: example;
