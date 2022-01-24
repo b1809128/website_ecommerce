@@ -52,7 +52,7 @@ function TableCustomer() {
                       margin: "10px 0",
                     }}
                   >
-                    <Link to="/edit">
+                    <Link to="/admin-edit">
                       <FaEdit
                         style={{
                           color: "#28a745",

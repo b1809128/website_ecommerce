@@ -102,7 +102,7 @@ function Admin() {
             <div className="admin__item-lg">
               <div className="admin__header">
                 <h1 className="admin__title">PRODUCT</h1>
-                <Link to="/edit" className="link">
+                <Link to="/admin-edit" className="link">
                   <FaEdit
                     style={{
                       color: "#28a745",

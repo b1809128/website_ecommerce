@@ -7,6 +7,7 @@ import "../OrderDetails/orderdetails.css";
 import "./Profile.css";
 import React, { useEffect, useContext, useState } from "react";
 import axios from "axios";
+import { FaEdit } from "react-icons/fa";
 export default function Profile() {
   const { user } = useContext(AuthContext);
   const [authorized, setAuthorized] = useState(true);
@@ -49,7 +50,16 @@ export default function Profile() {
           <LocationBar />
           <div className="order-details__row">
             <div className="profile__total">
-              <h2 className="cart__total-title">Customer Information</h2>
+              <div className="profile__header">
+                <h2 className="cart__total-title">Customer Information</h2>
+                <Link to="/edit" className="link">
+                  <FaEdit
+                    style={{
+                      color: "#28a745",
+                    }}
+                  />
+                </Link>
+              </div>
               {customerData.map((data) => {
                 return (
                   <ul className="cart__total-list">

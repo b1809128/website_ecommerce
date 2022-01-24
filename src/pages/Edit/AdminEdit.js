@@ -7,7 +7,7 @@ import "../CheckOut/checkout.css";
 import "./edit.css";
 import { AiOutlineCopy } from "react-icons/ai";
 import { BiArrowBack } from "react-icons/bi";
-export default function Edit() {
+export default function AdminEdit() {
   const { user } = useContext(AuthContext);
   const [authorized, setAuthorized] = useState(true);
   const [allProduct, setAllProduct] = useState([]);
@@ -107,14 +107,13 @@ export default function Edit() {
 
   //TODO: Update Customer function
   const [roleCustomer, setRoleCustomer] = useState("");
-  const [usernameCustomer, setUsernameCustomer] = useState("");
+  const [idCustomer, setIdCustomer] = useState("");
 
   const updateCustomerHandle = async () => {
     try {
       const response = await axios.patch(
-        `http://localhost:5000/manage/customer/updateonly/${usernameCustomer}`,
+        `http://localhost:5000/manage/customer/updateonly/${idCustomer}`,
         {
-          user: usernameCustomer,
           role: roleCustomer,
         }
       );
@@ -381,13 +380,13 @@ export default function Edit() {
                   <label for="email">Username*</label>
                   <select
                     className="form-input"
-                    value={usernameCustomer}
-                    onChange={(e) => setUsernameCustomer(e.target.value)}
+                    value={idCustomer}
+                    onChange={(e) => setIdCustomer(e.target.value)}
                   >
                     {allCustomer.map((data, index) => {
                       return (
                         <>
-                          <option value={data.user}>
+                          <option value={data.id}>
                             {index} - {data.user.toUpperCase()}
                           </option>
                         </>
