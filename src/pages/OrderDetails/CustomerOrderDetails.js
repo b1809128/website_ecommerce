@@ -1,8 +1,8 @@
 /* eslint-disable jsx-a11y/img-redundant-alt */
-import { Link, useLocation, Redirect } from "react-router-dom";
-import LocationBar from "../../components/bar/locationbar/LocationBar";
 import "../Cart/cart.css";
 import "./orderdetails.css";
+import { Link, useLocation, Redirect } from "react-router-dom";
+import LocationBar from "../../components/bar/locationbar/LocationBar";
 import React, { useEffect, useState, useContext } from "react";
 import axios from "axios";
 import { AuthContext } from "../../context/AuthContext";
@@ -14,23 +14,20 @@ export default function AdminOrderDetails() {
   const [propsData, setPropsData] = useState([]);
   const [orderData, setOrderData] = useState([]);
   const [customerData, setCustomerData] = useState([]);
-
   const { user } = useContext(AuthContext);
   const [authorized, setAuthorized] = useState(true);
+
   //TODO: get id customer
   useEffect(() => {
     window.scrollTo(0, 0);
-    const fetch = async () => {
+    const fetchAPI = async () => {
       const response = await axios.post("http://localhost:5000/auth/profile", {
         token: user.token,
       });
-      //   console.log(res);
       if (response.data.logged) {
         setAuthorized(true);
-        // setAuthText(res.data.message);
       } else {
         setAuthorized(false);
-        // setAuthText(res.data.message);
       }
       const result = await axios.get(
         `http://localhost:5000/manage/order/details/${idOrderQuery}`
@@ -45,12 +42,13 @@ export default function AdminOrderDetails() {
       setOrderData(result2.data);
       setCustomerData(result3.data);
     };
-    fetch();
+    fetchAPI();
   }, [idCustomerQuery, idOrderQuery, user.token]);
-  var s = 0;
+
+  //Total Price variable
+  var total = 0;
 
   if (!authorized) {
-    // alert("You are not authorized !");
     return <Redirect to="/sign-in" />;
   }
 
@@ -69,7 +67,7 @@ export default function AdminOrderDetails() {
             </ul>
           </div>
           {propsData.map((data) => {
-            s += data.Gia * data.SoLuong;
+            total += data.Gia * data.SoLuong;
             return (
               <div className="row">
                 <ul className="cart__heading">
@@ -128,7 +126,7 @@ export default function AdminOrderDetails() {
                     <li className="cart__total-item">
                       <p className="cart__total-item-text">Total: </p>
                       <p className="">
-                        {new Intl.NumberFormat().format(s)} VND
+                        {new Intl.NumberFormat().format(total)} VND
                       </p>
                     </li>
                   </ul>

@@ -10,8 +10,8 @@
   color: #333;
 }
 
-@media screen and (max-width:768px) {
-  .product{
+@media screen and (max-width: 768px) {
+  .product {
     width: 100%;
     box-shadow: none;
   }

@@ -26,8 +26,8 @@
   width: 100%;
 }
 
-.order-details__form-flex__btn{
-    display: flex;
-    width: 100%;
-    justify-content: center;
+.order-details__form-flex__btn {
+  display: flex;
+  width: 100%;
+  justify-content: center;
 }

@@ -11,8 +11,6 @@ const ImageSlider = ({ slides }) => {
     setCurrent(current === length - 1 ? 0 : current + 1);
   };
 
-  //   setInterval(nextSlide,3000)
-
   const prevSlide = () => {
     setCurrent(current === 0 ? length - 1 : current - 1);
   };

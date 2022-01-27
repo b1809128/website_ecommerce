@@ -1,20 +1,21 @@
+import "./edit.css";
+import "../CheckOut/checkout.css";
 import React, { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../context/AuthContext";
 import axios from "axios";
 import { Redirect, Link, useHistory } from "react-router-dom";
 import LocationBar from "../../components/bar/locationbar/LocationBar";
-import "../CheckOut/checkout.css";
-import "./edit.css";
 import { BiArrowBack } from "react-icons/bi";
 import crypto from "crypto";
 export default function CustomerEdit() {
   const { user, dispatch } = useContext(AuthContext);
   const [authorized, setAuthorized] = useState(true);
   const history = useHistory();
+
   //TODO: Auto fetchAPI
   useEffect(() => {
     window.scrollTo(0, 0);
-    const fetch = async () => {
+    const fetchAPI = async () => {
       const res1 = await axios.post("http://localhost:5000/auth/profile", {
         token: user.token,
       });
@@ -24,7 +25,7 @@ export default function CustomerEdit() {
         setAuthorized(false);
       }
     };
-    fetch();
+    fetchAPI();
   }, [user.token]);
 
   //TODO: Create Product function
@@ -75,7 +76,6 @@ export default function CustomerEdit() {
   };
 
   //TODO: Delete Product function
-
   const deleteHandle = async () => {
     try {
       alert(
@@ -94,7 +94,6 @@ export default function CustomerEdit() {
   };
 
   if (!authorized) {
-    // alert("You are not authorized !");
     return <Redirect to="/sign-in" />;
   }
   return (

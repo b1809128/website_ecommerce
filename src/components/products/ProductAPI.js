@@ -3,12 +3,11 @@ import { FaBookmark, FaCartPlus, FaPen } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
 export default function ProductAPI({ data }) {
-  // console.log(data);
-  // console.log(data.map(db=>{return db.MSHH}))
-  const test = data.map((db) => {
+  //Map image data in PATH array choose image[0]
+  const imageMain = data.map((db) => {
     return JSON.parse(db.PATH);
   });
-  // console.log(test[0][0]);
+
   return (
     <>
       {data.map((data, index) => (
@@ -16,7 +15,7 @@ export default function ProductAPI({ data }) {
           <div className="product-image">
             <img
               alt="productimage"
-              src={test[index][0]}
+              src={imageMain[index][0]}
               className="product-image__img"
             />
             <div className="product-image__modal">
@@ -34,7 +33,9 @@ export default function ProductAPI({ data }) {
             </div>
           </div>
           <p className="product-name link">{data.TenHH}</p>
-          <p className="product-price">{new Intl.NumberFormat().format(data.Gia)} VND</p>
+          <p className="product-price">
+            {new Intl.NumberFormat().format(data.Gia)} VND
+          </p>
           <button className="btn">
             <Link
               to={"/product-details-api/" + data.MSHH}

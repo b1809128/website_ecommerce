@@ -1,6 +1,6 @@
 .slider {
   position: relative;
-  
+
   display: flex;
   justify-content: center;
   align-items: center;
@@ -48,7 +48,7 @@
   transform: scale(1.08);
 }
 
-@media screen and (max-width:768px){
+@media screen and (max-width: 768px) {
   .slider {
     display: none;
   }

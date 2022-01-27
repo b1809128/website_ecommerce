@@ -1,6 +1,6 @@
+import "./rangebar.css";
 import { FaSort, FaSearch } from "react-icons/fa";
 import { Link } from "react-router-dom";
-import "./rangebar.css";
 
 export default function RangeBar({ data }) {
   const values = [
@@ -10,6 +10,7 @@ export default function RangeBar({ data }) {
     "Tên A-Z",
     "Tên Z-A",
   ];
+  //Choose the value
   var name = values[0];
   if (data === "PRICE_ASC") {
     name = values[1];

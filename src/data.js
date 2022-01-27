@@ -1,6 +1,3 @@
-//Comment Data
-//Test git
-//URL git new
 export const productsData = [
   {
     id: 1,
@@ -114,7 +111,8 @@ export const productsData = [
     details: {
       description: "This is the 7.59' and 6.73' screen 120Hz in the world.",
       specifications: {
-        screen: "Chính: Dynamic AMOLED, Phụ: Super AMOLEDChính 7.59' & Phụ 6.23' Full HD+",
+        screen:
+          "Chính: Dynamic AMOLED, Phụ: Super AMOLEDChính 7.59' & Phụ 6.23' Full HD+",
         OperatingSystem: "Android 11",
         CPU: "SnapDragron 865+",
         ROM: "256GB",
@@ -234,8 +232,7 @@ export const productsData = [
     details: {
       description: "This is the 6.7' screen 60Hz in the world.",
       specifications: {
-        screen:
-          "15.6( 1920 x 1080 ) Full HD IPS 144Hz",
+        screen: "15.6( 1920 x 1080 ) Full HD IPS 144Hz",
         OperatingSystem: "Windows 10 Home SL",
         ROM: "512GB SSD",
         RAM: "32GB",

@@ -1,13 +1,11 @@
-.slide-product-title{
-    color: #eb0028;
-    font-family: monospace;
-    text-decoration:underline;
+.slide-product-title {
+  color: #eb0028;
+  font-family: monospace;
+  text-decoration: underline;
 }
 
-
-@media screen and (max-width:960px){
-    .slide-product{
-        display:none;
-    }
-    
+@media screen and (max-width: 960px) {
+  .slide-product {
+    display: none;
+  }
 }

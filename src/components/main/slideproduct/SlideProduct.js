@@ -7,6 +7,7 @@ import "./slideproduct.css";
 import { slideProductData } from "./slideProductData";
 
 export default function SlideProduct() {
+  //Slick-Carousel Settings to slide Product Components
   const settings = {
     dots: true,
     infinite: false,
@@ -43,6 +44,7 @@ export default function SlideProduct() {
       },
     ],
   };
+
   return (
     <div className="slide-product">
       <h2 className="slide-product-title">Others Product</h2>

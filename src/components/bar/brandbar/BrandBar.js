@@ -13,17 +13,20 @@ export default function BrandBar() {
           </Link>
         </li>
         <li className="brand-bar-item">
-          <FaMobileAlt className="brand-bar-icon" /> <Link to="/details?brand=SS" className="link">
+          <FaMobileAlt className="brand-bar-icon" />{" "}
+          <Link to="/details?brand=SS" className="link">
             Samsung
           </Link>
         </li>
         <li className="brand-bar-item">
-          <FaMobileAlt className="brand-bar-icon" /> <Link to="/details?brand=AS" className="link">
+          <FaMobileAlt className="brand-bar-icon" />{" "}
+          <Link to="/details?brand=AS" className="link">
             Asus
           </Link>
         </li>
         <li className="brand-bar-item">
-          <FaMobileAlt className="brand-bar-icon" /> <Link to="/details?brand=OP" className="link">
+          <FaMobileAlt className="brand-bar-icon" />{" "}
+          <Link to="/details?brand=OP" className="link">
             OPPO
           </Link>
         </li>

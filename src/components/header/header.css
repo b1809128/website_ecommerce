@@ -60,10 +60,9 @@
   border-bottom: 2px solid #eb0028;
 }
 
-
 .none-border:hover {
-    border-bottom: none;
-  }
+  border-bottom: none;
+}
 .nav-item:hover {
   border-bottom: 2px solid #eb0028;
 }

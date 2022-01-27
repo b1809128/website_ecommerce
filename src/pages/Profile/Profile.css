@@ -19,7 +19,7 @@
   cursor: pointer;
 }
 
-.profile__total:hover{
+.profile__total:hover {
   border: 3px solid #eb0028;
 }
 
@@ -32,14 +32,14 @@
   cursor: pointer;
 }
 
-.profile__link{
+.profile__link {
   text-decoration: none;
 }
 
-.profile__header{
+.profile__header {
   display: flex;
   align-items: center;
-  justify-content:space-between;
+  justify-content: space-between;
 }
 
 .profile__order:hover {

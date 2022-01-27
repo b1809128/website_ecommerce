@@ -2,6 +2,7 @@ import "./locationbar.css";
 import { FaAngleRight } from "react-icons/fa";
 import { Link } from "react-router-dom";
 export default function LocationBar() {
+  //Spit / URL and get location
   const location = window.location.pathname.split("/");
   return (
     <div className="location-bar">

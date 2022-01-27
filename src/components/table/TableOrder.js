@@ -1,14 +1,14 @@
+import "./table.css";
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { MdDeleteForever } from "react-icons/md";
 import { FaEdit } from "react-icons/fa";
-import "./table.css";
 import { Link } from "react-router-dom";
 function TableOrder() {
   const [dataProps, setDataProps] = useState([]);
   const [idOrder, setIdOrder] = useState(0);
-
-  // console.log(idOrder);
+  
+  //Auto load after delete order by id
   useEffect(() => {
     const delOrder = async (idOrder) => {
       if (idOrder === 0) {
@@ -25,6 +25,7 @@ function TableOrder() {
     };
     delOrder(idOrder);
   });
+
   return (
     <>
       <table className="table">

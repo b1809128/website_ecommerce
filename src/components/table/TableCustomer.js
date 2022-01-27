@@ -1,13 +1,15 @@
-import React, { useState, useEffect } from "react";
 import "./table.css";
+import React, { useState, useEffect } from "react";
 import { MdDeleteForever } from "react-icons/md";
 import { FaEdit } from "react-icons/fa";
 import axios from "axios";
 import { Link } from "react-router-dom";
+
 function TableCustomer() {
-  // console.log(props);
   const [idCustomers, setIdCustomer] = useState(0);
   const [dataProps, setDataProps] = useState([]);
+
+  //Auto load after delete customer by id
   useEffect(() => {
     const delCustomer = async (idCustomers) => {
       if (idCustomers === 0) {

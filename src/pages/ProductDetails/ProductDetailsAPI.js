@@ -12,7 +12,7 @@ export default function ProductDetailsAPI() {
   //Axios get Data
   const [product, setProduct] = useState([]);
   useEffect(() => {
-    window.scrollTo(0,0)
+    window.scrollTo(0, 0);
     const getAll = async () => {
       const response = await axios.get(
         "http://localhost:5000/product/details/" + id
@@ -54,7 +54,6 @@ export default function ProductDetailsAPI() {
                               />
                             </>
                           );
-                          // console.log(data)
                         })}
                       </div>
                       <div className="product-details-image__right">

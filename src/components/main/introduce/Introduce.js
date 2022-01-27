@@ -2,15 +2,16 @@ import React, { useState } from "react";
 import "./introduce.css";
 import { introduceData } from "./introduceData";
 import { FaAngleLeft, FaAngleRight } from "react-icons/fa";
+
 export default function Introduce({ data }) {
   const [current, setCurrent] = useState(0);
   const length = data.length;
 
+  //Next, Previous Slide function
   const nextSlide = () => {
     setCurrent(current === length - 1 ? 0 : current + 1);
   };
 
-  // setInterval(nextSlide,10000)
 
   const prevSlide = () => {
     setCurrent(current === 0 ? length - 1 : current - 1);
@@ -19,6 +20,7 @@ export default function Introduce({ data }) {
   if (!Array.isArray(data) || data.length <= 0) {
     return null;
   }
+
   return (
     <div id="services" className="introduce-wrapper">
       <FaAngleLeft className="push-left" onClick={prevSlide} />
@@ -32,7 +34,9 @@ export default function Introduce({ data }) {
         return (
           <div
             className={
-              index === current ? "introduce-company introduce-company__active" : "introduce-company"
+              index === current
+                ? "introduce-company introduce-company__active"
+                : "introduce-company"
             }
             key={index}
           >

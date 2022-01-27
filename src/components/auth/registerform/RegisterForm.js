@@ -2,14 +2,16 @@ import "./register.css";
 import { FaUserAlt, FaLock } from "react-icons/fa";
 import { TiDelete } from "react-icons/ti";
 import { Link, useHistory } from "react-router-dom";
-// import { Redirect } from "react-router";
 import { useState } from "react";
 import axios from "axios";
+
 export default function RegisterForm() {
   const [userReg, setUserReg] = useState("");
   const [passwordReg, setPasswordReg] = useState("");
   const [stateUser, setStateUser] = useState(false);
   const [statePassword, setStatePassword] = useState(false);
+
+  //Register function
   const register = async (e) => {
     e.preventDefault();
     try {
@@ -17,8 +19,7 @@ export default function RegisterForm() {
         setStateUser(true);
       } else if (!passwordReg) {
         setStatePassword(true);
-      }
-      else {
+      } else {
         await axios.post("http://localhost:5000/auth/register", {
           user: userReg,
           password: passwordReg,

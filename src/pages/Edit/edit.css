@@ -5,14 +5,14 @@
   margin: 12px 0;
 }
 
-.textarea-sm{
-  height:100px;
+.textarea-sm {
+  height: 100px;
 }
-.textarea-lg{
-  height:400px;
+.textarea-lg {
+  height: 400px;
 }
 
-.relative{
+.relative {
   position: relative;
 }
 
@@ -25,6 +25,5 @@
   cursor: pointer;
   outline: none;
   border: none;
-  background-color:#fff;
+  background-color: #fff;
 }
-

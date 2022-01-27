@@ -1,13 +1,12 @@
-import React, { useEffect, useState } from "react";
-import Aos from "aos";
+import "./details.css";
 import "aos/dist/aos.css";
+import Aos from "aos";
+import React, { useEffect, useState } from "react";
 import RangeBar from "../../components/bar/rangebar/RangeBar";
 import LocationBar from "../../components/bar/locationbar/LocationBar";
-import "./details.css";
 import BrandBar from "../../components/bar/brandbar/BrandBar";
 import SlideProduct from "../../components/main/slideproduct/SlideProduct";
 import ProductAPI from "../../components/products/ProductAPI";
-
 import axios from "axios";
 import { useLocation } from "react-router-dom";
 //Import API Dynamic
@@ -15,12 +14,6 @@ import { useLocation } from "react-router-dom";
  import { productsData } from "../../data";
 */
 export default function Details() {
-  useEffect(() => {
-    window.scrollTo(0,0)
-    Aos.init({
-      duration: 2000,
-    });
-  }, []);
   //Query Parameters url?abc=1
   const query = new URLSearchParams(useLocation().search);
   const sortBy = query.get("sortBy");
@@ -28,8 +21,15 @@ export default function Details() {
   //Fetch API
   const [product, setProduct] = useState([]);
   const [brand, setBrand] = useState([]);
+
   useEffect(() => {
-    const fetch = async () => {
+    window.scrollTo(0, 0);
+    Aos.init({
+      duration: 2000,
+    });
+
+    //fetchAPI
+    const fetchAPI = async () => {
       const allProducts = await axios.get(
         `http://localhost:5000/product/all?sortBy=${sortBy}`
       );
@@ -39,14 +39,14 @@ export default function Details() {
       setProduct(allProducts.data);
       setBrand(brandFilter.data);
     };
-    fetch();
+    fetchAPI();
   }, [brandID, sortBy]);
 
+  //Check Exist to show details by query Brand ID
   var flag = false;
   if (brandID) {
     flag = true;
   }
-  // console.log(flag)
 
   return (
     <div className="details">

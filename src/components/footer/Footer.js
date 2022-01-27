@@ -1,20 +1,22 @@
-import React, { useEffect } from "react";
-import Aos from "aos";
+import "./footer.css";
 import "aos/dist/aos.css";
+import Aos from "aos";
+import React, { useEffect } from "react";
 import {
   FaFacebookSquare,
   FaInstagram,
   FaYoutube,
   FaGoogle,
 } from "react-icons/fa";
-import {a} from "react-router-dom";
-import "./footer.css";
+
 function Footer() {
+  //To get Animation with Aos library
   useEffect(() => {
     Aos.init({
       duration: 2000,
     });
   }, []);
+
   return (
     <div className="footer-container" id="footer">
       <div className="footer-first-content">
@@ -41,37 +43,37 @@ function Footer() {
           </form>
         </div>
       </div>
-      <div className='footer-links'>
-        <div className='footer-link-wrapper'>
-          <div className='footer-link-items'>
+      <div className="footer-links">
+        <div className="footer-link-wrapper">
+          <div className="footer-link-items">
             <h2>About Us</h2>
-            <a href='/sign-up'>How it works</a>
-            <a href='/'>Careers</a>
-            <a href='/'>Investors</a>
-            <a href='/'>Terms of Service</a>
+            <a href="/sign-up">How it works</a>
+            <a href="/">Careers</a>
+            <a href="/">Investors</a>
+            <a href="/">Terms of Service</a>
           </div>
-          <div className='footer-link-items'>
+          <div className="footer-link-items">
             <h2>Contact Us</h2>
-            <a href='/'>Contact</a>
-            <a href='/'>Support</a>
-            <a href='/'>Destinations</a>
-            <a href='/'>Sponsorships</a>
+            <a href="/">Contact</a>
+            <a href="/">Support</a>
+            <a href="/">Destinations</a>
+            <a href="/">Sponsorships</a>
           </div>
         </div>
-        <div className='footer-link-wrapper'>
-          <div className='footer-link-items'>
+        <div className="footer-link-wrapper">
+          <div className="footer-link-items">
             <h2>Videos</h2>
-            <a href='/'>Submit Video</a>
-            <a href='/'>Ambassadors</a>
-            <a href='/'>Agency</a>
-            <a href='/'>Influencer</a>
+            <a href="/">Submit Video</a>
+            <a href="/">Ambassadors</a>
+            <a href="/">Agency</a>
+            <a href="/">Influencer</a>
           </div>
-          <div className='footer-link-items'>
+          <div className="footer-link-items">
             <h2>Social Media</h2>
-            <a href='/'>Instagram</a>
-            <a href='/'>Facebook</a>
-            <a href='/'>Youtube</a>
-            <a href='/'>Twitter</a>
+            <a href="/">Instagram</a>
+            <a href="/">Facebook</a>
+            <a href="/">Youtube</a>
+            <a href="/">Twitter</a>
           </div>
         </div>
       </div>

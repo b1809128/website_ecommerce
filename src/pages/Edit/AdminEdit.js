@@ -1,10 +1,10 @@
+import "./edit.css";
+import "../CheckOut/checkout.css";
 import React, { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../context/AuthContext";
 import axios from "axios";
 import { Redirect, Link } from "react-router-dom";
 import LocationBar from "../../components/bar/locationbar/LocationBar";
-import "../CheckOut/checkout.css";
-import "./edit.css";
 import { AiOutlineCopy } from "react-icons/ai";
 import { BiArrowBack } from "react-icons/bi";
 export default function AdminEdit() {
@@ -15,7 +15,7 @@ export default function AdminEdit() {
   //TODO: Auto fetchAPI
   useEffect(() => {
     window.scrollTo(0, 0);
-    const fetch = async () => {
+    const fetchAPI = async () => {
       const res1 = await axios.post("http://localhost:5000/auth/admin", {
         token: user.token,
       });
@@ -25,14 +25,14 @@ export default function AdminEdit() {
 
       const res3 = await axios.get("http://localhost:5000/manage/customer");
       setAllCustomer(res3.data);
-      //   console.log(res);
+
       if (res1.data.logged) {
         setAuthorized(true);
       } else {
         setAuthorized(false);
       }
     };
-    fetch();
+    fetchAPI();
   }, [user.token]);
 
   //TODO: Create Product function
@@ -146,9 +146,9 @@ export default function AdminEdit() {
   ];
 
   if (!authorized) {
-    // alert("You are not authorized !");
     return <Redirect to="/sign-in" />;
   }
+
   return (
     <div className="check">
       <div className="check-section">

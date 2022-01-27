@@ -1,3 +1,4 @@
+import "./header.css";
 import React, { useState, useEffect, useContext } from "react";
 import { Link, useHistory } from "react-router-dom";
 import {
@@ -9,12 +10,15 @@ import {
   FaUserCheck,
 } from "react-icons/fa";
 import { FiLogOut } from "react-icons/fi";
-import "./header.css";
 import axios from "axios";
 import { AuthContext } from "../../context/AuthContext";
 
 export default function Header() {
   const [scrollTop, setScrollTop] = useState(false);
+  const [click, setClick] = useState(false);
+  const [button, setButton] = useState(true);
+
+  //Change background color when scrolling
   const changeBackgroundColor = () => {
     if (window.scrollY > 80) {
       setScrollTop(true);
@@ -23,11 +27,10 @@ export default function Header() {
     }
   };
 
+  //Window effect when scroll
   window.addEventListener("scroll", changeBackgroundColor);
 
-  const [click, setClick] = useState(false);
-  const [button, setButton] = useState(true);
-
+  //Onclick Handle function
   const handleClick = () => setClick(!click);
   const closeMobileMenu = () => setClick(false);
 
@@ -89,7 +92,11 @@ export default function Header() {
       <div className="navbar-container container">
         <div className="navbar-logo" onClick={closeMobileMenu}>
           <Link to="/">
-            <img alt="" src="/images/logo/logo.png" className="navbar-logo__image" />
+            <img
+              alt=""
+              src="/images/logo/logo.png"
+              className="navbar-logo__image"
+            />
           </Link>
         </div>
         <div className="menu-icon">

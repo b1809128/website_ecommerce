@@ -1,9 +1,9 @@
 import React from "react";
 import "./table.css";
 function TableProduct({ props }) {
-  //   console.log(props);
-  const test = props.map((data) => JSON.parse(data.PATH));
-  // console.log(test);
+  //Map image in array choose image[0]
+  const imageMain = props.map((data) => JSON.parse(data.PATH));
+
   return (
     <>
       <table className="table">
@@ -28,7 +28,7 @@ function TableProduct({ props }) {
                   <td>{data.TenHH}</td>
                   <td>
                     <img
-                      src={test[i][0]}
+                      src={imageMain[i][0]}
                       alt="product"
                       className="table__image"
                     />

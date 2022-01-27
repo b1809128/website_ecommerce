@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
-import { useLocation } from "react-router";
 import axios from "axios";
-
 import LocationBar from "../../components/bar/locationbar/LocationBar";
 import ReviewBar from "../../components/bar/reviewtextbar/ReviewBar";
 import "./productdetails.css";
@@ -15,12 +13,14 @@ export default function ProductDetails({ data }) {
 
   const [current, setCurrent] = useState(0);
 
-  //Axios get Data
-  const location = useLocation();
+  //write location
+  /*const location = useLocation();
   const path = location.pathname;
-  console.log("new path: " + path);
+  console.log("new path: " + path);*/
+
+  //Axios get Data
   useEffect(() => {
-    window.scrollTo(0,0)
+    window.scrollTo(0, 0);
     const getAll = async () => {
       const response = await axios.get("http://localhost:5000/product");
       console.log(response.data);

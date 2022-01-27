@@ -14,7 +14,6 @@ export default function Profile() {
 
   const [customerData, setCustomerData] = useState([]);
   const [orderData, setOrderData] = useState([]);
-  // console.log(user.result[0])
   //TODO: get id customer
   useEffect(() => {
     window.scrollTo(0, 0);

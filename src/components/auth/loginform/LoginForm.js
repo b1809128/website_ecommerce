@@ -6,6 +6,7 @@ import { useState, useContext } from "react";
 import axios from "axios";
 import crypto from "crypto";
 import { AuthContext } from "../../../context/AuthContext";
+
 export default function LoginForm() {
   //Can [ref,useRef] to no replace values after action
   const [userRef, setUserRef] = useState("");
@@ -21,7 +22,7 @@ export default function LoginForm() {
   //Context API
   const { dispatch } = useContext(AuthContext);
 
-  //Log In
+  //Log In function
   const signin = async (e) => {
     e.preventDefault();
     dispatch({ type: "LOGIN_START" });
@@ -41,19 +42,15 @@ export default function LoginForm() {
         } else if (res.data.wrongPassword) {
           setValidatePassword(true);
         } else {
-          // localStorage.setItem("userID", res.data.result[0].user);
           dispatch({ type: "LOGIN_SUCCESS", payload: res.data });
           history.push("/");
         }
-        // console.log(res);
       }
     } catch (error) {
       console.log(error);
       dispatch({ type: "LOGIN_FAILURE" });
     }
   };
-
-  // console.log(user)
 
   return (
     <div className="login-wrapper">

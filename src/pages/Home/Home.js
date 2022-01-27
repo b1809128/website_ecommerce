@@ -1,8 +1,7 @@
-import React, { useEffect } from "react";
-import Aos from "aos";
-import "aos/dist/aos.css";
-
 import "./home.css";
+import "aos/dist/aos.css";
+import Aos from "aos";
+import React, { useEffect } from "react";
 import IntroduceTop from "../../components/main/introducetop/IntroduceTop";
 import Info from "../../components/main/info/Info";
 import {
@@ -17,9 +16,10 @@ import BrandBar from "../../components/bar/brandbar/BrandBar";
 import Comment from "../../components/main/comment/Comment";
 import ProductNoneAPI from "../../components/products/ProductNoneAPI";
 import { productsData } from "../../data";
+
 export default function Home() {
   useEffect(() => {
-    window.scrollTo(0,0)
+    window.scrollTo(0, 0);
     Aos.init({
       duration: 2000,
     });
@@ -29,7 +29,7 @@ export default function Home() {
       <IntroduceTop />
       <div className="home-section">
         <div className="home__row">
-          <BrandBar/>
+          <BrandBar />
 
           <div id="categories" className="row">
             <Info {...infoDataOne} />
