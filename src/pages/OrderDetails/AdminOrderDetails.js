@@ -14,7 +14,6 @@ export default function AdminOrderDetails() {
   const [propsData, setPropsData] = useState([]);
   const [orderData, setOrderData] = useState([]);
   const [customerData, setCustomerData] = useState([]);
-
   const { user } = useContext(AuthContext);
   const [authorized, setAuthorized] = useState(true);
 
@@ -246,14 +245,13 @@ export default function AdminOrderDetails() {
               </div>
               <div className="order-details__form-block">
                 <label for="adress">Status</label>
-                <select
+                <input
                   className="order-details__form-input"
-                  value={statusOrderUpdate}
+                  type="text"
+                  id="adress"
+                  placeholder="Quantity"
                   onChange={(e) => setStatusOrderUpdate(e.target.value)}
-                >
-                  <option value="Completed">Completed</option>
-                  <option value="Not Yet">Not Yet</option>
-                </select>
+                />
               </div>
               <div className="order-details__form-flex__btn">
                 <button className="btn" onClick={updateOrderHandle}>
