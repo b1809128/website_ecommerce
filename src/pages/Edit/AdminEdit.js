@@ -7,6 +7,7 @@ import { Redirect, Link } from "react-router-dom";
 import LocationBar from "../../components/bar/locationbar/LocationBar";
 import { AiOutlineCopy } from "react-icons/ai";
 import { BiArrowBack } from "react-icons/bi";
+import FormProduct from "../../components/form/FormProduct";
 export default function AdminEdit() {
   const { user } = useContext(AuthContext);
   const [authorized, setAuthorized] = useState(true);
@@ -34,39 +35,6 @@ export default function AdminEdit() {
     };
     fetchAPI();
   }, [user.token]);
-
-  //TODO: Create Product function
-  const [idProduct, setIdProduct] = useState("");
-  const [nameProduct, setNameProduct] = useState("");
-  const [priceProduct, setPriceProduct] = useState("");
-  const [quantityProduct, setQuantityProduct] = useState("");
-  const [descProduct, setDescProduct] = useState("");
-  const [typeProduct, setTypeProduct] = useState("");
-  const [tagProduct, setTagProduct] = useState("");
-
-  //FIXME: Must be parse to JSON after push to server
-  const createHandle = async () => {
-    try {
-      const res = await axios.post("http://localhost:5000/manage/product/add", {
-        MSHH: idProduct,
-        TenHH: nameProduct,
-        Gia: priceProduct,
-        SoLuongHang: quantityProduct,
-        Mota: JSON.parse(descProduct),
-        MaLoaiHang: typeProduct,
-        tags: `'${tagProduct}'`,
-      });
-      await axios.post("http://localhost:5000/manage/image/upload", {
-        MSHH: idProduct,
-        PATH: JSON.parse(imageProductUpload),
-      });
-      if (res.data) {
-        alert(res.data);
-      }
-    } catch (error) {
-      console.log(error);
-    }
-  };
 
   //TODO: Upload Images function
   const [idProductUpload, setIdProductUpload] = useState("");
@@ -172,129 +140,7 @@ export default function AdminEdit() {
             <div className="check__form">
               {/*TODO: Product method */}
               <h2 className="check__form-title">Product</h2>
-              <form className="form-section">
-                <div className="form-block">
-                  <label for="name">Product ID*</label>
-                  <input
-                    type="text"
-                    id="name"
-                    placeholder="Product ID"
-                    className="form-input"
-                    onChange={(e) => setIdProduct(e.target.value)}
-                  />
-                </div>
-                <div className="form-block">
-                  <label for="name">Product Name*</label>
-                  <input
-                    type="text"
-                    id="name"
-                    placeholder="Product Name"
-                    className="form-input"
-                    onChange={(e) => setNameProduct(e.target.value)}
-                  />
-                </div>
-
-                <div className="form-block">
-                  <label for="email">Price*</label>
-                  <input
-                    type="text"
-                    id="price"
-                    className="form-input"
-                    placeholder="10.000.000 VND"
-                    onChange={(e) => setPriceProduct(e.target.value)}
-                  />
-                </div>
-
-                <div className="form-block">
-                  <label for="adress">Quantity*</label>
-                  <input
-                    className="form-input"
-                    type="text"
-                    id="quantity"
-                    placeholder="Quantity"
-                    onChange={(e) => setQuantityProduct(e.target.value)}
-                  />
-                </div>
-
-                <div className="form-block">
-                  <label for="type">Type*</label>
-                  <input
-                    className="form-input"
-                    type="text"
-                    id="type"
-                    placeholder="AP - APPLE"
-                    onChange={(e) => setTypeProduct(e.target.value)}
-                  />
-                </div>
-
-                <div className="form-block">
-                  <label for="phone">Tags*</label>
-                  <input
-                    type="text"
-                    id="tag"
-                    className="form-input"
-                    placeholder="Phone,Apple,New2022"
-                    onChange={(e) => setTagProduct(e.target.value)}
-                  />
-                </div>
-                <div className="form-block">
-                  <div
-                    className="relative"
-                    style={{ display: "flex", flexDirection: "column" }}
-                  >
-                    <label for="images">Images*</label>
-                    <textarea
-                      className="form-input textarea-sm "
-                      placeholder='Example: ["https://cdn.hoanghamobile.com/i/productlist/ts/Uploads/2021/09/15/image-removebg-preview-15.png"]'
-                      onChange={(e) => setImageProductUpload(e.target.value)}
-                    ></textarea>
-                    <button
-                      className="copy-btn"
-                      onClick={(e) => {
-                        e.preventDefault();
-                        navigator.clipboard.writeText(copyArray[0]);
-                      }}
-                    >
-                      <AiOutlineCopy />
-                    </button>
-                  </div>
-                </div>
-                <div className="form-block">
-                  <div
-                    className="relative"
-                    style={{ display: "flex", flexDirection: "column" }}
-                  >
-                    <label for="notes">Description</label>
-                    <textarea
-                      // className="textarea-sm"
-                      placeholder='Example: {                      
-                        "Brand": "Apple",
-                        "Type": "Phone",
-                        "Color": "white",
-                        ...
-                    }'
-                      onChange={(e) => setDescProduct(e.target.value)}
-                    ></textarea>
-                    <button
-                      className="copy-btn"
-                      onClick={(e) => {
-                        e.preventDefault();
-                        navigator.clipboard.writeText(
-                          JSON.stringify(copyArray[1], undefined, 2)
-                        );
-                      }}
-                    >
-                      <AiOutlineCopy />
-                    </button>
-                  </div>
-                </div>
-                <div className="form-flex__btn">
-                  <button className="btn" onClick={createHandle}>
-                    Create
-                  </button>
-                  <button className="btn">Update</button>
-                </div>
-              </form>
+              <FormProduct/>
             </div>
             <div className="check__method">
               {/*TODO:Upload method */}
@@ -311,7 +157,7 @@ export default function AdminEdit() {
                       return (
                         <>
                           <option value={data.MSHH}>
-                            {index} - {data.MSHH.toUpperCase()}
+                            {index+=1} - {data.MSHH.toUpperCase()}
                           </option>
                         </>
                       );
@@ -360,7 +206,7 @@ export default function AdminEdit() {
                       return (
                         <>
                           <option value={data.MSHH}>
-                            {index} - {data.MSHH.toUpperCase()}
+                            {index+=1} - {data.MSHH.toUpperCase()}
                           </option>
                         </>
                       );
@@ -387,7 +233,7 @@ export default function AdminEdit() {
                       return (
                         <>
                           <option value={data.id}>
-                            {index} - {data.user.toUpperCase()}
+                            {index+=1} - {data.user.toUpperCase()}
                           </option>
                         </>
                       );

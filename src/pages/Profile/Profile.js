@@ -86,8 +86,9 @@ export default function Profile() {
                 );
               })}
             </div>
+
             <div className="profile__form-section">
-              <h2 className="cart__total-title">Order List</h2>
+              <h2 className="profile__total-title">Order List</h2>
               <div className="profile__section">
                 {orderData.map((data) => {
                   return (

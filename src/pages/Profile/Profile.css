@@ -19,6 +19,15 @@
   cursor: pointer;
 }
 
+.profile__total-none{
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  border-radius: 6px;
+  padding: 10px;
+  cursor: pointer;
+}
+
 .profile__total:hover {
   border: 3px solid #eb0028;
 }
@@ -34,6 +43,13 @@
 
 .profile__link {
   text-decoration: none;
+}
+
+.profile__total-title{
+  color: #eb0028;
+  font-family: monospace;
+  text-decoration: underline;
+  margin-top: 10px;
 }
 
 .profile__header {
@@ -53,6 +69,6 @@
     background-color: #fff;
   }
   to {
-    background-color: rgba(255, 0, 0, 0.25);
+    background-color: rgba(255, 0, 0, 0.1);
   }
 }
