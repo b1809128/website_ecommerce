@@ -3,8 +3,6 @@ import React, { useState, useEffect } from "react";
 import { MdDeleteForever } from "react-icons/md";
 import { FaEdit } from "react-icons/fa";
 import axios from "axios";
-import { Link } from "react-router-dom";
-
 function TableCustomer() {
   const [idCustomers, setIdCustomer] = useState(0);
   const [dataProps, setDataProps] = useState([]);
@@ -54,13 +52,11 @@ function TableCustomer() {
                       margin: "10px 0",
                     }}
                   >
-                    <Link to="/admin-edit">
-                      <FaEdit
-                        style={{
-                          color: "#28a745",
-                        }}
-                      />
-                    </Link>
+                    <FaEdit
+                      style={{
+                        color: "#28a745",
+                      }}
+                    />
                     <MdDeleteForever
                       style={{
                         color: "#eb0028",

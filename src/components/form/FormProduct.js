@@ -62,8 +62,9 @@ export default function FormProduct() {
       MSHH: idProduct,
       TenHH: nameProduct,
     };
-    var found = Object.keys(dataUpdate).filter(key=> {return dataUpdate[key] !== ""})
-    alert(found);
+    // var found = Object.keys(dataUpdate).filter(key=> {return dataUpdate[key]})
+    // var arrayUp = [...found];
+    alert(dataUpdate);
   };
   return (
     <form className="form-section">

@@ -3,9 +3,7 @@ import "../CheckOut/checkout.css";
 import React, { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../context/AuthContext";
 import axios from "axios";
-import { Redirect, Link, useHistory } from "react-router-dom";
-import LocationBar from "../../components/bar/locationbar/LocationBar";
-import { BiArrowBack } from "react-icons/bi";
+import { Redirect, useHistory } from "react-router-dom";
 import crypto from "crypto";
 export default function CustomerEdit() {
   const { user, dispatch } = useContext(AuthContext);
@@ -100,21 +98,6 @@ export default function CustomerEdit() {
     <div className="check">
       <div className="check-section">
         <div className="check__row">
-          <LocationBar />
-          <div className="row">
-            <Link
-              to="/profile"
-              className="link"
-              style={{
-                color: "#eb0028",
-                fontSize: "1.2rem",
-                fontWeight: "700",
-              }}
-            >
-              <BiArrowBack />
-              Back to Profile
-            </Link>
-          </div>
           <div className="row">
             <div className="check__form">
               {/*TODO: Address method */}

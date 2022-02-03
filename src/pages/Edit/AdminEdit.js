@@ -3,10 +3,8 @@ import "../CheckOut/checkout.css";
 import React, { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../context/AuthContext";
 import axios from "axios";
-import { Redirect, Link } from "react-router-dom";
-import LocationBar from "../../components/bar/locationbar/LocationBar";
+import { Redirect } from "react-router-dom";
 import { AiOutlineCopy } from "react-icons/ai";
-import { BiArrowBack } from "react-icons/bi";
 import FormProduct from "../../components/form/FormProduct";
 export default function AdminEdit() {
   const { user } = useContext(AuthContext);
@@ -121,26 +119,11 @@ export default function AdminEdit() {
     <div className="check">
       <div className="check-section">
         <div className="check__row">
-          <LocationBar />
-          <div className="row">
-            <Link
-              to="/admin"
-              className="link"
-              style={{
-                color: "#eb0028",
-                fontSize: "1.2rem",
-                fontWeight: "700",
-              }}
-            >
-              <BiArrowBack />
-              Back to Admin
-            </Link>
-          </div>
           <div className="row">
             <div className="check__form">
               {/*TODO: Product method */}
               <h2 className="check__form-title">Product</h2>
-              <FormProduct/>
+              <FormProduct />
             </div>
             <div className="check__method">
               {/*TODO:Upload method */}
@@ -157,7 +140,7 @@ export default function AdminEdit() {
                       return (
                         <>
                           <option value={data.MSHH}>
-                            {index+=1} - {data.MSHH.toUpperCase()}
+                            {(index += 1)} - {data.MSHH.toUpperCase()}
                           </option>
                         </>
                       );
@@ -206,7 +189,7 @@ export default function AdminEdit() {
                       return (
                         <>
                           <option value={data.MSHH}>
-                            {index+=1} - {data.MSHH.toUpperCase()}
+                            {(index += 1)} - {data.MSHH.toUpperCase()}
                           </option>
                         </>
                       );
@@ -233,7 +216,7 @@ export default function AdminEdit() {
                       return (
                         <>
                           <option value={data.id}>
-                            {index+=1} - {data.user.toUpperCase()}
+                            {(index += 1)} - {data.user.toUpperCase()}
                           </option>
                         </>
                       );

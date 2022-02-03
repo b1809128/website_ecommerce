@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import { Redirect, Link } from "react-router-dom";
+import { Redirect } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
 import axios from "axios";
 import TableCustomer from "../../components/table/TableCustomer";
@@ -10,6 +10,9 @@ import LocationBar from "../../components/bar/locationbar/LocationBar";
 import { chartData } from "../../components/chart/chartData";
 import TableOrder from "../../components/table/TableOrder";
 import { FaEdit } from "react-icons/fa";
+import { TiDeleteOutline } from "react-icons/ti";
+import ReactModal from "react-modal";
+import AdminEdit from "../Edit/AdminEdit";
 function Admin() {
   const { user } = useContext(AuthContext);
   const [authorized, setAuthorized] = useState(true);
@@ -21,13 +24,10 @@ function Admin() {
       const res1 = await axios.post("http://localhost:5000/auth/admin", {
         token: user.token,
       });
-      //   console.log(res);
       if (res1.data.logged) {
         setAuthorized(true);
-        // setAuthText(res.data.message);
       } else {
         setAuthorized(false);
-        // setAuthText(res.data.message);
       }
       const res2 = await axios.get(
         "http://localhost:5000/product/all?sortBy=PRICE_ASC"
@@ -38,15 +38,44 @@ function Admin() {
     };
     fetch();
   }, [user.token]);
+
+  //TODO: Modal
+  const [statusModal, setStatusModal] = useState(false);
+  const showModal = () => {
+    setStatusModal(true);
+  };
+
+  const closeModal = () => {
+    setStatusModal(false);
+  };
+
+  //TODO: authorized
   if (!authorized) {
-    // alert("You are not authorized !");
     return <Redirect to="/sign-in" />;
   }
 
+  //TODO: chart
   // console.log(chartData.map(data => data))
   var dataSet = chartData.map((data) => data);
+
   return (
     <div className="admin">
+      <ReactModal
+        isOpen={statusModal}
+        style={{
+          content: {
+            display: "flex",
+            flexDirection: "column",
+            top: "100px",
+          },
+        }}
+      >
+        <div className="">
+          <TiDeleteOutline onClick={closeModal} className="exit-icon" />
+        </div>
+
+        <AdminEdit />
+      </ReactModal>
       <div className="admin-section">
         <div className="admin__row">
           <LocationBar />
@@ -102,13 +131,13 @@ function Admin() {
             <div className="admin__item-lg">
               <div className="admin__header">
                 <h1 className="admin__title">PRODUCT</h1>
-                <Link to="/admin-edit" className="link">
-                  <FaEdit
-                    style={{
-                      color: "#28a745",
-                    }}
-                  />
-                </Link>
+                <FaEdit
+                  style={{
+                    color: "#28a745",
+                    cursor: "pointer",
+                  }}
+                  onClick={showModal}
+                />
               </div>
               <TableProduct props={productData} />
             </div>
