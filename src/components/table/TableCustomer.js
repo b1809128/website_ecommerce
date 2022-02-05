@@ -56,6 +56,7 @@ function TableCustomer() {
                       style={{
                         color: "#28a745",
                       }}
+                      onClick={() => localStorage.setItem("clickStatus", true)}
                     />
                     <MdDeleteForever
                       style={{

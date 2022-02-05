@@ -1,7 +1,36 @@
-.exit-icon{
-  width:30px;
-  height:30px;
-  float:right;
-  color:#eb0028;
+.modal {
+  z-index: 1000;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.modal-main {
+  background: white;
+  width: 90%;
+  height: auto;
+  top: 50%;
+  left: 50%;
+  margin: 0 auto;
+  box-shadow: 4px 4px 8px rgba(0, 0, 0,.65);
+  border-radius:8px;
+}
+
+.display-block {
+  display: block;
+}
+
+.display-none {
+  display: none;
+}
+
+.exit-icon {
+  width: 30px;
+  height: 30px;
+  float: right;
+  color: #eb0028;
   cursor: pointer;
 }

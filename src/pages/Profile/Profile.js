@@ -9,9 +9,8 @@ import LocationBar from "../../components/bar/locationbar/LocationBar";
 import React, { useEffect, useContext, useState } from "react";
 import axios from "axios";
 import { FaEdit } from "react-icons/fa";
-import { TiDeleteOutline } from "react-icons/ti";
-import ReactModal from "react-modal";
 import CustomerEdit from "../Edit/CustomerEdit";
+import Modal from "../../components/modal/Modal";
 export default function Profile() {
   const { user } = useContext(AuthContext);
   const [authorized, setAuthorized] = useState(true);
@@ -59,22 +58,11 @@ export default function Profile() {
   return (
     <>
       <div className="cart">
-        <ReactModal
-          isOpen={statusModal}
-          style={{
-            content: {
-              display: "flex",
-              flexDirection: "column",
-              top: "100px",
-              overflow: "hidden",
-            },
-          }}
-        >
-          <div className="">
-            <TiDeleteOutline onClick={closeModal} className="exit-icon" />
-          </div>
-          <CustomerEdit />
-        </ReactModal>
+        <Modal
+          status={statusModal}
+          children={<CustomerEdit />}
+          closeModal={closeModal}
+        />
         <div className="cart-section">
           <div className="cart__row">
             <LocationBar />

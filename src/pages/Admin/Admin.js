@@ -10,9 +10,8 @@ import LocationBar from "../../components/bar/locationbar/LocationBar";
 import { chartData } from "../../components/chart/chartData";
 import TableOrder from "../../components/table/TableOrder";
 import { FaEdit } from "react-icons/fa";
-import { TiDeleteOutline } from "react-icons/ti";
-import ReactModal from "react-modal";
 import AdminEdit from "../Edit/AdminEdit";
+import Modal from "../../components/modal/Modal";
 function Admin() {
   const { user } = useContext(AuthContext);
   const [authorized, setAuthorized] = useState(true);
@@ -49,33 +48,23 @@ function Admin() {
     setStatusModal(false);
   };
 
+  //TODO: chart
+  // console.log(chartData.map(data => data))
+  var dataSet = chartData.map((data) => data);
+
   //TODO: authorized
   if (!authorized) {
     return <Redirect to="/sign-in" />;
   }
 
-  //TODO: chart
-  // console.log(chartData.map(data => data))
-  var dataSet = chartData.map((data) => data);
-
   return (
     <div className="admin">
-      <ReactModal
-        isOpen={statusModal}
-        style={{
-          content: {
-            display: "flex",
-            flexDirection: "column",
-            top: "100px",
-          },
-        }}
-      >
-        <div className="">
-          <TiDeleteOutline onClick={closeModal} className="exit-icon" />
-        </div>
+      <Modal
+        status={statusModal}
+        children={<AdminEdit />}
+        closeModal={closeModal}
+      />
 
-        <AdminEdit />
-      </ReactModal>
       <div className="admin-section">
         <div className="admin__row">
           <LocationBar />
