@@ -114,8 +114,8 @@ export default function CheckOut() {
                     <img
                       src="./images/logo/vietcombank.jpg"
                       style={{
-                        wwidth: "100px",
-                        height: "70px",
+                        width: "55px",
+                        height: "40px",
                         boxShadow: "0 4px 8px rgba(0,0,0,.45)",
                         margin: "0 12px",
                         borderRadius: "6px",
@@ -127,8 +127,8 @@ export default function CheckOut() {
                     <img
                       src="./images/logo/viettin.jpg"
                       style={{
-                        width: "100px",
-                        height: "70px",
+                        width: "55px",
+                        height: "40px",
                         boxShadow: "0 4px 8px rgba(0,0,0,.45)",
                         margin: "0 12px",
                         borderRadius: "6px",
@@ -140,8 +140,8 @@ export default function CheckOut() {
                   <img
                     src="./images/logo/bidv.jpg"
                     style={{
-                      width: "100px",
-                      height: "70px",
+                      width: "55px",
+                      height: "40px",
                       boxShadow: "0 4px 8px rgba(0,0,0,.45)",
                       margin: "0 12px",
                       borderRadius: "6px",
@@ -152,8 +152,8 @@ export default function CheckOut() {
                   <img
                     src="./images/logo/vib.jpg"
                     style={{
-                      width: "100px",
-                      height: "70px",
+                      width: "55px",
+                      height: "40px",
                       boxShadow: "0 4px 8px rgba(0,0,0,.45)",
                       margin: "0 12px",
                       borderRadius: "6px",
@@ -164,8 +164,8 @@ export default function CheckOut() {
                   <img
                     src="./images/logo/mbbank.jpg"
                     style={{
-                      width: "100px",
-                      height: "70px",
+                      width: "55px",
+                      height: "40px",
                       boxShadow: "0 4px 8px rgba(0,0,0,.45)",
                       margin: "0 12px",
                       borderRadius: "6px",
@@ -176,8 +176,8 @@ export default function CheckOut() {
                   <img
                     src="./images/logo/tpbank.jpg"
                     style={{
-                      width: "100px",
-                      height: "70px",
+                      width: "55px",
+                        height: "40px",
                       boxShadow: "0 4px 8px rgba(0,0,0,.45)",
                       margin: "0 12px",
                       borderRadius: "6px",

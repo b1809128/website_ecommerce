@@ -64,7 +64,6 @@ function Admin() {
         children={<AdminEdit />}
         closeModal={closeModal}
       />
-
       <div className="admin-section">
         <div className="admin__row">
           <LocationBar />
@@ -136,7 +135,7 @@ function Admin() {
               <div className="admin__header">
                 <h1 className="admin__title">USER</h1>
               </div>
-              <TableCustomer />
+              <TableCustomer props={showModal} />
             </div>
           </div>
         </div>

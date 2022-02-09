@@ -1,5 +1,5 @@
 import React, { useEffect} from "react";
-import Modal2 from "../../components/modal/Modal2";
+import Modal from "../../components/modal/Modal";
 import AdminEdit from "../Edit/AdminEdit";
 
 export default function Test() {
@@ -23,7 +23,7 @@ export default function Test() {
       <button className="btn" onClick={closeModal}>
         Close
       </button>
-      <Modal2 status={false} children={<AdminEdit />} />
+      <Modal status={false} children={<AdminEdit />} />
     </>
   );
 }

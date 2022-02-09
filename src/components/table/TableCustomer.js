@@ -3,7 +3,8 @@ import React, { useState, useEffect } from "react";
 import { MdDeleteForever } from "react-icons/md";
 import { FaEdit } from "react-icons/fa";
 import axios from "axios";
-function TableCustomer() {
+function TableCustomer({props}) {
+  // console.log(props)
   const [idCustomers, setIdCustomer] = useState(0);
   const [dataProps, setDataProps] = useState([]);
 
@@ -56,7 +57,7 @@ function TableCustomer() {
                       style={{
                         color: "#28a745",
                       }}
-                      onClick={() => localStorage.setItem("clickStatus", true)}
+                      onClick={props}
                     />
                     <MdDeleteForever
                       style={{
