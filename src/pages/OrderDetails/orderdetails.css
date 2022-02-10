@@ -31,3 +31,52 @@
   width: 100%;
   justify-content: center;
 }
+
+/* status */
+.order-details__status-flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 12px 0;
+}
+.circle-status {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background-color: #eb0028;
+  color: #fff;
+  text-align: center;
+}
+
+.circle-status-none {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background-color: #fff;
+  color:#eb0028;
+  text-align: center;
+}
+
+.circle-status-not {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  border: 1px dashed #eb0028;
+  background-color: #fff;
+  color:#eb0028;
+  text-align: center;
+}
+
+.circle-status-icon{
+  margin-top:20px;
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.circle-status-icon-arrow{
+  margin-top:20px;
+  font-size: 1.5rem;
+  font-weight: 700;
+  
+}
+

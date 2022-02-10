@@ -1,11 +1,12 @@
 /* eslint-disable jsx-a11y/img-redundant-alt */
 import "../Cart/cart.css";
 import "./orderdetails.css";
-import { Link, useLocation, Redirect } from "react-router-dom";
+import { Link, useLocation, Redirect, useHistory } from "react-router-dom";
 import LocationBar from "../../components/bar/locationbar/LocationBar";
 import React, { useEffect, useState, useContext } from "react";
 import axios from "axios";
 import { AuthContext } from "../../context/AuthContext";
+import OrderStatus from "../../components/orderstatus/OrderStatus";
 
 export default function AdminOrderDetails() {
   const query = new URLSearchParams(useLocation().search);
@@ -16,7 +17,7 @@ export default function AdminOrderDetails() {
   const [customerData, setCustomerData] = useState([]);
   const { user } = useContext(AuthContext);
   const [authorized, setAuthorized] = useState(true);
-
+  const history = useHistory();
   //TODO: get id customer
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -47,6 +48,22 @@ export default function AdminOrderDetails() {
 
   //Total Price variable
   var total = 0;
+
+  //TODO: Delete order
+  const delOrder = async () => {
+    try {
+      alert("Delete Order Successful");
+      history.push("/profile");
+      await axios.delete(
+        `http://localhost:5000/manage/order/delete/${idOrderQuery}`
+      );
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  //TODO:Order status
+  const orderStatus = orderData.map((data) => data.status);
 
   if (!authorized) {
     return <Redirect to="/sign-in" />;
@@ -150,6 +167,13 @@ export default function AdminOrderDetails() {
                   </ul>
                 );
               })}
+              <button className="btn" onClick={delOrder}>
+                Delete Order
+              </button>
+            </div>
+            <div className="order-details__form-section">
+              <h2 className="cart__total-title">ORDER STATUS</h2>
+              <OrderStatus status={orderStatus} />
             </div>
           </div>
 

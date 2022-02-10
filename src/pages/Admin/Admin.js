@@ -135,7 +135,7 @@ function Admin() {
               <div className="admin__header">
                 <h1 className="admin__title">USER</h1>
               </div>
-              <TableCustomer props={showModal} />
+              <TableCustomer click={showModal} />
             </div>
           </div>
         </div>

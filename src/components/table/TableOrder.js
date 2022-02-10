@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 function TableOrder() {
   const [dataProps, setDataProps] = useState([]);
   const [idOrder, setIdOrder] = useState(0);
-  
+
   //Auto load after delete order by id
   useEffect(() => {
     const delOrder = async (idOrder) => {
