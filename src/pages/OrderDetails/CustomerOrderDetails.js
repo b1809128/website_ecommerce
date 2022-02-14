@@ -171,7 +171,14 @@ export default function AdminOrderDetails() {
                 Delete Order
               </button>
             </div>
-            <div className="order-details__form-section">
+            <div
+              className="order-details__form-section"
+              style={{
+                backgroundImage: `url("./images/logo/ship2.png")`,
+                backgroundRepeat: "no-repeat",
+                backgroundPosition: "center",
+              }}
+            >
               <h2 className="cart__total-title">ORDER STATUS</h2>
               <OrderStatus status={orderStatus} />
             </div>

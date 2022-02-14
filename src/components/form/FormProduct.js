@@ -13,9 +13,9 @@ export default function FormProduct() {
   const [imageProductUpload, setImageProductUpload] = useState({});
 
   const copyArray = [
-    '["https://cdn.hoanghamobile.com/i/productlist/ts/Uploads/2021/09/15/image-removebg-preview-15.png","",""]',
+    '["https://cdn.hoanghamobile.com/i/productlist/ts/Uploads/2021/09/15/image-removebg-preview-15.png","https://cdn.hoanghamobile.com/i/productlist/ts/Uploads/2021/09/15/image-removebg-preview-15.png","https://cdn.hoanghamobile.com/i/productlist/ts/Uploads/2021/09/15/image-removebg-preview-15.png"]',
     {
-      Description: "",
+      Description: "abc",
       Brand: "Apple",
       Type: "Phone",
       Coor: "white",
@@ -57,14 +57,34 @@ export default function FormProduct() {
     }
   };
 
-  const updateHandle = () => {
-    var dataUpdate = {
-      MSHH: idProduct,
-      TenHH: nameProduct,
-    };
-    // var found = Object.keys(dataUpdate).filter(key=> {return dataUpdate[key]})
-    // var arrayUp = [...found];
-    alert(dataUpdate);
+  const updateHandle = async () => {
+    try {
+      const res = await axios.put(
+        `http://localhost:5000/manage/product/update/${idProduct}`,
+        {
+          MSHH: idProduct,
+          TenHH: nameProduct,
+          Gia: priceProduct,
+          SoLuongHang: quantityProduct,
+          Mota: JSON.parse(descProduct),
+          MaLoaiHang: typeProduct,
+          tags: `'${tagProduct}'`,
+        }
+      );
+
+      await axios.put(
+        `http://localhost:5000/manage/product/image/update/${idProduct}`,
+        {
+          MSHH: idProduct,
+          PATH: JSON.parse(imageProductUpload),
+        }
+      );
+      if (res.data) {
+        alert(res.data);
+      }
+    } catch (error) {
+      console.log(error);
+    }
   };
   return (
     <form className="form-section">
