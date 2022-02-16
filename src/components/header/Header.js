@@ -207,8 +207,9 @@ export default function Header() {
             </li>
 
             <li className="nav-item">
-              <Link className="link" to="/cart">
+              <Link className="link relative__cart-number" to="/cart">
                 <FaShoppingCart />
+                <div className="absolute__cart-number">0</div>
               </Link>
             </li>
           </ul>

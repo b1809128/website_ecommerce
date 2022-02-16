@@ -103,6 +103,21 @@
   border-color: #eb0028;
 }
 
+.relative__cart-number {
+  position: relative;
+}
+.absolute__cart-number {
+  position: absolute;
+  /* color: #eb0028; */
+  top: -23px;
+  right: -13px;
+  border: 1px solid;
+  border-radius: 5px;
+  width: 20px;
+  height: 24px;
+  text-align: center;
+}
+
 @media screen and (max-width: 960px) {
   .nav-menu {
     display: flex;
