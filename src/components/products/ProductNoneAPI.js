@@ -1,6 +1,6 @@
 import "./product.css";
-import { FaBookmark, FaCartPlus, FaPen } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import ModalProduct from "../modal/ModalProduct";
 
 export default function ProductNoneAPI({ data, id }) {
   if (id !== "") {
@@ -13,19 +13,7 @@ export default function ProductNoneAPI({ data, id }) {
               src={data[id].attribute.image[0]}
               className="product-image__img"
             />
-            <div className="product-image__modal">
-              <ul className="product-image__modal-list">
-                <li className="product-image__modal-list-item link">
-                  <FaBookmark />
-                </li>
-                <li className="product-image__modal-list-item link">
-                  <FaCartPlus />
-                </li>
-                <li className="product-image__modal-list-item link">
-                  <FaPen />
-                </li>
-              </ul>
-            </div>
+            <ModalProduct />
           </div>
           <p className="product-name link">{data[id].attribute.name}</p>
           <p className="product-price">
@@ -50,19 +38,7 @@ export default function ProductNoneAPI({ data, id }) {
                 src={data.attribute.image[0]}
                 className="product-image__img"
               />
-              <div className="product-image__modal">
-                <ul className="product-image__modal-list">
-                  <li className="product-image__modal-list-item link">
-                    <FaBookmark />
-                  </li>
-                  <li className="product-image__modal-list-item link">
-                    <FaCartPlus />
-                  </li>
-                  <li className="product-image__modal-list-item link">
-                    <FaPen />
-                  </li>
-                </ul>
-              </div>
+              <ModalProduct />
             </div>
             <p className="product-name link">{data.attribute.name}</p>
             <p className="product-price">

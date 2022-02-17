@@ -44,8 +44,14 @@ export default function Header() {
 
   window.addEventListener("resize", showButton);
 
+  //TODO: cartNumber item
+  const [cartNumber, setCartNumber] = useState(0);
   useEffect(() => {
     showButton();
+    const getCartNumber = () => {
+      setCartNumber(localStorage.getItem("cartNumber"));
+    };
+    getCartNumber();
   }, []);
 
   //Local Storage -> Context API
@@ -106,8 +112,9 @@ export default function Header() {
             </Link>
           </div>
           <div className="menu-icon__item">
-            <Link className="link" to="/cart">
+            <Link className="link relative__cart-number" to="/cart">
               <FaShoppingCart />
+              <div className="absolute__cart-number">0</div>
             </Link>
           </div>
           <div className="menu-icon__item">
@@ -178,8 +185,9 @@ export default function Header() {
             </li>
 
             <li className="nav-item">
-              <Link className="link" to="/cart">
+              <Link className="link relative__cart-number" to="/cart">
                 <FaShoppingCart />
+                <div className="absolute__cart-number">0</div>
               </Link>
             </li>
           </ul>
@@ -209,7 +217,7 @@ export default function Header() {
             <li className="nav-item">
               <Link className="link relative__cart-number" to="/cart">
                 <FaShoppingCart />
-                <div className="absolute__cart-number">0</div>
+                <div className="absolute__cart-number">{cartNumber}</div>
               </Link>
             </li>
           </ul>

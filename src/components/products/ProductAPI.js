@@ -1,6 +1,6 @@
 import "./product.css";
-import { FaBookmark, FaCartPlus, FaPen } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import ModalProduct from "../modal/ModalProduct";
 
 export default function ProductAPI({ data }) {
   //Map image data in PATH array choose image[0]
@@ -18,19 +18,7 @@ export default function ProductAPI({ data }) {
               src={imageMain[index][0]}
               className="product-image__img"
             />
-            <div className="product-image__modal">
-              <ul className="product-image__modal-list">
-                <li className="product-image__modal-list-item link">
-                  <FaBookmark />
-                </li>
-                <li className="product-image__modal-list-item link">
-                  <FaCartPlus />
-                </li>
-                <li className="product-image__modal-list-item link">
-                  <FaPen />
-                </li>
-              </ul>
-            </div>
+            <ModalProduct />
           </div>
           <p className="product-name link">{data.TenHH}</p>
           <p className="product-price">
