@@ -29,7 +29,7 @@ export default function CheckOut() {
                   <label>Gender </label>
                   <input
                     id="gender"
-                    type="radio"
+                    type="checkbox"
                     class="input-radio"
                     name="gender"
                     value="nam"
@@ -39,7 +39,7 @@ export default function CheckOut() {
                   <span style={{ marginRight: "10%" }}>Male</span>
                   <input
                     id="gender"
-                    type="radio"
+                    type="checkbox"
                     className="input-radio"
                     name="gender"
                     value="nữ"
@@ -103,14 +103,14 @@ export default function CheckOut() {
                 </div>
                 <h2 className="check__method-title">Payment Methods</h2>
                 <div className="form-flex">
-                  <input type="radio" className="method" /> Payment On Delivery
+                  <input type="checkbox" className="method" /> Payment On Delivery
                 </div>
                 <div className="form-flex">
-                  <input type="radio" className="method" /> Payment Via Card
+                  <input type="checkbox" className="method" /> Payment Via Card
                 </div>
                 <div className="form-flex">
                   <div className="form-flex">
-                    <input type="radio" className="method" />
+                    <input type="checkbox" className="method" />
                     <img
                       src="./images/logo/vietcombank.jpg"
                       style={{
@@ -123,7 +123,7 @@ export default function CheckOut() {
                       alt="bank"
                     />
 
-                    <input type="radio" className="method" />
+                    <input type="checkbox" className="method" />
                     <img
                       src="./images/logo/viettin.jpg"
                       style={{
@@ -136,7 +136,7 @@ export default function CheckOut() {
                       alt="bank"
                     />
                   </div>
-                  <input type="radio" className="method" />
+                  <input type="checkbox" className="method" />
                   <img
                     src="./images/logo/bidv.jpg"
                     style={{
@@ -148,7 +148,7 @@ export default function CheckOut() {
                     }}
                     alt="bank"
                   />
-                  <input type="radio" className="method" />
+                  <input type="checkbox" className="method" />
                   <img
                     src="./images/logo/vib.jpg"
                     style={{
@@ -160,7 +160,7 @@ export default function CheckOut() {
                     }}
                     alt="bank"
                   />
-                  <input type="radio" className="method" />
+                  <input type="checkbox" className="method" />
                   <img
                     src="./images/logo/mbbank.jpg"
                     style={{
@@ -172,7 +172,7 @@ export default function CheckOut() {
                     }}
                     alt="bank"
                   />
-                  <input type="radio" className="method" />
+                  <input type="checkbox" className="method" />
                   <img
                     src="./images/logo/tpbank.jpg"
                     style={{

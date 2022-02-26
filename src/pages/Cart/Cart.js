@@ -101,7 +101,7 @@ export default function Cart() {
                 </Link>
               </button>
               <div className="cart__shipping-select">
-                <input type="radio" className="cart__shipping-select-item" />
+                <input type="checkbox" className="cart__shipping-select-item" />
                 Shipping (+5%)
               </div>
             </div>
