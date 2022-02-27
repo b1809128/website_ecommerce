@@ -1,20 +1,20 @@
 import "./table.css";
+import "../header/header.css";
 import React, { useState, useEffect } from "react";
 import { MdDeleteForever } from "react-icons/md";
 import { FaEdit } from "react-icons/fa";
 import axios from "axios";
-function TableCustomer({click}) {
+function TableCustomer({ click }) {
   // console.log(props)
   const [idCustomers, setIdCustomer] = useState(0);
-  const [dataProps, setDataProps] = useState([]);
 
+  //Search
+  const [tagName, setTagName] = useState("");
+  const [searchData, setSearchData] = useState([]);
   //Auto load after delete customer by id
   useEffect(() => {
     const delCustomer = async (idCustomers) => {
-      if (idCustomers === 0) {
-        let res = await axios.get("http://localhost:5000/manage/customer");
-        setDataProps(res.data);
-      } else if (idCustomers > 0) {
+      if (idCustomers > 0) {
         try {
           await axios.delete(
             `http://localhost:5000/manage/customer/delete/${idCustomers}`
@@ -23,11 +23,40 @@ function TableCustomer({click}) {
         } catch (error) {}
       }
     };
+    const searchCustomer = async () => {
+      try {
+        if (tagName) {
+          const res = await axios.get(
+            `http://localhost:5000/manage/table/customer/search?q=${tagName}`
+          );
+          setSearchData(res.data);
+        } else {
+          const res = await axios.get(
+            `http://localhost:5000/manage/table/customer/search`
+          );
+          setSearchData(res.data);
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    searchCustomer();
     delCustomer(idCustomers);
-  });
+  }, [idCustomers, tagName]);
+
+  // console.log(dataProps);
 
   return (
     <>
+      <form className="nav-bar__form">
+        <input
+          type="text"
+          className="nav-bar__form-input-admin"
+          placeholder="Search"
+          name="search"
+          onChange={(e) => setTagName(e.target.value)}
+        />
+      </form>
       <table className="table">
         <thead>
           <tr>
@@ -38,7 +67,7 @@ function TableCustomer({click}) {
           </tr>
         </thead>
         <tbody>
-          {dataProps.map((data, index) => {
+          {searchData.map((data, index) => {
             return (
               <>
                 <tr>
