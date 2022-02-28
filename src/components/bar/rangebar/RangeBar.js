@@ -24,7 +24,7 @@ export default function RangeBar({ data }) {
   return (
     <div className="range-bar">
       <div className="range-bar-container">
-        <form className="range-bar__form">
+        <form action="/details" method="get" className="range-bar__form">
           <input
             type="text"
             className="range-bar__form-input"

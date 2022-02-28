@@ -18,6 +18,7 @@ export default function Details() {
   const query = new URLSearchParams(useLocation().search);
   const sortBy = query.get("sortBy");
   const brandID = query.get("brand");
+  const searchData = query.get("search");
   //Fetch API
   const [product, setProduct] = useState([]);
   const [brand, setBrand] = useState([]);
@@ -39,8 +40,23 @@ export default function Details() {
       setProduct(allProducts.data);
       setBrand(brandFilter.data);
     };
+
+    //searchAPI
+    const searchAPI = async () => {
+      try {
+        const result = await axios.get(
+          `http://localhost:5000/manage/table/customer/search?q=${searchData}`
+        );
+        console.log(result.data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
+    //Call function
+    searchAPI();
     fetchAPI();
-  }, [brandID, sortBy]);
+  }, [brandID, searchData, sortBy]);
 
   //Check Exist to show details by query Brand ID
   var flag = false;
