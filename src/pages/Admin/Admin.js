@@ -15,7 +15,6 @@ import Modal from "../../components/modal/Modal";
 function Admin() {
   const { user } = useContext(AuthContext);
   const [authorized, setAuthorized] = useState(true);
-  const [productData, setProductData] = useState([]);
   const [bestSaleData, setBestSaleData] = useState([]);
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -28,10 +27,6 @@ function Admin() {
       } else {
         setAuthorized(false);
       }
-      const res2 = await axios.get(
-        "http://localhost:5000/product/all?sortBy=PRICE_ASC"
-      );
-      setProductData(res2.data);
       const res3 = await axios.get("http://localhost:5000/product/bestsale");
       setBestSaleData(res3.data);
     };
@@ -127,7 +122,7 @@ function Admin() {
                   onClick={showModal}
                 />
               </div>
-              <TableProduct props={productData} />
+              <TableProduct />
             </div>
           </div>
           <div className="admin__col-4">

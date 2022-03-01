@@ -1,11 +1,47 @@
-import React from "react";
 import "./table.css";
-function TableProduct({ props }) {
+import "../header/header.css";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+function TableProduct() {
+  //Search
+  const [tagName, setTagName] = useState("");
+  const [searchData, setSearchData] = useState([]);
+
+  useEffect(() => {
+    const searchProduct = async () => {
+      try {
+        if (tagName) {
+          const res = await axios.get(
+            `http://localhost:5000/manage/table/product/search?q=${tagName}`
+          );
+          setSearchData(res.data);
+        } else {
+          const res = await axios.get(
+            `http://localhost:5000/manage/table/product/search`
+          );
+          setSearchData(res.data);
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    searchProduct();
+  }, [tagName]);
+
   //Map image in array choose image[0]
-  const imageMain = props.map((data) => JSON.parse(data.PATH));
+  const imageMain = searchData.map((data) => JSON.parse(data.PATH));
 
   return (
     <>
+      <form className="nav-bar__form">
+        <input
+          type="text"
+          className="nav-bar__form-input-admin"
+          placeholder="Search"
+          name="search"
+          onChange={(e) => setTagName(e.target.value)}
+        />
+      </form>
       <table className="table">
         <thead>
           <tr>
@@ -18,7 +54,7 @@ function TableProduct({ props }) {
           </tr>
         </thead>
         <tbody>
-          {props.map((data, index) => {
+          {searchData.map((data, index) => {
             var i = index;
             return (
               <>

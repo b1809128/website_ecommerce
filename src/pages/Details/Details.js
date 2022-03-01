@@ -18,11 +18,11 @@ export default function Details() {
   const query = new URLSearchParams(useLocation().search);
   const sortBy = query.get("sortBy");
   const brandID = query.get("brand");
-  const searchData = query.get("search");
+  const searchQuery = query.get("search");
   //Fetch API
   const [product, setProduct] = useState([]);
   const [brand, setBrand] = useState([]);
-
+  const [searchData, setSearchData] = useState([]);
   useEffect(() => {
     window.scrollTo(0, 0);
     Aos.init({
@@ -37,6 +37,7 @@ export default function Details() {
       const brandFilter = await axios.get(
         `http://localhost:5000/product/group/${brandID}`
       );
+      console.log(allProducts.data)
       setProduct(allProducts.data);
       setBrand(brandFilter.data);
     };
@@ -45,9 +46,9 @@ export default function Details() {
     const searchAPI = async () => {
       try {
         const result = await axios.get(
-          `http://localhost:5000/manage/table/customer/search?q=${searchData}`
+          `http://localhost:5000/manage/table/product/search?q=${searchQuery}`
         );
-        console.log(result.data);
+        setSearchData(result.data);
       } catch (error) {
         console.log(error);
       }
@@ -56,7 +57,7 @@ export default function Details() {
     //Call function
     searchAPI();
     fetchAPI();
-  }, [brandID, searchData, sortBy]);
+  }, [brandID, searchQuery, sortBy]);
 
   //Check Exist to show details by query Brand ID
   var flag = false;
@@ -75,7 +76,7 @@ export default function Details() {
             <ProductNoneAPI id={""} data={productsData} />
           </div> */}
           <div className="row">
-            <ProductAPI data={flag ? brand : product} />
+            {searchData ? <ProductAPI data={searchData} /> : <ProductAPI data={flag ? brand : product} />}
           </div>
           <SlideProduct />
         </div>

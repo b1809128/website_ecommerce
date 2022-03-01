@@ -1,20 +1,21 @@
 import "./table.css";
+import "../header/header.css";
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { MdDeleteForever } from "react-icons/md";
 import { FaEdit } from "react-icons/fa";
 import { Link } from "react-router-dom";
 function TableOrder() {
-  const [dataProps, setDataProps] = useState([]);
   const [idOrder, setIdOrder] = useState(0);
+
+  //Search
+  const [tagName, setTagName] = useState("");
+  const [searchData, setSearchData] = useState([]);
 
   //Auto load after delete order by id
   useEffect(() => {
     const delOrder = async (idOrder) => {
-      if (idOrder === 0) {
-        let res = await axios.get("http://localhost:5000/manage/order");
-        setDataProps(res.data);
-      } else if (idOrder > 0) {
+      if (idOrder > 0) {
         try {
           await axios.delete(
             `http://localhost:5000/manage/order/delete/${idOrder}`
@@ -23,11 +24,39 @@ function TableOrder() {
         } catch (error) {}
       }
     };
+
+    const searchOrder = async () => {
+      try {
+        if (tagName) {
+          const res = await axios.get(
+            `http://localhost:5000/manage/table/order/search?q=${tagName}`
+          );
+          setSearchData(res.data);
+        } else {
+          const res = await axios.get(
+            `http://localhost:5000/manage/table/order/search`
+          );
+          setSearchData(res.data);
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    searchOrder();
     delOrder(idOrder);
   });
 
   return (
     <>
+      <form className="nav-bar__form">
+        <input
+          type="text"
+          className="nav-bar__form-input-admin"
+          placeholder="Search"
+          name="search"
+          onChange={(e) => setTagName(e.target.value)}
+        />
+      </form>
       <table className="table">
         <thead>
           <tr>
@@ -40,7 +69,7 @@ function TableOrder() {
           </tr>
         </thead>
         <tbody>
-          {dataProps.map((data, index) => {
+          {searchData.map((data, index) => {
             // console.log(JSON.parse(data.status))
             return (
               <>
