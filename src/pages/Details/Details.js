@@ -9,6 +9,7 @@ import SlideProduct from "../../components/main/slideproduct/SlideProduct";
 import ProductAPI from "../../components/products/ProductAPI";
 import axios from "axios";
 import { useLocation } from "react-router-dom";
+import Paganition from "../../components/bar/pagination/Pagination";
 //Import API Dynamic
 /* import ProductNoneAPI from "../../components/products/ProductNoneAPI";
  import { productsData } from "../../data";
@@ -19,6 +20,7 @@ export default function Details() {
   const sortBy = query.get("sortBy");
   const brandID = query.get("brand");
   const searchQuery = query.get("search");
+  const pageQuery = query.get("page");
   //Fetch API
   const [product, setProduct] = useState([]);
   const [brand, setBrand] = useState([]);
@@ -37,8 +39,17 @@ export default function Details() {
       const brandFilter = await axios.get(
         `http://localhost:5000/product/group/${brandID}`
       );
-      console.log(allProducts.data)
-      setProduct(allProducts.data);
+      if (pageQuery) {
+        const paginationAfter = allProducts.data.filter((data, idx) => {
+          return idx > 14;
+        });
+        setProduct(paginationAfter);
+      } else {
+        const paginationBefore = allProducts.data.filter((data, idx) => {
+          return idx < 15;
+        });
+        setProduct(paginationBefore);
+      }
       setBrand(brandFilter.data);
     };
 
@@ -57,7 +68,7 @@ export default function Details() {
     //Call function
     searchAPI();
     fetchAPI();
-  }, [brandID, searchQuery, sortBy]);
+  }, [brandID, pageQuery, searchQuery, sortBy]);
 
   //Check Exist to show details by query Brand ID
   var flag = false;
@@ -76,7 +87,12 @@ export default function Details() {
             <ProductNoneAPI id={""} data={productsData} />
           </div> */}
           <div className="row">
-            {searchData ? <ProductAPI data={searchData} /> : <ProductAPI data={flag ? brand : product} />}
+            <ProductAPI
+              data={searchQuery ? searchData : flag ? brand : product}
+            />
+          </div>
+          <div className="row">
+            <Paganition />
           </div>
           <SlideProduct />
         </div>
