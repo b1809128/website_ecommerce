@@ -4,6 +4,7 @@ import React, { useState, useEffect } from "react";
 import { MdDeleteForever } from "react-icons/md";
 import { FaEdit } from "react-icons/fa";
 import axios from "axios";
+import Swal from "sweetalert2";
 function TableCustomer({ click }) {
   // console.log(props)
   const [idCustomers, setIdCustomer] = useState(0);
@@ -11,16 +12,38 @@ function TableCustomer({ click }) {
   //Search
   const [tagName, setTagName] = useState("");
   const [searchData, setSearchData] = useState([]);
+
+  const deleteCustomers = async (id) => {
+    try {
+      await axios.delete(`http://localhost:5000/manage/customer/delete/${id}`);
+      setIdCustomer(0);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   //Auto load after delete customer by id
   useEffect(() => {
-    const delCustomer = async (idCustomers) => {
+    const delCustomer = (idCustomers) => {
       if (idCustomers > 0) {
-        try {
-          await axios.delete(
-            `http://localhost:5000/manage/customer/delete/${idCustomers}`
-          );
-          setIdCustomer(0);
-        } catch (error) {}
+        Swal.fire({
+          title: "Are you sure?",
+          text: "You won't be able to revert this!",
+          icon: "warning",
+          showCancelButton: true,
+          confirmButtonColor: "#3085d6",
+          cancelButtonColor: "#d33",
+          confirmButtonText: "Yes, delete it!",
+        }).then((result) => {
+          if (result.isConfirmed) {
+            deleteCustomers(idCustomers);
+            Swal.fire(
+              "Deleted!",
+              `${idCustomers} has been deleted.`,
+              "success"
+            );
+          }
+        });
       }
     };
     const searchCustomer = async () => {
@@ -43,8 +66,6 @@ function TableCustomer({ click }) {
     searchCustomer();
     delCustomer(idCustomers);
   }, [idCustomers, tagName]);
-
-  // console.log(dataProps);
 
   return (
     <>
@@ -93,6 +114,7 @@ function TableCustomer({ click }) {
                         color: "#eb0028",
                       }}
                       onClick={() => setIdCustomer(data.id)}
+                      // onClick={checkDelete(data.id)}
                     />
                   </td>
                 </tr>

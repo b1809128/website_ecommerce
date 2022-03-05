@@ -5,6 +5,8 @@ import axios from "axios";
 import { MdDeleteForever } from "react-icons/md";
 import { FaEdit } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import Swal from "sweetalert2";
+
 function TableOrder() {
   const [idOrder, setIdOrder] = useState(0);
 
@@ -12,16 +14,33 @@ function TableOrder() {
   const [tagName, setTagName] = useState("");
   const [searchData, setSearchData] = useState([]);
 
+  const deleteOrder = async (id) => {
+    try {
+      await axios.delete(`http://localhost:5000/manage/order/delete/${id}`);
+      setIdOrder(0);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   //Auto load after delete order by id
   useEffect(() => {
-    const delOrder = async (idOrder) => {
+    const delOrder = (idOrder) => {
       if (idOrder > 0) {
-        try {
-          await axios.delete(
-            `http://localhost:5000/manage/order/delete/${idOrder}`
-          );
-          setIdOrder(0);
-        } catch (error) {}
+        Swal.fire({
+          title: "Are you sure?",
+          text: "You won't be able to revert this!",
+          icon: "warning",
+          showCancelButton: true,
+          confirmButtonColor: "#3085d6",
+          cancelButtonColor: "#d33",
+          confirmButtonText: "Yes, delete it!",
+        }).then((result) => {
+          if (result.isConfirmed) {
+            deleteOrder(idOrder);
+            Swal.fire("Deleted!", `${idOrder} has been deleted.`, "success");
+          }
+        });
       }
     };
 
