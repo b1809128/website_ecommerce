@@ -9,7 +9,7 @@ import SlideProduct from "../../components/main/slideproduct/SlideProduct";
 import ProductAPI from "../../components/products/ProductAPI";
 import axios from "axios";
 import { useLocation } from "react-router-dom";
-import Paganition from "../../components/bar/pagination/Pagination";
+import Pagination from "../../components/bar/pagination/Pagination";
 //Import API Dynamic
 /* import ProductNoneAPI from "../../components/products/ProductNoneAPI";
  import { productsData } from "../../data";
@@ -25,6 +25,7 @@ export default function Details() {
   const [product, setProduct] = useState([]);
   const [brand, setBrand] = useState([]);
   const [searchData, setSearchData] = useState([]);
+  const [numberPage, setNumberPage] = useState(0);
   useEffect(() => {
     window.scrollTo(0, 0);
     Aos.init({
@@ -36,6 +37,9 @@ export default function Details() {
       const allProducts = await axios.get(
         `http://localhost:5000/product/all?sortBy=${sortBy}`
       );
+
+      setNumberPage(Math.ceil(allProducts.data.length / 15));
+
       const brandFilter = await axios.get(
         `http://localhost:5000/product/group/${brandID}`
       );
@@ -92,7 +96,7 @@ export default function Details() {
             />
           </div>
           <div className="row">
-            <Paganition />
+            <Pagination props={numberPage} />
           </div>
           <SlideProduct />
         </div>
