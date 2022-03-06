@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { AiOutlineCopy } from "react-icons/ai";
 import axios from "axios";
-
+import Swal from "sweetalert2";
 export default function FormProduct() {
   const [idProduct, setIdProduct] = useState("");
   const [nameProduct, setNameProduct] = useState("");
@@ -50,13 +50,18 @@ export default function FormProduct() {
         PATH: JSON.parse(imageProductUpload),
       });
       if (res.data) {
-        alert(res.data);
+        Swal.fire(
+          "Added product successfully !",
+          "You clicked the button!",
+          "success"
+        );
       }
     } catch (error) {
       console.log(error);
     }
   };
 
+  //FIXME: Update wrong in database
   const updateHandle = async () => {
     try {
       const res = await axios.put(
@@ -80,7 +85,11 @@ export default function FormProduct() {
         }
       );
       if (res.data) {
-        alert(res.data);
+        Swal.fire(
+          "Updated product successfully !",
+          "You clicked the button!",
+          "success"
+        );
       }
     } catch (error) {
       console.log(error);

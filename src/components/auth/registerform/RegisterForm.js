@@ -19,6 +19,8 @@ export default function RegisterForm() {
         setStateUser(true);
       } else if (!passwordReg) {
         setStatePassword(true);
+      } else if (userReg === "admin") {
+        setStateUser(true);
       } else {
         await axios.post("http://localhost:5000/auth/register", {
           user: userReg,

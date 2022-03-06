@@ -6,6 +6,8 @@ import axios from "axios";
 import { Redirect } from "react-router-dom";
 import { AiOutlineCopy } from "react-icons/ai";
 import FormProduct from "../../components/form/FormProduct";
+import Swal from "sweetalert2";
+
 export default function AdminEdit() {
   const { user } = useContext(AuthContext);
   const [authorized, setAuthorized] = useState(true);
@@ -56,18 +58,37 @@ export default function AdminEdit() {
   };
 
   //TODO: Delete Product function
+  //FIXME: After delete product modal appears when go admin page
   const [idProductDelete, setIdProductDelete] = useState("");
 
-  const deleteHandle = async () => {
+  const deleteHandle = async (id) => {
     try {
-      const res = await axios.delete(
-        `http://localhost:5000/manage/product/delete/${idProductDelete}`
-      );
-      if (res.data) {
-        alert(res.data);
-      }
+      await axios.delete(`http://localhost:5000/manage/product/delete/${id}`);
     } catch (error) {
       console.log(error);
+    }
+  };
+
+  const checkProductDelete = () => {
+    if (idProductDelete) {
+      Swal.fire({
+        title: "Are you sure?",
+        text: "You won't be able to revert this!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yes, delete it!",
+      }).then((result) => {
+        if (result.isConfirmed) {
+          deleteHandle(idProductDelete);
+          Swal.fire(
+            "Deleted!",
+            `${idProductDelete} has been deleted.`,
+            "success"
+          );
+        }
+      });
     }
   };
 
@@ -197,7 +218,7 @@ export default function AdminEdit() {
                   </select>
                 </div>
                 <div className="form-flex__btn">
-                  <button className="btn" onClick={deleteHandle}>
+                  <button className="btn" onClick={checkProductDelete}>
                     Delete
                   </button>
                 </div>

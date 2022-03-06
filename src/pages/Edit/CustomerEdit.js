@@ -5,6 +5,7 @@ import { AuthContext } from "../../context/AuthContext";
 import axios from "axios";
 import { Redirect, useHistory } from "react-router-dom";
 import crypto from "crypto";
+import Swal from "sweetalert2";
 export default function CustomerEdit() {
   const { user, dispatch } = useContext(AuthContext);
   const [authorized, setAuthorized] = useState(true);
@@ -46,7 +47,11 @@ export default function CustomerEdit() {
         }
       );
       if (res.data) {
-        alert(res.data);
+        Swal.fire(
+          "Added product successfully !",
+          "You clicked the button!",
+          "success"
+        );
       }
     } catch (error) {
       console.log(error);
@@ -66,7 +71,11 @@ export default function CustomerEdit() {
       );
 
       if (res.data) {
-        alert(res.data);
+        Swal.fire(
+          "Change password successfully !",
+          "You clicked the button!",
+          "success"
+        );
       }
     } catch (error) {
       console.log(error);
@@ -76,8 +85,10 @@ export default function CustomerEdit() {
   //TODO: Delete Product function
   const deleteHandle = async () => {
     try {
-      alert(
-        "The development team will accept comments. Thank you and See you again !"
+      Swal.fire(
+        "The development team will accept comments. Thank you and See you again !",
+        "You clicked the button!",
+        "success"
       );
       history.push("/sign-in");
       dispatch({ type: "LOGOUT" });

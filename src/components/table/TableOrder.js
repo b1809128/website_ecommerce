@@ -63,7 +63,7 @@ function TableOrder() {
     };
     searchOrder();
     delOrder(idOrder);
-  });
+  }, [idOrder, tagName]);
 
   return (
     <>
