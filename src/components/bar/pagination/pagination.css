@@ -17,6 +17,7 @@
 
 
 .pagination-link {
+  width: 100%;
   text-decoration: none;
   color: #eb0028;
 }

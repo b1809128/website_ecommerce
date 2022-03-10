@@ -26,6 +26,9 @@ export default function Details() {
   const [brand, setBrand] = useState([]);
   const [searchData, setSearchData] = useState([]);
   const [numberPage, setNumberPage] = useState(0);
+
+  const [testData, setTestData] = useState([]);
+
   useEffect(() => {
     window.scrollTo(0, 0);
     Aos.init({
@@ -39,7 +42,7 @@ export default function Details() {
       );
 
       setNumberPage(Math.ceil(allProducts.data.length / 15));
-
+        setTestData(allProducts.data)
       const brandFilter = await axios.get(
         `http://localhost:5000/product/group/${brandID}`
       );
@@ -79,6 +82,16 @@ export default function Details() {
   if (brandID) {
     flag = true;
   }
+
+  const testPage = (number, productData) => {
+    let array = [];
+    for (let i = 0; i < number; i++) {
+      array.push(productData)
+    }
+    console.log(array)
+  };
+  // console.log()
+  testPage(numberPage, testData);
 
   return (
     <div className="details">
