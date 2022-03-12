@@ -42,7 +42,7 @@ export default function Details() {
       );
 
       setNumberPage(Math.ceil(allProducts.data.length / 15));
-        setTestData(allProducts.data)
+      setTestData(allProducts.data);
       const brandFilter = await axios.get(
         `http://localhost:5000/product/group/${brandID}`
       );
@@ -83,15 +83,24 @@ export default function Details() {
     flag = true;
   }
 
-  const testPage = (number, productData) => {
+  const testPage = (numberPerPage, productData) => {
     let array = [];
-    for (let i = 0; i < number; i++) {
-      array.push(productData)
+    var length = productData.length;
+    var myChunk;
+    for (let i = 0; i < length; i += numberPerPage) {
+      myChunk = productData.slice(i, i + numberPerPage);
+      array.push(myChunk);
     }
-    console.log(array)
+    return array;
   };
-  // console.log()
-  testPage(numberPage, testData);
+
+  const checkData = () => {
+    const test = testPage(15, testData);
+    if (pageQuery === "2") {
+      console.log(test[1]);
+    }
+  };
+  checkData();
 
   return (
     <div className="details">
