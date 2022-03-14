@@ -91,7 +91,7 @@ export default function Details() {
       myChunk = productData.slice(i, i + numberPerPage);
       array.push(myChunk);
     }
-    return array;
+    return array.map(data => data);
   };
 
   const checkData = () => {

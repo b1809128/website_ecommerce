@@ -123,9 +123,15 @@ export default function ProductDetailsAPI() {
                       <span className="product-details-text__bold">
                         Availability:
                       </span>{" "}
-                      <span className="product-details-text__green">
-                        In Stock {data.SoLuongHang} items
-                      </span>
+                      {data.SoLuongHang > 0 ? (
+                        <span className="product-details-text__green">
+                          In Stock {data.SoLuongHang} items
+                        </span>
+                      ) : (
+                        <span className="product-details-text__green">
+                          Sold Out
+                        </span>
+                      )}
                     </p>
                     <div className="product-details__btn">
                       <button className="btn product-details__btn-item">

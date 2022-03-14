@@ -121,9 +121,13 @@ export default function ProductDetails({ data }) {
                 <span className="product-details-text__bold">
                   Availability:
                 </span>{" "}
-                <span className="product-details-text__green">
-                  In Stock {data[id].attribute.status} items
-                </span>
+                {data[id].attribute.status > 0 ? (
+                  <span className="product-details-text__green">
+                    In Stock {data[id].attribute.status} items
+                  </span>
+                ) : (
+                  <span className="product-details-text__green">Sold Out</span>
+                )}
               </p>
               <div className="product-details__btn">
                 <button className="btn product-details__btn-item">
