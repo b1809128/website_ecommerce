@@ -4,6 +4,7 @@ import axios from "axios";
 import LocationBar from "../../components/bar/locationbar/LocationBar";
 import ReviewBar from "../../components/bar/reviewtextbar/ReviewBar";
 import "./productdetails.css";
+import SimilarProduct from "../../components/SimilarProduct/SimilarProduct";
 
 export default function ProductDetailsAPI() {
   // Them param id vao duong dan
@@ -257,6 +258,9 @@ export default function ProductDetailsAPI() {
           </div>
         );
       })}
+      <div className="product-details-section">
+        <SimilarProduct groupBy={product.map(data=>data.MaLoaiHang)}/>
+      </div>
     </>
   );
 }

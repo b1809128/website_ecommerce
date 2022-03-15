@@ -113,7 +113,7 @@ export default function Details() {
           <div className="row">
             <Pagination props={numberPage} page={parseInt(pageQuery)} />
           </div>
-          <SlideProduct />
+          <SlideProduct title="Others Product" />
         </div>
       </div>
     </div>

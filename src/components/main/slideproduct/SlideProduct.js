@@ -2,11 +2,10 @@ import React from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-
 import "./slideproduct.css";
 import { slideProductData } from "./slideProductData";
 
-export default function SlideProduct() {
+export default function SlideProduct({ title, groupBy }) {
   //Slick-Carousel Settings to slide Product Components
   const settings = {
     dots: true,
@@ -44,15 +43,15 @@ export default function SlideProduct() {
       },
     ],
   };
-
+ 
   return (
     <div className="slide-product">
-      <h2 className="slide-product-title">Others Product</h2>
+      <h2 className="slide-product-title">{title}</h2>
       <Slider {...settings}>
         {slideProductData.map((data, index) => {
           return <div key={index}>{data.case}</div>;
         })}
       </Slider>
-    </div>
+    </div>   
   );
 }
