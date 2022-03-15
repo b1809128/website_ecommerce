@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
-export default function PaginationComponents({ idxNumber }) {
+export default function PaginationComponents({ idxNumber,pageNumber }) {
+  // console.log(pageNumber);
   const test = (data) => {
     let array = [];
     for (let i = 2; i <= data; i++) {
@@ -10,13 +11,13 @@ export default function PaginationComponents({ idxNumber }) {
   };
   return test(idxNumber).map((data) => {
     return (
-      <div className="pagination-item">
+      <div className={"pagination-item"}>
         <Link
           to={{
             pathname: "/details",
             search: `?page=${data}`,
           }}
-          className="pagination-link"
+          className={pageNumber === data ? "pagination-link active" : "pagination-link"}
         >
           {data}
         </Link>

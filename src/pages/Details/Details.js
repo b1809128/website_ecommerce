@@ -27,7 +27,7 @@ export default function Details() {
   const [searchData, setSearchData] = useState([]);
   const [numberPage, setNumberPage] = useState(0);
 
-  const [testData, setTestData] = useState([]);
+  // const [allProductsData, setAllProductsData] = useState([]);
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -42,15 +42,16 @@ export default function Details() {
       );
 
       setNumberPage(Math.ceil(allProducts.data.length / 15));
-      setTestData(allProducts.data);
       const brandFilter = await axios.get(
         `http://localhost:5000/product/group/${brandID}`
       );
       if (pageQuery) {
-        const paginationAfter = allProducts.data.filter((data, idx) => {
-          return idx > 14;
-        });
-        setProduct(paginationAfter);
+        // const paginationAfter = allProducts.data.filter((data, idx) => {
+        //   return idx > 14;
+        // });
+        // setProduct(paginationAfter);
+        const test = testPage(15, allProducts.data);
+        setProduct(test[parseInt(pageQuery) - 1]);
       } else {
         const paginationBefore = allProducts.data.filter((data, idx) => {
           return idx < 15;
@@ -91,16 +92,8 @@ export default function Details() {
       myChunk = productData.slice(i, i + numberPerPage);
       array.push(myChunk);
     }
-    return array.map(data => data);
+    return array.map((data) => data);
   };
-
-  const checkData = () => {
-    const test = testPage(15, testData);
-    if (pageQuery === "2") {
-      console.log(test[1]);
-    }
-  };
-  checkData();
 
   return (
     <div className="details">
@@ -118,7 +111,7 @@ export default function Details() {
             />
           </div>
           <div className="row">
-            <Pagination props={numberPage} />
+            <Pagination props={numberPage} page={parseInt(pageQuery)} />
           </div>
           <SlideProduct />
         </div>

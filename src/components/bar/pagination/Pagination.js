@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "./pagination.css";
 import PaginationComponents from "./PaginationComponents";
-export default function Paganition({ props }) {
+export default function Paganition({ props,page }) {
   return (
     <div className="pagination-wrapper">
       <div className="pagination-item">
@@ -10,12 +10,12 @@ export default function Paganition({ props }) {
           to={{
             pathname: "/details",
           }}
-          className="pagination-link"
+          className={!page ? "pagination-link active" : "pagination-link"}
         >
           1
         </Link>
       </div>
-      <PaginationComponents idxNumber={props} />
+      <PaginationComponents idxNumber={props} pageNumber={page} />
     </div>
   );
 }
