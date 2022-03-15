@@ -4,7 +4,9 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  
 }
+
 .pagination-item {
   width: 30px;
   height: 20px;
@@ -12,15 +14,20 @@
   text-align: center;
   border-radius: 4px;
   cursor: pointer;
-  color: #eb0028;
   border: 1px solid #eb0028;
   margin: 0 8px;
+  color: #eb0028;
 }
 
 .pagination-link {
   width: 100%;
   text-decoration: none;
   color: #eb0028;
+}
+.pagination-link-active {
+  width: 100%;
+  text-decoration: none;
+  color: #fff;
 }
 
 .active {
