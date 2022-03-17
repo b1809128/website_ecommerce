@@ -1,23 +1,43 @@
-import React from "react";
+import React, { useEffect } from "react";
 import axios from "axios";
-import Paganition from "../../components/bar/pagination/Pagination";
+import Pagination from "../../components/bar/pagination/Pagination";
 export default function Test() {
-  const checkAPI = async () => {
+  // const [number, setNumber] = useState();
+  useEffect(() => {
+    const checkAPI = async () => {
+      try {
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    checkAPI();
+  });
+  // console.log(number);
+  const addCart = async () => {
     try {
-      const response = await axios.get("http://localhost:5000/manage/api");
-      // console.log(response.data)
-      const test = response.data.filter((data, index) => {
-        return index < 4;
-      });
-      console.log(test);
+      const result = await axios.get(
+        "http://localhost:5000/product/cart/as_001"
+      );
+      console.log(result.data);
     } catch (error) {
-      console.error(error);
+      console.log(error);
     }
   };
-  checkAPI();
+
+  const checkOut = async () => {
+    try {
+      const result = await axios.get("http://localhost:5000/product/checkout");
+      console.log(result.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
   return (
     <>
-      <Paganition />
+      <button onClick={addCart}>Add Cart</button>
+      <button onClick={checkOut}>Check Out</button>
+
+      <Pagination />
     </>
   );
 }
