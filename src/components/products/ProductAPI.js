@@ -2,7 +2,7 @@ import "./product.css";
 import { Link } from "react-router-dom";
 import ModalProduct from "../modal/ModalProduct";
 
-export default function ProductAPI({ data }) {
+export default function ProductAPI({ data,addCart }) {
   //Map image data in PATH array choose image[0]
   const imageMain = data.map((db) => {
     return JSON.parse(db.PATH);
@@ -18,7 +18,7 @@ export default function ProductAPI({ data }) {
               src={imageMain[index][0]}
               className="product-image__img"
             />
-            <ModalProduct />
+            <ModalProduct addCart={addCart} id={data.MSHH} />
           </div>
           <p className="product-name link">{data.TenHH}</p>
           <p className="product-price">

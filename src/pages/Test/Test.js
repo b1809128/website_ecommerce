@@ -4,16 +4,7 @@ import Pagination from "../../components/bar/pagination/Pagination";
 export default function Test() {
   // const [number, setNumber] = useState();
   useEffect(() => {
-    const checkAPI = async () => {
-      try {
-        await axios.post("http://localhost:5000/product/test", {
-          cart: cart,
-        });
-      } catch (error) {
-        console.log(error);
-      }
-    };
-    checkAPI();
+    localStorage.setItem("cartItem", JSON.stringify(cart));
   });
   // console.log(number);
   const [cart, setCart] = useState([]);

@@ -14,7 +14,7 @@ import Pagination from "../../components/bar/pagination/Pagination";
 /* import ProductNoneAPI from "../../components/products/ProductNoneAPI";
  import { productsData } from "../../data";
 */
-export default function Details() {
+export default function Details({addCart}) {
   //Query Parameters url?abc=1
   const query = new URLSearchParams(useLocation().search);
   const sortBy = query.get("sortBy");
@@ -107,6 +107,7 @@ export default function Details() {
           </div> */}
           <div className="row">
             <ProductAPI
+              addCart={addCart}
               data={searchQuery ? searchData : flag ? brand : product}
             />
           </div>

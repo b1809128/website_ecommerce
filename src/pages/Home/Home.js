@@ -17,7 +17,7 @@ import Comment from "../../components/main/comment/Comment";
 import ProductNoneAPI from "../../components/products/ProductNoneAPI";
 import { productsData } from "../../data";
 
-export default function Home() {
+export default function Home({addCart}) {
   useEffect(() => {
     window.scrollTo(0, 0);
     Aos.init({
@@ -36,11 +36,11 @@ export default function Home() {
             <Info {...infoDataTwo} />
           </div>
           <div data-aos="fade-up" className="row">
-            <ProductNoneAPI id={0} data={productsData} />
-            <ProductNoneAPI id={3} data={productsData} />
-            <ProductNoneAPI id={4} data={productsData} />
-            <ProductNoneAPI id={6} data={productsData} />
-            <ProductNoneAPI id={6} data={productsData} />
+            <ProductNoneAPI addCart={addCart} id={0} data={productsData} />
+            <ProductNoneAPI addCart={addCart} id={3} data={productsData} />
+            <ProductNoneAPI addCart={addCart} id={4} data={productsData} />
+            <ProductNoneAPI addCart={addCart} id={6} data={productsData} />
+            <ProductNoneAPI addCart={addCart} id={6} data={productsData} />
           </div>
           <div className="row">
             <Info {...infoDataThree} />

@@ -2,7 +2,7 @@ import "./product.css";
 import { Link } from "react-router-dom";
 import ModalProduct from "../modal/ModalProduct";
 
-export default function ProductNoneAPI({ data, id }) {
+export default function ProductNoneAPI({ data, id ,addCart}) {
   if (id !== "") {
     return (
       <>
@@ -13,7 +13,7 @@ export default function ProductNoneAPI({ data, id }) {
               src={data[id].attribute.image[0]}
               className="product-image__img"
             />
-            <ModalProduct />
+            <ModalProduct addCart={addCart} id={id} />
           </div>
           <p className="product-name link">{data[id].attribute.name}</p>
           <p className="product-price">

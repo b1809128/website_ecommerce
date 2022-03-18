@@ -13,7 +13,7 @@ import { FiLogOut } from "react-icons/fi";
 import axios from "axios";
 import { AuthContext } from "../../context/AuthContext";
 
-export default function Header() {
+export default function Header({ cartItems }) {
   const [scrollTop, setScrollTop] = useState(false);
   const [click, setClick] = useState(false);
   const [button, setButton] = useState(true);
@@ -44,15 +44,8 @@ export default function Header() {
 
   window.addEventListener("resize", showButton);
 
-  //TODO: cartNumber item
-  const [cartNumber,setCartNumber]= useState(0);
-
   useEffect(() => {
     showButton();
-    const checkNumberCart = () => {
-      setCartNumber(JSON.parse(localStorage.getItem("cartNumber")).length);
-    }
-    checkNumberCart()
   }, []);
 
   //Local Storage -> Context API
@@ -95,7 +88,7 @@ export default function Header() {
           <div className="menu-icon__item">
             <Link className="link relative__cart-number" to="/cart">
               <FaShoppingCart />
-              <div className="absolute__cart-number">0</div>
+              <div className="absolute__cart-number">{cartItems}</div>
             </Link>
           </div>
           <div className="menu-icon__item">
@@ -167,7 +160,7 @@ export default function Header() {
             <li className="nav-item">
               <Link className="link relative__cart-number" to="/cart">
                 <FaShoppingCart />
-                <div className="absolute__cart-number">0</div>
+                <div className="absolute__cart-number">{cartItems}</div>
               </Link>
             </li>
           </ul>
@@ -196,7 +189,7 @@ export default function Header() {
             <li className="nav-item">
               <Link className="link relative__cart-number" to="/cart">
                 <FaShoppingCart />
-                <div className="absolute__cart-number">{cartNumber}</div>
+                <div className="absolute__cart-number">{cartItems}</div>
               </Link>
             </li>
           </ul>

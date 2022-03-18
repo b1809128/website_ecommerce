@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useState, useContext } from "react";
 import "./App.css";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Home from "./pages/Home/Home";
@@ -23,23 +23,39 @@ import Test from "./pages/Test/Test";
 
 function App() {
   const { user } = useContext(AuthContext);
+  const [cartItems, setCartItems] = useState([]);
+  const addCart = (MSHH) => {
+    var exist = cartItems.find((x) => x.MSHH === MSHH);
+    if (exist) {
+      setCartItems(
+        cartItems.map((x) =>
+          x.MSHH === MSHH ? { ...exist, SoLuongHang: exist.SoLuongHang + 1 } : x
+        )
+      );
+    } else {
+      setCartItems([...cartItems, { MSHH, SoLuongHang: 1 }]);
+    }
+  };
+
+  console.log(cartItems);
+  
 
   return (
     <div>
       <Router>
-        <Header />
+        <Header cartItems={cartItems.length} />
         <Switch>
           <Route exact path="/">
-            <Home />
+            <Home addCart={addCart} />
           </Route>
           <Route path="/details">
-            <Details />
+            <Details addCart={addCart} />
           </Route>
           <Route path="/product-details/:id">
-            <ProductDetails data={productsData} />
+            <ProductDetails addCart={addCart} data={productsData} />
           </Route>
           <Route path="/product-details-api/:id">
-            <ProductDetailsAPI />
+            <ProductDetailsAPI addCart={addCart} />
           </Route>
           <Route path="/sign-in">
             <Login />

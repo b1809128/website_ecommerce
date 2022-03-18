@@ -1,26 +1,14 @@
-import React, { useState } from "react";
+import React from "react";
 import { FaBookmark, FaCartPlus, FaPen } from "react-icons/fa";
-
-export default function ModalProduct() {
-  const [cartNumber, setCartNumber] = useState(
-    parseInt(localStorage.getItem("cartNumber") | 0)
-  );
-  const updateCart = () => {
-    let count = cartNumber;
-    setCartNumber(count + 1);
-    localStorage.setItem("cartNumber", cartNumber);
-  };
-  const removeCart = () => {
-    localStorage.setItem("cartNumber", 0);
-  };
+export default function ModalProduct({ id, addCart }) {
   return (
     <div className="product-image__modal">
       <ul className="product-image__modal-list">
         <li className="product-image__modal-list-item link">
-          <FaBookmark onClick={removeCart} />
+          <FaBookmark />
         </li>
         <li className="product-image__modal-list-item link">
-          <FaCartPlus onClick={updateCart} />
+          <FaCartPlus onClick={() => addCart(id)} />
         </li>
         <li className="product-image__modal-list-item link">
           <FaPen />
