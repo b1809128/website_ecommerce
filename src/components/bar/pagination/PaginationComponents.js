@@ -13,7 +13,7 @@ export default function PaginationComponents({ idxNumber, pageNumber }) {
     return (
       <div
         className={
-          pageNumber === data ? "pagination-item active" : "pagination-item"
+          pageNumber === data ? "pagination-item pagination-active" : "pagination-item"
         }
       >
         <Link

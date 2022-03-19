@@ -5,7 +5,7 @@ import PaginationComponents from "./PaginationComponents";
 export default function Paganition({ props, page }) {
   return (
     <div className="pagination-wrapper">
-      <div className={!page ? "pagination-item active" : "pagination-item"}>
+      <div className={!page ? "pagination-item pagination-active" : "pagination-item"}>
         <Link
           to={{
             pathname: "/details",
