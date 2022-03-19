@@ -20,7 +20,7 @@ import { AuthContext } from "./context/AuthContext";
 import AdminOrderDetails from "./pages/OrderDetails/AdminOrderDetails";
 import CustomerOrderDetails from "./pages/OrderDetails/CustomerOrderDetails";
 import Test from "./pages/Test/Test";
-
+import Swal from "sweetalert2";
 function App() {
   const { user } = useContext(AuthContext);
   const [cartItems, setCartItems] = useState([]);
@@ -35,10 +35,16 @@ function App() {
     } else {
       setCartItems([...cartItems, { MSHH, SoLuongHang: 1 }]);
     }
+    Swal.fire({
+      position: "top-end",
+      icon: "success",
+      title: "Added Product Successfully",
+      showConfirmButton: false,
+      timer: 1500,
+    });
   };
 
   console.log(cartItems);
-  
 
   return (
     <div>
@@ -64,7 +70,7 @@ function App() {
             <Register />
           </Route>
           <Route path="/cart">
-            <Cart />
+            <Cart cartItems={cartItems} />
           </Route>
           <Route path="/check-out">
             <CheckOut />

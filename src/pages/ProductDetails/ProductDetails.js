@@ -5,7 +5,7 @@ import LocationBar from "../../components/bar/locationbar/LocationBar";
 import ReviewBar from "../../components/bar/reviewtextbar/ReviewBar";
 import "./productdetails.css";
 
-export default function ProductDetails({ data }) {
+export default function ProductDetails({ data, addCart }) {
   // Them param id vao duong dan url/:id
   const { id } = useParams();
   // console.log(data[id-1])
@@ -130,7 +130,10 @@ export default function ProductDetails({ data }) {
                 )}
               </p>
               <div className="product-details__btn">
-                <button className="btn product-details__btn-item">
+                <button
+                  className="btn product-details__btn-item"
+                  onClick={() => addCart(id)}
+                >
                   <Link to="/" className="link__btn">
                     Add to cart
                   </Link>

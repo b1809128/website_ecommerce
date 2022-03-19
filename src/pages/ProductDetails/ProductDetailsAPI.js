@@ -6,7 +6,7 @@ import ReviewBar from "../../components/bar/reviewtextbar/ReviewBar";
 import "./productdetails.css";
 import SimilarProduct from "../../components/SimilarProduct/SimilarProduct";
 
-export default function ProductDetailsAPI() {
+export default function ProductDetailsAPI({addCart}) {
   // Them param id vao duong dan
   const { id } = useParams();
 
@@ -135,7 +135,7 @@ export default function ProductDetailsAPI() {
                       )}
                     </p>
                     <div className="product-details__btn">
-                      <button className="btn product-details__btn-item">
+                      <button className="btn product-details__btn-item" onClick={() => addCart(id)}>
                         <Link to="/" className="link__btn">
                           Add to cart
                         </Link>
