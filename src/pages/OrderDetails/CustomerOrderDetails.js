@@ -7,6 +7,7 @@ import React, { useEffect, useState, useContext } from "react";
 import axios from "axios";
 import { AuthContext } from "../../context/AuthContext";
 import OrderStatus from "../../components/orderstatus/OrderStatus";
+import Swal from "sweetalert2";
 
 export default function AdminOrderDetails() {
   const query = new URLSearchParams(useLocation().search);
@@ -50,9 +51,29 @@ export default function AdminOrderDetails() {
   var total = 0;
 
   //TODO: Delete order
+
+  const deleteHandle = (e) => {
+    e.preventDefault();
+    if (user) {
+      Swal.fire({
+        title: "Are you sure?",
+        text: "You won't be able to revert this!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yes, delete it!",
+      }).then((result) => {
+        if (result.isConfirmed) {
+          Swal.fire("Deleted!", "Your Profile has been deleted.", "success");
+          delOrder()
+        }
+      });
+    }
+  };
+
   const delOrder = async () => {
     try {
-      alert("Delete Order Successful");
       history.push("/profile");
       await axios.delete(
         `http://localhost:5000/manage/order/delete/${idOrderQuery}`
@@ -61,6 +82,8 @@ export default function AdminOrderDetails() {
       console.log(error);
     }
   };
+
+
 
   //TODO:Order status
   const orderStatus = orderData.map((data) => data.status);
@@ -167,7 +190,7 @@ export default function AdminOrderDetails() {
                   </ul>
                 );
               })}
-              <button className="btn" onClick={delOrder}>
+              <button className="btn" onClick={deleteHandle}>
                 Delete Order
               </button>
             </div>

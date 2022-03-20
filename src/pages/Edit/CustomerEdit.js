@@ -35,6 +35,7 @@ export default function CustomerEdit() {
 
   //FIXME: Must be parse to JSON after push to server
   const createHandle = async () => {
+    // e.preventDefault();
     try {
       const res = await axios.post(
         "http://localhost:5000/customer/address/add",
@@ -47,11 +48,13 @@ export default function CustomerEdit() {
         }
       );
       if (res.data) {
-        Swal.fire(
-          "Added address successfully !",
-          "You clicked the button!",
-          "success"
-        );
+        Swal.fire({
+          position: "top-end",
+          icon: "success",
+          title: "Added Address Successfully",
+          showConfirmButton: false,
+          timer: 1500,
+        });
       }
     } catch (error) {
       console.log(error);
@@ -60,7 +63,8 @@ export default function CustomerEdit() {
 
   //TODO: Update Password function
   const [password, setPassword] = useState("");
-  const changePassword = async () => {
+  const changePassword = async (e) => {
+    e.preventDefault();
     var hashPash = crypto.createHash("md5").update(password).digest("hex");
     try {
       const res = await axios.patch(
@@ -97,7 +101,7 @@ export default function CustomerEdit() {
       }).then((result) => {
         if (result.isConfirmed) {
           Swal.fire("Deleted!", "Your Profile has been deleted.", "success");
-          redirectAfterDelete()
+          redirectAfterDelete();
         }
       });
     }

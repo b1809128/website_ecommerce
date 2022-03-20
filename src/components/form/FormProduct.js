@@ -34,7 +34,8 @@ export default function FormProduct() {
   ];
 
   //FIXME: Must be parse to JSON after push to server
-  const createHandle = async () => {
+  const createHandle = async (e) => {
+    e.preventDefault();
     try {
       const res = await axios.post("http://localhost:5000/manage/product/add", {
         MSHH: idProduct,
@@ -50,11 +51,13 @@ export default function FormProduct() {
         PATH: JSON.parse(imageProductUpload),
       });
       if (res.data) {
-        Swal.fire(
-          "Added product successfully !",
-          "You clicked the button!",
-          "success"
-        );
+        Swal.fire({
+          position: "top-end",
+          icon: "success",
+          title: "Added Product Successfully",
+          showConfirmButton: false,
+          timer: 1500,
+        });
       }
     } catch (error) {
       console.log(error);

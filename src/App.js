@@ -107,7 +107,7 @@ function App() {
             />
           </Route>
           <Route path="/check-out">
-            <CheckOut />
+            <CheckOut cartItems={cartItems} />
           </Route>
           <Route path="/profile">{user ? <Profile /> : <Login />}</Route>
           <Route path="/admin">{user ? <Admin /> : <Login />}</Route>

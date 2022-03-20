@@ -69,7 +69,8 @@ export default function AdminEdit() {
     }
   };
 
-  const checkProductDelete = () => {
+  const checkProductDelete = (e) => {
+    e.preventDefault();
     if (idProductDelete) {
       Swal.fire({
         title: "Are you sure?",
@@ -97,6 +98,7 @@ export default function AdminEdit() {
   const [idCustomer, setIdCustomer] = useState("");
 
   const updateCustomerHandle = async () => {
+    // e.preventDefault();
     try {
       const response = await axios.patch(
         `http://localhost:5000/manage/customer/updateonly/${idCustomer}`,
@@ -104,7 +106,15 @@ export default function AdminEdit() {
           role: roleCustomer,
         }
       );
-      alert(response.data);
+      if (response.data) {
+        Swal.fire({
+          position: "top-end",
+          icon: "success",
+          title: "Update Role Successfully",
+          showConfirmButton: false,
+          timer: 1500,
+        });
+      }
     } catch (error) {
       console.log(error);
     }

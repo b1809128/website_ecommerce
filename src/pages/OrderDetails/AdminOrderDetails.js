@@ -6,6 +6,7 @@ import "./orderdetails.css";
 import React, { useEffect, useState, useContext } from "react";
 import axios from "axios";
 import { AuthContext } from "../../context/AuthContext";
+import Swal from "sweetalert2";
 
 export default function AdminOrderDetails() {
   const query = new URLSearchParams(useLocation().search);
@@ -55,7 +56,8 @@ export default function AdminOrderDetails() {
   const [quantityOrderUpdate, setQuantityOrderUpdate] = useState("");
   const [statusOrderUpdate, setStatusOrderUpdate] = useState("");
 
-  const updateOrderHandle = async () => {
+  const updateOrderHandle = async (e) => {
+    e.preventDefault();
     const arrayOrder = [
       idOrderUpdate,
       idStaffOrderUpdate,
@@ -80,7 +82,13 @@ export default function AdminOrderDetails() {
           { MSHH: idProductOrderUpdate, SoLuong: quantityOrderUpdate }
         );
         if (res.data) {
-          alert(res.data);
+          Swal.fire({
+            position: "top-end",
+            icon: "success",
+            title: "Update Role Successfully",
+            showConfirmButton: false,
+            timer: 1500,
+          });
         }
       } catch (error) {
         console.log(error);
@@ -91,7 +99,15 @@ export default function AdminOrderDetails() {
           `http://localhost:5000/manage/order/updateonly/${idOrderUpdate}`,
           { status: statusOrderUpdate }
         );
-        alert(res.data);
+        if (res.data) {
+          Swal.fire({
+            position: "top-end",
+            icon: "success",
+            title: "Update Role Successfully",
+            showConfirmButton: false,
+            timer: 1500,
+          });
+        }
       } catch (error) {
         console.log(error);
       }
@@ -244,7 +260,7 @@ export default function AdminOrderDetails() {
                 />
               </div>
               <div className="order-details__form-block">
-                <label for="adress">Status</label>
+                <label for="adress">Status*</label>
                 <input
                   className="order-details__form-input"
                   type="text"

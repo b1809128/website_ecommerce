@@ -1,12 +1,39 @@
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { FaAngleRight } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import LocationBar from "../../components/bar/locationbar/LocationBar";
+import axios from "axios";
 import "./checkout.css";
-export default function CheckOut() {
+export default function CheckOut({ cartItems }) {
+  const [product, setProduct] = useState([]);
+  var total = 0;
   useEffect(() => {
     window.scrollTo(0, 0);
+    const fetchAPI = async () => {
+      try {
+        const result = await axios.get("http://localhost:5000/product/all");
+        setProduct(result.data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    fetchAPI();
   }, []);
+
+  const getCartProduct = () => {
+    let array = [];
+    for (let i = 0; i < cartItems.length; i++) {
+      for (let j = 0; j < product.length; j++) {
+        if (cartItems[i].MSHH === product[j].MSHH) {
+          array.push({ pr1: product[j], pr2: cartItems[i] });
+        }
+      }
+    }
+    return array;
+  };
+
+  // console.log(getCartProduct().map(data=> JSON.parse(data.pr1.MoTa)));
+
   return (
     <div className="check">
       <div className="check-section">
@@ -84,26 +111,35 @@ export default function CheckOut() {
               <h2 className="check__method-title">Your Invoice</h2>
               <form className="form-section">
                 <div className="form-block">
-                  <div class="form-flex__product">
-                    <img
-                      alt="flexproduct"
-                      src="images/products/product_1.jpg"
-                      className="form-flex__product-img"
-                    />
-                    <div className="form-flex__product-info">
-                      <h4>Apple Iphone 12 Promax</h4>
-                      <p>Gray/256GB</p>
-                      <p>Quantity: 1</p>
-                    </div>
-                  </div>
+                  {getCartProduct().map((data) => {
+                    total += data.pr1.Gia * data.pr2.SoLuongHang;
+                    return (
+                      <div class="form-flex__product">
+                        <img
+                          alt="flexproduct"
+                          src={JSON.parse(data.pr1.PATH)[0]}
+                          className="form-flex__product-img"
+                        />
+                        <div className="form-flex__product-info">
+                          <h4>{data.pr1.TenHH}</h4>
+                          <p>Gray/256GB</p>
+                          <p>Quantity: {data.pr2.SoLuongHang}</p>
+                        </div>
+                      </div>
+                    );
+                  })}
+
                   <div className="form-flex__price">
                     <h3>Subtotal:</h3>
-                    <p className="form-flex__price-value">27.990.000 VND</p>
+                    <p className="form-flex__price-value">
+                      {new Intl.NumberFormat().format(total)} VND
+                    </p>
                   </div>
                 </div>
                 <h2 className="check__method-title">Payment Methods</h2>
                 <div className="form-flex">
-                  <input type="checkbox" className="method" /> Payment On Delivery
+                  <input type="checkbox" className="method" /> Payment On
+                  Delivery
                 </div>
                 <div className="form-flex">
                   <input type="checkbox" className="method" /> Payment Via Card
@@ -177,7 +213,7 @@ export default function CheckOut() {
                     src="./images/logo/tpbank.jpg"
                     style={{
                       width: "55px",
-                        height: "40px",
+                      height: "40px",
                       boxShadow: "0 4px 8px rgba(0,0,0,.45)",
                       margin: "0 12px",
                       borderRadius: "6px",
