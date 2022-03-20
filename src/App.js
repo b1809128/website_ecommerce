@@ -1,5 +1,5 @@
-import React, { useState, useContext } from "react";
 import "./App.css";
+import React, { useState, useContext } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Home from "./pages/Home/Home";
 import Details from "./pages/Details/Details";
@@ -44,7 +44,36 @@ function App() {
     });
   };
 
+  const removeCart = (MSHH) => {
+    var exist = cartItems.find((x) => x.MSHH === MSHH);
+    if (exist.SoLuongHang === 1) {
+      setCartItems(cartItems.filter((x) => x.MSHH !== MSHH));
+    } else {
+      setCartItems(
+        cartItems.map((x) =>
+          x.MSHH === MSHH ? { ...exist, SoLuongHang: exist.SoLuongHang - 1 } : x
+        )
+      );
+    }
+  };
   // console.log(cartItems);
+
+  const deleteCart = () => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        setCartItems([]);
+        Swal.fire("Deleted!", `Cart has been deleted.`, "success");
+      }
+    });
+  };
 
   return (
     <div>
@@ -70,7 +99,12 @@ function App() {
             <Register />
           </Route>
           <Route path="/cart">
-            <Cart cartItems={cartItems} />
+            <Cart
+              cartItems={cartItems}
+              addCart={addCart}
+              removeCart={removeCart}
+              deleteCart={deleteCart}
+            />
           </Route>
           <Route path="/check-out">
             <CheckOut />

@@ -41,6 +41,28 @@
   width: 20%;
 }
 
+.cart__heading-item-quantity {
+  width: 20%;
+}
+
+.btn-cart__quantity{
+  width:20px;
+  margin:0 16px;
+  border-radius: 3px;
+  background-color: transparent;
+  color: #eb0028;
+  outline: none;
+  border: 1px solid #eb0028;
+  cursor: pointer;
+}
+
+.btn-cart__quantity:hover {
+  background-color: #eb0028;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
+
 .item-name {
   text-align: left;
 }
@@ -106,6 +128,7 @@
   width: 100%;
   height: 450px;
   text-align: center;
+  padding-top: 10%;
 }
 
 .cart-empty {

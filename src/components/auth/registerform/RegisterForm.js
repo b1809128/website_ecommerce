@@ -4,6 +4,7 @@ import { TiDelete } from "react-icons/ti";
 import { Link, useHistory } from "react-router-dom";
 import { useState } from "react";
 import axios from "axios";
+import Swal from "sweetalert2";
 
 export default function RegisterForm() {
   const [userReg, setUserReg] = useState("");
@@ -36,7 +37,13 @@ export default function RegisterForm() {
   //Redirect
   const history = useHistory();
   const getAlert = () => {
-    alert("You have successfully registered");
+    Swal.fire({
+      position: "top-end",
+      icon: "success",
+      title: "Register Successfully",
+      showConfirmButton: false,
+      timer: 1500,
+    });
     history.push("/sign-in");
   };
 

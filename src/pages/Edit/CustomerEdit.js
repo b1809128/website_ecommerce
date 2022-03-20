@@ -48,7 +48,7 @@ export default function CustomerEdit() {
       );
       if (res.data) {
         Swal.fire(
-          "Added product successfully !",
+          "Added address successfully !",
           "You clicked the button!",
           "success"
         );
@@ -83,20 +83,34 @@ export default function CustomerEdit() {
   };
 
   //TODO: Delete Product function
-  const deleteHandle = async () => {
+  const deleteHandle = (e) => {
+    e.preventDefault();
+    if (user) {
+      Swal.fire({
+        title: "Are you sure?",
+        text: "You won't be able to revert this!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yes, delete it!",
+      }).then((result) => {
+        if (result.isConfirmed) {
+          Swal.fire("Deleted!", "Your Profile has been deleted.", "success");
+          redirectAfterDelete()
+        }
+      });
+    }
+  };
+
+  const redirectAfterDelete = async () => {
     try {
-      Swal.fire(
-        "The development team will accept comments. Thank you and See you again !",
-        "You clicked the button!",
-        "success"
-      );
-      history.push("/sign-in");
+      history.push("/sign-up");
       dispatch({ type: "LOGOUT" });
       await axios.delete(
         `http://localhost:5000/customer/delete/${user.result[0].id}`
       );
       await axios.get("http://localhost:5000/auth/logout");
-      // console.log(res)
     } catch (error) {
       console.log(error);
     }

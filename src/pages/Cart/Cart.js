@@ -5,9 +5,7 @@ import "./cart.css";
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 
-export default function Cart({ cartItems }) {
-  // console.log(cartItems.map(data => data.MSHH));
-
+export default function Cart({ cartItems, addCart, removeCart, deleteCart }) {
   const [product, setProduct] = useState([]);
   var total = 0;
   useEffect(() => {
@@ -35,8 +33,6 @@ export default function Cart({ cartItems }) {
 
     return array;
   };
-
-  // console.log(getCartProduct());
 
   return (
     <>
@@ -73,8 +69,20 @@ export default function Cart({ cartItems }) {
                       <li className="cart__heading-item">
                         {new Intl.NumberFormat().format(data.pr1.Gia)}VND
                       </li>
-                      <li className="cart__heading-item">
+                      <li className="cart__heading-item-quantity">
+                        <button
+                          className="btn-cart__quantity"
+                          onClick={() => removeCart(data.pr2.MSHH)}
+                        >
+                          -
+                        </button>
                         {data.pr2.SoLuongHang}
+                        <button
+                          className="btn-cart__quantity"
+                          onClick={() => addCart(data.pr2.MSHH)}
+                        >
+                          +
+                        </button>
                       </li>
                       <li className="cart__heading-item">
                         {new Intl.NumberFormat().format(
@@ -116,7 +124,7 @@ export default function Cart({ cartItems }) {
                     </li>
                     <li className="cart__total-item">
                       <p className="cart__total-item-text">Shipping: </p>
-                      <p className="">27.990.000 VND x 5%</p>
+                      <p className="">0 VND x 5%</p>
                     </li>
                     <li className="cart__total-item">
                       <p className="cart__total-item-text">Total: </p>
@@ -128,6 +136,9 @@ export default function Cart({ cartItems }) {
                 </div>
               </div>
               <div className="row">
+                <button className="btn" onClick={deleteCart}>
+                  Delete Cart
+                </button>
                 <button className="btn">
                   <Link to="/check-out" className="link__btn">
                     GO TO CHECKOUT
@@ -138,13 +149,15 @@ export default function Cart({ cartItems }) {
           </div>
         </div>
       ) : (
-        <div className="cart-empty-wrapper">
-          <h2 className="cart-empty"> {"< Cart is Empty ! >"} </h2>
-          <button className="btn">
-            <Link to="/" className="link__btn">
-              Back to Shopping
-            </Link>
-          </button>
+        <div className="row">
+          <div className="cart-empty-wrapper">
+            <h2 className="cart-empty"> {"< Cart is Empty ! >"} </h2>
+            <button className="btn">
+              <Link to="/" className="link__btn">
+                Back to Shopping
+              </Link>
+            </button>
+          </div>
         </div>
       )}
     </>
