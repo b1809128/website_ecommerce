@@ -4,6 +4,8 @@ import { Link } from "react-router-dom";
 import LocationBar from "../../components/bar/locationbar/LocationBar";
 import axios from "axios";
 import "./checkout.css";
+import Swal from "sweetalert2";
+
 export default function CheckOut({ cartItems }) {
   const [product, setProduct] = useState([]);
   var total = 0;
@@ -30,6 +32,17 @@ export default function CheckOut({ cartItems }) {
       }
     }
     return array;
+  };
+
+  const orderHandle = (e) => {
+    e.preventDefault();
+    Swal.fire({
+      position: "top-end",
+      icon: "success",
+      title: "Order Successfully",
+      showConfirmButton: false,
+      timer: 1500,
+    });
   };
 
   // console.log(getCartProduct().map(data=> JSON.parse(data.pr1.MoTa)));
@@ -221,7 +234,7 @@ export default function CheckOut({ cartItems }) {
                     alt="bank"
                   />
                 </div>
-                <button className="btn">
+                <button className="btn" onClick={orderHandle}>
                   <Link to="/" className="link__btn">
                     ORDER <FaAngleRight />
                   </Link>

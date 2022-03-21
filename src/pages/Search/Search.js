@@ -1,4 +1,5 @@
 import "../Details/details.css";
+import "../Cart/cart.css";
 import "aos/dist/aos.css";
 import Aos from "aos";
 import React, { useEffect, useState } from "react";
@@ -46,9 +47,17 @@ export default function Details() {
           <LocationBar />
           <BrandBar />
           <RangeBar data={sortBy} />
-          <div className="row">
-            <ProductAPI data={searchData} />
-          </div>
+          {searchData.length > 0 ? (
+            <div className="row">
+              <ProductAPI data={searchData} />
+            </div>
+          ) : (
+            <div className="row">
+              <div className="cart-empty-wrapper">
+                <h2 className="cart-empty"> {"< No Product Found ! >"} </h2>
+              </div>
+            </div>
+          )}
           <SlideProduct />
         </div>
       </div>

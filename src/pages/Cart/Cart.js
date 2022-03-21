@@ -7,6 +7,7 @@ import axios from "axios";
 
 export default function Cart({ cartItems, addCart, removeCart, deleteCart }) {
   const [product, setProduct] = useState([]);
+  const [checkStatus, setCheckStatus] = useState(false);
   var total = 0;
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -105,9 +106,12 @@ export default function Cart({ cartItems, addCart, removeCart, deleteCart }) {
                   <div className="cart__shipping-select">
                     <input
                       type="checkbox"
+                      // checked={checkStatus ? "checked" : ""}
+                      defaultChecked={checkStatus}
                       className="cart__shipping-select-item"
+                      onChange={() => setCheckStatus(!checkStatus)}
                     />
-                    Shipping (+5%)
+                    Shipping (+0.5%)
                   </div>
                 </div>
               </div>
@@ -124,12 +128,22 @@ export default function Cart({ cartItems, addCart, removeCart, deleteCart }) {
                     </li>
                     <li className="cart__total-item">
                       <p className="cart__total-item-text">Shipping: </p>
-                      <p className="">0 VND x 5%</p>
+                      <p className="">
+                        {checkStatus
+                          ? new Intl.NumberFormat().format(total)
+                          : 0}{" "}
+                        VND x 0.5%
+                      </p>
                     </li>
                     <li className="cart__total-item">
                       <p className="cart__total-item-text">Total: </p>
                       <p className="cart__total-item-value">
-                        {new Intl.NumberFormat().format(total)} VND
+                        {checkStatus
+                          ? new Intl.NumberFormat().format(
+                              total + total * 0.005
+                            )
+                          : new Intl.NumberFormat().format(total)}{" "}
+                        VND
                       </p>
                     </li>
                   </ul>
