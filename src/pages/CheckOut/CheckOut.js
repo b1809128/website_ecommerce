@@ -125,7 +125,7 @@ export default function CheckOut({ cartItems }) {
               <form className="form-section">
                 <div className="form-block">
                   {getCartProduct().map((data) => {
-                    total += data.pr1.Gia * data.pr2.SoLuongHang;
+                    total += data.pr1.Gia * data.pr2.SoLuong;
                     return (
                       <div class="form-flex__product">
                         <img
@@ -136,7 +136,7 @@ export default function CheckOut({ cartItems }) {
                         <div className="form-flex__product-info">
                           <h4>{data.pr1.TenHH}</h4>
                           <p>Gray/256GB</p>
-                          <p>Quantity: {data.pr2.SoLuongHang}</p>
+                          <p>Quantity: {data.pr2.SoLuong}</p>
                         </div>
                       </div>
                     );

@@ -35,6 +35,8 @@ export default function Cart({ cartItems, addCart, removeCart, deleteCart }) {
     return array;
   };
 
+  // console.log(getCartProduct().map((data) => data));
+
   return (
     <>
       {cartItems.length > 0 ? (
@@ -52,7 +54,7 @@ export default function Cart({ cartItems, addCart, removeCart, deleteCart }) {
                 </ul>
               </div>
               {getCartProduct().map((data) => {
-                total += data.pr1.Gia * data.pr2.SoLuongHang;
+                total += data.pr1.Gia * data.pr2.SoLuong;
                 return (
                   <div className="row">
                     <ul className="cart__heading">
@@ -71,23 +73,43 @@ export default function Cart({ cartItems, addCart, removeCart, deleteCart }) {
                         {new Intl.NumberFormat().format(data.pr1.Gia)}VND
                       </li>
                       <li className="cart__heading-item-quantity">
-                        <button
-                          className="btn-cart__quantity"
-                          onClick={() => removeCart(data.pr2.MSHH)}
-                        >
-                          -
-                        </button>
-                        {data.pr2.SoLuongHang}
-                        <button
-                          className="btn-cart__quantity"
-                          onClick={() => addCart(data.pr2.MSHH)}
-                        >
-                          +
-                        </button>
+                        {data.pr2.SoLuong === 1 ? (
+                          <button
+                            className="btn-cart__quantity"
+                            disabled
+                            onClick={() => removeCart(data.pr2.MSHH)}
+                          >
+                            -
+                          </button>
+                        ) : (
+                          <button
+                            className="btn-cart__quantity"
+                            onClick={() => removeCart(data.pr2.MSHH)}
+                          >
+                            -
+                          </button>
+                        )}
+                        {data.pr2.SoLuong}
+                        {data.pr1.SoLuongHang - data.pr2.SoLuong > 0 ? (
+                          <button
+                            className="btn-cart__quantity"
+                            onClick={() => addCart(data.pr2.MSHH)}
+                          >
+                            +
+                          </button>
+                        ) : (
+                          <button
+                            className="btn-cart__quantity"
+                            disabled
+                            onClick={() => addCart(data.pr2.MSHH)}
+                          >
+                            +
+                          </button>
+                        )}
                       </li>
                       <li className="cart__heading-item">
                         {new Intl.NumberFormat().format(
-                          data.pr1.Gia * data.pr2.SoLuongHang
+                          data.pr1.Gia * data.pr2.SoLuong
                         )}{" "}
                         VND
                       </li>

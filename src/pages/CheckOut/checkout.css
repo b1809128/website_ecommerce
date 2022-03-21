@@ -92,6 +92,7 @@ textarea {
 
 .form-flex__price-value {
   color: #eb0028;
+  font-weight: 600;
 }
 
 p {

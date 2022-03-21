@@ -10,7 +10,7 @@ import SlideProduct from "../../components/main/slideproduct/SlideProduct";
 import ProductAPI from "../../components/products/ProductAPI";
 import { useLocation } from "react-router-dom";
 import axios from "axios";
-export default function Details() {
+export default function Search({ addCart }) {
   //Query Parameters
   const query = new URLSearchParams(useLocation().search);
   const sortBy = query.get("sortBy");
@@ -49,7 +49,7 @@ export default function Details() {
           <RangeBar data={sortBy} />
           {searchData.length > 0 ? (
             <div className="row">
-              <ProductAPI data={searchData} />
+              <ProductAPI data={searchData} addCart={addCart} />
             </div>
           ) : (
             <div className="row">

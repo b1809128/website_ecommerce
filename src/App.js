@@ -29,11 +29,11 @@ function App() {
     if (exist) {
       setCartItems(
         cartItems.map((x) =>
-          x.MSHH === MSHH ? { ...exist, SoLuongHang: exist.SoLuongHang + 1 } : x
+          x.MSHH === MSHH ? { ...exist, SoLuong: exist.SoLuong + 1 } : x
         )
       );
     } else {
-      setCartItems([...cartItems, { MSHH, SoLuongHang: 1 }]);
+      setCartItems([...cartItems, { MSHH, SoLuong: 1 }]);
     }
     Swal.fire({
       position: "top-end",
@@ -115,7 +115,7 @@ function App() {
             {user ? <AdminOrderDetails /> : <Login />}
           </Route>
           <Route path="/search">
-            <Search />
+            <Search addCart={addCart} />
           </Route>
           <Route path="/order-details">
             {user ? <CustomerOrderDetails /> : <Login />}
