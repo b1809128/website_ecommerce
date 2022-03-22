@@ -2,10 +2,13 @@
 import { Link } from "react-router-dom";
 import LocationBar from "../../components/bar/locationbar/LocationBar";
 import "./cart.css";
-import React, { useState, useEffect } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import axios from "axios";
+import { AuthContext } from "../../context/AuthContext";
+import { BsFillXSquareFill } from "react-icons/bs";
 
 export default function Cart({ cartItems, addCart, removeCart, deleteCart }) {
+  const { user } = useContext(AuthContext);
   const [product, setProduct] = useState([]);
   const [checkStatus, setCheckStatus] = useState(false);
   var total = 0;
@@ -21,7 +24,7 @@ export default function Cart({ cartItems, addCart, removeCart, deleteCart }) {
     };
     fetchAPI();
   }, []);
-
+  // console.log(cartItems);
   const getCartProduct = () => {
     let array = [];
     for (let i = 0; i < cartItems.length; i++) {
@@ -51,6 +54,7 @@ export default function Cart({ cartItems, addCart, removeCart, deleteCart }) {
                   <li className="cart__heading-item">PRICE</li>
                   <li className="cart__heading-item">QUANTITY</li>
                   <li className="cart__heading-item">TOTAL</li>
+                  <li className="cart__heading-item"></li>
                 </ul>
               </div>
               {getCartProduct().map((data) => {
@@ -113,6 +117,12 @@ export default function Cart({ cartItems, addCart, removeCart, deleteCart }) {
                         )}{" "}
                         VND
                       </li>
+                      <li className="cart__heading-item">
+                        <BsFillXSquareFill
+                          className="cart__delete-item"
+                          onClick={() => removeCart(data.pr2.MSHH)}
+                        />
+                      </li>
                     </ul>
                   </div>
                 );
@@ -171,16 +181,27 @@ export default function Cart({ cartItems, addCart, removeCart, deleteCart }) {
                   </ul>
                 </div>
               </div>
-              <div className="row">
-                <button className="btn" onClick={deleteCart}>
-                  Delete Cart
-                </button>
-                <button className="btn">
-                  <Link to="/check-out" className="link__btn">
+              {user ? (
+                <div className="row">
+                  <button className="btn" onClick={deleteCart}>
+                    Delete Cart
+                  </button>
+                  <button className="btn">
+                    <Link to="/check-out" className="link__btn">
+                      GO TO CHECKOUT
+                    </Link>
+                  </button>
+                </div>
+              ) : (
+                <div className="row">
+                  <button className="btn" disabled onClick={deleteCart}>
+                    Delete Cart
+                  </button>
+                  <button className="btn" disabled>
                     GO TO CHECKOUT
-                  </Link>
-                </button>
-              </div>
+                  </button>
+                </div>
+              )}
             </div>
           </div>
         </div>

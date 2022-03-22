@@ -19,6 +19,15 @@
   cursor: pointer;
 }
 
+.checkout__total {
+  display: flex;
+  flex-direction: column;
+  width: 90%;
+  border-radius: 6px;
+  padding: 10px;
+  cursor: pointer;
+}
+
 .profile__total-none{
   display: flex;
   flex-direction: column;

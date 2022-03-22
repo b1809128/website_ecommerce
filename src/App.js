@@ -24,6 +24,8 @@ import Swal from "sweetalert2";
 function App() {
   const { user } = useContext(AuthContext);
   const [cartItems, setCartItems] = useState([]);
+
+  //TODO: Add to cart
   const addCart = (MSHH) => {
     var exist = cartItems.find((x) => x.MSHH === MSHH);
     if (exist) {
@@ -44,20 +46,21 @@ function App() {
     });
   };
 
+  //TODO: Remove items cart
   const removeCart = (MSHH) => {
     var exist = cartItems.find((x) => x.MSHH === MSHH);
-    if (exist.SoLuongHang === 1) {
+    if (exist.SoLuong === 1) {
       setCartItems(cartItems.filter((x) => x.MSHH !== MSHH));
     } else {
       setCartItems(
         cartItems.map((x) =>
-          x.MSHH === MSHH ? { ...exist, SoLuongHang: exist.SoLuongHang - 1 } : x
+          x.MSHH === MSHH ? { ...exist, SoLuong: exist.SoLuong - 1 } : x
         )
       );
     }
   };
-  // console.log(cartItems);
 
+  //TODO: Delete cart
   const deleteCart = () => {
     Swal.fire({
       title: "Are you sure?",
@@ -75,10 +78,17 @@ function App() {
     });
   };
 
+  const deleteCartCheckOut = () => {
+    setCartItems([]);
+  };
+
   return (
     <div>
       <Router>
-        <Header cartItems={cartItems.length} />
+        <Header
+          cartItems={cartItems.length}
+          deleteCartCheckOut={deleteCartCheckOut}
+        />
         <Switch>
           <Route exact path="/">
             <Home addCart={addCart} />
@@ -107,7 +117,10 @@ function App() {
             />
           </Route>
           <Route path="/check-out">
-            <CheckOut cartItems={cartItems} />
+            <CheckOut
+              cartItems={cartItems}
+              deleteCartCheckOut={deleteCartCheckOut}
+            />
           </Route>
           <Route path="/profile">{user ? <Profile /> : <Login />}</Route>
           <Route path="/admin">{user ? <Admin /> : <Login />}</Route>

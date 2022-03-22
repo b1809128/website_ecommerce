@@ -41,6 +41,10 @@
   width: 20%;
 }
 
+.cart__heading-item:last-child {
+  width: 10%;
+}
+
 .cart__heading-item-quantity {
   width: 20%;
 }
@@ -135,6 +139,12 @@
   color: #eb0028;
   font-family: monospace;
   margin-top:50px;
+}
+
+.cart__delete-item {
+  color: #eb0028;
+  font-size:1.6rem;
+  cursor: pointer;
 }
 
 @media screen and (max-width: 960px) {
