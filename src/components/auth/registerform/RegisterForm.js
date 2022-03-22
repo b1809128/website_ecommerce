@@ -104,7 +104,7 @@ export default function RegisterForm() {
         <p className="register-text-none">
           {" "}
           Already have account ?{" "}
-          <span>
+          <span style={{paddingLeft:"16px"}}>
             <Link className="link" to="/sign-in">
               Sign In
             </Link>

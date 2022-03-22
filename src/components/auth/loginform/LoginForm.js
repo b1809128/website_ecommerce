@@ -125,7 +125,7 @@ export default function LoginForm() {
         <p className="login-text-none">
           {" "}
           Don't have an account ?{" "}
-          <span>
+          <span style={{ paddingLeft:"16px"}}>
             <Link className="link" to="/sign-up">
               Sign Up
             </Link>

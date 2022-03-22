@@ -15,6 +15,7 @@
 .register-text-none {
   margin-left: 40px;
   padding: 12px 0;
+  display: flex;
 }
 
 .register-text-none:first-child {

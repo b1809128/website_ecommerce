@@ -42,15 +42,12 @@ export default function CheckOut({ cartItems, deleteCartCheckOut }) {
     return array;
   };
 
-  const alertOrderSuccess = (e) => {
-    e.preventDefault();
-    Swal.fire({
-      position: "top-end",
-      icon: "success",
-      title: "Order Successfully",
-      showConfirmButton: false,
-      timer: 1500,
-    });
+  const alertOrderSuccess = () => {
+    Swal.fire(
+      "Order Successfully!",
+      "Click the button to continue!",
+      "success"
+    );
   };
 
   const orderHandle = async () => {
@@ -64,13 +61,13 @@ export default function CheckOut({ cartItems, deleteCartCheckOut }) {
           return { id_order: response.data.id_order, ...data };
         })
       );
-      alertOrderSuccess();
       deleteCartCheckOut();
     } catch (error) {
       console.log(error);
     }
+    alertOrderSuccess();
   };
-
+  console.log(customerData);
   // console.log(getCartProduct().map(data=> JSON.parse(data.pr1.MoTa)));
   // console.log(cartItems.map(data=>{return  {id_order:8898,...data}}));
 
@@ -81,7 +78,7 @@ export default function CheckOut({ cartItems, deleteCartCheckOut }) {
           <LocationBar />
           <div className="row">
             <div className="check__form">
-              {customerData > 0 ? (
+              {customerData.length > 0 ? (
                 <div className="checkout__total">
                   <div className="profile__header">
                     <h2 className="cart__total-title">Customer Information</h2>
