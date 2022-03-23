@@ -1,5 +1,6 @@
 import "./login.css";
 import { FaUserAlt, FaLock } from "react-icons/fa";
+import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
 import { TiDelete } from "react-icons/ti";
 import { Link, useHistory } from "react-router-dom";
 import { useState, useContext } from "react";
@@ -15,7 +16,7 @@ export default function LoginForm() {
   const [validatePassword, setValidatePassword] = useState(false);
   const [stateUser, setStateUser] = useState(false);
   const [statePassword, setStatePassword] = useState(false);
-
+  const [hidePasswordInput, setHidePasswordInput] = useState(true);
   //Redirect
   const history = useHistory();
 
@@ -90,12 +91,33 @@ export default function LoginForm() {
         <div className="login-text">
           <FaLock /> Password:
         </div>
-        <input
-          type="password"
-          placeholder="Password"
-          className="login-input"
-          onChange={(e) => setPassword(e.target.value)}
-        />
+        {!hidePasswordInput ? (
+          <div className="login-password-wrapper">
+            <input
+              type="text"
+              placeholder="Password"
+              className="login-password-input"
+              onChange={(e) => setPassword(e.target.value)}
+            />
+            <AiFillEyeInvisible
+              className="login-password-icon"
+              onClick={() => setHidePasswordInput(true)}
+            />
+          </div>
+        ) : (
+          <div className="login-password-wrapper">
+            <input
+              type="password"
+              placeholder="Password"
+              className="login-password-input"
+              onChange={(e) => setPassword(e.target.value)}
+            />
+            <AiFillEye
+              className="login-password-icon"
+              onClick={() => setHidePasswordInput(false)}
+            />
+          </div>
+        )}
         {statePassword ? (
           <div className="login-validate" style={{ display: "flex" }}>
             <TiDelete />
@@ -125,7 +147,7 @@ export default function LoginForm() {
         <p className="login-text-none">
           {" "}
           Don't have an account ?{" "}
-          <span style={{ paddingLeft:"16px"}}>
+          <span style={{ paddingLeft: "16px" }}>
             <Link className="link" to="/sign-up">
               Sign Up
             </Link>

@@ -1,6 +1,7 @@
 import "./register.css";
 import { FaUserAlt, FaLock } from "react-icons/fa";
 import { TiDelete } from "react-icons/ti";
+import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
 import { Link, useHistory } from "react-router-dom";
 import { useState } from "react";
 import axios from "axios";
@@ -11,6 +12,7 @@ export default function RegisterForm() {
   const [passwordReg, setPasswordReg] = useState("");
   const [stateUser, setStateUser] = useState(false);
   const [statePassword, setStatePassword] = useState(false);
+  const [hidePasswordInput, setHidePasswordInput] = useState(true);
 
   //Register function
   const register = async (e) => {
@@ -23,10 +25,11 @@ export default function RegisterForm() {
       } else if (userReg === "admin") {
         setStateUser(true);
       } else {
-        await axios.post("http://localhost:5000/auth/register", {
+        const res = await axios.post("http://localhost:5000/auth/register", {
           user: userReg,
           password: passwordReg,
         });
+        console.log(res);
         getAlert();
       }
     } catch (error) {
@@ -74,12 +77,33 @@ export default function RegisterForm() {
         <div className="register-text">
           <FaLock /> Password:
         </div>
-        <input
-          type="password"
-          placeholder="Password"
-          className="register-input"
-          onChange={(e) => setPasswordReg(e.target.value)}
-        />
+        {!hidePasswordInput ? (
+          <div className="register-password-wrapper">
+            <input
+              type="text"
+              placeholder="Password"
+              className="login-password-input"
+              onChange={(e) => setPasswordReg(e.target.value)}
+            />
+            <AiFillEyeInvisible
+              className="register-password-icon"
+              onClick={() => setHidePasswordInput(true)}
+            />
+          </div>
+        ) : (
+          <div className="register-password-wrapper">
+            <input
+              type="password"
+              placeholder="Password"
+              className="register-password-input"
+              onChange={(e) => setPasswordReg(e.target.value)}
+            />
+            <AiFillEye
+              className="register-password-icon"
+              onClick={() => setHidePasswordInput(false)}
+            />
+          </div>
+        )}
         {statePassword ? (
           <div className="register-validate" style={{ display: "flex" }}>
             <TiDelete />
@@ -94,8 +118,33 @@ export default function RegisterForm() {
         <div className="register-text">
           <FaLock /> Confirm Password:
         </div>
-        <input type="text" placeholder="Password" className="register-input" />
-
+        {!hidePasswordInput ? (
+          <div className="register-password-wrapper">
+            <input
+              type="text"
+              placeholder="Password"
+              className="login-password-input"
+              // onChange={(e) => setPasswordReg(e.target.value)}
+            />
+            <AiFillEyeInvisible
+              className="register-password-icon"
+              onClick={() => setHidePasswordInput(true)}
+            />
+          </div>
+        ) : (
+          <div className="register-password-wrapper">
+            <input
+              type="password"
+              placeholder="Password"
+              className="register-password-input"
+              // onChange={(e) => setPasswordReg(e.target.value)}
+            />
+            <AiFillEye
+              className="register-password-icon"
+              onClick={() => setHidePasswordInput(false)}
+            />
+          </div>
+        )}
         <div className="register-btn">
           <button onClick={register} className="btn">
             Sign Up
