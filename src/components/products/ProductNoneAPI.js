@@ -20,8 +20,8 @@ export default function ProductNoneAPI({ data, id ,addCart}) {
             {new Intl.NumberFormat().format(data[id].attribute.price)} VND
           </p>
           <button className="btn">
-            <Link to={"/product-details/" + id} className="link__btn">
-              Buy Now
+            <Link to={"/chi-tiet-san-pham-1/" + id} className="link__btn">
+              Mua Ngay
             </Link>
           </button>
         </div>

@@ -5,15 +5,15 @@ export default function ReviewBar() {
     <div className="review-bar">
       <ul className="review-bar-list">
         <li className="review-bar-item link">
-          <FaRegBookmark /> Description
+          <FaRegBookmark /> Mô tả
         </li>
         <li className="review-bar-item link">
           <FaRegBookmark />
-          Reviews
+          Đánh giá
         </li>
         <li className="review-bar-item link">
           <FaRegBookmark />
-          Shipping Details
+          Chi tiết giao hàng
         </li>
       </ul>
     </div>

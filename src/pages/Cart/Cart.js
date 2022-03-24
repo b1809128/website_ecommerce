@@ -187,7 +187,7 @@ export default function Cart({ cartItems, addCart, removeCart, deleteCart }) {
                     Delete Cart
                   </button>
                   <button className="btn">
-                    <Link to="/check-out" className="link__btn">
+                    <Link to="/thanh-toan" className="link__btn">
                       GO TO CHECKOUT
                     </Link>
                   </button>

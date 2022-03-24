@@ -8,25 +8,25 @@ export default function BrandBar() {
       <ul className="brand-bar-list">
         <li className="brand-bar-item">
           <FaMobileAlt className="brand-bar-icon" />{" "}
-          <Link to="/details?brand=AP" className="link">
+          <Link to="/tat-ca-san-pham?brand=AP" className="link">
             Apple
           </Link>
         </li>
         <li className="brand-bar-item">
           <FaMobileAlt className="brand-bar-icon" />{" "}
-          <Link to="/details?brand=SS" className="link">
+          <Link to="/tat-ca-san-pham?brand=SS" className="link">
             Samsung
           </Link>
         </li>
         <li className="brand-bar-item">
           <FaMobileAlt className="brand-bar-icon" />{" "}
-          <Link to="/details?brand=AS" className="link">
+          <Link to="/tat-ca-san-pham?brand=AS" className="link">
             Asus
           </Link>
         </li>
         <li className="brand-bar-item">
           <FaMobileAlt className="brand-bar-icon" />{" "}
-          <Link to="/details?brand=OP" className="link">
+          <Link to="/tat-ca-san-pham?brand=OP" className="link">
             OPPO
           </Link>
         </li>

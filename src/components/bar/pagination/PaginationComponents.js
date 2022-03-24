@@ -18,7 +18,7 @@ export default function PaginationComponents({ idxNumber, pageNumber }) {
       >
         <Link
           to={{
-            pathname: "/details",
+            pathname: "/tat-ca-san-pham",
             search: `?page=${data}`,
           }}
           className={

@@ -26,8 +26,8 @@ export default function Product({ image, name, price }) {
         {new Intl.NumberFormat().format(price)}VND
       </p>
       <button className="btn">
-        <Link to="/product-details" className="link__btn">
-          Buy Now
+        <Link to="/chi-tiet-san-pham-1" className="link__btn">
+          Mua Ngay
         </Link>
       </button>
     </div>

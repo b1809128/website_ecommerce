@@ -6,7 +6,7 @@ import ReviewBar from "../../components/bar/reviewtextbar/ReviewBar";
 import "./productdetails.css";
 import SimilarProduct from "../../components/SimilarProduct/SimilarProduct";
 
-export default function ProductDetailsAPI({addCart}) {
+export default function ProductDetailsAPI({ addCart }) {
   // Them param id vao duong dan
   const { id } = useParams();
 
@@ -77,7 +77,14 @@ export default function ProductDetailsAPI({addCart}) {
                     </p>
                     <div className="product-details-choose">
                       <div className="product-details-choose__item">
-                        <label for="memory">Memory:</label>
+                        <label for="memory">
+                          <span
+                            className="product-details-text__bold"
+                            style={{ fontSize: "1rem" }}
+                          >
+                            Bộ nhớ:
+                          </span>
+                        </label>
                         <select
                           className="product-details-choose__item-select"
                           name="memory"
@@ -89,7 +96,14 @@ export default function ProductDetailsAPI({addCart}) {
                         </select>
                       </div>
                       <div className="product-details-choose__item">
-                        <label for="color">Color:</label>
+                        <label for="color">
+                          <span
+                            className="product-details-text__bold"
+                            style={{ fontSize: "1rem" }}
+                          >
+                            Màu sắc:
+                          </span>
+                        </label>
                         <select
                           className="product-details-choose__item-select"
                           name="color"
@@ -103,7 +117,7 @@ export default function ProductDetailsAPI({addCart}) {
                       </div>
                     </div>
                     <div className="product-details-quantity">
-                      <p className="product-details-text__bold">Quantity:</p>
+                      <p className="product-details-text__bold">Số Lượng:</p>
                       <input
                         type="text"
                         placeholder="1"
@@ -111,38 +125,41 @@ export default function ProductDetailsAPI({addCart}) {
                       />
                     </div>
                     <p>
-                      <span className="product-details-text__bold">Brand:</span>{" "}
+                      <span className="product-details-text__bold">
+                        Thương Hiệu:
+                      </span>{" "}
                       {JSON.parse(data.MoTa).Brand}
                     </p>
                     <p>
                       <span className="product-details-text__bold">
-                        Product type:
+                        Loại Sản Phẩm:
                       </span>{" "}
                       {JSON.parse(data.MoTa).Type}
                     </p>
                     <p>
                       <span className="product-details-text__bold">
-                        Availability:
+                        Có Sẵn:
                       </span>{" "}
                       {data.SoLuongHang > 0 ? (
                         <span className="product-details-text__green">
-                          In Stock {data.SoLuongHang} items
+                          {data.SoLuongHang} sản phẩm
                         </span>
                       ) : (
                         <span className="product-details-text__green">
-                          Sold Out
+                          Hết Hàng
                         </span>
                       )}
                     </p>
                     <div className="product-details__btn">
-                      <button className="btn product-details__btn-item" onClick={() => addCart(id)}>
-                        <Link to="/" className="link__btn">
-                          Add to cart
-                        </Link>
+                      <button
+                        className="btn product-details__btn-item"
+                        onClick={() => addCart(id)}
+                      >
+                        THÊM VÀO GIỎ
                       </button>
                       <button className="btn product-details__btn-item">
-                        <Link to="/cart" className="link__btn">
-                          Buy Now
+                        <Link to="/gio-hang" className="link__btn">
+                          MUA NGAY
                         </Link>
                       </button>
                     </div>
@@ -192,7 +209,7 @@ export default function ProductDetailsAPI({addCart}) {
                         textDecoration: "underline",
                       }}
                     >
-                      Specifications
+                      Cấu hình chi tiết
                     </p>
                     <div className="product-details-specifications-image">
                       <img
@@ -203,19 +220,19 @@ export default function ProductDetailsAPI({addCart}) {
                     </div>
                     <p>
                       <span className="product-details-text__bold">
-                        Screen technology:
+                        Công nghệ màn hình:
                       </span>
                       {JSON.parse(data.MoTa).Screen}
                     </p>
                     <p>
                       <span className="product-details-text__bold">
-                        Operating System:
+                        Hệ điều hành:
                       </span>
                       {JSON.parse(data.MoTa).OS}
                     </p>
                     <p>
                       <span className="product-details-text__bold">
-                        Processor Chip (CPU):
+                        Chip Xử lý (CPU):
                       </span>
                       {JSON.parse(data.MoTa).CPU}
                     </p>
@@ -229,25 +246,25 @@ export default function ProductDetailsAPI({addCart}) {
                     </p>
                     <p>
                       <span className="product-details-text__bold">
-                        Mobile network:
+                        Mạng di động:
                       </span>
                       {JSON.parse(data.MoTa).Network}
                     </p>
                     <p>
                       <span className="product-details-text__bold">
-                        Number of sim slots:
+                        Số sim khả dụng:
                       </span>
                       {JSON.parse(data.MoTa).SIM}
                     </p>
                     <p>
                       <span className="product-details-text__bold">
-                        Weight:
+                        Cân nặng:
                       </span>
                       {JSON.parse(data.MoTa).Weight}
                     </p>
                     <p>
                       <span className="product-details-text__bold">
-                        Battery capacity:
+                        Dung lượng pin:
                       </span>
                       {JSON.parse(data.MoTa).Battery}
                     </p>
@@ -259,7 +276,7 @@ export default function ProductDetailsAPI({addCart}) {
         );
       })}
       <div className="product-details-section">
-        <SimilarProduct groupBy={product.map(data=>data.MaLoaiHang)}/>
+        <SimilarProduct groupBy={product.map((data) => data.MaLoaiHang)} />
       </div>
     </>
   );

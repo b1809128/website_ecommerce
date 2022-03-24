@@ -2,7 +2,7 @@ import "./App.css";
 import React, { useState, useContext } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Home from "./pages/Home/Home";
-import Details from "./pages/Details/Details";
+import AllProducts from "./pages/Details/Details";
 import Header from "./components/header/Header";
 import Footer from "./components/footer/Footer";
 import ScrollTop from "./components/scrolltop/ScrollTop";
@@ -93,13 +93,13 @@ function App() {
           <Route exact path="/">
             <Home addCart={addCart} />
           </Route>
-          <Route path="/details">
-            <Details addCart={addCart} />
+          <Route path="/tat-ca-san-pham">
+            <AllProducts addCart={addCart} />
           </Route>
-          <Route path="/product-details/:id">
+          <Route path="/chi-tiet-san-pham-1/:id">
             <ProductDetails addCart={addCart} data={productsData} />
           </Route>
-          <Route path="/product-details-api/:id">
+          <Route path="/chi-tiet-san-pham/:id">
             <ProductDetailsAPI addCart={addCart} />
           </Route>
           <Route path="/sign-in">
@@ -108,7 +108,7 @@ function App() {
           <Route path="/sign-up">
             <Register />
           </Route>
-          <Route path="/cart">
+          <Route path="/gio-hang">
             <Cart
               cartItems={cartItems}
               addCart={addCart}
@@ -116,21 +116,23 @@ function App() {
               deleteCart={deleteCart}
             />
           </Route>
-          <Route path="/check-out">
+          <Route path="/thanh-toan">
             <CheckOut
               cartItems={cartItems}
               deleteCartCheckOut={deleteCartCheckOut}
             />
           </Route>
-          <Route path="/profile">{user ? <Profile /> : <Login />}</Route>
+          <Route path="/thong-tin-khach-hang">
+            {user ? <Profile /> : <Login />}
+          </Route>
           <Route path="/admin">{user ? <Admin /> : <Login />}</Route>
-          <Route path="/admin-order-details">
+          <Route path="/quan-ly-don-hang">
             {user ? <AdminOrderDetails /> : <Login />}
           </Route>
-          <Route path="/search">
+          <Route path="/tim-kiem">
             <Search addCart={addCart} />
           </Route>
-          <Route path="/order-details">
+          <Route path="/chi-tiet-don-hang">
             {user ? <CustomerOrderDetails /> : <Login />}
           </Route>
           <Route path="/test">

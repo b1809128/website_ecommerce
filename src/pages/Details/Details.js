@@ -14,7 +14,7 @@ import Pagination from "../../components/bar/pagination/Pagination";
 /* import ProductNoneAPI from "../../components/products/ProductNoneAPI";
  import { productsData } from "../../data";
 */
-export default function Details({addCart}) {
+export default function AllProducts({addCart}) {
   //Query Parameters url?abc=1
   const query = new URLSearchParams(useLocation().search);
   const sortBy = query.get("sortBy");
@@ -114,7 +114,7 @@ export default function Details({addCart}) {
           <div className="row">
             <Pagination props={numberPage} page={parseInt(pageQuery)} />
           </div>
-          <SlideProduct title="Others Product" />
+          <SlideProduct title="Sản Phẩm Khác:" />
         </div>
       </div>
     </div>

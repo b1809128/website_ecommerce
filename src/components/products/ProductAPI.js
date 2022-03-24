@@ -26,10 +26,10 @@ export default function ProductAPI({ data,addCart }) {
           </p>
           <button className="btn">
             <Link
-              to={"/product-details-api/" + data.MSHH}
+              to={"/chi-tiet-san-pham/" + data.MSHH}
               className="link__btn"
             >
-              Buy Now
+              MUA NGAY
             </Link>
           </button>
         </div>

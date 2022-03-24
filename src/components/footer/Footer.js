@@ -22,15 +22,15 @@ function Footer() {
       <div className="footer-first-content">
         <div className="footer-search-content-text">
           <p className="footer-search-content-text-item">
-            FREE SHIPPING INNER CITY
+            MIỄN PHÍ GIAO HÀNG NỘI Ô THÀNH PHỐ
           </p>
           <p className="footer-search-content-text-item">
-            100% MONEY BACK GUARANTEE
+            100% HOÀN TIỀN KHI SẢN PHẨM LỖI
           </p>
           <p className="footer-search-content-text-item">
-            MANY PAYMENT GATEWAYS
+            NHIỀU HÌNH THỨC THANH TOÁN
           </p>
-          <p className="footer-search-content-text-item">24/7 ONLINE SUPPORT</p>
+          <p className="footer-search-content-text-item">HỖ TRỢ TRỰC TUYẾN 24/7</p>
         </div>
         <div data-aos="fade-up">
           <form className="footer-search-content-form" action="">
@@ -39,37 +39,37 @@ function Footer() {
               placeholder="Your Email"
               className="footer-search-content-input"
             />
-            <button className="btn">Get Discount Code</button>
+            <button className="btn">Nhận mã giảm giá</button>
           </form>
         </div>
       </div>
       <div className="footer-links">
         <div className="footer-link-wrapper">
           <div className="footer-link-items">
-            <h2>About Us</h2>
-            <a href="/sign-up">How it works</a>
-            <a href="/">Careers</a>
-            <a href="/">Investors</a>
-            <a href="/">Terms of Service</a>
+            <h2>Giới thiệu</h2>
+            <a href="/sign-up">Hoạt động kinh doanh</a>
+            <a href="/">Nghề nghiệp</a>
+            <a href="/">Nhà đầu tư</a>
+            <a href="/">Điều khoản dịch vụ</a>
           </div>
           <div className="footer-link-items">
-            <h2>Contact Us</h2>
-            <a href="/">Contact</a>
-            <a href="/">Support</a>
-            <a href="/">Destinations</a>
-            <a href="/">Sponsorships</a>
+            <h2>Tương tác</h2>
+            <a href="/">Tương tác</a>
+            <a href="/">Hỗ trợ</a>
+            <a href="/">Địa điểm</a>
+            <a href="/">Tài trợ</a>
           </div>
         </div>
         <div className="footer-link-wrapper">
           <div className="footer-link-items">
             <h2>Videos</h2>
             <a href="/">Submit Video</a>
-            <a href="/">Ambassadors</a>
-            <a href="/">Agency</a>
-            <a href="/">Influencer</a>
+            <a href="/">Đại sứ thương hiệu</a>
+            <a href="/">Đại lý</a>
+            <a href="/">Tầm ảnh hưởng</a>
           </div>
           <div className="footer-link-items">
-            <h2>Social Media</h2>
+            <h2>Mạng xã hội</h2>
             <a href="/">Instagram</a>
             <a href="/">Facebook</a>
             <a href="/">Youtube</a>

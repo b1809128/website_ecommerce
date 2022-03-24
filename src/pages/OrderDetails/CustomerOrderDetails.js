@@ -209,7 +209,7 @@ export default function AdminOrderDetails() {
 
           <div className="row">
             <button className="btn">
-              <Link to="/profile" className="link__btn">
+              <Link to="/thong-tin-khach-hang" className="link__btn">
                 Back to Profile
               </Link>
             </button>

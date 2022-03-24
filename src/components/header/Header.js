@@ -87,7 +87,7 @@ export default function Header({ cartItems, deleteCartCheckOut }) {
             </Link>
           </div>
           <div className="menu-icon__item">
-            <Link className="link relative__cart-number" to="/cart">
+            <Link className="link relative__cart-number" to="/gio-hang">
               <FaShoppingCart />
               <div className="absolute__cart-number">{cartItems}</div>
             </Link>
@@ -104,27 +104,27 @@ export default function Header({ cartItems, deleteCartCheckOut }) {
         <ul className={click ? "nav-menu active" : "nav-menu"}>
           <li className="nav-item">
             <a className="link" href="/" onClick={handleClick}>
-              Home
+              Trang Chủ
             </a>
           </li>
           <li className="nav-item">
-            <a className="link" href="#categories" onClick={handleClick}>
-              Categories
+            <Link to="/tat-ca-san-pham" className="link" onClick={handleClick}>
+              Sản Phẩm
+            </Link>
+          </li>
+          <li className="nav-item">
+            <a className="link" href="#blog" onClick={handleClick}>
+              Bài Viết
             </a>
           </li>
           <li className="nav-item">
             <a className="link" href="#services" onClick={handleClick}>
-              Service
-            </a>
-          </li>
-          <li className="nav-item">
-            <a className="link" href="#blog" onClick={handleClick}>
-              Blog
+              Dịch Vụ
             </a>
           </li>
           <li className="nav-item">
             <a className="link" href="#footer" onClick={handleClick}>
-              About Us
+              Giới Thiệu
             </a>
           </li>
         </ul>
@@ -132,11 +132,11 @@ export default function Header({ cartItems, deleteCartCheckOut }) {
         {user ? (
           <ul className="nav-menu">
             <li className="">
-              <form action="/search" method="get" className="nav-bar__form">
+              <form action="/tim-kiem" method="get" className="nav-bar__form">
                 <input
                   type="text"
                   className="nav-bar__form-input"
-                  placeholder="Search"
+                  placeholder="Tìm kiếm"
                   name="search"
                 />
                 <button className="nav-bar__form-submit">
@@ -147,7 +147,7 @@ export default function Header({ cartItems, deleteCartCheckOut }) {
 
             <li className="nav-item">
               <FaUserCheck />
-              <Link className="link" to="/profile">
+              <Link className="link" to="/thong-tin-khach-hang">
                 {user.result[0].user}
               </Link>
             </li>
@@ -159,7 +159,7 @@ export default function Header({ cartItems, deleteCartCheckOut }) {
             </li>
 
             <li className="nav-item">
-              <Link className="link relative__cart-number" to="/cart">
+              <Link className="link relative__cart-number" to="/gio-hang">
                 <FaShoppingCart />
                 <div className="absolute__cart-number">{cartItems}</div>
               </Link>
@@ -168,11 +168,11 @@ export default function Header({ cartItems, deleteCartCheckOut }) {
         ) : (
           <ul className="nav-menu">
             <li className="">
-              <form action="/search" method="get" className="nav-bar__form">
+              <form action="/tim-kiem" method="get" className="nav-bar__form">
                 <input
                   type="text"
                   className="nav-bar__form-input"
-                  placeholder="Search"
+                  placeholder="Tìm kiếm"
                   name="search"
                 />
                 <button className="nav-bar__form-submit">
@@ -188,7 +188,7 @@ export default function Header({ cartItems, deleteCartCheckOut }) {
             </li>
 
             <li className="nav-item">
-              <Link className="link relative__cart-number" to="/cart">
+              <Link className="link relative__cart-number" to="/gio-hang">
                 <FaShoppingCart />
                 <div className="absolute__cart-number">{cartItems}</div>
               </Link>

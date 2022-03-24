@@ -11,15 +11,16 @@ export default function IntroduceTop() {
       />
       <div className="introduce-top-text">
         <h1 className="introduce-top-text__title">
-          Why Apple is the best place to buy iPhone.
+          Tại sao Apple lại là hãng điện thoại đáng mua nhất hiện nay ?
         </h1>
         <h3 className="introduce-top-text__justify">
-          You can choose a payment option that works for you, pay less with a
-          trade‑in, connect your new iPhone to your carrier, and get set up
-          quickly. You can also chat with a Specialist anytime.
+          Bạn có thể chọn một tùy chọn thanh toán phù hợp với mình, trả ít hơn
+          với giao dịch, kết nối iPhone mới với nhà cung cấp dịch vụ của bạn và
+          thiết lập Mau. Bạn cũng có thể trò chuyện với Chuyên gia bất cứ lúc
+          nào.
         </h3>
         <div className="introduce-top-text__link">
-          Learn More <FaAngleRight className="introduce-top-text__icon" />
+          Tìm hiểu thêm <FaAngleRight className="introduce-top-text__icon" />
         </div>
       </div>
     </div>

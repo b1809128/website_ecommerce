@@ -9,7 +9,7 @@ export default function LocationBar() {
       <ul className="location-bar-list">
         <li className="location-bar-item">
           <Link to="/" className="location-bar-item__link">
-            Home
+            Trang Chủ
           </Link>{" "}
           <FaAngleRight />
         </li>

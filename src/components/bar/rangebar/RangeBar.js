@@ -24,11 +24,11 @@ export default function RangeBar({ data }) {
   return (
     <div className="range-bar">
       <div className="range-bar-container">
-        <form action="/details" method="get" className="range-bar__form">
+        <form action="/tat-ca-san-pham" method="get" className="range-bar__form">
           <input
             type="text"
             className="range-bar__form-input"
-            placeholder="Search"
+            placeholder="Tìm kiếm"
             name="search"
           />
           <button className="range-bar__form-submit" type="submit">
@@ -42,7 +42,7 @@ export default function RangeBar({ data }) {
               {name}
               <div className="range-bar__select-children">
                 <div id="ASC" value="">
-                  <Link to="details/" className="link">
+                  <Link to="/tat-ca-san-pham" className="link">
                     Tất cả
                   </Link>
                 </div>

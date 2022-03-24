@@ -112,7 +112,7 @@ export default function Profile() {
                     return (
                       <Link
                         to={{
-                          pathname: "/order-details",
+                          pathname: "/chi-tiet-don-hang",
                           search: `?id_order=${data.id_order}&id=${data.id}`,
                         }}
                         className="profile__link"

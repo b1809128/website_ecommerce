@@ -12,7 +12,7 @@ export default function Comment() {
         />
       </div>
       <p className="comment-text">
-        This is a best shop technology with lot of service for customer
+        Đây là một cửa hàng công nghệ tốt nhất với nhiều dịch vụ cho khách hàng
       </p>
       <p className="comment-star">
         <FaStar />
@@ -23,7 +23,7 @@ export default function Comment() {
       </p>
       <div className="comment-link">
         <FaLongArrowAltRight />{" "}
-        <span className="comment-link__text">Read more</span>
+        <span className="comment-link__text">Đọc tiếp...</span>
       </div>
     </div>
   );

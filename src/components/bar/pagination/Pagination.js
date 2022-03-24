@@ -8,7 +8,7 @@ export default function Paganition({ props, page }) {
       <div className={!page ? "pagination-item pagination-active" : "pagination-item"}>
         <Link
           to={{
-            pathname: "/details",
+            pathname: "/tat-ca-san-pham",
           }}
           className={!page ? "pagination-link-active" : "pagination-link"}
         >
