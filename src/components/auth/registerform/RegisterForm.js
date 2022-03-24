@@ -3,16 +3,34 @@ import { FaUserAlt, FaLock } from "react-icons/fa";
 import { TiDelete } from "react-icons/ti";
 import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
 import { Link, useHistory } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
 import Swal from "sweetalert2";
 
 export default function RegisterForm() {
   const [userReg, setUserReg] = useState("");
   const [passwordReg, setPasswordReg] = useState("");
+  const [passwordReg2, setPasswordReg2] = useState("");
+
   const [stateUser, setStateUser] = useState(false);
+  const [userExist, setUserExist] = useState(false);
   const [statePassword, setStatePassword] = useState(false);
   const [hidePasswordInput, setHidePasswordInput] = useState(true);
+
+  //Get API Customer
+  const [customerData, setCustomerData] = useState([]);
+
+  useEffect(() => {
+    const fetchAPI = async () => {
+      try {
+        const res = await axios.get("http://localhost:5000/manage/api");
+        setCustomerData(res.data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    fetchAPI();
+  });
 
   //Register function
   const register = async (e) => {
@@ -20,17 +38,22 @@ export default function RegisterForm() {
     try {
       if (!userReg) {
         setStateUser(true);
-      } else if (!passwordReg) {
+        // setTimeout(() =>setStateUser(true),3000)
+      } else if (!passwordReg || !passwordReg2) {
         setStatePassword(true);
-      } else if (userReg === "admin") {
-        setStateUser(true);
-      } else {
-        const res = await axios.post("http://localhost:5000/auth/register", {
-          user: userReg,
-          password: passwordReg,
-        });
-        console.log(res);
-        getAlert();
+      } else if (userReg) {
+        const testCustomerData = customerData.filter(
+          (data) => data.user === userReg
+        );
+        if (testCustomerData.length > 0) {
+          setUserExist(true);
+        } else {
+          await axios.post("http://localhost:5000/auth/register", {
+            user: userReg,
+            password: passwordReg,
+          });
+          getAlert();
+        }
       }
     } catch (error) {
       console.error(error);
@@ -64,7 +87,11 @@ export default function RegisterForm() {
           onChange={(e) => setUserReg(e.target.value)}
         />
         {stateUser ? (
-          <div className="register-validate" style={{ display: "flex" }}>
+          <div
+            className="register-validate"
+            style={{ display: "flex" }}
+            onClick={() => setStateUser(false)}
+          >
             <TiDelete />
             Information must be filled out!
           </div>
@@ -72,6 +99,21 @@ export default function RegisterForm() {
           <div className="register-validate">
             <TiDelete />
             Information must be filled out!
+          </div>
+        )}
+        {userExist ? (
+          <div
+            className="register-validate"
+            style={{ display: "flex" }}
+            onClick={() => setUserExist(false)}
+          >
+            <TiDelete />
+            Username is already registered!
+          </div>
+        ) : (
+          <div className="register-validate">
+            <TiDelete />
+            Username is already registered!
           </div>
         )}
         <div className="register-text">
@@ -105,7 +147,11 @@ export default function RegisterForm() {
           </div>
         )}
         {statePassword ? (
-          <div className="register-validate" style={{ display: "flex" }}>
+          <div
+            className="register-validate"
+            style={{ display: "flex" }}
+            onClick={() => setStatePassword(false)}
+          >
             <TiDelete />
             Information must be filled out!
           </div>
@@ -124,7 +170,7 @@ export default function RegisterForm() {
               type="text"
               placeholder="Password"
               className="login-password-input"
-              // onChange={(e) => setPasswordReg(e.target.value)}
+              onChange={(e) => setPasswordReg2(e.target.value)}
             />
             <AiFillEyeInvisible
               className="register-password-icon"
@@ -137,12 +183,27 @@ export default function RegisterForm() {
               type="password"
               placeholder="Password"
               className="register-password-input"
-              // onChange={(e) => setPasswordReg(e.target.value)}
+              onChange={(e) => setPasswordReg2(e.target.value)}
             />
             <AiFillEye
               className="register-password-icon"
               onClick={() => setHidePasswordInput(false)}
             />
+          </div>
+        )}
+        {statePassword ? (
+          <div
+            className="register-validate"
+            style={{ display: "flex" }}
+            onClick={() => setStatePassword(false)}
+          >
+            <TiDelete />
+            Information must be filled out!
+          </div>
+        ) : (
+          <div className="register-validate">
+            <TiDelete />
+            Information must be filled out!
           </div>
         )}
         <div className="register-btn">
@@ -153,7 +214,7 @@ export default function RegisterForm() {
         <p className="register-text-none">
           {" "}
           Already have account ?{" "}
-          <span style={{paddingLeft:"16px"}}>
+          <span style={{ paddingLeft: "16px" }}>
             <Link className="link" to="/sign-in">
               Sign In
             </Link>
