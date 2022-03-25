@@ -111,7 +111,7 @@ export default function AllProducts({ addCart }) {
               addCart={addCart}
               data={searchQuery ? searchData : flag ? brand : product}
             />
-            {searchData.length === 0 && (
+            {searchQuery && searchData.length === 0 && (
               <div className="cart-empty-wrapper">
                 <h2 className="cart-empty">
                   {" "}
@@ -130,7 +130,7 @@ export default function AllProducts({ addCart }) {
             </div>
           )}
 
-          <SlideProduct title="SẢN PHẨM KHÁC:" />
+          <SlideProduct title="CÓ THỂ BẠN SẼ THÍCH:" />
         </div>
       </div>
     </div>

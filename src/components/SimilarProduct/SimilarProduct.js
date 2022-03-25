@@ -21,12 +21,15 @@ export default function SimilarProduct({ groupBy }) {
     <div style={{ display: "block", width: "100%" }}>
       <h2
         style={{
-          color: "#eb0028",
+          height: "30px",
+          width:"250px",
+          backgroundImage:"linear-gradient(to right, #eb0028,rgba(255,0,0,0.5))",
+          color: "#fff",
           fontFamily: "monospace",
-          textDecoration: "underline",
+          padding:"4px"
         }}
       >
-        SẢN PHẨM TƯƠNG TỰ:
+        CÓ THỂ BẠN SẼ THÍCH:
       </h2>
       <div
         style={{ display: "flex", flexWrap: "wrap", justifyContent: "left" }}

@@ -10,7 +10,7 @@ export default function Info({ heading, name, image }) {
       <div className="info__text">
         <h4 className="info__text-heading">{heading}</h4>
         <h2 className="info__text-name">{name}</h2>
-        <button className="btn">
+        <button className="btn btn-slide">
           <Link className="link__btn" to="/tat-ca-san-pham">
             XEM CHI TIẾT
           </Link>

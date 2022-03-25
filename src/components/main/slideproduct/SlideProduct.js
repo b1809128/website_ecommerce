@@ -43,15 +43,28 @@ export default function SlideProduct({ title, groupBy }) {
       },
     ],
   };
- 
+
   return (
     <div className="slide-product">
-      <h2 className="slide-product-title">{title}</h2>
+      <h2
+        // className="slide-product-title"
+        style={{
+          height: "30px",
+          width: "250px",
+          backgroundImage:
+            "linear-gradient(to right, #eb0028,rgba(255,0,0,0.5))",
+          color: "#fff",
+          fontFamily: "monospace",
+          padding: "4px",
+        }}
+      >
+        {title}
+      </h2>
       <Slider {...settings}>
         {slideProductData.map((data, index) => {
           return <div key={index}>{data.case}</div>;
         })}
       </Slider>
-    </div>   
+    </div>
   );
 }

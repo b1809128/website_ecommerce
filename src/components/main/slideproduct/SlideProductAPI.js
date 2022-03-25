@@ -12,16 +12,14 @@ export default function SlideProductAPI({ title, groupBy }) {
     infinite: true,
     speed: 500,
     slidesToShow: 3,
-    slidesToScroll: 3
+    slidesToScroll: 3,
   };
 
   const [productData, setProductData] = useState([]);
   useEffect(() => {
     const fetchAPI = async () => {
       try {
-        const res = await axios.get(
-          `http://localhost:5000/product/group/SS`
-        );
+        const res = await axios.get(`http://localhost:5000/product/group/SS`);
         setProductData(res.data);
       } catch (error) {
         console.log(error);
@@ -32,12 +30,27 @@ export default function SlideProductAPI({ title, groupBy }) {
     fetchAPI();
   }, [groupBy]);
 
-//   console.log(productData);
+  //   console.log(productData);
   return (
     <div className="slide-product">
-      <h2 className="slide-product-title">{title}</h2>
+      <h2
+        // className="slide-product-title"
+        style={{
+          height: "30px",
+          width: "250px",
+          backgroundImage:
+            "linear-gradient(to right, #eb0028,rgba(255,0,0,0.5))",
+          color: "#fff",
+          fontFamily: "monospace",
+          padding: "4px",
+        }}
+      >
+        {title}
+      </h2>
       <Slider {...settings}>
-          {productData.map((data,index) => <ProductAPI data={data}/>)}
+        {productData.map((data, index) => (
+          <ProductAPI data={data} />
+        ))}
       </Slider>
     </div>
   );
