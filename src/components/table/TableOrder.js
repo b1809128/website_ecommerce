@@ -71,7 +71,7 @@ function TableOrder() {
         <input
           type="text"
           className="nav-bar__form-input-admin"
-          placeholder="Search"
+          placeholder="Tìm kiếm"
           name="search"
           onChange={(e) => setTagName(e.target.value)}
         />
@@ -79,12 +79,11 @@ function TableOrder() {
       <table className="table">
         <thead>
           <tr>
-            <th style={{ textAlign: "center" }}>Order</th>
-            <th>User</th>
-            <th>Staff</th>
-            <th>Created</th>
-            <th>Status</th>
-            <th>Action</th>
+            <th style={{ textAlign: "center" }}>STT</th>
+            <th style={{ textAlign: "center" }}>MSNV</th>
+            <th>NGÀY ĐẶT HÀNG</th>
+            <th>TÌNH TRẠNG</th>
+            <th></th>
           </tr>
         </thead>
         <tbody>
@@ -94,8 +93,7 @@ function TableOrder() {
               <>
                 <tr>
                   <td style={{ textAlign: "center" }}>{data.id_order}</td>
-                  <td>{data.id}</td>
-                  <td>{data.id_staff}</td>
+                  <td style={{ textAlign: "center" }}>{data.id_staff}</td>
                   <td style={{ textAlign: "left", fontWeight: "700" }}>
                     {new Date(data.created_at).toDateString()}
                   </td>

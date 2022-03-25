@@ -1,4 +1,4 @@
-import "../Details/details.css";
+import "../AllProducts/allProducts.css";
 import "../Cart/cart.css";
 import "aos/dist/aos.css";
 import Aos from "aos";
@@ -54,7 +54,7 @@ export default function Search({ addCart }) {
           ) : (
             <div className="row">
               <div className="cart-empty-wrapper">
-                <h2 className="cart-empty"> {"< No Product Found ! >"} </h2>
+                <h2 className="cart-empty"> {"< KHÔNG TÌM THẤY SẢN PHẨM NÀO ! >"} </h2>
               </div>
             </div>
           )}

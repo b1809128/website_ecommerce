@@ -26,7 +26,7 @@ export default function SimilarProduct({ groupBy }) {
           textDecoration: "underline",
         }}
       >
-        Sản phẩm tương tự:
+        SẢN PHẨM TƯƠNG TỰ:
       </h2>
       <div
         style={{ display: "flex", flexWrap: "wrap", justifyContent: "left" }}

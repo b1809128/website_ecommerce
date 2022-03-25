@@ -81,7 +81,7 @@ export default function CheckOut({ cartItems, deleteCartCheckOut }) {
               {customerData.length > 0 ? (
                 <div className="checkout__total">
                   <div className="profile__header">
-                    <h2 className="cart__total-title">Customer Information</h2>
+                    <h2 className="cart__total-title">THÔNG TIN KHÁCH HÀNG</h2>
                     <FaEdit
                       style={{
                         color: "#28a745",
@@ -93,16 +93,16 @@ export default function CheckOut({ cartItems, deleteCartCheckOut }) {
                     return (
                       <ul className="cart__total-list">
                         <li className="cart__total-item">
-                          <p className="cart__total-item-text">ID Customer: </p>
+                          <p className="cart__total-item-text">Mã số khách hàng: </p>
                           <p className="">{data.id}</p>
                         </li>
                         <li className="cart__total-item">
-                          <p className="cart__total-item-text">Full Name: </p>
+                          <p className="cart__total-item-text">Họ tên: </p>
                           <p className="">{data.fullname}</p>
                         </li>
                         <li className="cart__total-item">
                           <p className="cart__total-item-text">
-                            Phone Number:{" "}
+                            Số điện thoại:{" "}
                           </p>
                           <p className="">{data.phonenumber}</p>
                         </li>
@@ -111,7 +111,7 @@ export default function CheckOut({ cartItems, deleteCartCheckOut }) {
                           <p className="">{data.email}</p>
                         </li>
                         <li className="cart__total-item">
-                          <p className="cart__total-item-text">Address: </p>
+                          <p className="cart__total-item-text">Địa chỉ: </p>
                           <p className="">{data.addressdetails}</p>
                         </li>
                       </ul>
@@ -120,10 +120,10 @@ export default function CheckOut({ cartItems, deleteCartCheckOut }) {
                 </div>
               ) : (
                 <div className="order__information">
-                  <h2 className="check__form-title">Order Information</h2>
+                  <h2 className="check__form-title">THÔNG TIN ĐƠN HÀNG</h2>
                   <form className="form-section">
                     <div className="form-block">
-                      <label for="name">Full name*</label>
+                      <label for="name">Họ tên*</label>
                       <input
                         type="text"
                         id="name"
@@ -132,7 +132,7 @@ export default function CheckOut({ cartItems, deleteCartCheckOut }) {
                       />
                     </div>
                     <div className="form-flex">
-                      <label>Gender </label>
+                      <label>Giới tính </label>
                       <input
                         id="gender"
                         type="checkbox"
@@ -142,7 +142,7 @@ export default function CheckOut({ cartItems, deleteCartCheckOut }) {
                         checked="checked"
                         style={{ width: "10%" }}
                       />
-                      <span style={{ marginRight: "10%" }}>Male</span>
+                      <span style={{ marginRight: "10%" }}>Nam</span>
                       <input
                         id="gender"
                         type="checkbox"
@@ -151,7 +151,7 @@ export default function CheckOut({ cartItems, deleteCartCheckOut }) {
                         value="nữ"
                         style={{ width: "10%" }}
                       />
-                      <span>Female</span>
+                      <span>Nữ</span>
                     </div>
 
                     <div className="form-block">
@@ -165,7 +165,7 @@ export default function CheckOut({ cartItems, deleteCartCheckOut }) {
                     </div>
 
                     <div className="form-block">
-                      <label for="adress">Address*</label>
+                      <label for="adress">Địa chỉ*</label>
                       <input
                         className="form-input"
                         type="text"
@@ -175,12 +175,12 @@ export default function CheckOut({ cartItems, deleteCartCheckOut }) {
                     </div>
 
                     <div className="form-block">
-                      <label for="phone">Phone number*</label>
+                      <label for="phone">Số điện thoại*</label>
                       <input type="text" id="phone" className="form-input" />
                     </div>
 
                     <div className="form-block">
-                      <label for="notes">Note</label>
+                      <label for="notes">Ghi chú</label>
                       <textarea id="notes"></textarea>
                     </div>
                   </form>
@@ -189,7 +189,7 @@ export default function CheckOut({ cartItems, deleteCartCheckOut }) {
             </div>
             {/* Check method */}
             <div className="check__method">
-              <h2 className="check__method-title">Your Invoice</h2>
+              <h2 className="check__method-title">HÓA ĐƠN THANH TOÁN</h2>
               <form className="form-section">
                 <div className="form-block">
                   {getCartProduct().map((data) => {
@@ -211,19 +211,18 @@ export default function CheckOut({ cartItems, deleteCartCheckOut }) {
                   })}
 
                   <div className="form-flex__price">
-                    <h3>Subtotal:</h3>
+                    <h3>Tổng cộng:</h3>
                     <p className="form-flex__price-value">
                       {new Intl.NumberFormat().format(total)} VND
                     </p>
                   </div>
                 </div>
-                <h2 className="check__method-title">Payment Methods</h2>
+                <h2 className="check__method-title">PHƯƠNG THỨC THANH TOÁN</h2>
                 <div className="form-flex">
-                  <input type="checkbox" className="method" /> Payment On
-                  Delivery
+                  <input type="checkbox" className="method" /> Thanh toán khi nhận hàng
                 </div>
                 <div className="form-flex">
-                  <input type="checkbox" className="method" /> Payment Via Card
+                  <input type="checkbox" className="method" /> Thanh toán qua thẻ tín dụng
                 </div>
                 <div className="form-flex">
                   <div className="form-flex">
@@ -304,7 +303,7 @@ export default function CheckOut({ cartItems, deleteCartCheckOut }) {
                 </div>
                 <button className="btn" onClick={orderHandle}>
                   <Link to="/" className="link__btn">
-                    ORDER <FaAngleRight />
+                    ĐẶT HÀNG <FaAngleRight />
                   </Link>
                 </button>
               </form>

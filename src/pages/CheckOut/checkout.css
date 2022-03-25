@@ -32,6 +32,14 @@
   color: #333;
 }
 
+.check__form{
+  border-right: 1px solid rgba(0,0,0,0.2);
+}
+
+.check__method{
+  padding-left:12px;
+}
+
 .check__form-title,
 .check__method-title {
   font-family: monospace;

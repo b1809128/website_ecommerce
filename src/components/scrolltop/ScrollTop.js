@@ -33,7 +33,8 @@ export default function ScrollTop() {
         <a
           onClick={scrollToTop}
           href=""
-          className="goto-top show-top scrol link"
+          className="goto-top show-top link"
+          title="Về đầu trang"
         >
           <FaArrowUp />
         </a>

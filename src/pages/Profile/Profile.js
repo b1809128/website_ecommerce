@@ -69,7 +69,7 @@ export default function Profile() {
             <div className="order-details__row">
               <div className="profile__total">
                 <div className="profile__header">
-                  <h2 className="cart__total-title">Customer Information</h2>
+                  <h2 className="cart__total-title">Thông tin khách hàng</h2>
                   <FaEdit
                     style={{
                       color: "#28a745",
@@ -81,15 +81,15 @@ export default function Profile() {
                   return (
                     <ul className="cart__total-list">
                       <li className="cart__total-item">
-                        <p className="cart__total-item-text">ID Customer: </p>
+                        <p className="cart__total-item-text">Mã số khách hàng: </p>
                         <p className="">{data.id}</p>
                       </li>
                       <li className="cart__total-item">
-                        <p className="cart__total-item-text">Full Name: </p>
+                        <p className="cart__total-item-text">Họ tên: </p>
                         <p className="">{data.fullname}</p>
                       </li>
                       <li className="cart__total-item">
-                        <p className="cart__total-item-text">Phone Number: </p>
+                        <p className="cart__total-item-text">Số điện thoại: </p>
                         <p className="">{data.phonenumber}</p>
                       </li>
                       <li className="cart__total-item">
@@ -97,7 +97,7 @@ export default function Profile() {
                         <p className="">{data.email}</p>
                       </li>
                       <li className="cart__total-item">
-                        <p className="cart__total-item-text">Address: </p>
+                        <p className="cart__total-item-text">Địa chỉ: </p>
                         <p className="">{data.addressdetails}</p>
                       </li>
                     </ul>
@@ -106,7 +106,7 @@ export default function Profile() {
               </div>
 
               <div className="profile__form-section">
-                <h2 className="profile__total-title">Order List</h2>
+                <h2 className="profile__total-title">Quản lý đơn đặt hàng</h2>
                 <div className="profile__section">
                   {orderData.map((data) => {
                     return (
@@ -121,19 +121,19 @@ export default function Profile() {
                           <ul className="cart__total-list">
                             <li className="cart__total-item">
                               <p className="cart__total-item-text">
-                                ID Order:{" "}
+                                Mã đơn đặt hàng:{" "}
                               </p>
                               <p className="">#{data.id_order}</p>
                             </li>
                             <li className="cart__total-item">
                               <p className="cart__total-item-text">
-                                ID Staff:{" "}
+                                Mã số nhân viên:{" "}
                               </p>
                               <p className="">{data.id_staff}</p>
                             </li>
                             <li className="cart__total-item">
                               <p className="cart__total-item-text">
-                                Created At:{" "}
+                                Ngày đặt hàng:{" "}
                               </p>
                               <p className="">
                                 {new Date(data.created_at).toDateString()}
@@ -141,7 +141,7 @@ export default function Profile() {
                             </li>
 
                             <li className="cart__total-item">
-                              <p className="cart__total-item-text">Status: </p>
+                              <p className="cart__total-item-text">Tình trạng đơn hàng: </p>
                               <p className="cart__total-item-value">
                                 {data.status}
                               </p>

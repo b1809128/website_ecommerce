@@ -130,10 +130,10 @@ export default function CustomerEdit() {
           <div className="row">
             <div className="check__form">
               {/*TODO: Address method */}
-              <h2 className="check__form-title">Address Shipping</h2>
+              <h2 className="check__form-title">ĐỊA CHỈ GIAO HÀNG</h2>
               <form className="form-section">
                 <div className="form-block">
-                  <label for="name">Full Name*</label>
+                  <label for="name">Họ tên*</label>
                   <input
                     type="text"
                     id="name"
@@ -143,7 +143,7 @@ export default function CustomerEdit() {
                   />
                 </div>
                 <div className="form-block">
-                  <label for="name">Phone Number*</label>
+                  <label for="name">Số điện thoại*</label>
                   <input
                     type="text"
                     id="name"
@@ -165,7 +165,7 @@ export default function CustomerEdit() {
                 </div>
 
                 <div className="form-block">
-                  <label for="adress">Address Details*</label>
+                  <label for="adress">Địa chỉ*</label>
                   <textarea
                     type="text"
                     id="quantity"
@@ -175,18 +175,18 @@ export default function CustomerEdit() {
                 </div>
                 <div className="form-flex__btn">
                   <button className="btn" onClick={createHandle}>
-                    Create
+                    THÊM
                   </button>
-                  <button className="btn">Update</button>
+                  <button className="btn">CẬP NHẬT</button>
                 </div>
               </form>
             </div>
             <div className="check__method">
               {/*TODO: Change Password method */}
-              <h2 className="check__form-title">Change Password</h2>
+              <h2 className="check__form-title">ĐỔI MẬT KHẨU</h2>
               <form className="form-section">
                 <div className="form-block">
-                  <label for="email">Username*</label>
+                  <label for="email">Tên đăng nhập*</label>
                   <input
                     type="text"
                     id="price"
@@ -196,7 +196,7 @@ export default function CustomerEdit() {
                 </div>
 
                 <div className="form-block">
-                  <label for="role">Old Password*</label>
+                  <label for="role">Mật khẩu cũ*</label>
                   <input
                     type="password"
                     id="role"
@@ -205,7 +205,7 @@ export default function CustomerEdit() {
                   />
                 </div>
                 <div className="form-block">
-                  <label for="role">New Password*</label>
+                  <label for="role">Mật khẩu mới*</label>
                   <input
                     type="password"
                     id="role"
@@ -216,15 +216,15 @@ export default function CustomerEdit() {
                 </div>
                 <div className="form-flex__btn">
                   <button className="btn" onClick={changePassword}>
-                    Update
+                    CẬP NHẬT
                   </button>
                 </div>
               </form>
               {/*TODO: Delete method */}
-              <h2 className="check__form-title">Delete Account</h2>
+              <h2 className="check__form-title">XÓA TÀI KHOẢN</h2>
               <form className="form-section">
                 <div className="form-block">
-                  <label for="name">Note*</label>
+                  <label for="name">Ghi chú*</label>
                   <textarea
                     type="text"
                     id="quantity"
@@ -234,7 +234,7 @@ export default function CustomerEdit() {
                 </div>
                 <div className="form-flex__btn">
                   <button className="btn" onClick={deleteHandle}>
-                    Delete Account
+                    XÓA TÀI KHOẢN
                   </button>
                 </div>
               </form>

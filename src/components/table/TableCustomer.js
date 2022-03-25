@@ -73,7 +73,7 @@ function TableCustomer({ click }) {
         <input
           type="text"
           className="nav-bar__form-input-admin"
-          placeholder="Search"
+          placeholder="Tìm kiếm"
           name="search"
           onChange={(e) => setTagName(e.target.value)}
         />
@@ -82,9 +82,10 @@ function TableCustomer({ click }) {
         <thead>
           <tr>
             <th style={{ textAlign: "center" }}>STT</th>
-            <th>UserName</th>
-            <th>Role</th>
-            <th>Action</th>
+            <th>MÃ SỐ</th>
+            <th>TÊN ĐĂNG NHẬP</th>
+            <th>PHÂN QUYỀN</th>
+            <th></th>
           </tr>
         </thead>
         <tbody>
@@ -93,6 +94,7 @@ function TableCustomer({ click }) {
               <>
                 <tr>
                   <td style={{ textAlign: "center" }}>{(index += 1)}</td>
+                  <td>{data.id}</td>
                   <td>{data.user}</td>
                   <td>{data.role}</td>
                   <td

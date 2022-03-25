@@ -37,7 +37,7 @@ function TableProduct() {
         <input
           type="text"
           className="nav-bar__form-input-admin"
-          placeholder="Search"
+          placeholder="Tìm kiếm"
           name="search"
           onChange={(e) => setTagName(e.target.value)}
         />
@@ -46,11 +46,11 @@ function TableProduct() {
         <thead>
           <tr>
             <th style={{ textAlign: "center" }}>STT</th>
-            <th>Id Product</th>
-            <th>Name</th>
-            <th>Images</th>
-            <th>Quantity</th>
-            <th>Price</th>
+            <th style={{ textAlign: "center" }}>MÃ SP</th>
+            <th style={{ textAlign: "center" }}>TÊN SẢN PHẨM</th>
+            <th style={{ textAlign: "center" }}>HÌNH ẢNH</th>
+            <th style={{ textAlign: "center" }}>SỐ LƯỢNG</th>
+            <th style={{ textAlign: "center" }}>GIÁ</th>
           </tr>
         </thead>
         <tbody>
@@ -62,7 +62,7 @@ function TableProduct() {
                   <td style={{ textAlign: "center" }}>{(index += 1)}</td>
                   <td>{data.MSHH}</td>
                   <td>{data.TenHH}</td>
-                  <td>
+                  <td style={{ textAlign: "center" }}>
                     <img
                       src={imageMain[i][0]}
                       alt="product"

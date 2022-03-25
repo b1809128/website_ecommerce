@@ -49,11 +49,11 @@ export default function Cart({ cartItems, addCart, removeCart, deleteCart }) {
               <LocationBar />
               <div className="row">
                 <ul className="cart__heading">
-                  <li className="cart__heading-item">PRODUCT</li>
-                  <li className="cart__heading-item">NAME</li>
-                  <li className="cart__heading-item">PRICE</li>
-                  <li className="cart__heading-item">QUANTITY</li>
-                  <li className="cart__heading-item">TOTAL</li>
+                  <li className="cart__heading-item">HÌNH ẢNH</li>
+                  <li className="cart__heading-item">TÊN SẢN PHẨM</li>
+                  <li className="cart__heading-item">GIÁ</li>
+                  <li className="cart__heading-item">SỐ LƯỢNG</li>
+                  <li className="cart__heading-item">TỔNG CỘNG</li>
                   <li className="cart__heading-item"></li>
                 </ul>
               </div>
@@ -132,7 +132,7 @@ export default function Cart({ cartItems, addCart, removeCart, deleteCart }) {
                 <div className="cart__shipping">
                   <button className="btn">
                     <Link to="/" className="link__btn">
-                      CONTINUE SHOPPING
+                      TIẾP TỤC MUA HÀNG
                     </Link>
                   </button>
                   <div className="cart__shipping-select">
@@ -143,23 +143,23 @@ export default function Cart({ cartItems, addCart, removeCart, deleteCart }) {
                       className="cart__shipping-select-item"
                       onChange={() => setCheckStatus(!checkStatus)}
                     />
-                    Shipping (+0.5%)
+                    Vận chuyển (+0.5%)
                   </div>
                 </div>
               </div>
 
               <div className="row">
                 <div className="cart__total">
-                  <h2 className="cart__total-title">CART TOTAL</h2>
+                  <h2 className="cart__total-title">TÓM TẮT ĐƠN HÀNG</h2>
                   <ul className="cart__total-list">
                     <li className="cart__total-item">
-                      <p className="cart__total-item-text">Subtotal: </p>
+                      <p className="cart__total-item-text">Tổng cộng: </p>
                       <p className="cart__total-item-value">
                         {new Intl.NumberFormat().format(total)} VND
                       </p>
                     </li>
                     <li className="cart__total-item">
-                      <p className="cart__total-item-text">Shipping: </p>
+                      <p className="cart__total-item-text">Vận chuyển: </p>
                       <p className="">
                         {checkStatus
                           ? new Intl.NumberFormat().format(total)
@@ -168,7 +168,7 @@ export default function Cart({ cartItems, addCart, removeCart, deleteCart }) {
                       </p>
                     </li>
                     <li className="cart__total-item">
-                      <p className="cart__total-item-text">Total: </p>
+                      <p className="cart__total-item-text">Tất cả chi phí: </p>
                       <p className="cart__total-item-value">
                         {checkStatus
                           ? new Intl.NumberFormat().format(
@@ -184,21 +184,21 @@ export default function Cart({ cartItems, addCart, removeCart, deleteCart }) {
               {user ? (
                 <div className="row">
                   <button className="btn" onClick={deleteCart}>
-                    Delete Cart
+                    XÓA GIỎ HÀNG
                   </button>
                   <button className="btn">
                     <Link to="/thanh-toan" className="link__btn">
-                      GO TO CHECKOUT
+                      THANH TOÁN
                     </Link>
                   </button>
                 </div>
               ) : (
                 <div className="row">
                   <button className="btn" disabled onClick={deleteCart}>
-                    Delete Cart
+                  XÓA GIỎ HÀNG
                   </button>
                   <button className="btn" disabled>
-                    GO TO CHECKOUT
+                    THANH TOÁN
                   </button>
                 </div>
               )}
@@ -208,10 +208,10 @@ export default function Cart({ cartItems, addCart, removeCart, deleteCart }) {
       ) : (
         <div className="row">
           <div className="cart-empty-wrapper">
-            <h2 className="cart-empty"> {"< Cart is Empty ! >"} </h2>
+            <h2 className="cart-empty"> {"< GIỎ HÀNG TRỐNG ! >"} </h2>
             <button className="btn">
               <Link to="/" className="link__btn">
-                Back to Shopping
+                TRỞ VỀ MUA HÀNG
               </Link>
             </button>
           </div>

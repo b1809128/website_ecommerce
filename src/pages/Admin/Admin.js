@@ -113,7 +113,7 @@ function Admin() {
           <div className="admin__col-6">
             <div className="admin__item-lg">
               <div className="admin__header">
-                <h1 className="admin__title">PRODUCT</h1>
+                <h1 className="admin__title">QUẢN LÝ SẢN PHẨM</h1>
                 <FaEdit
                   style={{
                     color: "#28a745",
@@ -128,7 +128,7 @@ function Admin() {
           <div className="admin__col-4">
             <div className="admin__item-lg">
               <div className="admin__header">
-                <h1 className="admin__title">USER</h1>
+                <h1 className="admin__title">QUẢN LÝ NGƯỜI DÙNG</h1>
               </div>
               <TableCustomer click={showModal} />
             </div>
@@ -137,13 +137,13 @@ function Admin() {
         <div className="admin__row">
           <div className="admin__col-6">
             <div className="admin__item-lg">
-              <h1 className="admin__title">BEST SALE OF MONTH</h1>
+              <h1 className="admin__title">BÁN CHẠY NHẤT TRONG THÁNG</h1>
               <TableProduct props={bestSaleData} />
             </div>
           </div>
           <div className="admin__col-4">
             <div className="admin__item-lg">
-              <h1 className="admin__title">ORDER</h1>
+              <h1 className="admin__title">QUẢN LÝ ĐƠN HÀNG</h1>
               <TableOrder />
             </div>
           </div>

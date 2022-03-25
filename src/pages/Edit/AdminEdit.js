@@ -153,15 +153,15 @@ export default function AdminEdit() {
           <div className="row">
             <div className="check__form">
               {/*TODO: Product method */}
-              <h2 className="check__form-title">Product</h2>
+              <h2 className="check__form-title">CẬP NHẬT SẢN PHẨM</h2>
               <FormProduct />
             </div>
             <div className="check__method">
               {/*TODO:Upload method */}
-              <h2 className="check__method-title">Upload Images</h2>
+              <h2 className="check__method-title">UPLOAD HÌNH ẢNH</h2>
               <form className="form-section">
                 <div className="form-block">
-                  <label for="name">Product ID*</label>
+                  <label for="name">Mã sản phẩm*</label>
                   <select
                     className="form-input"
                     value={idProductUpload}
@@ -171,7 +171,7 @@ export default function AdminEdit() {
                       return (
                         <>
                           <option value={data.MSHH}>
-                            {(index += 1)} - {data.MSHH.toUpperCase()}
+                            {(index += 1)} - {data.MSHH}
                           </option>
                         </>
                       );
@@ -183,7 +183,7 @@ export default function AdminEdit() {
                     className="relative"
                     style={{ display: "flex", flexDirection: "column" }}
                   >
-                    <label for="images">Images*</label>
+                    <label for="images">Hình ảnh*</label>
                     <textarea
                       className="form-input textarea-sm "
                       placeholder='Example: ["https://cdn.hoanghamobile.com/i/productlist/ts/Uploads/2021/09/15/image-removebg-preview-15.png"]'
@@ -202,15 +202,15 @@ export default function AdminEdit() {
                 </div>
                 <div className="form-flex__btn">
                   <button className="btn" onClick={uploadHandle}>
-                    Upload
+                    CẬP NHẬT
                   </button>
                 </div>
               </form>
               {/*TODO: Delete method */}
-              <h2 className="check__form-title">Delete Product</h2>
+              <h2 className="check__form-title">XÓA SẢN PHẨM</h2>
               <form className="form-section">
                 <div className="form-block">
-                  <label for="name">Product ID*</label>
+                  <label for="name">Mã sản phẩm*</label>
                   <select
                     className="form-input"
                     value={idProductDelete}
@@ -220,7 +220,7 @@ export default function AdminEdit() {
                       return (
                         <>
                           <option value={data.MSHH}>
-                            {(index += 1)} - {data.MSHH.toUpperCase()}
+                            {(index += 1)} - {data.MSHH}
                           </option>
                         </>
                       );
@@ -229,15 +229,15 @@ export default function AdminEdit() {
                 </div>
                 <div className="form-flex__btn">
                   <button className="btn" onClick={checkProductDelete}>
-                    Delete
+                    XÓA SẢN PHẨM
                   </button>
                 </div>
               </form>
               {/*TODO: Customer method */}
-              <h2 className="check__form-title">Customer</h2>
+              <h2 className="check__form-title">PHÂN QUYỀN NGƯỜI DÙNG</h2>
               <form className="form-section">
                 <div className="form-block">
-                  <label for="email">Username*</label>
+                  <label for="email">Tên người dùng*</label>
                   <select
                     className="form-input"
                     value={idCustomer}
@@ -247,7 +247,7 @@ export default function AdminEdit() {
                       return (
                         <>
                           <option value={data.id}>
-                            {(index += 1)} - {data.user.toUpperCase()}
+                            {(index += 1)} - {data.user}
                           </option>
                         </>
                       );
@@ -256,7 +256,7 @@ export default function AdminEdit() {
                 </div>
 
                 <div className="form-block">
-                  <label for="role">Role*</label>
+                  <label for="role">Phân quyền*</label>
                   <input
                     type="text"
                     id="role"
@@ -267,7 +267,7 @@ export default function AdminEdit() {
                 </div>
                 <div className="form-flex__btn">
                   <button className="btn" onClick={updateCustomerHandle}>
-                    Update
+                    CẬP NHẬT
                   </button>
                 </div>
               </form>

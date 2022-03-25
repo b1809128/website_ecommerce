@@ -76,9 +76,9 @@ export default function RegisterForm() {
   return (
     <div className="register-wrapper">
       <form className="register-form">
-        <h3 className="register-text-none">Sign Up</h3>
+        <h3 className="register-text-none">ĐĂNG KÝ</h3>
         <div className="register-text">
-          <FaUserAlt /> Username:
+          <FaUserAlt /> Tên tài khoản:
         </div>
         <input
           type="text"
@@ -93,12 +93,12 @@ export default function RegisterForm() {
             onClick={() => setStateUser(false)}
           >
             <TiDelete />
-            Information must be filled out!
+            Điền thông tin vào ô trống !
           </div>
         ) : (
           <div className="register-validate">
             <TiDelete />
-            Information must be filled out!
+            Điền thông tin vào ô trống !
           </div>
         )}
         {userExist ? (
@@ -108,16 +108,16 @@ export default function RegisterForm() {
             onClick={() => setUserExist(false)}
           >
             <TiDelete />
-            Username is already registered!
+            Tên tài khoản không hợp lệ!
           </div>
         ) : (
           <div className="register-validate">
             <TiDelete />
-            Username is already registered!
+            Tên tài khoản không hợp lệ!
           </div>
         )}
         <div className="register-text">
-          <FaLock /> Password:
+          <FaLock /> Mật khẩu:
         </div>
         {!hidePasswordInput ? (
           <div className="register-password-wrapper">
@@ -153,16 +153,16 @@ export default function RegisterForm() {
             onClick={() => setStatePassword(false)}
           >
             <TiDelete />
-            Information must be filled out!
+            Điền thông tin vào ô trống !
           </div>
         ) : (
           <div className="register-validate">
             <TiDelete />
-            Information must be filled out!
+            Điền thông tin vào ô trống !
           </div>
         )}
         <div className="register-text">
-          <FaLock /> Confirm Password:
+          <FaLock /> Xác nhận mật khẩu:
         </div>
         {!hidePasswordInput ? (
           <div className="register-password-wrapper">
@@ -198,25 +198,25 @@ export default function RegisterForm() {
             onClick={() => setStatePassword(false)}
           >
             <TiDelete />
-            Information must be filled out!
+            Điền thông tin vào ô trống !
           </div>
         ) : (
           <div className="register-validate">
             <TiDelete />
-            Information must be filled out!
+            Điền thông tin vào ô trống !
           </div>
         )}
         <div className="register-btn">
           <button onClick={register} className="btn">
-            Sign Up
+           ĐĂNG KÝ
           </button>
         </div>
         <p className="register-text-none">
           {" "}
-          Already have account ?{" "}
-          <span style={{ paddingLeft: "16px" }}>
+          Bạn đã có tài khoản?{" "}
+          <span style={{ paddingLeft: "10px" }}>
             <Link className="link" to="/sign-in">
-              Sign In
+              Đăng Nhập
             </Link>
           </span>
         </p>

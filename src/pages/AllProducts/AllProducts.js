@@ -1,4 +1,5 @@
-import "./details.css";
+import "./allProducts.css";
+import "../Cart/cart.css"
 import "aos/dist/aos.css";
 import Aos from "aos";
 import React, { useEffect, useState } from "react";
@@ -14,7 +15,7 @@ import Pagination from "../../components/bar/pagination/Pagination";
 /* import ProductNoneAPI from "../../components/products/ProductNoneAPI";
  import { productsData } from "../../data";
 */
-export default function AllProducts({addCart}) {
+export default function AllProducts({ addCart }) {
   //Query Parameters url?abc=1
   const query = new URLSearchParams(useLocation().search);
   const sortBy = query.get("sortBy");
@@ -110,11 +111,26 @@ export default function AllProducts({addCart}) {
               addCart={addCart}
               data={searchQuery ? searchData : flag ? brand : product}
             />
+            {searchData.length === 0 && (
+              <div className="cart-empty-wrapper">
+                <h2 className="cart-empty">
+                  {" "}
+                  {"< KHÔNG TÌM THẤY SẢN PHẨM NÀO ! >"}{" "}
+                </h2>
+              </div>
+            )}
           </div>
-          <div className="row">
-            <Pagination props={numberPage} page={parseInt(pageQuery)} />
-          </div>
-          <SlideProduct title="Sản Phẩm Khác:" />
+          {searchQuery ? (
+            <div className="row" style={{ display: "none" }}>
+              <Pagination props={numberPage} page={parseInt(pageQuery)} />
+            </div>
+          ) : (
+            <div className="row">
+              <Pagination props={numberPage} page={parseInt(pageQuery)} />
+            </div>
+          )}
+
+          <SlideProduct title="SẢN PHẨM KHÁC:" />
         </div>
       </div>
     </div>

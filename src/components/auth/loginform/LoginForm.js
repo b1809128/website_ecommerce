@@ -56,9 +56,9 @@ export default function LoginForm() {
   return (
     <div className="login-wrapper">
       <form className="login-form">
-        <h3 className="login-text-none">Sign In</h3>
+        <h3 className="login-text-none">ĐĂNG NHẬP</h3>
         <div className="login-text">
-          <FaUserAlt /> Username:
+          <FaUserAlt /> Tên đăng nhập:
         </div>
         <input
           type="text"
@@ -69,27 +69,27 @@ export default function LoginForm() {
         {stateUser ? (
           <div className="login-validate" style={{ display: "flex" }}>
             <TiDelete />
-            Information must be filled out!
+            Điền thông tin vào ô trống !
           </div>
         ) : (
           <div className="login-validate">
             <TiDelete />
-            Information must be filled out!
+            Điền thông tin vào ô trống !
           </div>
         )}
         {validateUser ? (
           <div className="login-validate" style={{ display: "flex" }}>
             <TiDelete />
-            Incorrect user. Please try again !
+            Tên người dùng sai. Vui lòng thử lại !
           </div>
         ) : (
           <div className="login-validate">
             <TiDelete />
-            Incorrect user. Please try again !
+            Tên người dùng sai. Vui lòng thử lại !
           </div>
         )}
         <div className="login-text">
-          <FaLock /> Password:
+          <FaLock /> Mật khẩu:
         </div>
         {!hidePasswordInput ? (
           <div className="login-password-wrapper">
@@ -121,35 +121,35 @@ export default function LoginForm() {
         {statePassword ? (
           <div className="login-validate" style={{ display: "flex" }}>
             <TiDelete />
-            Information must be filled out !
+            Điền thông tin vào ô trống !
           </div>
         ) : (
           <div className="login-validate">
             <TiDelete />
-            Information must be filled out!
+            Điền thông tin vào ô trống !
           </div>
         )}
         {validatePassword ? (
           <div className="login-validate" style={{ display: "flex" }}>
             <TiDelete />
-            Incorrect password. Please try again !
+            Sai mật khẩu. Vui lòng thử lại !
           </div>
         ) : (
           <div className="login-validate">
             <TiDelete />
-            Incorrect password. Please try again !
+            Sai mật khẩu. Vui lòng thử lại !
           </div>
         )}
-        <p className="login-text-none link"> Forget Password</p>
+        <p className="login-text-none link"> Quên mật khẩu</p>
         <button className="btn" onClick={signin}>
-          Sign In
+          ĐĂNG NHẬP
         </button>
         <p className="login-text-none">
           {" "}
-          Don't have an account ?{" "}
-          <span style={{ paddingLeft: "16px" }}>
+          Bạn chưa có tài khoản ?{" "}
+          <span style={{ paddingLeft: "10px" }}>
             <Link className="link" to="/sign-up">
-              Sign Up
+              Đăng Ký
             </Link>
           </span>
         </p>

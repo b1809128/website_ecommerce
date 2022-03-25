@@ -99,11 +99,11 @@ export default function AdminOrderDetails() {
           <LocationBar />
           <div className="row">
             <ul className="cart__heading">
-              <li className="cart__heading-item">PRODUCT</li>
-              <li className="cart__heading-item">NAME</li>
-              <li className="cart__heading-item">PRICE</li>
-              <li className="cart__heading-item">QUANTITY</li>
-              <li className="cart__heading-item">TOTAL</li>
+              <li className="cart__heading-item">HÌNH ẢNH</li>
+              <li className="cart__heading-item">TÊN SẢN PHẨM</li>
+              <li className="cart__heading-item">GIÁ</li>
+              <li className="cart__heading-item">SỐ LƯỢNG</li>
+              <li className="cart__heading-item">TỔNG CỘNG</li>
             </ul>
           </div>
           {propsData.map((data) => {
@@ -137,34 +137,34 @@ export default function AdminOrderDetails() {
 
           <div className="order-details__row">
             <div className="cart__total">
-              <h2 className="cart__total-title">ORDER DETAILS</h2>
+              <h2 className="cart__total-title">CHI TIẾT ĐƠN HÀNG</h2>
               {orderData.map((data) => {
                 return (
                   <ul className="cart__total-list">
                     <li className="cart__total-item">
-                      <p className="cart__total-item-text">ID Order: </p>
+                      <p className="cart__total-item-text">Mã đơn đặt hàng: </p>
                       <p className="">#{data.id_order}</p>
                     </li>
                     <li className="cart__total-item">
-                      <p className="cart__total-item-text">ID Customer: </p>
+                      <p className="cart__total-item-text">Mã số khách hàng: </p>
                       <p className="">{data.id}</p>
                     </li>
                     <li className="cart__total-item">
-                      <p className="cart__total-item-text">Sales Man: </p>
+                      <p className="cart__total-item-text">Mã số nhân viên: </p>
                       <p className="">{data.id_staff}</p>
                     </li>
                     <li className="cart__total-item">
-                      <p className="cart__total-item-text">Create At: </p>
+                      <p className="cart__total-item-text">Ngày đặt hàng: </p>
                       <p className="">
                         {new Date(data.created_at).toDateString()}
                       </p>
                     </li>
                     <li className="cart__total-item">
-                      <p className="cart__total-item-text">Status: </p>
+                      <p className="cart__total-item-text">Tình trạng đơn hàng: </p>
                       <p className="cart__total-item-value">{data.status}</p>
                     </li>
                     <li className="cart__total-item">
-                      <p className="cart__total-item-text">Total: </p>
+                      <p className="cart__total-item-text">Tổng cộng: </p>
                       <p className="">
                         {new Intl.NumberFormat().format(total)} VND
                       </p>
@@ -176,7 +176,7 @@ export default function AdminOrderDetails() {
                 return (
                   <ul className="cart__total-list">
                     <li className="cart__total-item">
-                      <p className="cart__total-item-text">Phone Number: </p>
+                      <p className="cart__total-item-text">Số điện thoại: </p>
                       <p className="">{data.phonenumber}</p>
                     </li>
                     <li className="cart__total-item">
@@ -184,14 +184,14 @@ export default function AdminOrderDetails() {
                       <p className="">{data.email}</p>
                     </li>
                     <li className="cart__total-item">
-                      <p className="cart__total-item-text">Address: </p>
+                      <p className="cart__total-item-text">Địa chỉ: </p>
                       <p className="">{data.addressdetails}</p>
                     </li>
                   </ul>
                 );
               })}
               <button className="btn" onClick={deleteHandle}>
-                Delete Order
+                XÓA ĐƠN HÀNG
               </button>
             </div>
             <div
@@ -202,7 +202,7 @@ export default function AdminOrderDetails() {
                 backgroundPosition: "center",
               }}
             >
-              <h2 className="cart__total-title">ORDER STATUS</h2>
+              <h2 className="cart__total-title">TÌNH TRẠNG VẬN CHUYỂN</h2>
               <OrderStatus status={orderStatus} />
             </div>
           </div>
@@ -210,7 +210,7 @@ export default function AdminOrderDetails() {
           <div className="row">
             <button className="btn">
               <Link to="/thong-tin-khach-hang" className="link__btn">
-                Back to Profile
+                TRỞ VỀ
               </Link>
             </button>
           </div>

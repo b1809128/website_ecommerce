@@ -101,7 +101,7 @@ export default function FormProduct() {
   return (
     <form className="form-section">
       <div className="form-block">
-        <label for="name">Product ID*</label>
+        <label for="name">Mã sản phẩm*</label>
         <input
           type="text"
           id="name"
@@ -111,7 +111,7 @@ export default function FormProduct() {
         />
       </div>
       <div className="form-block">
-        <label for="name">Product Name*</label>
+        <label for="name">Tên sản phẩm*</label>
         <input
           type="text"
           id="name"
@@ -122,7 +122,7 @@ export default function FormProduct() {
       </div>
 
       <div className="form-block">
-        <label for="email">Price*</label>
+        <label for="email">Giá*</label>
         <input
           type="text"
           id="price"
@@ -133,7 +133,7 @@ export default function FormProduct() {
       </div>
 
       <div className="form-block">
-        <label for="adress">Quantity*</label>
+        <label for="adress">Số lượng hàng*</label>
         <input
           className="form-input"
           type="text"
@@ -144,7 +144,7 @@ export default function FormProduct() {
       </div>
 
       <div className="form-block">
-        <label for="type">Type*</label>
+        <label for="type">Loại hàng*</label>
         <input
           className="form-input"
           type="text"
@@ -169,7 +169,7 @@ export default function FormProduct() {
           className="relative"
           style={{ display: "flex", flexDirection: "column" }}
         >
-          <label for="images">Images*</label>
+          <label for="images">Hình ảnh*</label>
           <textarea
             className="form-input textarea-sm "
             placeholder='Example: ["https://cdn.hoanghamobile.com/i/productlist/ts/Uploads/2021/09/15/image-removebg-preview-15.png"]'
@@ -191,7 +191,7 @@ export default function FormProduct() {
           className="relative"
           style={{ display: "flex", flexDirection: "column" }}
         >
-          <label for="notes">Description</label>
+          <label for="notes">Mô tả*</label>
           <textarea
             // className="textarea-sm"
             placeholder='Example: {                      
@@ -217,10 +217,10 @@ export default function FormProduct() {
       </div>
       <div className="form-flex__btn">
         <button className="btn" onClick={createHandle}>
-          Create
+          THÊM
         </button>
         <button className="btn" onClick={updateHandle}>
-          Update
+          CẬP NHẬT
         </button>
       </div>
     </form>
