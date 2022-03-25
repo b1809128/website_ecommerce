@@ -52,7 +52,7 @@ export default function Profile() {
   };
 
   if (!authorized) {
-    return <Redirect to="/sign-in" />;
+    return <Redirect to="/dang-nhap" />;
   }
 
   return (

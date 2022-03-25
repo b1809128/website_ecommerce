@@ -102,10 +102,10 @@ function App() {
           <Route path="/chi-tiet-san-pham/:id">
             <ProductDetailsAPI addCart={addCart} />
           </Route>
-          <Route path="/sign-in">
+          <Route path="/dang-nhap">
             <Login />
           </Route>
-          <Route path="/sign-up">
+          <Route path="/dang-ky">
             <Register />
           </Route>
           <Route path="/gio-hang">

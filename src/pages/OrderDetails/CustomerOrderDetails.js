@@ -89,7 +89,7 @@ export default function AdminOrderDetails() {
   const orderStatus = orderData.map((data) => data.status);
 
   if (!authorized) {
-    return <Redirect to="/sign-in" />;
+    return <Redirect to="/dang-nhap" />;
   }
 
   return (

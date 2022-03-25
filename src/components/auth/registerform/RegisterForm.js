@@ -70,7 +70,7 @@ export default function RegisterForm() {
       showConfirmButton: false,
       timer: 1500,
     });
-    history.push("/sign-in");
+    history.push("/dang-nhap");
   };
 
   return (
@@ -215,7 +215,7 @@ export default function RegisterForm() {
           {" "}
           Bạn đã có tài khoản?{" "}
           <span style={{ paddingLeft: "10px" }}>
-            <Link className="link" to="/sign-in">
+            <Link className="link" to="/dang-nhap">
               Đăng Nhập
             </Link>
           </span>

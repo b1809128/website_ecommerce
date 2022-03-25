@@ -49,7 +49,7 @@ function Admin() {
 
   //TODO: authorized
   if (!authorized) {
-    return <Redirect to="/sign-in" />;
+    return <Redirect to="/dangn-nhap" />;
   }
 
   return (

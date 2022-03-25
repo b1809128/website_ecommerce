@@ -82,7 +82,7 @@ export default function Header({ cartItems, deleteCartCheckOut }) {
         </div>
         <div className="menu-icon">
           <div className="menu-icon__item">
-            <Link className="link" to="/sign-in">
+            <Link className="link" to="/dang-nhap">
               <FaUserAlt />
             </Link>
           </div>
@@ -182,7 +182,7 @@ export default function Header({ cartItems, deleteCartCheckOut }) {
             </li>
 
             <li className="nav-item">
-              <Link className="link" to="/sign-in">
+              <Link className="link" to="/dang-nhap">
                 <FaUserAlt />
               </Link>
             </li>

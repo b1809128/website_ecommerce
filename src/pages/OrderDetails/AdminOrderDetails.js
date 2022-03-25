@@ -115,7 +115,7 @@ export default function AdminOrderDetails() {
   };
 
   if (!authorized) {
-    return <Redirect to="/sign-in" />;
+    return <Redirect to="/dang-nhap" />;
   }
 
   return (

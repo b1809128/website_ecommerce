@@ -109,7 +109,7 @@ export default function CustomerEdit() {
 
   const redirectAfterDelete = async () => {
     try {
-      history.push("/sign-up");
+      history.push("/dang-ky");
       dispatch({ type: "LOGOUT" });
       await axios.delete(
         `http://localhost:5000/customer/delete/${user.result[0].id}`
@@ -121,7 +121,7 @@ export default function CustomerEdit() {
   };
 
   if (!authorized) {
-    return <Redirect to="/sign-in" />;
+    return <Redirect to="/dang-nhap" />;
   }
   return (
     <div className="check">

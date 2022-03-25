@@ -148,7 +148,7 @@ export default function LoginForm() {
           {" "}
           Bạn chưa có tài khoản ?{" "}
           <span style={{ paddingLeft: "10px" }}>
-            <Link className="link" to="/sign-up">
+            <Link className="link" to="/dang-ky">
               Đăng Ký
             </Link>
           </span>

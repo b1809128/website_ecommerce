@@ -4,6 +4,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "./slideproduct.css";
 import { slideProductData } from "./slideProductData";
+import { FaAngleRight } from "react-icons/fa";
 
 export default function SlideProduct({ title, groupBy }) {
   //Slick-Carousel Settings to slide Product Components
@@ -47,17 +48,20 @@ export default function SlideProduct({ title, groupBy }) {
   return (
     <div className="slide-product">
       <h2
-        // className="slide-product-title"
         style={{
           height: "30px",
           width: "250px",
-          backgroundImage:
-            "linear-gradient(to right, #eb0028,rgba(255,0,0,0.5))",
+          backgroundImage: "linear-gradient(to right, #b11224,#eb0028)",
           color: "#fff",
           fontFamily: "monospace",
+          fontSize: "1rem",
           padding: "4px",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
         }}
       >
+        <FaAngleRight />
         {title}
       </h2>
       <Slider {...settings}>
