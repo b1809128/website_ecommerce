@@ -13,7 +13,7 @@ export default function FormProduct() {
   const [imageProductUpload, setImageProductUpload] = useState({});
 
   const copyArray = [
-    '["https://cdn.hoanghamobile.com/i/productlist/ts/Uploads/2021/09/15/image-removebg-preview-15.png","https://cdn.hoanghamobile.com/i/productlist/ts/Uploads/2021/09/15/image-removebg-preview-15.png","https://cdn.hoanghamobile.com/i/productlist/ts/Uploads/2021/09/15/image-removebg-preview-15.png"]',
+    '["/images/products/BRAND_FOLDER/PRODUCT_NAME_FOLDER","/images/products/apple/iphone11pro"]',
     {
       Description: "abc",
       Brand: "Apple",
@@ -172,7 +172,7 @@ export default function FormProduct() {
           <label for="images">Hình ảnh*</label>
           <textarea
             className="form-input textarea-sm "
-            placeholder='Example: ["https://cdn.hoanghamobile.com/i/productlist/ts/Uploads/2021/09/15/image-removebg-preview-15.png"]'
+            placeholder='Example: ["/images/products/BRAND_FOLDER/PRODUCT_NAME_FOLDER"]'
             onChange={(e) => setImageProductUpload(e.target.value)}
           ></textarea>
           <button

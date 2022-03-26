@@ -52,7 +52,7 @@ export default function Home({ addCart }) {
 
         setWatchData(result.data);
         setLaptopData(result2.data);
-        setHeadphoneData(result3.data)
+        setHeadphoneData(result3.data);
       } catch (error) {
         console.log(error);
       }
@@ -64,7 +64,10 @@ export default function Home({ addCart }) {
   }, []);
 
   //API Processor
-  const dataAPI = product.filter((data, index) => data.MaLoaiHang === "AP" && data.Gia > 20000000 && data.Gia < 49000000);
+  const dataAPI = product.filter(
+    (data, index) =>
+      data.MaLoaiHang === "AP" && data.Gia > 20000000 && data.Gia < 49000000
+  );
   const dataAPIFilter10Products = dataAPI.filter((data, index) => index < 10);
   const dataAPI2 = product.filter((data, index) => data.Gia > 15000000);
   const dataAPIFilter15Products = dataAPI2.filter((data, index) => index <= 14);
@@ -175,7 +178,7 @@ export default function Home({ addCart }) {
               }}
             >
               <FaAngleRight />
-              TAI NGHE CHÍNH HÃNG
+              TAI NGHE
             </h2>
           </div>
           <div data-aos="fade-up" className="row">
@@ -197,11 +200,30 @@ export default function Home({ addCart }) {
               }}
             >
               <FaAngleRight />
-              LAPTOP CHÍNH HÃNG
+              LAPTOP
             </h2>
           </div>
           <div data-aos="fade-up" className="row">
             <ProductAPI addCart={addCart} data={dataAPIFilterLaptop} />
+          </div>
+          <div className="row">
+            <h2
+              style={{
+                height: "30px",
+                width: "250px",
+                backgroundImage: "linear-gradient(to right, #b11224,#eb0028)",
+                color: "#fff",
+                fontFamily: "monospace",
+                fontSize: "1rem",
+                padding: "4px",
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+              }}
+            >
+              <FaAngleRight />
+              RABBIT TECHNOLOGY
+            </h2>
           </div>
           <Introduce data={introduceData} />
           <div className="row">
