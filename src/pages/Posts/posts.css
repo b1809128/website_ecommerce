@@ -1,0 +1,142 @@
+.posts {
+  width: 100%;
+  margin-bottom: 30px;
+}
+
+.posts-section {
+  width: 100%;
+  max-width: 1200px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+/* .row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  } */
+
+.posts__row {
+  align-items: center;
+}
+
+.post__col-lg {
+  width: 70%;
+  display: flex;
+  flex-direction: column;
+  color: #333;
+  padding-right: 65px;
+}
+
+.post__col-sm {
+  width: 30%;
+  display: flex;
+  flex-direction: column;
+  color: #333;
+}
+
+.post__wrapper {
+  display: flex;
+  width: 100%;
+  margin-bottom: 2.5rem;
+}
+.post__wrapper-right {
+  display: flex;
+  width: 100%;
+  margin: 10px 0;
+}
+
+.post__image {
+  width: 218px;
+  height: 150px;
+  padding-right: 24px;
+}
+
+.post__image-right {
+  width: 100px;
+  height: 70px;
+  padding: 0 12px 0 0;
+}
+
+.post__content {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.post__title {
+  color:rgba(0,0,0,0.8);
+  font-weight: 500;
+  font-family: "Open Sans", arial, sans-serif;
+  cursor: pointer;
+  font-size:34px;
+}
+
+.post__title-right {
+  color:rgba(0,0,0,0.8);
+  font-size: 1rem;
+  font-weight: 500;
+  font-family: "Open Sans", arial, sans-serif;
+  cursor: pointer;
+  width: 100%;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+
+.post__title:hover,
+.post__title-right:hover {
+  opacity: 0.8;
+}
+
+.post__date {
+  color: #999;
+  font-size: 0.8rem;
+}
+
+.post__text {
+  font-size: 14px;
+  color: #777;
+  font-family: "Open Sans", arial, sans-serif;
+  margin-top: 9px;
+}
+
+.post__title,
+.post__text {
+  width: 100%;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+
+.post__tag-wrapper {
+  display: flex;
+  margin: 10px 0;
+}
+
+.post__tag {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 3px;
+  background-color: transparent;
+  color: #eb0028;
+  outline: none;
+  border: 1px solid #eb0028;
+  padding: 0 8px;
+  margin-right: 8px;
+  box-shadow: inset 0 0 0 0 #eb0028;
+  -webkit-transition: ease-out 0.8s;
+  -moz-transition: ease-out 0.8s;
+  transition: ease-out 0.8s;
+}
+
+.post__tag:hover {
+  background-color: #eb0028;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  box-shadow: inset 100px 50px 0 0 #eb0028;
+}

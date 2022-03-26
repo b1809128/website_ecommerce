@@ -21,6 +21,7 @@ import AdminOrderDetails from "./pages/OrderDetails/AdminOrderDetails";
 import CustomerOrderDetails from "./pages/OrderDetails/CustomerOrderDetails";
 import Test from "./pages/Test/Test";
 import Swal from "sweetalert2";
+import Posts from "./pages/Posts/Posts";
 function App() {
   const { user } = useContext(AuthContext);
   const [cartItems, setCartItems] = useState([]);
@@ -134,6 +135,9 @@ function App() {
           </Route>
           <Route path="/chi-tiet-don-hang">
             {user ? <CustomerOrderDetails /> : <Login />}
+          </Route>
+          <Route path="/tin-cong-nghe">
+            <Posts />
           </Route>
           <Route path="/test">
             <Test />

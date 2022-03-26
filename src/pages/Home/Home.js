@@ -78,8 +78,6 @@ export default function Home({ addCart }) {
   const dataAPI5 = headphoneData.map((data) => data);
   const dataAPIFilterHeadphone = dataAPI5.filter((data, index) => index < 5);
 
-  // console.log(test);
-
   return (
     <div className="home">
       <IntroduceTop />
@@ -92,20 +90,7 @@ export default function Home({ addCart }) {
             <Info {...infoDataTwo} />
           </div>
           <div className="row">
-            <h2
-              style={{
-                height: "30px",
-                width: "250px",
-                backgroundImage: "linear-gradient(to right, #b11224,#eb0028)",
-                color: "#fff",
-                fontFamily: "monospace",
-                fontSize: "1rem",
-                padding: "4px",
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "center",
-              }}
-            >
+            <h2 className="title__tag">
               <FaAngleRight />
               APPLE AUTHORISED RESELLER
             </h2>
@@ -119,20 +104,7 @@ export default function Home({ addCart }) {
             <Info {...infoDataFour} />
           </div>
           <div className="row">
-            <h2
-              style={{
-                height: "30px",
-                width: "250px",
-                backgroundImage: "linear-gradient(to right, #b11224,#eb0028)",
-                color: "#fff",
-                fontFamily: "monospace",
-                fontSize: "1rem",
-                padding: "4px",
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "center",
-              }}
-            >
+            <h2 className="title__tag">
               <FaAngleRight />
               SẢN PHẨM NỔI BẬT
             </h2>
@@ -141,20 +113,7 @@ export default function Home({ addCart }) {
             <ProductAPI addCart={addCart} data={dataAPIFilter15Products} />
           </div>
           <div className="row">
-            <h2
-              style={{
-                height: "30px",
-                width: "250px",
-                backgroundImage: "linear-gradient(to right, #b11224,#eb0028)",
-                color: "#fff",
-                fontFamily: "monospace",
-                fontSize: "1rem",
-                padding: "4px",
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "center",
-              }}
-            >
+            <h2 className="title__tag">
               <FaAngleRight />
               ĐỒNG HỒ THÔNG MINH
             </h2>
@@ -163,20 +122,7 @@ export default function Home({ addCart }) {
             <ProductAPI addCart={addCart} data={dataAPIFilterWatch} />
           </div>
           <div className="row">
-            <h2
-              style={{
-                height: "30px",
-                width: "250px",
-                backgroundImage: "linear-gradient(to right, #b11224,#eb0028)",
-                color: "#fff",
-                fontFamily: "monospace",
-                fontSize: "1rem",
-                padding: "4px",
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "center",
-              }}
-            >
+            <h2 className="title__tag">
               <FaAngleRight />
               TAI NGHE
             </h2>
@@ -185,20 +131,7 @@ export default function Home({ addCart }) {
             <ProductAPI addCart={addCart} data={dataAPIFilterHeadphone} />
           </div>
           <div className="row">
-            <h2
-              style={{
-                height: "30px",
-                width: "250px",
-                backgroundImage: "linear-gradient(to right, #b11224,#eb0028)",
-                color: "#fff",
-                fontFamily: "monospace",
-                fontSize: "1rem",
-                padding: "4px",
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "center",
-              }}
-            >
+            <h2 className="title__tag">
               <FaAngleRight />
               LAPTOP
             </h2>
@@ -207,40 +140,14 @@ export default function Home({ addCart }) {
             <ProductAPI addCart={addCart} data={dataAPIFilterLaptop} />
           </div>
           <div className="row">
-            <h2
-              style={{
-                height: "30px",
-                width: "250px",
-                backgroundImage: "linear-gradient(to right, #b11224,#eb0028)",
-                color: "#fff",
-                fontFamily: "monospace",
-                fontSize: "1rem",
-                padding: "4px",
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "center",
-              }}
-            >
+            <h2 className="title__tag">
               <FaAngleRight />
               RABBIT TECHNOLOGY
             </h2>
           </div>
           <Introduce data={introduceData} />
           <div className="row">
-            <h2
-              style={{
-                height: "30px",
-                width: "250px",
-                backgroundImage: "linear-gradient(to right, #b11224,#eb0028)",
-                color: "#fff",
-                fontFamily: "monospace",
-                fontSize: "1rem",
-                padding: "4px",
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "center",
-              }}
-            >
+            <h2 className="title__tag">
               <FaAngleRight />
               TIN CÔNG NGHỆ
             </h2>

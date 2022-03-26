@@ -47,20 +47,7 @@ export default function SlideProduct({ title, groupBy }) {
 
   return (
     <div className="slide-product">
-      <h2
-        style={{
-          height: "30px",
-          width: "250px",
-          backgroundImage: "linear-gradient(to right, #b11224,#eb0028)",
-          color: "#fff",
-          fontFamily: "monospace",
-          fontSize: "1rem",
-          padding: "4px",
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-        }}
-      >
+      <h2 className="title__tag">
         <FaAngleRight />
         {title}
       </h2>

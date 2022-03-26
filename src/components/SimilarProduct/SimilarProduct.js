@@ -22,20 +22,7 @@ export default function SimilarProduct({ groupBy }) {
 
   return (
     <div style={{ display: "block", width: "100%" }}>
-      <h2
-        style={{
-          height: "30px",
-          width: "250px",
-          backgroundImage: "linear-gradient(to right, #b11224,#eb0028)",
-          color: "#fff",
-          fontFamily: "monospace",
-          fontSize: "1rem",
-          padding: "4px",
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-        }}
-      >
+      <h2 className="title__tag">
         <FaAngleRight /> CÓ THỂ BẠN SẼ THÍCH
       </h2>
       <div
