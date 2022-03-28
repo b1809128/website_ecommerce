@@ -54,11 +54,14 @@ export default function Search({ addCart }) {
           ) : (
             <div className="row">
               <div className="cart-empty-wrapper">
-                <h2 className="cart-empty"> {"< KHÔNG TÌM THẤY SẢN PHẨM NÀO ! >"} </h2>
+                <h2 className="cart-empty">
+                  {" "}
+                  {"< KHÔNG TÌM THẤY SẢN PHẨM NÀO ! >"}{" "}
+                </h2>
               </div>
             </div>
           )}
-          <SlideProduct />
+          <SlideProduct text="CÓ THỂ BẠN SẼ THÍCH" />
         </div>
       </div>
     </div>

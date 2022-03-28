@@ -6,7 +6,7 @@ import "./slideproduct.css";
 import { slideProductData } from "./slideProductData";
 import { FaAngleRight } from "react-icons/fa";
 
-export default function SlideProduct({ title, groupBy }) {
+export default function SlideProduct({ text, groupBy }) {
   //Slick-Carousel Settings to slide Product Components
   const settings = {
     dots: true,
@@ -49,7 +49,7 @@ export default function SlideProduct({ title, groupBy }) {
     <div className="slide-product">
       <h2 className="title__tag">
         <FaAngleRight />
-        {title}
+        {text}
       </h2>
       <Slider {...settings}>
         {slideProductData.map((data, index) => {

@@ -1,5 +1,5 @@
 import "./allProducts.css";
-import "../Cart/cart.css"
+import "../Cart/cart.css";
 import "aos/dist/aos.css";
 import Aos from "aos";
 import React, { useEffect, useState } from "react";
@@ -130,7 +130,7 @@ export default function AllProducts({ addCart }) {
             </div>
           )}
 
-          <SlideProduct title="CÓ THỂ BẠN SẼ THÍCH:" />
+          <SlideProduct text="CÓ THỂ BẠN SẼ THÍCH" />
         </div>
       </div>
     </div>

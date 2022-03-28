@@ -37,7 +37,7 @@ export default function ProductDetailsAPI({ addCart }) {
           <div className="product-details">
             <div className="product-details-section">
               <div className="product-details-row">
-                <LocationBar />
+                <LocationBar nameProduct={data.TenHH}/>
                 <div className="row">
                   <div className="product-details-left-info">
                     <div className="product-details-image">

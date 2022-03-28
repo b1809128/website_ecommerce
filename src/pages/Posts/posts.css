@@ -46,6 +46,34 @@
   margin: 10px 0;
 }
 
+.post__wrapper-header {
+  width: 100%;
+  padding-right: 4px;
+  position: relative;
+}
+
+.post__image-header {
+  width: 100%;
+  height: 250px;
+}
+
+.post__title-header {
+  width: 100%;
+  color: #fff;
+  font-size: 1.4rem;
+  font-weight: 700;
+  font-family: "Open Sans", arial, sans-serif;
+  cursor: pointer;
+  width: 100%;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  position: absolute;
+  padding: 0 10px;
+  top: 70%;
+}
+
 .post__image {
   width: 218px;
   height: 150px;
@@ -65,15 +93,15 @@
 }
 
 .post__title {
-  color:rgba(0,0,0,0.8);
+  color: rgba(0, 0, 0, 0.8);
   font-weight: 500;
   font-family: "Open Sans", arial, sans-serif;
   cursor: pointer;
-  font-size:34px;
+  font-size: 34px;
 }
 
 .post__title-right {
-  color:rgba(0,0,0,0.8);
+  color: rgba(0, 0, 0, 0.8);
   font-size: 1rem;
   font-weight: 500;
   font-family: "Open Sans", arial, sans-serif;
