@@ -1,11 +1,48 @@
 /* eslint-disable jsx-a11y/alt-text */
 import "./posts.css";
-import React from "react";
+import React, { useState, useEffect } from "react";
+import { useLocation } from "react-router-dom";
 import { PostData } from "./PostData";
 import LocationBar from "../../components/bar/locationbar/LocationBar";
+import Pagination from "../../components/bar/pagination/Pagination";
 
 export default function Posts() {
   const postNearest = PostData.filter((data, index) => index < 5);
+  const query = new URLSearchParams(useLocation().search);
+  const pageQuery = query.get("page");
+  const [posts, setPosts] = useState([]);
+
+  useEffect(() => {
+    const fetch = () => {
+      if (pageQuery) {
+        // const paginationAfter = allProducts.data.filter((data, idx) => {
+        //   return idx > 14;
+        // });
+        // setProduct(paginationAfter);
+        const test = testPage(6, PostData);
+        setPosts(test[parseInt(pageQuery) - 1]);
+      } else {
+        const paginationBefore = PostData.filter((data, idx) => {
+          return idx < 6;
+        });
+        setPosts(paginationBefore);
+      }
+    };
+
+    fetch();
+  });
+
+  const testPage = (numberPerPage, productData) => {
+    let array = [];
+    var length = productData.length;
+    var myChunk;
+    for (let i = 0; i < length; i += numberPerPage) {
+      myChunk = productData.slice(i, i + numberPerPage);
+      array.push(myChunk);
+    }
+    return array.map((data) => data);
+  };
+
   return (
     <div className="posts">
       <div className="posts-section">
@@ -34,7 +71,7 @@ export default function Posts() {
                   </h3>
                 </div>
               </div>
-              {PostData.map((data) => {
+              {posts.map((data) => {
                 return (
                   <div className="post__wrapper">
                     <img className="post__image" src={data.image} />
@@ -71,6 +108,13 @@ export default function Posts() {
                 );
               })}
             </div>
+          </div>
+          <div className="row">
+            <Pagination
+              props={Math.ceil(PostData.length / 6)}
+              page={parseInt(pageQuery)}
+              urlPage="/tin-cong-nghe"
+            />
           </div>
         </div>
       </div>

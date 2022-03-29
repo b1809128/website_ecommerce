@@ -55,6 +55,10 @@
   cursor: pointer;
 }
 
+.product-details-image__active {
+  border: 1px solid #eb0028;
+}
+
 .product-details__btn {
   display: flex;
   width: 60%;

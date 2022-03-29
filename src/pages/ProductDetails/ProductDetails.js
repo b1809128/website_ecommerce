@@ -27,7 +27,7 @@ export default function ProductDetails({ data, addCart }) {
     };
     getAll();
   }, []);
-
+  console.log(current);
   return (
     <div className="product-details">
       <div className="product-details-section">

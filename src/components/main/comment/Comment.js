@@ -1,5 +1,6 @@
 /* eslint-disable jsx-a11y/alt-text */
-import { FaLongArrowAltRight, FaStar, FaStarHalf } from "react-icons/fa";
+import { FaStar, FaStarHalf } from "react-icons/fa";
+import { Link } from "react-router-dom";
 import "./comment.css";
 
 export default function Comment() {
@@ -22,8 +23,9 @@ export default function Comment() {
         <FaStarHalf />
       </p>
       <div className="comment-link">
-        <FaLongArrowAltRight />{" "}
-        <span className="comment-link__text">Đọc tiếp...</span>
+        <Link to="/tin-cong-nghe" className="comment-link__text">
+          Đọc tiếp...
+        </Link>
       </div>
     </div>
   );

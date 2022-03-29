@@ -17,6 +17,7 @@ export default function LocationBar({ nameProduct }) {
     "tin-cong-nghe",
     "quan-ly-don-hang",
     "admin",
+    "gioi-thieu",
   ];
   const urlTranslate = [
     "Tất Cả Sản Phẩm",
@@ -29,6 +30,7 @@ export default function LocationBar({ nameProduct }) {
     "Tin Công Nghệ",
     "Quản Lý Đơn Hàng",
     "Admin",
+    "Giới Thiệu",
   ];
 
   const languageVn = () => {

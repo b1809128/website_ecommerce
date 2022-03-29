@@ -1,5 +1,6 @@
 import "./introducetop.css";
 import { FaAngleRight } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 export default function IntroduceTop() {
   return (
@@ -20,7 +21,9 @@ export default function IntroduceTop() {
           nào.
         </h3>
         <div className="introduce-top-text__link">
-          Tìm hiểu thêm <FaAngleRight className="introduce-top-text__icon" />
+          <Link to="/tin-cong-nghe" className="introduce-top-text__link">
+            Tìm hiểu thêm <FaAngleRight className="introduce-top-text__icon" />
+          </Link>
         </div>
       </div>
     </div>

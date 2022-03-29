@@ -126,7 +126,7 @@ export default function AllProducts({ addCart }) {
             </div>
           ) : (
             <div className="row">
-              <Pagination props={numberPage} page={parseInt(pageQuery)} />
+              <Pagination props={numberPage} page={parseInt(pageQuery)} urlPage="/tat-ca-san-pham" />
             </div>
           )}
 
