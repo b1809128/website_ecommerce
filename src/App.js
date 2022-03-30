@@ -23,6 +23,7 @@ import Test from "./pages/Test/Test";
 import Swal from "sweetalert2";
 import Posts from "./pages/Posts/Posts";
 import Introduce from "./pages/Introduce/Introduce";
+import Contact from "./pages/Contact/Contact";
 function App() {
   const { user } = useContext(AuthContext);
   const [cartItems, setCartItems] = useState([]);
@@ -142,6 +143,9 @@ function App() {
           </Route>
           <Route path="/gioi-thieu">
             <Introduce />
+          </Route>
+          <Route path="/lien-he">
+            <Contact />
           </Route>
           <Route path="/test">
             <Test />

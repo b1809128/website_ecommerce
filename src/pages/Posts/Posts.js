@@ -13,6 +13,7 @@ export default function Posts() {
   const [posts, setPosts] = useState([]);
 
   useEffect(() => {
+    window.scrollTo(0, 0);
     const fetch = () => {
       if (pageQuery) {
         // const paginationAfter = allProducts.data.filter((data, idx) => {

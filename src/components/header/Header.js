@@ -118,13 +118,13 @@ export default function Header({ cartItems, deleteCartCheckOut }) {
             </Link>
           </li>
           <li className="nav-item">
-            <a className="link" href="#services" onClick={handleClick}>
-              Trung Tâm Bảo Hành
-            </a>
-          </li>
-          <li className="nav-item">
             <Link to="/gioi-thieu" className="link" onClick={handleClick}>
               Giới Thiệu
+            </Link>
+          </li>
+          <li className="nav-item">
+            <Link to="/lien-he" className="link" onClick={handleClick}>
+              Liên Hệ
             </Link>
           </li>
         </ul>
