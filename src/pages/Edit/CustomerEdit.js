@@ -49,7 +49,7 @@ export default function CustomerEdit() {
       );
       if (res.data) {
         Swal.fire({
-          position: "top-end",
+          position: "center",
           icon: "success",
           title: "Thêm địa chỉ thành công",
           showConfirmButton: false,

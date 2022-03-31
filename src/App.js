@@ -42,7 +42,7 @@ function App() {
       setCartItems([...cartItems, { MSHH, SoLuong: 1 }]);
     }
     Swal.fire({
-      position: "top-end",
+      position: "center",
       icon: "success",
       title: "Đã thêm vào giỏ hàng",
       showConfirmButton: false,

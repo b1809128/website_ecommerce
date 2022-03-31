@@ -52,7 +52,7 @@ export default function FormProduct() {
       });
       if (res.data) {
         Swal.fire({
-          position: "top-end",
+          position: "center",
           icon: "success",
           title: "Added Product Successfully",
           showConfirmButton: false,

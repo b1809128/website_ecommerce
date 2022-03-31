@@ -64,7 +64,7 @@ export default function RegisterForm() {
   const history = useHistory();
   const getAlert = () => {
     Swal.fire({
-      position: "top-end",
+      position: "center",
       icon: "success",
       title: "Đăng ký thành công",
       showConfirmButton: false,

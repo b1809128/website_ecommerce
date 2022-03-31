@@ -83,7 +83,7 @@ export default function AdminOrderDetails() {
         );
         if (res.data) {
           Swal.fire({
-            position: "top-end",
+            position: "center",
             icon: "success",
             title: "Cập nhật đơn hàng thành công !",
             showConfirmButton: false,
@@ -101,7 +101,7 @@ export default function AdminOrderDetails() {
         );
         if (res.data) {
           Swal.fire({
-            position: "top-end",
+            position: "center",
             icon: "success",
             title: "Cập nhật tình trạng đơn hàng thành công !",
             showConfirmButton: false,

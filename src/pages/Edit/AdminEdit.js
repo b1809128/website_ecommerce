@@ -108,7 +108,7 @@ export default function AdminEdit() {
       );
       if (response.data) {
         Swal.fire({
-          position: "top-end",
+          position: "center",
           icon: "success",
           title: "Cập nhật phân quyền thành công !",
           showConfirmButton: false,
