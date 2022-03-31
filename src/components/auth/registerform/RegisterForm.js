@@ -66,7 +66,7 @@ export default function RegisterForm() {
     Swal.fire({
       position: "top-end",
       icon: "success",
-      title: "Register Successfully",
+      title: "Đăng ký thành công",
       showConfirmButton: false,
       timer: 1500,
     });
@@ -208,7 +208,7 @@ export default function RegisterForm() {
         )}
         <div className="register-btn">
           <button onClick={register} className="btn">
-           ĐĂNG KÝ
+            ĐĂNG KÝ
           </button>
         </div>
         <p className="register-text-none">

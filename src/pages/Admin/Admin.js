@@ -12,6 +12,7 @@ import TableOrder from "../../components/table/TableOrder";
 import { FaEdit } from "react-icons/fa";
 import AdminEdit from "../Edit/AdminEdit";
 import Modal from "../../components/modal/Modal";
+import Swal from "sweetalert2";
 function Admin() {
   const { user } = useContext(AuthContext);
   const [authorized, setAuthorized] = useState(true);
@@ -49,7 +50,11 @@ function Admin() {
 
   //TODO: authorized
   if (!authorized) {
-    return <Redirect to="/dangn-nhap" />;
+    Swal.fire({
+      icon: 'error',
+      title: 'Bạn không có quyền truy cập !',
+    })
+    return <Redirect to="/dang-nhap" />;
   }
 
   return (

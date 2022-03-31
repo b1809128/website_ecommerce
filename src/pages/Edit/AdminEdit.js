@@ -73,19 +73,19 @@ export default function AdminEdit() {
     e.preventDefault();
     if (idProductDelete) {
       Swal.fire({
-        title: "Are you sure?",
-        text: "You won't be able to revert this!",
+        title: "Bạn có chắc muốn xóa ?",
+        text: "Bạn không thể hoàn tác hành động này !",
         icon: "warning",
         showCancelButton: true,
         confirmButtonColor: "#3085d6",
         cancelButtonColor: "#d33",
-        confirmButtonText: "Yes, delete it!",
+        confirmButtonText: "Tiếp tục xóa",
       }).then((result) => {
         if (result.isConfirmed) {
           deleteHandle(idProductDelete);
           Swal.fire(
-            "Deleted!",
-            `${idProductDelete} has been deleted.`,
+            "Đã xóa!",
+            `${idProductDelete} đã được xóa thành công.`,
             "success"
           );
         }
@@ -110,7 +110,7 @@ export default function AdminEdit() {
         Swal.fire({
           position: "top-end",
           icon: "success",
-          title: "Update Role Successfully",
+          title: "Cập nhật phân quyền thành công !",
           showConfirmButton: false,
           timer: 1500,
         });
@@ -143,6 +143,10 @@ export default function AdminEdit() {
   ];
 
   if (!authorized) {
+    Swal.fire({
+      icon: "error",
+      title: "Bạn không có quyền truy cập !",
+    });
     return <Redirect to="/dang-nhap" />;
   }
 

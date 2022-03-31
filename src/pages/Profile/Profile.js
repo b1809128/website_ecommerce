@@ -11,6 +11,7 @@ import axios from "axios";
 import { FaEdit } from "react-icons/fa";
 import CustomerEdit from "../Edit/CustomerEdit";
 import Modal from "../../components/modal/Modal";
+import Swal from "sweetalert2";
 export default function Profile() {
   const { user } = useContext(AuthContext);
   const [authorized, setAuthorized] = useState(true);
@@ -52,6 +53,10 @@ export default function Profile() {
   };
 
   if (!authorized) {
+    Swal.fire({
+      icon: "error",
+      title: "Bạn không có quyền truy cập !",
+    });
     return <Redirect to="/dang-nhap" />;
   }
 
@@ -81,7 +86,9 @@ export default function Profile() {
                   return (
                     <ul className="cart__total-list">
                       <li className="cart__total-item">
-                        <p className="cart__total-item-text">Mã số khách hàng: </p>
+                        <p className="cart__total-item-text">
+                          Mã số khách hàng:{" "}
+                        </p>
                         <p className="">{data.id}</p>
                       </li>
                       <li className="cart__total-item">
@@ -141,7 +148,9 @@ export default function Profile() {
                             </li>
 
                             <li className="cart__total-item">
-                              <p className="cart__total-item-text">Tình trạng đơn hàng: </p>
+                              <p className="cart__total-item-text">
+                                Tình trạng đơn hàng:{" "}
+                              </p>
                               <p className="cart__total-item-value">
                                 {data.status}
                               </p>

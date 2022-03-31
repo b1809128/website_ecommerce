@@ -31,7 +31,7 @@ export default function Posts() {
     };
 
     fetch();
-  });
+  },[pageQuery]);
 
   const testPage = (numberPerPage, productData) => {
     let array = [];

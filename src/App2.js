@@ -1,5 +1,5 @@
 import "./App.css";
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Home from "./pages/Home/Home";
 import AllProducts from "./pages/AllProducts/AllProducts";
@@ -24,22 +24,30 @@ import Swal from "sweetalert2";
 import Posts from "./pages/Posts/Posts";
 import Introduce from "./pages/Introduce/Introduce";
 import Contact from "./pages/Contact/Contact";
-function App() {
+function App2() {
   const { user } = useContext(AuthContext);
   const [cartItems, setCartItems] = useState([]);
-  // const [cartNumber, setCartNumber] = useState();
+  useEffect(() => {
+    setCartItems(JSON.parse(localStorage.getItem("cartItems")));
+  }, []);
 
   //TODO: Add to cart
   const addCart = (MSHH) => {
     var exist = cartItems.find((x) => x.MSHH === MSHH);
     if (exist) {
-      setCartItems(
-        cartItems.map((x) =>
-          x.MSHH === MSHH ? { ...exist, SoLuong: exist.SoLuong + 1 } : x
+      localStorage.setItem(
+        "cartItems",
+        JSON.stringify(
+          cartItems.map((x) =>
+            x.MSHH === MSHH ? { ...exist, SoLuong: exist.SoLuong + 1 } : x
+          )
         )
       );
     } else {
-      setCartItems([...cartItems, { MSHH, SoLuong: 1 }]);
+      localStorage.setItem(
+        "cartItems",
+        JSON.stringify([...cartItems, { MSHH, SoLuong: 1 }])
+      );
     }
     Swal.fire({
       position: "top-end",
@@ -54,11 +62,17 @@ function App() {
   const removeCart = (MSHH) => {
     var exist = cartItems.find((x) => x.MSHH === MSHH);
     if (exist.SoLuong === 1) {
-      setCartItems(cartItems.filter((x) => x.MSHH !== MSHH));
+      localStorage.setItem(
+        "cartItems",
+        JSON.stringify(cartItems.filter((x) => x.MSHH !== MSHH))
+      );
     } else {
-      setCartItems(
-        cartItems.map((x) =>
-          x.MSHH === MSHH ? { ...exist, SoLuong: exist.SoLuong - 1 } : x
+      localStorage.setItem(
+        "cartItems",
+        JSON.stringify(
+          cartItems.map((x) =>
+            x.MSHH === MSHH ? { ...exist, SoLuong: exist.SoLuong - 1 } : x
+          )
         )
       );
     }
@@ -76,14 +90,14 @@ function App() {
       confirmButtonText: "Tiếp tục xóa",
     }).then((result) => {
       if (result.isConfirmed) {
-        setCartItems([]);
+        localStorage.setItem("cartItems", JSON.stringify([]));
         Swal.fire("Đã xóa !", `Giỏ hàng đã được xóa thành công !`, "success");
       }
     });
   };
 
   const deleteCartCheckOut = () => {
-    setCartItems([]);
+    localStorage.setItem("cartItems", JSON.stringify([]));
   };
 
   return (
@@ -159,4 +173,4 @@ function App() {
   );
 }
 
-export default App;
+export default App2;

@@ -51,7 +51,7 @@ export default function CustomerEdit() {
         Swal.fire({
           position: "top-end",
           icon: "success",
-          title: "Added Address Successfully",
+          title: "Thêm địa chỉ thành công",
           showConfirmButton: false,
           timer: 1500,
         });
@@ -76,8 +76,8 @@ export default function CustomerEdit() {
 
       if (res.data) {
         Swal.fire(
-          "Change password successfully !",
-          "You clicked the button!",
+          "Thay đổi mật khẩu thành công !",
+          "Nhấn để tiếp tục",
           "success"
         );
       }
@@ -91,16 +91,20 @@ export default function CustomerEdit() {
     e.preventDefault();
     if (user) {
       Swal.fire({
-        title: "Are you sure?",
-        text: "You won't be able to revert this!",
+        title: "Bạn có chắc muốn xóa ?",
+        text: "Bạn không thể hoàn tác hành động này !",
         icon: "warning",
         showCancelButton: true,
         confirmButtonColor: "#3085d6",
         cancelButtonColor: "#d33",
-        confirmButtonText: "Yes, delete it!",
+        confirmButtonText: "Tiếp tục xóa",
       }).then((result) => {
         if (result.isConfirmed) {
-          Swal.fire("Deleted!", "Your Profile has been deleted.", "success");
+          Swal.fire(
+            "Đã xóa !",
+            "Thông tin khách hàng đã được xóa. Hẹn gặp lại quý khách !",
+            "success"
+          );
           redirectAfterDelete();
         }
       });
@@ -121,6 +125,10 @@ export default function CustomerEdit() {
   };
 
   if (!authorized) {
+    Swal.fire({
+      icon: 'error',
+      title: 'Bạn không có quyền truy cập !',
+    })
     return <Redirect to="/dang-nhap" />;
   }
   return (

@@ -28,17 +28,21 @@ function TableOrder() {
     const delOrder = (idOrder) => {
       if (idOrder > 0) {
         Swal.fire({
-          title: "Are you sure?",
-          text: "You won't be able to revert this!",
+          title: "Bạn có chắc muốn xóa ?",
+          text: "Bạn không thể hoàn tác hành động này !",
           icon: "warning",
           showCancelButton: true,
           confirmButtonColor: "#3085d6",
           cancelButtonColor: "#d33",
-          confirmButtonText: "Yes, delete it!",
+          confirmButtonText: "Tiếp tục xóa",
         }).then((result) => {
           if (result.isConfirmed) {
             deleteOrder(idOrder);
-            Swal.fire("Deleted!", `${idOrder} has been deleted.`, "success");
+            Swal.fire(
+              "Đã xóa !",
+              `${idOrder} đã được xóa thành công.`,
+              "success"
+            );
           }
         });
       }

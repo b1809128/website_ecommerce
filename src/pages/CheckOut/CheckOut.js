@@ -44,8 +44,8 @@ export default function CheckOut({ cartItems, deleteCartCheckOut }) {
 
   const alertOrderSuccess = () => {
     Swal.fire(
-      "Order Successfully!",
-      "Click the button to continue!",
+      "Đặt hàng thành công !",
+      "Nhấn để tiếp tục mua hàng !",
       "success"
     );
   };
@@ -93,7 +93,9 @@ export default function CheckOut({ cartItems, deleteCartCheckOut }) {
                     return (
                       <ul className="cart__total-list">
                         <li className="cart__total-item">
-                          <p className="cart__total-item-text">Mã số khách hàng: </p>
+                          <p className="cart__total-item-text">
+                            Mã số khách hàng:{" "}
+                          </p>
                           <p className="">{data.id}</p>
                         </li>
                         <li className="cart__total-item">
@@ -183,6 +185,9 @@ export default function CheckOut({ cartItems, deleteCartCheckOut }) {
                       <label for="notes">Ghi chú</label>
                       <textarea id="notes"></textarea>
                     </div>
+                    <div className="form-block">
+                      <button className="btn">Gửi</button>
+                    </div>
                   </form>
                 </div>
               )}
@@ -219,10 +224,12 @@ export default function CheckOut({ cartItems, deleteCartCheckOut }) {
                 </div>
                 <h2 className="check__method-title">PHƯƠNG THỨC THANH TOÁN</h2>
                 <div className="form-flex">
-                  <input type="checkbox" className="method" /> Thanh toán khi nhận hàng
+                  <input type="checkbox" className="method" /> Thanh toán khi
+                  nhận hàng
                 </div>
                 <div className="form-flex">
-                  <input type="checkbox" className="method" /> Thanh toán qua thẻ tín dụng
+                  <input type="checkbox" className="method" /> Thanh toán qua
+                  thẻ tín dụng
                 </div>
                 <div className="form-flex">
                   <div className="form-flex">

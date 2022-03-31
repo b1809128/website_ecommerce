@@ -85,7 +85,7 @@ export default function AdminOrderDetails() {
           Swal.fire({
             position: "top-end",
             icon: "success",
-            title: "Update Role Successfully",
+            title: "Cập nhật đơn hàng thành công !",
             showConfirmButton: false,
             timer: 1500,
           });
@@ -103,7 +103,7 @@ export default function AdminOrderDetails() {
           Swal.fire({
             position: "top-end",
             icon: "success",
-            title: "Update Role Successfully",
+            title: "Cập nhật tình trạng đơn hàng thành công !",
             showConfirmButton: false,
             timer: 1500,
           });
@@ -172,7 +172,9 @@ export default function AdminOrderDetails() {
                       <p className="">{data.id_order}</p>
                     </li>
                     <li className="cart__total-item">
-                      <p className="cart__total-item-text">Mã số khách hàng: </p>
+                      <p className="cart__total-item-text">
+                        Mã số khách hàng:{" "}
+                      </p>
                       <p className="">{data.id}</p>
                     </li>
                     <li className="cart__total-item">
@@ -186,7 +188,9 @@ export default function AdminOrderDetails() {
                       </p>
                     </li>
                     <li className="cart__total-item">
-                      <p className="cart__total-item-text">Tình trạng đơn hàng: </p>
+                      <p className="cart__total-item-text">
+                        Tình trạng đơn hàng:{" "}
+                      </p>
                       <p className="cart__total-item-value">{data.status}</p>
                     </li>
                     <li className="cart__total-item">

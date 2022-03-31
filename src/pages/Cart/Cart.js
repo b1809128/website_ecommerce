@@ -195,7 +195,7 @@ export default function Cart({ cartItems, addCart, removeCart, deleteCart }) {
               ) : (
                 <div className="row">
                   <button className="btn" disabled onClick={deleteCart}>
-                  XÓA GIỎ HÀNG
+                    XÓA GIỎ HÀNG
                   </button>
                   <button className="btn" disabled>
                     THANH TOÁN
@@ -211,7 +211,7 @@ export default function Cart({ cartItems, addCart, removeCart, deleteCart }) {
             <h2 className="cart-empty"> {"< GIỎ HÀNG TRỐNG ! >"} </h2>
             <button className="btn">
               <Link to="/" className="link__btn">
-                TRỞ VỀ MUA HÀNG
+                TIẾP TỤC MUA HÀNG
               </Link>
             </button>
           </div>

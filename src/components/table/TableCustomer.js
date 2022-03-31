@@ -27,19 +27,19 @@ function TableCustomer({ click }) {
     const delCustomer = (idCustomers) => {
       if (idCustomers > 0) {
         Swal.fire({
-          title: "Are you sure?",
-          text: "You won't be able to revert this!",
+          title: "Bạn có chắc muốn xóa ?",
+          text: "Bạn không thể hoàn tác hành động này !",
           icon: "warning",
           showCancelButton: true,
           confirmButtonColor: "#3085d6",
           cancelButtonColor: "#d33",
-          confirmButtonText: "Yes, delete it!",
+          confirmButtonText: "Tiếp tục xóa",
         }).then((result) => {
           if (result.isConfirmed) {
             deleteCustomers(idCustomers);
             Swal.fire(
-              "Deleted!",
-              `${idCustomers} has been deleted.`,
+              "Đã xóa !",
+              `${idCustomers} đã được xóa thành công.`,
               "success"
             );
           }

@@ -56,17 +56,21 @@ export default function AdminOrderDetails() {
     e.preventDefault();
     if (user) {
       Swal.fire({
-        title: "Are you sure?",
-        text: "You won't be able to revert this!",
+        title: "Bạn có chắc muốn xóa ?",
+        text: "Bạn không thể hoàn tác hành động này !",
         icon: "warning",
         showCancelButton: true,
         confirmButtonColor: "#3085d6",
         cancelButtonColor: "#d33",
-        confirmButtonText: "Yes, delete it!",
+        confirmButtonText: "Tiếp tục xóa",
       }).then((result) => {
         if (result.isConfirmed) {
-          Swal.fire("Deleted!", "Your Profile has been deleted.", "success");
-          delOrder()
+          Swal.fire(
+            "Đã xóa !",
+            "Đơn hàng của bạn đã được xóa thành công !",
+            "success"
+          );
+          delOrder();
         }
       });
     }
@@ -82,8 +86,6 @@ export default function AdminOrderDetails() {
       console.log(error);
     }
   };
-
-
 
   //TODO:Order status
   const orderStatus = orderData.map((data) => data.status);
@@ -146,7 +148,9 @@ export default function AdminOrderDetails() {
                       <p className="">#{data.id_order}</p>
                     </li>
                     <li className="cart__total-item">
-                      <p className="cart__total-item-text">Mã số khách hàng: </p>
+                      <p className="cart__total-item-text">
+                        Mã số khách hàng:{" "}
+                      </p>
                       <p className="">{data.id}</p>
                     </li>
                     <li className="cart__total-item">
@@ -160,7 +164,9 @@ export default function AdminOrderDetails() {
                       </p>
                     </li>
                     <li className="cart__total-item">
-                      <p className="cart__total-item-text">Tình trạng đơn hàng: </p>
+                      <p className="cart__total-item-text">
+                        Tình trạng đơn hàng:{" "}
+                      </p>
                       <p className="cart__total-item-value">{data.status}</p>
                     </li>
                     <li className="cart__total-item">
