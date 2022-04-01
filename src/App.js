@@ -26,20 +26,43 @@ import Introduce from "./pages/Introduce/Introduce";
 import Contact from "./pages/Contact/Contact";
 function App() {
   const { user } = useContext(AuthContext);
-  const [cartItems, setCartItems] = useState([]);
-  // const [cartNumber, setCartNumber] = useState();
+  const res = localStorage.getItem("cartItems");
+
+  if (!JSON.parse(res)) {
+    localStorage.setItem("cartItems", JSON.stringify([]));
+  }
+
+  const [cartItems, setCartItems] = useState(
+    JSON.parse(res) ? JSON.parse(res) : []
+  );
+
+  const getData = () => {
+    const local = localStorage.getItem("cartItems");
+    if (local) {
+      // console.log(JSON.parse(local));
+      return JSON.parse(local);
+    } else {
+      return [];
+    }
+  };
 
   //TODO: Add to cart
   const addCart = (MSHH) => {
-    var exist = cartItems.find((x) => x.MSHH === MSHH);
+    var exist = getData().find((x) => x.MSHH === MSHH);
     if (exist) {
-      setCartItems(
-        cartItems.map((x) =>
-          x.MSHH === MSHH ? { ...exist, SoLuong: exist.SoLuong + 1 } : x
+      localStorage.setItem(
+        "cartItems",
+        JSON.stringify(
+          getData().map((x) =>
+            x.MSHH === MSHH ? { ...exist, SoLuong: exist.SoLuong + 1 } : x
+          )
         )
       );
     } else {
-      setCartItems([...cartItems, { MSHH, SoLuong: 1 }]);
+      localStorage.setItem(
+        "cartItems",
+        JSON.stringify([...getData(), { MSHH, SoLuong: 1 }])
+      );
     }
     Swal.fire({
       position: "center",
@@ -48,20 +71,32 @@ function App() {
       showConfirmButton: false,
       timer: 1500,
     });
+    // window.localStorage.reload();
   };
+
+  (function () {
+    return JSON.parse(localStorage.getItem("cartItems"));
+  })();
 
   //TODO: Remove items cart
   const removeCart = (MSHH) => {
     var exist = cartItems.find((x) => x.MSHH === MSHH);
     if (exist.SoLuong === 1) {
-      setCartItems(cartItems.filter((x) => x.MSHH !== MSHH));
+      localStorage.setItem(
+        "cartItems",
+        JSON.stringify(cartItems.filter((x) => x.MSHH !== MSHH))
+      );
     } else {
-      setCartItems(
-        cartItems.map((x) =>
-          x.MSHH === MSHH ? { ...exist, SoLuong: exist.SoLuong - 1 } : x
+      localStorage.setItem(
+        "cartItems",
+        JSON.stringify(
+          cartItems.map((x) =>
+            x.MSHH === MSHH ? { ...exist, SoLuong: exist.SoLuong - 1 } : x
+          )
         )
       );
     }
+    // window.localStorage.reload();
   };
 
   //TODO: Delete cart
@@ -76,21 +111,23 @@ function App() {
       confirmButtonText: "Tiếp tục xóa",
     }).then((result) => {
       if (result.isConfirmed) {
-        setCartItems([]);
+        localStorage.setItem("cartItems", JSON.stringify([]));
         Swal.fire("Đã xóa !", `Giỏ hàng đã được xóa thành công !`, "success");
+        // window.localStorage.reload();
       }
     });
   };
 
   const deleteCartCheckOut = () => {
-    setCartItems([]);
+    localStorage.setItem("cartItems", JSON.stringify([]));
+    // window.localStorage.reload();
   };
 
   return (
     <div>
       <Router>
         <Header
-          cartItems={cartItems.length}
+          cartItems={getData().length}
           deleteCartCheckOut={deleteCartCheckOut}
         />
         <Switch>

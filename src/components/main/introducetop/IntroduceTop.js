@@ -17,7 +17,7 @@ export default function IntroduceTop() {
         <h3 className="introduce-top-text__justify">
           Bạn có thể chọn một tùy chọn thanh toán phù hợp với mình, trả ít hơn
           với giao dịch, kết nối iPhone mới với nhà cung cấp dịch vụ của bạn và
-          thiết lập Mau. Bạn cũng có thể trò chuyện với Chuyên gia bất cứ lúc
+          thiết lập nhanh chóng. Bạn cũng có thể trò chuyện với chuyên gia bất cứ lúc
           nào.
         </h3>
         <div className="introduce-top-text__link">

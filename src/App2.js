@@ -1,5 +1,5 @@
 import "./App.css";
-import React, { useState, useContext, useEffect } from "react";
+import React, { useState, useContext } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Home from "./pages/Home/Home";
 import AllProducts from "./pages/AllProducts/AllProducts";
@@ -27,30 +27,22 @@ import Contact from "./pages/Contact/Contact";
 function App2() {
   const { user } = useContext(AuthContext);
   const [cartItems, setCartItems] = useState([]);
-  useEffect(() => {
-    setCartItems(JSON.parse(localStorage.getItem("cartItems")));
-  }, []);
+  // const [cartNumber, setCartNumber] = useState();
 
   //TODO: Add to cart
   const addCart = (MSHH) => {
     var exist = cartItems.find((x) => x.MSHH === MSHH);
     if (exist) {
-      localStorage.setItem(
-        "cartItems",
-        JSON.stringify(
-          cartItems.map((x) =>
-            x.MSHH === MSHH ? { ...exist, SoLuong: exist.SoLuong + 1 } : x
-          )
+      setCartItems(
+        cartItems.map((x) =>
+          x.MSHH === MSHH ? { ...exist, SoLuong: exist.SoLuong + 1 } : x
         )
       );
     } else {
-      localStorage.setItem(
-        "cartItems",
-        JSON.stringify([...cartItems, { MSHH, SoLuong: 1 }])
-      );
+      setCartItems([...cartItems, { MSHH, SoLuong: 1 }]);
     }
     Swal.fire({
-      position: "top-end",
+      position: "center",
       icon: "success",
       title: "Đã thêm vào giỏ hàng",
       showConfirmButton: false,
@@ -62,17 +54,11 @@ function App2() {
   const removeCart = (MSHH) => {
     var exist = cartItems.find((x) => x.MSHH === MSHH);
     if (exist.SoLuong === 1) {
-      localStorage.setItem(
-        "cartItems",
-        JSON.stringify(cartItems.filter((x) => x.MSHH !== MSHH))
-      );
+      setCartItems(cartItems.filter((x) => x.MSHH !== MSHH));
     } else {
-      localStorage.setItem(
-        "cartItems",
-        JSON.stringify(
-          cartItems.map((x) =>
-            x.MSHH === MSHH ? { ...exist, SoLuong: exist.SoLuong - 1 } : x
-          )
+      setCartItems(
+        cartItems.map((x) =>
+          x.MSHH === MSHH ? { ...exist, SoLuong: exist.SoLuong - 1 } : x
         )
       );
     }
@@ -90,14 +76,14 @@ function App2() {
       confirmButtonText: "Tiếp tục xóa",
     }).then((result) => {
       if (result.isConfirmed) {
-        localStorage.setItem("cartItems", JSON.stringify([]));
+        setCartItems([]);
         Swal.fire("Đã xóa !", `Giỏ hàng đã được xóa thành công !`, "success");
       }
     });
   };
 
   const deleteCartCheckOut = () => {
-    localStorage.setItem("cartItems", JSON.stringify([]));
+    setCartItems([]);
   };
 
   return (
