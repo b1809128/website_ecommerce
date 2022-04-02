@@ -13,7 +13,7 @@ import { FiLogOut } from "react-icons/fi";
 import axios from "axios";
 import { AuthContext } from "../../context/AuthContext";
 
-export default function Header({ cartItems, deleteCartCheckOut }) {
+export default function Header({ cartItems, deleteCartAfterCheckOut }) {
   const [scrollTop, setScrollTop] = useState(false);
   const [click, setClick] = useState(false);
   const [button, setButton] = useState(true);
@@ -59,7 +59,7 @@ export default function Header({ cartItems, deleteCartCheckOut }) {
       const res = await axios.get("http://localhost:5000/auth/logout");
       // console.log(res)
       if (res.data) {
-        deleteCartCheckOut();
+        deleteCartAfterCheckOut();
         history.push("/");
         dispatch({ type: "LOGOUT" });
       }

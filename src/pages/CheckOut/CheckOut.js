@@ -10,8 +10,8 @@ import { AuthContext } from "../../context/AuthContext";
 
 export default function CheckOut({
   cartItems,
-  deleteCartCheckOut,
-  deleteOrder,
+  deleteCartAfterCheckOut,
+  deleteCheckOut,
 }) {
   const { user } = useContext(AuthContext);
   const [product, setProduct] = useState([]);
@@ -65,7 +65,7 @@ export default function CheckOut({
           return { id_order: response.data.id_order, ...data };
         })
       );
-      deleteCartCheckOut();
+      deleteCartAfterCheckOut();
     } catch (error) {
       console.log(error);
     }
@@ -319,7 +319,7 @@ export default function CheckOut({
                   />
                 </div>
                 <div className="form-flex">
-                  <button className="btn" onClick={deleteOrder}>
+                  <button className="btn" onClick={deleteCheckOut}>
                     HỦY ĐƠN HÀNG
                   </button>
                   <button className="btn" onClick={orderHandle}>

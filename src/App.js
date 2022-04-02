@@ -28,11 +28,7 @@ import Contact from "./pages/Contact/Contact";
 function App() {
   const { user } = useContext(AuthContext);
 
-  const res = localStorage.getItem("cartItems");
-  if (!JSON.parse(res)) {
-    localStorage.setItem("cartItems", JSON.stringify([]));
-  }
-
+  //TODO: Auto update LocalStorage function
   const getData = () => {
     const local = localStorage.getItem("cartItems");
     if (local) {
@@ -164,7 +160,8 @@ function App() {
     });
   };
 
-  const deleteOrder = (e) => {
+  //TODO: Delete Order
+  const deleteCheckOut = (e) => {
     e.preventDefault();
     Swal.fire({
       title: "Bạn có chắc muốn hủy đơn hàng ?",
@@ -188,7 +185,7 @@ function App() {
   };
 
   //TODO: Delete after order or logout
-  const deleteCartCheckOut = () => {
+  const deleteCartAfterCheckOut = () => {
     localStorage.setItem("cartItems", JSON.stringify([]));
     setCartItems(getData());
   };
@@ -198,7 +195,7 @@ function App() {
       <Router>
         <Header
           cartItems={cartItems.length}
-          deleteCartCheckOut={deleteCartCheckOut}
+          deleteCartAfterCheckOut={deleteCartAfterCheckOut}
         />
         <Switch>
           <Route exact path="/">
@@ -231,8 +228,8 @@ function App() {
           <Route path="/thanh-toan">
             <CheckOut
               cartItems={cartItems}
-              deleteCartCheckOut={deleteCartCheckOut}
-              deleteOrder={deleteOrder}
+              deleteCartAfterCheckOut={deleteCartAfterCheckOut}
+              deleteCheckOut={deleteCheckOut}
             />
           </Route>
           <Route path="/thong-tin-khach-hang">
