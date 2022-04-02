@@ -1,6 +1,6 @@
 import React, { useContext, useState, useEffect } from "react";
 import { FaAngleRight, FaEdit } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import LocationBar from "../../components/bar/locationbar/LocationBar";
 import axios from "axios";
 import "./checkout.css";
@@ -8,7 +8,11 @@ import "../Profile/Profile.css";
 import Swal from "sweetalert2";
 import { AuthContext } from "../../context/AuthContext";
 
-export default function CheckOut({ cartItems, deleteCartCheckOut }) {
+export default function CheckOut({
+  cartItems,
+  deleteCartCheckOut,
+  deleteOrder,
+}) {
   const { user } = useContext(AuthContext);
   const [product, setProduct] = useState([]);
   const [customerData, setCustomerData] = useState([]);
@@ -67,9 +71,15 @@ export default function CheckOut({ cartItems, deleteCartCheckOut }) {
     }
     alertOrderSuccess();
   };
-  console.log(customerData);
   // console.log(getCartProduct().map(data=> JSON.parse(data.pr1.MoTa)));
   // console.log(cartItems.map(data=>{return  {id_order:8898,...data}}));
+  if (cartItems.length === 0) {
+    Swal.fire({
+      icon: "success",
+      title: "Bạn không có hóa đơn thanh toán nào !",
+    });
+    return <Redirect to="/gio-hang" />;
+  }
 
   return (
     <div className="check">
@@ -308,11 +318,16 @@ export default function CheckOut({ cartItems, deleteCartCheckOut }) {
                     alt="bank"
                   />
                 </div>
-                <button className="btn" onClick={orderHandle}>
-                  <Link to="/" className="link__btn">
-                    ĐẶT HÀNG <FaAngleRight />
-                  </Link>
-                </button>
+                <div className="form-flex">
+                  <button className="btn" onClick={deleteOrder}>
+                    HỦY ĐƠN HÀNG
+                  </button>
+                  <button className="btn" onClick={orderHandle}>
+                    <Link to="/" className="link__btn">
+                      ĐẶT HÀNG <FaAngleRight />
+                    </Link>
+                  </button>
+                </div>
               </form>
             </div>
           </div>

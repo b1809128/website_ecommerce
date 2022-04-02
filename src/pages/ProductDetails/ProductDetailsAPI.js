@@ -12,6 +12,8 @@ export default function ProductDetailsAPI({ addCart }) {
 
   //Axios get Data
   const [product, setProduct] = useState([]);
+  const [quantity, setQuantity] = useState(1);
+
   useEffect(() => {
     window.scrollTo(0, 0);
     const getAll = async () => {
@@ -37,7 +39,7 @@ export default function ProductDetailsAPI({ addCart }) {
           <div className="product-details">
             <div className="product-details-section">
               <div className="product-details-row">
-                <LocationBar nameProduct={data.TenHH}/>
+                <LocationBar nameProduct={data.TenHH} />
                 <div className="row">
                   <div className="product-details-left-info">
                     <div className="product-details-image">
@@ -109,10 +111,10 @@ export default function ProductDetailsAPI({ addCart }) {
                           name="color"
                           id="color"
                         >
-                          <option value="white">White</option>
-                          <option value="red">Red</option>
-                          <option value="gray">Gray</option>
-                          <option value="black">Black</option>
+                          <option value="white">Trắng</option>
+                          <option value="red">Đỏ</option>
+                          <option value="gray">Xám</option>
+                          <option value="black">Đen</option>
                         </select>
                       </div>
                     </div>
@@ -122,6 +124,7 @@ export default function ProductDetailsAPI({ addCart }) {
                         type="text"
                         placeholder="1"
                         className="product-details-quantity-input"
+                        onChange={(e) =>setQuantity(e.target.value)}
                       />
                     </div>
                     <p>
@@ -153,9 +156,9 @@ export default function ProductDetailsAPI({ addCart }) {
                     <div className="product-details__btn">
                       <button
                         className="btn product-details__btn-item"
-                        onClick={() => addCart(id)}
+                        onClick={() => addCart(id, parseInt(quantity))}
                       >
-                        THÊM VÀO GIỎ
+                        THÊM VÀO GIỎ HÀNG
                       </button>
                       <button className="btn product-details__btn-item">
                         <Link to="/gio-hang" className="link__btn">

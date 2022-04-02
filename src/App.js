@@ -24,6 +24,7 @@ import Swal from "sweetalert2";
 import Posts from "./pages/Posts/Posts";
 import Introduce from "./pages/Introduce/Introduce";
 import Contact from "./pages/Contact/Contact";
+
 function App() {
   const { user } = useContext(AuthContext);
 
@@ -70,15 +71,68 @@ function App() {
     setCartItems(getData());
   };
 
+  const addCartByQuantity = (MSHH, quantity) => {
+    var exist = getData().find((x) => x.MSHH === MSHH);
+    if (exist) {
+      if (quantity) {
+        localStorage.setItem(
+          "cartItems",
+          JSON.stringify(
+            getData().map((x) =>
+              x.MSHH === MSHH
+                ? { ...exist, SoLuong: exist.SoLuong + quantity }
+                : x
+            )
+          )
+        );
+      } else {
+        localStorage.setItem(
+          "cartItems",
+          JSON.stringify(
+            getData().map((x) =>
+              x.MSHH === MSHH ? { ...exist, SoLuong: exist.SoLuong + 1 } : x
+            )
+          )
+        );
+      }
+    } else {
+      if (quantity) {
+        localStorage.setItem(
+          "cartItems",
+          JSON.stringify([...getData(), { MSHH, SoLuong: quantity }])
+        );
+      } else {
+        localStorage.setItem(
+          "cartItems",
+          JSON.stringify([...getData(), { MSHH, SoLuong: 1 }])
+        );
+      }
+    }
+    Swal.fire({
+      position: "center",
+      icon: "success",
+      title: "Đã thêm vào giỏ hàng",
+      showConfirmButton: false,
+      timer: 1500,
+    });
+    setCartItems(getData());
+  };
+
   //TODO: Remove items cart
   const removeCart = (MSHH) => {
     var exist = getData().find((x) => x.MSHH === MSHH);
-    if (exist.SoLuong === 1) {
+    if (exist) {
       localStorage.setItem(
         "cartItems",
         JSON.stringify(getData().filter((x) => x.MSHH !== MSHH))
       );
-    } else {
+    }
+    setCartItems(getData());
+  };
+
+  const removeOneItemCart = (MSHH) => {
+    var exist = getData().find((x) => x.MSHH === MSHH);
+    if (exist.SoLuong > 1) {
       localStorage.setItem(
         "cartItems",
         JSON.stringify(
@@ -110,6 +164,30 @@ function App() {
     });
   };
 
+  const deleteOrder = (e) => {
+    e.preventDefault();
+    Swal.fire({
+      title: "Bạn có chắc muốn hủy đơn hàng ?",
+      text: "Bạn không thể hoàn tác hành động này !",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Tiếp tục xóa",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        localStorage.setItem("cartItems", JSON.stringify([]));
+        Swal.fire(
+          "Đã hủy đơn hàng !",
+          `Đơn hàng đã hủy thành công !`,
+          "success"
+        );
+        setCartItems(getData());
+      }
+    });
+  };
+
+  //TODO: Delete after order or logout
   const deleteCartCheckOut = () => {
     localStorage.setItem("cartItems", JSON.stringify([]));
     setCartItems(getData());
@@ -133,7 +211,7 @@ function App() {
             <ProductDetails addCart={addCart} data={productsData} />
           </Route>
           <Route path="/chi-tiet-san-pham/:id">
-            <ProductDetailsAPI addCart={addCart} />
+            <ProductDetailsAPI addCart={addCartByQuantity} />
           </Route>
           <Route path="/dang-nhap">
             <Login />
@@ -146,6 +224,7 @@ function App() {
               cartItems={cartItems}
               addCart={addCart}
               removeCart={removeCart}
+              removeOneItemCart={removeOneItemCart}
               deleteCart={deleteCart}
             />
           </Route>
@@ -153,6 +232,7 @@ function App() {
             <CheckOut
               cartItems={cartItems}
               deleteCartCheckOut={deleteCartCheckOut}
+              deleteOrder={deleteOrder}
             />
           </Route>
           <Route path="/thong-tin-khach-hang">

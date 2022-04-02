@@ -1,6 +1,6 @@
 export const introduceData = [
   {
-    image: "./images/logo/logo_service.jpg",
+    image: "./images/logo/logo.png",
     text: "Với hơn 10 năm kinh nghiệm trong lĩnh vực thiết kế giao diện web và công nghệ website trên mọi lĩnh vực công nghệ thông tin. Công ty Giải pháp Phần mềm TA sẽ mang đến cho bạn dịch vụ tốt nhất với các sản phẩm quốc tế.",
   },
   {

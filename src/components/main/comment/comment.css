@@ -1,7 +1,6 @@
 .comment {
   padding: 0;
   border-radius: 8px;
-  margin: 12px;
   display: flex;
   flex-direction: column;
   width: 275px;
@@ -28,8 +27,18 @@
 }
 
 .comment-text {
-  font-size: 1.2rem;
+  color: rgba(0, 0, 0, 0.8);
+  font-size: 1rem;
+  font-weight: 500;
+  font-family: "Open Sans", arial, sans-serif;
+  cursor: pointer;
   text-align: justify;
+  width: 100%;
+  height: 2.6rem;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
 }
 
 .comment-star {
@@ -39,21 +48,42 @@
 }
 
 .comment-link {
-  font-size: 1.2rem;
-  display: flex;
-  align-items: center;
   cursor: pointer;
-  color: #eb0028;
+  text-decoration: none;
 }
 
-.comment-link__text {
-  color: #eb0028;
-  font-size: 1.2rem;
-  font-weight: 600;
+.comment__tag-wrapper {
+  display: flex;
+  margin: 8px 0;
+  padding: 0 8px;
+}
+
+.comment__tag {
   display: flex;
   align-items: center;
   justify-content: center;
-  cursor: pointer;
-  text-decoration: none;
+  border-radius: 3px;
+  background-color: transparent;
+  color: #eb0028;
+  outline: none;
+  border: 1px solid #eb0028;
   padding: 0 8px;
+  margin-right: 8px;
+  box-shadow: inset 0 0 0 0 #eb0028;
+  -webkit-transition: ease-out 0.8s;
+  -moz-transition: ease-out 0.8s;
+  transition: ease-out 0.8s;
+}
+
+.comment__tag:hover {
+  background-color: #eb0028;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  box-shadow: inset 100px 50px 0 0 #eb0028;
+}
+
+.comment__date {
+  color: #999;
+  font-size: 0.8rem;
 }

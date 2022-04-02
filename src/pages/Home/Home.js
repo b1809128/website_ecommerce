@@ -17,12 +17,15 @@ import Comment from "../../components/main/comment/Comment";
 import axios from "axios";
 import ProductAPI from "../../components/products/ProductAPI";
 import { FaAngleRight } from "react-icons/fa";
+import { PostData } from "../Posts/PostData";
 
 export default function Home({ addCart }) {
   const [product, setProduct] = useState([]);
   const [watchData, setWatchData] = useState([]);
   const [laptopData, setLaptopData] = useState([]);
   const [headphoneData, setHeadphoneData] = useState([]);
+
+  const commentData = PostData.filter((data, index) => index < 4);
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -153,10 +156,16 @@ export default function Home({ addCart }) {
             </h2>
           </div>
           <div data-aos="fade-up" id="blog" className="row">
-            <Comment />
-            <Comment />
-            <Comment />
-            <Comment />
+            {commentData.map((data) => {
+              return (
+                <Comment
+                  image={data.image}
+                  title={data.title}
+                  date={data.date}
+                  tags={data.tags}
+                />
+              );
+            })}
           </div>
         </div>
       </div>

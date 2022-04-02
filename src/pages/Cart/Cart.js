@@ -7,7 +7,13 @@ import axios from "axios";
 import { AuthContext } from "../../context/AuthContext";
 import { BsFillXSquareFill } from "react-icons/bs";
 
-export default function Cart({ cartItems, addCart, removeCart, deleteCart }) {
+export default function Cart({
+  cartItems,
+  addCart,
+  removeCart,
+  removeOneItemCart,
+  deleteCart,
+}) {
   const { user } = useContext(AuthContext);
   const [product, setProduct] = useState([]);
   const [checkStatus, setCheckStatus] = useState(false);
@@ -81,14 +87,14 @@ export default function Cart({ cartItems, addCart, removeCart, deleteCart }) {
                           <button
                             className="btn-cart__quantity"
                             disabled
-                            onClick={() => removeCart(data.pr2.MSHH)}
+                            onClick={() => removeOneItemCart(data.pr2.MSHH)}
                           >
                             -
                           </button>
                         ) : (
                           <button
                             className="btn-cart__quantity"
-                            onClick={() => removeCart(data.pr2.MSHH)}
+                            onClick={() => removeOneItemCart(data.pr2.MSHH)}
                           >
                             -
                           </button>
@@ -206,14 +212,21 @@ export default function Cart({ cartItems, addCart, removeCart, deleteCart }) {
           </div>
         </div>
       ) : (
-        <div className="row">
-          <div className="cart-empty-wrapper">
-            <h2 className="cart-empty"> {"< GIỎ HÀNG TRỐNG ! >"} </h2>
-            <button className="btn">
-              <Link to="/" className="link__btn">
-                TIẾP TỤC MUA HÀNG
-              </Link>
-            </button>
+        <div className="cart">
+          <div className="cart-section">
+            <div className="cart__row">
+              <LocationBar/>
+              <div className="row">
+                <div className="cart-empty-wrapper">
+                  <h2 className="cart-empty"> {"< GIỎ HÀNG TRỐNG ! >"} </h2>
+                  <button className="btn">
+                    <Link to="/" className="link__btn">
+                      TIẾP TỤC MUA HÀNG
+                    </Link>
+                  </button>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       )}
