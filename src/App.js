@@ -26,25 +26,21 @@ import Introduce from "./pages/Introduce/Introduce";
 import Contact from "./pages/Contact/Contact";
 function App() {
   const { user } = useContext(AuthContext);
-  const res = localStorage.getItem("cartItems");
 
+  const res = localStorage.getItem("cartItems");
   if (!JSON.parse(res)) {
     localStorage.setItem("cartItems", JSON.stringify([]));
   }
 
-  const [cartItems, setCartItems] = useState(
-    JSON.parse(res) ? JSON.parse(res) : []
-  );
-
   const getData = () => {
     const local = localStorage.getItem("cartItems");
     if (local) {
-      // console.log(JSON.parse(local));
       return JSON.parse(local);
     } else {
       return [];
     }
   };
+  const [cartItems, setCartItems] = useState(getData());
 
   //TODO: Add to cart
   const addCart = (MSHH) => {
@@ -71,32 +67,28 @@ function App() {
       showConfirmButton: false,
       timer: 1500,
     });
-    // window.localStorage.reload();
+    setCartItems(getData());
   };
-
-  (function () {
-    return JSON.parse(localStorage.getItem("cartItems"));
-  })();
 
   //TODO: Remove items cart
   const removeCart = (MSHH) => {
-    var exist = cartItems.find((x) => x.MSHH === MSHH);
+    var exist = getData().find((x) => x.MSHH === MSHH);
     if (exist.SoLuong === 1) {
       localStorage.setItem(
         "cartItems",
-        JSON.stringify(cartItems.filter((x) => x.MSHH !== MSHH))
+        JSON.stringify(getData().filter((x) => x.MSHH !== MSHH))
       );
     } else {
       localStorage.setItem(
         "cartItems",
         JSON.stringify(
-          cartItems.map((x) =>
+          getData().map((x) =>
             x.MSHH === MSHH ? { ...exist, SoLuong: exist.SoLuong - 1 } : x
           )
         )
       );
     }
-    // window.localStorage.reload();
+    setCartItems(getData());
   };
 
   //TODO: Delete cart
@@ -113,21 +105,21 @@ function App() {
       if (result.isConfirmed) {
         localStorage.setItem("cartItems", JSON.stringify([]));
         Swal.fire("Đã xóa !", `Giỏ hàng đã được xóa thành công !`, "success");
-        // window.localStorage.reload();
+        setCartItems(getData());
       }
     });
   };
 
   const deleteCartCheckOut = () => {
     localStorage.setItem("cartItems", JSON.stringify([]));
-    // window.localStorage.reload();
+    setCartItems(getData());
   };
 
   return (
     <div>
       <Router>
         <Header
-          cartItems={getData().length}
+          cartItems={cartItems.length}
           deleteCartCheckOut={deleteCartCheckOut}
         />
         <Switch>
