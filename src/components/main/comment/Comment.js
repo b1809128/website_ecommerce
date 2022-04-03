@@ -1,9 +1,9 @@
 import { Link } from "react-router-dom";
 import "./comment.css";
 
-export default function Comment({ image, title, date, tags }) {
+export default function Comment({id, image, title, date, tags }) {
   return (
-    <Link to="/tin-cong-nghe" className="comment-link">
+    <Link to={`/tin-cong-nghe?idPost=${id}`} className="comment-link">
       <div className="comment">
         <div className="comment-image">
           <img src={image} className="comment-image__img" alt={title} />

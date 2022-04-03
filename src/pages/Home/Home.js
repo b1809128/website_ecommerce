@@ -159,6 +159,7 @@ export default function Home({ addCart }) {
             {commentData.map((data) => {
               return (
                 <Comment
+                  id={data.id}
                   image={data.image}
                   title={data.title}
                   date={data.date}
