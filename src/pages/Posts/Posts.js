@@ -20,8 +20,7 @@ export default function Posts() {
       if (pageQuery) {
         const test = testPage(6, PostData);
         setPosts(test[parseInt(pageQuery) - 1]);
-      }
-      if (idPost) {
+      } else if (idPost) {
         const postFilterData = PostData.filter(
           (data) => data.id === parseInt(idPost)
         );
@@ -56,6 +55,17 @@ export default function Posts() {
           <div className="row">
             {idPost ? (
               <div className="post__col-lg">
+                <h3 className="post__title">
+                  {postDetails.map((data) => data.title)}
+                </h3>
+                <div className="post__tag-wrapper">
+                  <button className="post__tag">
+                    {postDetails.map((data) => data.tags)}
+                  </button>
+                  <p className="post__date">
+                    {postDetails.map((data) => data.date)}
+                  </p>
+                </div>
                 <div
                   dangerouslySetInnerHTML={{
                     __html: postDetails.map((data) => data.content),
@@ -121,9 +131,14 @@ export default function Posts() {
                   <div className="post__wrapper-right">
                     <img className="post__image-right" src={data.image} />
                     <div className="post__content">
-                      <h3 className="post__title-right" title={data.title}>
-                        {data.title}
-                      </h3>
+                      <Link
+                        to={`/tin-cong-nghe?idPost=${data.id}`}
+                        className="link"
+                      >
+                        <h3 className="post__title-right" title={data.title}>
+                          {data.title}
+                        </h3>
+                      </Link>
                       <div className="post__tag-wrapper">
                         <button className="post__tag">{data.tags}</button>
                         <p className="post__date">{data.date}</p>

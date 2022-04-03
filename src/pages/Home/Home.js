@@ -142,6 +142,7 @@ export default function Home({ addCart }) {
           <div data-aos="fade-up" className="row">
             <ProductAPI addCart={addCart} data={dataAPIFilterLaptop} />
           </div>
+
           <div className="row">
             <h2 className="title__tag">
               <FaAngleRight />

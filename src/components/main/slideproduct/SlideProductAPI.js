@@ -29,7 +29,7 @@ export default function SlideProductAPI({ title, groupBy }) {
 
     //Call function API
     fetchAPI();
-  }, [groupBy]);
+  }, []);
 
   //   console.log(productData);
   return (
@@ -39,9 +39,7 @@ export default function SlideProductAPI({ title, groupBy }) {
         {title}
       </h2>
       <Slider {...settings}>
-        {productData.map((data, index) => (
-          <ProductAPI data={data} />
-        ))}
+        <ProductAPI data={productData} />
       </Slider>
     </div>
   );
