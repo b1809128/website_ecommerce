@@ -78,27 +78,51 @@ export default function Posts() {
               </div>
             ) : (
               <div className="post__col-lg">
-                <div className="post__wrapper">
-                  <div className="post__wrapper-header">
-                    <img
-                      className="post__image-header"
-                      src="/images/tincongnghe/14.png"
-                    />
-                    <h3 className="post__title-header">
-                      Top 5 điện thoại đôi dành cho fan Samsung
-                    </h3>
+                {pageQuery ? (
+                  <div className="post__wrapper" style={{ display: "none" }}>
+                    <div className="post__wrapper-header">
+                      <img
+                        className="post__image-header"
+                        src="/images/tincongnghe/14.png"
+                      />
+                      <h3 className="post__title-header">
+                        Top 5 điện thoại đôi dành cho fan Samsung
+                      </h3>
+                    </div>
+                    <div className="post__wrapper-header">
+                      <img
+                        className="post__image-header"
+                        src="/images/tincongnghe/13.png"
+                      />
+                      <h3 className="post__title-header">
+                        iPad Pro 2021 ra mắt: chip M1 siêu mạnh, màn hình
+                        mini-LED mới, giá chỉ từ 18.4 triệu
+                      </h3>
+                    </div>
                   </div>
-                  <div className="post__wrapper-header">
-                    <img
-                      className="post__image-header"
-                      src="/images/tincongnghe/13.png"
-                    />
-                    <h3 className="post__title-header">
-                      iPad Pro 2021 ra mắt: chip M1 siêu mạnh, màn hình mini-LED
-                      mới, giá chỉ từ 18.4 triệu
-                    </h3>
+                ) : (
+                  <div className="post__wrapper">
+                    <div className="post__wrapper-header">
+                      <img
+                        className="post__image-header"
+                        src="/images/tincongnghe/14.png"
+                      />
+                      <h3 className="post__title-header">
+                        Top 5 điện thoại đôi dành cho fan Samsung
+                      </h3>
+                    </div>
+                    <div className="post__wrapper-header">
+                      <img
+                        className="post__image-header"
+                        src="/images/tincongnghe/13.png"
+                      />
+                      <h3 className="post__title-header">
+                        iPad Pro 2021 ra mắt: chip M1 siêu mạnh, màn hình
+                        mini-LED mới, giá chỉ từ 18.4 triệu
+                      </h3>
+                    </div>
                   </div>
-                </div>
+                )}
                 {posts.map((data) => {
                   return (
                     <div className="post__wrapper">

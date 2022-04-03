@@ -12,12 +12,12 @@ import {
 } from "../../components/main/info/infoData";
 import Introduce from "../../components/main/introduce/Introduce";
 import { introduceData } from "../../components/main/introduce/introduceData";
-import BrandBar from "../../components/bar/brandbar/BrandBar";
 import Comment from "../../components/main/comment/Comment";
 import axios from "axios";
 import ProductAPI from "../../components/products/ProductAPI";
 import { FaAngleRight } from "react-icons/fa";
 import { PostData } from "../Posts/PostData";
+import TagsBar from "../../components/bar/brandbar/TagsBar";
 
 export default function Home({ addCart }) {
   const [product, setProduct] = useState([]);
@@ -86,7 +86,7 @@ export default function Home({ addCart }) {
       <IntroduceTop />
       <div className="home-section">
         <div className="home__row">
-          <BrandBar />
+          <TagsBar />
 
           <div id="categories" className="row">
             <Info {...infoDataOne} />

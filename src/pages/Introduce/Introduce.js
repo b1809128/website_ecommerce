@@ -1,6 +1,7 @@
 import LocationBar from "../../components/bar/locationbar/LocationBar";
 import "../Posts/posts.css";
 import "./introduce.css";
+import "../Contact/contact.css";
 import { IntroData } from "./IntroData";
 import React, { useEffect } from "react";
 
@@ -16,7 +17,7 @@ export default function Introduce() {
           <div className="row">
             <div className="post__col-lg">
               <h1>Giới thiệu Rabbit Technology</h1>
-              <p style={{ lineHeight: "1.2rem", fontSize: "1.3rem" }}>
+              <p>
                 Với hơn 10 năm kinh nghiệm trong lĩnh vực thiết kế giao diện web
                 và công nghệ website trên mọi lĩnh vực công nghệ thông tin. Công
                 ty Giải pháp Phần mềm Rabbit Technology sẽ mang đến cho bạn dịch
@@ -24,28 +25,49 @@ export default function Introduce() {
                 chất lượng và sự phục vụ nhiệt tình nhất. Xin thay mặt công ty
                 Rabbit Technology cảm ơn các bạn đã tin tưởng sử dụng dịch vụ.
               </p>
-              <h4>CEO Rabbit Technology !</h4>
-              <br></br>
-              <img
-                src="https://scontent.fsgn12-1.fna.fbcdn.net/v/t1.6435-9/82850772_2583319361913449_3183193708392611840_n.jpg?_nc_cat=101&ccb=1-5&_nc_sid=8bfeb9&_nc_ohc=1XFgoiosuN8AX9m0hDx&_nc_ht=scontent.fsgn12-1.fna&oh=00_AT8R_f51vC7g-gRNoUhoUJ3Jn7ClYDwqGwmOCHnSTSbVrg&oe=626A7E56"
-                alt="imagetest"
-                style={{
-                  borderRadius:"8px",width:"300px",height:"300px",
+              <h4 style={{ display: "flex", margin: "12px 0" }}>
+                CEO Rabbit Technology !
+              </h4>
+              <hr />
+              <div className="contact-wrapper" style={{ margin: "12px 0" }}>
+                <div className="contact-item">
+                  <h2 className="contact-title">CHI NHÁNH CẦN THƠ</h2>
+                  <p className="contact-address">
+                    <span style={{ fontWeight: "700" }}>
+                      Văn phòng đại diện:
+                    </span>{" "}
+                    06 Đại lộ Hòa Bình, Quận Ninh Kiều, Thành phố Cần Thơ
+                  </p>
+                  <p className="contact-address">
+                    <span style={{ fontWeight: "700" }}>
+                      Chi nhánh bán hàng:
+                    </span>{" "}
+                    08 Đại lộ Hòa Bình, Quận Ninh Kiều, Thành phố Cần Thơ
+                  </p>
+                  <p className="contact-address">
+                    <span style={{ fontWeight: "700" }}>
+                      Công ty giải pháp phần mềm:
+                    </span>{" "}
+                    08 Đại lộ Hòa Bình, Quận Ninh Kiều, Thành phố Cần Thơ
+                  </p>
+                  <span className="contact-phone">
+                    0937.790.999 - 0904.39.3232
+                  </span>
+                </div>
+                <div className="contact-item">
+                  <h2 className="contact-title">CHI NHÁNH HỒ CHÍ MINH</h2>
 
-                }}
-              />
-              <h4
-                style={{
-                  lineHeight: "1.2rem",
-                  fontSize: "1.3rem",
-                  color: "#eb0028",
-                }}
-              >
-                CEO và Founder: Nguyễn Hồ Quốc Huy
-              </h4>
-              <h4 style={{ lineHeight: "1.2rem", fontSize: "1.3rem" }}>
-                Email: nghoquochuy0902@gmail.com
-              </h4>
+                  <p className="contact-address">
+                    <span style={{ fontWeight: "700" }}>
+                      Công ty giải pháp phần mềm:
+                    </span>{" "}
+                    08 Nguyễn Chí Thanh, Quận 1, Thành phố Hồ Chí Minh
+                  </p>
+                  <span className="contact-phone">
+                    0937.790.999 - 0904.39.3232
+                  </span>
+                </div>
+              </div>
             </div>
             <div className="post__col-sm">
               <h2 className="title__tag">LĨNH VỰC PHÁT TRIỂN</h2>

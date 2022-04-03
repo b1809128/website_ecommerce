@@ -12,7 +12,7 @@ export const IntroData = [
     image: "/images/tincongnghe/2.png",
     tags: "Tin mới",
     date: "22 tháng 03 năm 2022",
-    title: "GIẢI PHÁP CÔNG NGHỆ PHẦN MỀM",
+    title: "GIẢI PHÁP CNTT",
     text: "Mới đây, chuyên gia rò rỉ nổi tiếng Digital Chat Station đã chia sẻ một báo cáo thú vị về cảm biến Sony sắp ra mắt đang được bàn giao cho các nhà sản xuất để thử nghiệm. Một số suy đoán đó là cảm biến Exmor IMX800 dành cho Xiaomi 12 Ultra.",
   },
   {
@@ -20,7 +20,7 @@ export const IntroData = [
     image: "/images/tincongnghe/3.png",
     tags: "Sản phẩm mới",
     date: "26 tháng 03 năm 2022",
-    title: "DỊCH VỤ CUNG CẤP SẢN PHẨM CÔNG NGHỆ",
+    title: "DỮ LIỆU LỚN / PHÂN TÍCH DỮ LIỆU",
     text: "Vài ngày trước, có tin đồn Samsung sẽ ra mắt thêm một mẫu điện thoại gập khác bên cạnh Z Flip 4 và Z Fold 4 trong năm nay. Rò rỉ mới đây cho biết đó có thể là điện thoại màn hình cuộn đầu tiên được Samsung giới thiệu đến người dùng toàn cầu. ",
   },
   {
@@ -28,7 +28,7 @@ export const IntroData = [
     image: "/images/tincongnghe/4.png",
     tags: "Sản phẩm mới",
     date: "26 tháng 03 năm 2022",
-    title: "NGHIÊN CỨU PHÁT TRIỂN SẢN PHẨM DOANH NGHIỆP",
+    title: "IOT THIẾT BỊ THÔNG MINH",
     text: "Redmi Book Pro 15 2022 đi kèm với thân máy bằng hợp kim nhôm mà công ty cho biết có thể chịu được mài mòn. Nó có cảm biến vân tay tích hợp vào nút nguồn, có bàn di chuột rộng và có webcam 720p.",
   },
   {
@@ -36,7 +36,7 @@ export const IntroData = [
     image: "/images/tincongnghe/5.png",
     tags: "Tin mới",
     date: "26 tháng 03 năm 2022",
-    title: "TỤ ĐỘNG HÓA DÂY CHUYỀN SẢN XUẤT",
+    title: "ĐIỆN TOÁN ĐÁM MÂY",
     text: "Mới đây, có thông tin cho rằng Huawei đang phát triển điện thoại gập Huawei Mate X3. Hôm nay, Digital Chat Station đã xác nhận một số thông số kỹ thuật chính của thiết bị. Có vẻ như ngày ra mắt Mate X3 có thể không còn xa nữa vì nó dường như đã nhận được sự chấp thuận từ cơ quan TENAA của Trung Quốc.",
   },
 ];

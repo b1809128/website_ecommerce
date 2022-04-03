@@ -1,5 +1,5 @@
 import "./brandbar.css";
-import { FaMobileAlt, FaHeadphonesAlt, FaLaptop, FaUsb } from "react-icons/fa";
+import { FaMobileAlt, FaHeadphonesAlt, FaLaptop } from "react-icons/fa";
 import { MdWatch } from "react-icons/md";
 import { Link } from "react-router-dom";
 export default function BrandBar() {
@@ -27,38 +27,32 @@ export default function BrandBar() {
         <li className="brand-bar-item">
           <FaMobileAlt className="brand-bar-icon" />{" "}
           <Link to="/tat-ca-san-pham?brand=OP" className="link">
-            OPPO
+            Oppo
           </Link>
         </li>
         <li className="brand-bar-item">
-          <FaHeadphonesAlt className="brand-bar-icon" /> Apple
+          <MdWatch className="brand-bar-icon" />{" "}
+          <Link to="/tat-ca-san-pham?search=apple+watch" className="link">
+            Apple
+          </Link>
         </li>
         <li className="brand-bar-item">
-          <FaHeadphonesAlt className="brand-bar-icon" /> Sony
+          <MdWatch className="brand-bar-icon" />{" "}
+          <Link to="/tat-ca-san-pham?search=galaxy+watch" className="link">
+            Samsung
+          </Link>
         </li>
         <li className="brand-bar-item">
-          <FaHeadphonesAlt className="brand-bar-icon" /> Samsung
+          <FaHeadphonesAlt className="brand-bar-icon" />{" "}
+          <Link to="/tat-ca-san-pham?search=sony" className="link">
+            Sony
+          </Link>
         </li>
         <li className="brand-bar-item">
-          <MdWatch className="brand-bar-icon" /> Apple
-        </li>
-        <li className="brand-bar-item">
-          <MdWatch className="brand-bar-icon" /> Samsung
-        </li>
-        <li className="brand-bar-item">
-          <FaLaptop className="brand-bar-icon" /> Apple
-        </li>
-        <li className="brand-bar-item">
-          <FaLaptop className="brand-bar-icon" /> Dell
-        </li>
-        <li className="brand-bar-item">
-          <FaLaptop className="brand-bar-icon" /> HP
-        </li>
-        <li className="brand-bar-item">
-          <FaLaptop className="brand-bar-icon" /> MSI
-        </li>
-        <li className="brand-bar-item">
-          <FaUsb className="brand-bar-icon" /> Kingston
+          <FaLaptop className="brand-bar-icon" />{" "}
+          <Link to="/tat-ca-san-pham?brand=DL" className="link">
+            DELL
+          </Link>
         </li>
       </ul>
     </div>
