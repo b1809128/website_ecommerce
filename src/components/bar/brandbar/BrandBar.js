@@ -44,7 +44,7 @@ export default function BrandBar() {
         </li>
         <li className="brand-bar-item">
           <FaHeadphonesAlt className="brand-bar-icon" />{" "}
-          <Link to="/tat-ca-san-pham?search=sony" className="link">
+          <Link to="/tat-ca-san-pham?brand=SN" className="link">
             Sony
           </Link>
         </li>

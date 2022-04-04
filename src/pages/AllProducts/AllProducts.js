@@ -96,11 +96,25 @@ export default function AllProducts({ addCart }) {
     return array.map((data) => data);
   };
 
+  const brandArray = [
+    { type: "AP", nameType: "Apple" },
+    { type: "SS", nameType: "Samsung" },
+    { type: "SN", nameType: "Sony" },
+    { type: "DL", nameType: "DELL" },
+    { type: "AS", nameType: "Asus" },
+    { type: "OP", nameType: "Oppo" },
+  ];
+  const nameBrandLocation = brandArray.filter((data) => data.type === brandID);
+
   return (
     <div className="details">
       <div className="details-section">
         <div className="details__row">
-          <LocationBar />
+          <LocationBar
+            nameProduct={
+              brand ? nameBrandLocation.map((data) => data.nameType) : ""
+            }
+          />
           <BrandBar />
           <RangeBar data={sortBy} />
           {/* <div className="row">
@@ -126,7 +140,11 @@ export default function AllProducts({ addCart }) {
             </div>
           ) : (
             <div className="row">
-              <Pagination props={numberPage} page={parseInt(pageQuery)} urlPage="/tat-ca-san-pham" />
+              <Pagination
+                props={numberPage}
+                page={parseInt(pageQuery)}
+                urlPage="/tat-ca-san-pham"
+              />
             </div>
           )}
 

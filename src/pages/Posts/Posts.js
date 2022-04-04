@@ -51,7 +51,9 @@ export default function Posts() {
     <div className="posts">
       <div className="posts-section">
         <div className="posts__row">
-          <LocationBar />
+          <LocationBar
+            nameProduct={idPost ? postDetails.map((data) => data.title) : ""}
+          />
           <div className="row">
             {idPost ? (
               <div className="post__col-lg">

@@ -21,6 +21,14 @@
   color: #eb0028;
 }
 
+.location-bar-item:last-child {
+  width:300px;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+}
+
 .location-bar-item__link {
   color: #eb0028;
   text-decoration: none;

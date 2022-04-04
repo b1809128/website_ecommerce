@@ -44,7 +44,7 @@ export default function Search({ addCart }) {
     <div className="details">
       <div className="details-section">
         <div className="details__row">
-          <LocationBar />
+          <LocationBar nameProduct={searchQuery ? searchQuery : ""} />
           <BrandBar />
           <RangeBar data={sortBy} />
           {searchData.length > 0 ? (
