@@ -68,6 +68,14 @@ export default function Header({ cartItems, deleteCartAfterCheckOut }) {
     }
   };
 
+  const urlArray = [
+    { name: "Trang Chủ", link: "/" },
+    { name: "Sản Phẩm", link: "/tat-ca-san-pham" },
+    { name: "Tin Công Nghệ", link: "/tin-cong-nghe" },
+    { name: "Giới Thiệu", link: "/gioi-thieu" },
+    { name: "Liên Hệ", link: "/lien-he" },
+  ];
+
   return (
     <div className={scrollTop ? "navbar scroll" : "navbar"}>
       <div className="navbar-container container">
@@ -100,35 +108,19 @@ export default function Header({ cartItems, deleteCartAfterCheckOut }) {
             )}
           </div>
         </div>
-        {/* --- */}
+
         <ul className={click ? "nav-menu active" : "nav-menu"}>
-          <li className="nav-item">
-            <a className="link" href="/" onClick={handleClick}>
-              Trang Chủ
-            </a>
-          </li>
-          <li className="nav-item">
-            <Link to="/tat-ca-san-pham" className="link" onClick={handleClick}>
-              Sản Phẩm
-            </Link>
-          </li>
-          <li className="nav-item">
-            <Link to="/tin-cong-nghe" className="link" onClick={handleClick}>
-              Tin Công Nghệ
-            </Link>
-          </li>
-          <li className="nav-item">
-            <Link to="/gioi-thieu" className="link" onClick={handleClick}>
-              Giới Thiệu
-            </Link>
-          </li>
-          <li className="nav-item">
-            <Link to="/lien-he" className="link" onClick={handleClick}>
-              Liên Hệ
-            </Link>
-          </li>
+          {urlArray.map((data) => {
+            return (
+              <li className="nav-item">
+                <a className="link" href={data.link} onClick={handleClick}>
+                  {data.name}
+                </a>
+              </li>
+            );
+          })}
         </ul>
-        {/* --- */}
+        
         {user ? (
           <ul className="nav-menu">
             <li className="">

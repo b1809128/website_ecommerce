@@ -11,8 +11,8 @@ export default function TagsBar() {
         <li className="tag__bar-item ">
           <Link
             to="/tat-ca-san-pham?search=phone"
-            className="link__btn"
-            style={{ width: "100%", height: "100%" }}
+            className="link"
+            style={{ width: "100%", height: "100%", justifyContent: "center" }}
           >
             <FaMobileAlt className="tag__bar-icon" /> Điện Thoại
           </Link>
@@ -20,8 +20,8 @@ export default function TagsBar() {
         <li className="tag__bar-item">
           <Link
             to="/tat-ca-san-pham?search=tablet"
-            className="link__btn"
-            style={{ width: "100%", height: "100%" }}
+            className="link"
+            style={{ width: "100%", height: "100%", justifyContent: "center" }}
           >
             {" "}
             <FaMobileAlt className="tag__bar-icon" /> Tablet
@@ -30,8 +30,8 @@ export default function TagsBar() {
         <li className="tag__bar-item">
           <Link
             to="/tat-ca-san-pham?search=watch"
-            className="link__btn"
-            style={{ width: "100%", height: "100%" }}
+            className="link"
+            style={{ width: "100%", height: "100%", justifyContent: "center" }}
           >
             {" "}
             <FaMobileAlt className="tag__bar-icon" /> Đồng Hồ Thông Minh
@@ -40,8 +40,8 @@ export default function TagsBar() {
         <li className="tag__bar-item">
           <Link
             to="/tat-ca-san-pham?search=headphone"
-            className="link__btn"
-            style={{ width: "100%", height: "100%" }}
+            className="link"
+            style={{ width: "100%", height: "100%", justifyContent: "center" }}
           >
             {" "}
             <FaHeadphonesAlt className="tag__bar-icon" /> Tai Nghe, Phụ Kiện
@@ -50,8 +50,8 @@ export default function TagsBar() {
         <li className="tag__bar-item">
           <Link
             to="/tat-ca-san-pham?search=laptop"
-            className="link__btn"
-            style={{ width: "100%", height: "100%" }}
+            className="link"
+            style={{ width: "100%", height: "100%", justifyContent: "center" }}
           >
             {" "}
             <FaLaptop className="tag__bar-icon" /> Laptop

@@ -115,8 +115,8 @@ export default function AllProducts({ addCart }) {
               brand ? nameBrandLocation.map((data) => data.nameType) : ""
             }
           />
-          <BrandBar />
           <RangeBar data={sortBy} />
+          <BrandBar />
           {/* <div className="row">
             <ProductNoneAPI id={""} data={productsData} />
           </div> */}

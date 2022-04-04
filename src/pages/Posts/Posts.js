@@ -5,9 +5,10 @@ import { Link, useLocation } from "react-router-dom";
 import { PostData } from "./PostData";
 import LocationBar from "../../components/bar/locationbar/LocationBar";
 import Pagination from "../../components/bar/pagination/Pagination";
-
 export default function Posts() {
-  const postNearest = PostData.filter((data, index) => index < 5);
+  const postNearest = PostData.filter(
+    (data, index) => index < 10 && index % 2 === 0
+  );
   const query = new URLSearchParams(useLocation().search);
   const pageQuery = query.get("page");
   const idPost = query.get("idPost");

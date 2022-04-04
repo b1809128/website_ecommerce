@@ -6,33 +6,28 @@
   align-items: center;
   justify-content: center;
   margin: 12px 0;
-  overflow: hidden;
-  display: block;
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 1;
 }
 .tag__bar-item {
   display: flex;
   align-items: center;
-  border: 1px solid #eb0028;
+  border: 1px solid rgba(0, 0, 0, 0.5);
   border-radius: 24px;
-  width: 200px;
+  width: 180px;
   height: 30px;
   justify-content: center;
+  color: #333;
+  margin: 4px;
 }
 
 .tag__bar-item:hover {
-  background-color: #eb0028;
-  color: #fff;
+  border: 1px solid #eb0028;
   cursor: pointer;
 }
 
 .tag__bar-icon {
-  color: #eb0028;
+  color: #333;
 }
 
-
-.tag__bar-item:hover .tag__bar-icon{
-  color: #fff;
+.tag__bar-item:hover .tag__bar-icon {
+  color: #eb0028;
 }

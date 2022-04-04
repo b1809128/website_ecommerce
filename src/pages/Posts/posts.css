@@ -62,7 +62,6 @@
   color: #fff;
   font-size: 1.4rem;
   font-weight: 700;
-  font-family: "Open Sans", arial, sans-serif;
   cursor: pointer;
   width: 100%;
   overflow: hidden;
@@ -75,8 +74,7 @@
 }
 
 .post__image {
-  width: 218px;
-  height: 150px;
+  width: 260px;
   padding-right: 24px;
 }
 
@@ -95,7 +93,6 @@
 .post__title {
   color: rgba(0, 0, 0, 0.8);
   font-weight: 500;
-  font-family: "Open Sans", arial, sans-serif;
   cursor: pointer;
   font-size: 34px;
 }
@@ -104,7 +101,6 @@
   color: rgba(0, 0, 0, 0.8);
   font-size: 1rem;
   font-weight: 500;
-  font-family: "Open Sans", arial, sans-serif;
   cursor: pointer;
   width: 100%;
   overflow: hidden;
@@ -126,7 +122,6 @@
 .post__text {
   font-size: 14px;
   color: #777;
-  font-family: "Open Sans", arial, sans-serif;
   margin-top: 9px;
 }
 
