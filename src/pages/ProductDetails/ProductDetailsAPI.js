@@ -5,8 +5,9 @@ import LocationBar from "../../components/bar/locationbar/LocationBar";
 import ReviewBar from "../../components/bar/reviewtextbar/ReviewBar";
 import "./productdetails.css";
 import SimilarProduct from "../../components/SimilarProduct/SimilarProduct";
+import { AiOutlineShoppingCart } from "react-icons/ai";
 
-export default function ProductDetailsAPI({ addCart }) {
+export default function ProductDetailsAPI({ addCart, addCheckOut }) {
   // Them param id vao duong dan
   const { id } = useParams();
 
@@ -124,7 +125,7 @@ export default function ProductDetailsAPI({ addCart }) {
                         type="text"
                         placeholder="1"
                         className="product-details-quantity-input"
-                        onChange={(e) =>setQuantity(e.target.value)}
+                        onChange={(e) => setQuantity(e.target.value)}
                       />
                     </div>
                     <p>
@@ -154,17 +155,46 @@ export default function ProductDetailsAPI({ addCart }) {
                       )}
                     </p>
                     <div className="product-details__btn">
-                      <button
-                        className="btn product-details__btn-item"
-                        onClick={() => addCart(id, parseInt(quantity))}
-                      >
-                        THÊM VÀO GIỎ HÀNG
-                      </button>
-                      <button className="btn product-details__btn-item">
-                        <Link to="/gio-hang" className="link__btn">
-                          MUA NGAY
-                        </Link>
-                      </button>
+                      {data.SoLuongHang > 0 ? (
+                        <>
+                          <button
+                            className="btn product-details__btn-item"
+                            onClick={() => addCart(id, parseInt(quantity))}
+                          >
+                            THÊM VÀO GIỎ HÀNG{" "}
+                            <AiOutlineShoppingCart
+                              style={{ fontSize: "1.2rem" }}
+                            />
+                          </button>
+                          <button
+                            className="btn product-details__btn-item"
+                            onClick={() => addCheckOut(id, parseInt(quantity))}
+                          >
+                            <Link to="/thanh-toan" className="link__btn">
+                              MUA NGAY
+                            </Link>
+                          </button>
+                        </>
+                      ) : (
+                        <>
+                          <button
+                            className="btn product-details__btn-item"
+                            onClick={() => addCart(id, parseInt(quantity))}
+                            disabled
+                          >
+                            THÊM VÀO GIỎ HÀNG{" "}
+                            <AiOutlineShoppingCart
+                              style={{ fontSize: "1.2rem" }}
+                            />
+                          </button>
+                          <button
+                            className="btn product-details__btn-item"
+                            disabled
+                          >
+                            MUA NGAY
+                          </button>
+                        </>
+                      )}
                     </div>
                   </div>
                 </div>

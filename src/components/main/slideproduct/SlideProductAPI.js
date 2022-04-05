@@ -20,7 +20,7 @@ export default function SlideProductAPI({ title, groupBy }) {
   useEffect(() => {
     const fetchAPI = async () => {
       try {
-        const res = await axios.get(`http://localhost:5000/product/group/SS`);
+        const res = await axios.get(`http://localhost:5000/product/all`);
         setProductData(res.data);
       } catch (error) {
         console.log(error);

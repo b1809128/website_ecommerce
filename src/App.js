@@ -114,6 +114,46 @@ function App() {
     setCartItems(getData());
   };
 
+  const addCheckOutByQuantity = (MSHH, quantity) => {
+    var exist = getData().find((x) => x.MSHH === MSHH);
+    if (exist) {
+      if (quantity) {
+        localStorage.setItem(
+          "cartItems",
+          JSON.stringify(
+            getData().map((x) =>
+              x.MSHH === MSHH
+                ? { ...exist, SoLuong: exist.SoLuong + quantity }
+                : x
+            )
+          )
+        );
+      } else {
+        localStorage.setItem(
+          "cartItems",
+          JSON.stringify(
+            getData().map((x) =>
+              x.MSHH === MSHH ? { ...exist, SoLuong: exist.SoLuong + 1 } : x
+            )
+          )
+        );
+      }
+    } else {
+      if (quantity) {
+        localStorage.setItem(
+          "cartItems",
+          JSON.stringify([...getData(), { MSHH, SoLuong: quantity }])
+        );
+      } else {
+        localStorage.setItem(
+          "cartItems",
+          JSON.stringify([...getData(), { MSHH, SoLuong: 1 }])
+        );
+      }
+    }
+    setCartItems(getData());
+  };
+
   //TODO: Remove items cart
   const removeCart = (MSHH) => {
     var exist = getData().find((x) => x.MSHH === MSHH);
@@ -208,7 +248,10 @@ function App() {
             <ProductDetails addCart={addCart} data={productsData} />
           </Route>
           <Route path="/chi-tiet-san-pham/:id">
-            <ProductDetailsAPI addCart={addCartByQuantity} />
+            <ProductDetailsAPI
+              addCart={addCartByQuantity}
+              addCheckOut={addCheckOutByQuantity}
+            />
           </Route>
           <Route path="/dang-nhap">
             <Login />

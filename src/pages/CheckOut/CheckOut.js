@@ -218,8 +218,8 @@ export default function CheckOut({
                         />
                         <div className="form-flex__product-info">
                           <h4>{data.pr1.TenHH}</h4>
-                          <p>Gray/256GB</p>
-                          <p>Quantity: {data.pr2.SoLuong}</p>
+                          <p>{new Intl.NumberFormat().format(data.pr1.Gia)}</p>
+                          <p>Số lượng: {data.pr2.SoLuong}</p>
                         </div>
                       </div>
                     );

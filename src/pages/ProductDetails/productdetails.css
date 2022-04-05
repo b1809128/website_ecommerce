@@ -61,7 +61,7 @@
 
 .product-details__btn {
   display: flex;
-  width: 60%;
+  width: 70%;
 }
 
 .product-details-choose,
@@ -172,6 +172,12 @@ p {
   cursor: pointer;
   user-select: none;
 }
+
+.product-details__btn-item {
+  height:50px;
+  width:200px;
+}
+
 
 @media screen and (max-width: 960px) {
   .product-details__btn-item {
