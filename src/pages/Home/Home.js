@@ -24,6 +24,7 @@ export default function Home({ addCart }) {
   const [watchData, setWatchData] = useState([]);
   const [laptopData, setLaptopData] = useState([]);
   const [headphoneData, setHeadphoneData] = useState([]);
+  const [tabletData, setTabletData] = useState([]);
 
   const commentData = PostData.filter((data, index) => index < 4);
 
@@ -52,10 +53,14 @@ export default function Home({ addCart }) {
         const result3 = await axios.get(
           `http://localhost:5000/manage/table/product/search?q=headphone`
         );
+        const result4 = await axios.get(
+          `http://localhost:5000/manage/table/product/search?q=tablet`
+        );
 
         setWatchData(result.data);
         setLaptopData(result2.data);
         setHeadphoneData(result3.data);
+        setTabletData(result4.data);
       } catch (error) {
         console.log(error);
       }
@@ -80,6 +85,8 @@ export default function Home({ addCart }) {
   const dataAPIFilterLaptop = dataAPI4.filter((data, index) => index < 5);
   const dataAPI5 = headphoneData.map((data) => data);
   const dataAPIFilterHeadphone = dataAPI5.filter((data, index) => index < 5);
+  const dataAPI6 = tabletData.map((data) => data);
+  const dataAPIFilterTablet = dataAPI6.filter((data, index) => index < 5);
 
   return (
     <div className="home">
@@ -133,6 +140,17 @@ export default function Home({ addCart }) {
           <div data-aos="fade-up" className="row">
             <ProductAPI addCart={addCart} data={dataAPIFilterHeadphone} />
           </div>
+
+          <div className="row">
+            <h2 className="title__tag">
+              <FaAngleRight />
+              Tablet
+            </h2>
+          </div>
+          <div data-aos="fade-up" className="row">
+            <ProductAPI addCart={addCart} data={dataAPIFilterTablet} />
+          </div>
+
           <div className="row">
             <h2 className="title__tag">
               <FaAngleRight />

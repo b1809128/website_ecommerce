@@ -147,7 +147,7 @@ export default function AllProducts({ addCart }) {
               />
             </div>
           )}
-          
+
           <SlideProduct text="CÓ THỂ BẠN SẼ THÍCH" />
         </div>
       </div>

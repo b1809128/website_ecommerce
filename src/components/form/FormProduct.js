@@ -13,12 +13,12 @@ export default function FormProduct() {
   const [imageProductUpload, setImageProductUpload] = useState({});
 
   const copyArray = [
-    '["/images/products/BRAND_FOLDER/PRODUCT_NAME_FOLDER","/images/products/apple/iphone11pro"]',
+    '["/images/products/BRAND_FOLDER/PRODUCT_NAME_FOLDER","/images/products/apple/iphone11pro/1.png"]',
     {
       Description: "abc",
       Brand: "Apple",
       Type: "Phone",
-      Coor: "white",
+      Color: "white",
       Memory: 512,
       Screen:
         "OLED Resolution: 1284 x 2778 Pixels, 3 cameras 12 MP, 12 MP Wide screen: 6.7",
