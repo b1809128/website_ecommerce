@@ -124,16 +124,16 @@ p {
 /* Content */
 
 .product-details-posts {
-  width: 75%;
+  width: 65%;
   display: flex;
   flex-direction: column;
   color: #333;
-  padding: 24px 32px;
+  padding-right: 24px;
 }
 
 .product-details-specifications {
   padding: 12px;
-  width: 25%;
+  width: 35%;
   display: flex;
   flex-direction: column;
   box-shadow: 0 0 3px rgba(0, 0, 0, 0.5);

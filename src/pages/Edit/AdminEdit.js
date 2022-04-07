@@ -122,12 +122,12 @@ export default function AdminEdit() {
 
   //TODO:Copy to clipboard function
   const copyArray = [
-    '["https://cdn.hoanghamobile.com/i/productlist/ts/Uploads/2021/09/15/image-removebg-preview-15.png","",""]',
+    '["/images/products/BRAND_FOLDER/PRODUCT_NAME_FOLDER","/images/products/apple/12pro/1.png"]',
     {
-      Description: "",
+      Description: "abc",
       Brand: "Apple",
       Type: "Phone",
-      Coor: "white",
+      Color: "white",
       Memory: 512,
       Screen:
         "OLED Resolution: 1284 x 2778 Pixels, 3 cameras 12 MP, 12 MP Wide screen: 6.7",
@@ -261,13 +261,15 @@ export default function AdminEdit() {
 
                 <div className="form-block">
                   <label for="role">Phân quyền*</label>
-                  <input
-                    type="text"
-                    id="role"
-                    placeholder="Role"
+                  <select
                     className="form-input"
+                    value={roleCustomer}
                     onChange={(e) => setRoleCustomer(e.target.value)}
-                  />
+                  >
+                    <option value="">Lựa chọn</option>
+                    <option value="customer">Customer</option>
+                    <option value="administrator">Administrator</option>
+                  </select>
                 </div>
                 <div className="form-flex__btn">
                   <button className="btn" onClick={updateCustomerHandle}>

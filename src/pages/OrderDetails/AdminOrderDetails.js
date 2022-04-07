@@ -56,6 +56,13 @@ export default function AdminOrderDetails() {
   const [quantityOrderUpdate, setQuantityOrderUpdate] = useState("");
   const [statusOrderUpdate, setStatusOrderUpdate] = useState("");
 
+  const orderStatusArray = [
+    "Chờ xác nhận",
+    "Đang xử lý",
+    "Đang giao hàng",
+    "Đã nhận hàng",
+  ];
+
   const updateOrderHandle = async (e) => {
     e.preventDefault();
     const arrayOrder = [
@@ -265,13 +272,19 @@ export default function AdminOrderDetails() {
               </div>
               <div className="order-details__form-block">
                 <label for="adress">Tình trạng đơn hàng*</label>
-                <input
-                  className="order-details__form-input"
-                  type="text"
-                  id="adress"
-                  placeholder="Quantity"
+                <select
+                  className="form-input"
+                  value={statusOrderUpdate}
                   onChange={(e) => setStatusOrderUpdate(e.target.value)}
-                />
+                >
+                  {orderStatusArray.map((data) => {
+                    return (
+                      <>
+                        <option value={data}>{data}</option>
+                      </>
+                    );
+                  })}
+                </select>
               </div>
               <div className="order-details__form-flex__btn">
                 <button className="btn" onClick={updateOrderHandle}>

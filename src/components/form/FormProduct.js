@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { AiOutlineCopy } from "react-icons/ai";
 import axios from "axios";
 import Swal from "sweetalert2";
@@ -11,9 +11,25 @@ export default function FormProduct() {
   const [typeProduct, setTypeProduct] = useState("");
   const [tagProduct, setTagProduct] = useState("");
   const [imageProductUpload, setImageProductUpload] = useState({});
+  const [brandProduct, setBrandProduct] = useState([]);
+
+  useEffect(() => {
+    const fetchAPI = async () => {
+      try {
+        const result = await axios.get(
+          "http://localhost:5000/manage/product/brand"
+        );
+        setBrandProduct(result.data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
+    fetchAPI();
+  }, []);
 
   const copyArray = [
-    '["/images/products/BRAND_FOLDER/PRODUCT_NAME_FOLDER","/images/products/apple/iphone11pro/1.png"]',
+    '["/images/products/BRAND_FOLDER/PRODUCT_NAME_FOLDER","/images/products/apple/12pro/1.png"]',
     {
       Description: "abc",
       Brand: "Apple",
@@ -145,13 +161,21 @@ export default function FormProduct() {
 
       <div className="form-block">
         <label for="type">Loại hàng*</label>
-        <input
+        <select
           className="form-input"
-          type="text"
-          id="type"
-          placeholder="AP - APPLE"
+          value={typeProduct}
           onChange={(e) => setTypeProduct(e.target.value)}
-        />
+        >
+          {brandProduct.map((data) => {
+            return (
+              <>
+                <option value={data.MaLoaiHang}>
+                  {data.MaLoaiHang}-{data.TenLoaiHang}
+                </option>
+              </>
+            );
+          })}
+        </select>
       </div>
 
       <div className="form-block">
