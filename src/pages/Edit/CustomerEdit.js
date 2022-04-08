@@ -6,9 +6,15 @@ import axios from "axios";
 import { Redirect, useHistory } from "react-router-dom";
 import crypto from "crypto";
 import Swal from "sweetalert2";
+import { vnAPI } from "./vnAPI";
 export default function CustomerEdit() {
   const { user, dispatch } = useContext(AuthContext);
   const [authorized, setAuthorized] = useState(true);
+  const [city] = useState(vnAPI);
+
+  const [selectCity, setSelectCity] = useState("");
+  const [selectDistrict, setSelectDistrict] = useState("");
+
   const history = useHistory();
 
   //TODO: Auto fetchAPI
@@ -18,6 +24,7 @@ export default function CustomerEdit() {
       const res1 = await axios.post("http://localhost:5000/auth/profile", {
         token: user.token,
       });
+
       if (res1.data.logged) {
         setAuthorized(true);
       } else {
@@ -26,6 +33,15 @@ export default function CustomerEdit() {
     };
     fetchAPI();
   }, [user.token]);
+
+  //TODO: Fetch District
+  const getDistrict = city.filter((data) => data.name === selectCity);
+  const resultDistrict = getDistrict.map((data) => data.districts);
+  const getWard = resultDistrict.map((data) =>
+    data.filter((data) => data.name === selectDistrict)
+  );
+  // const resultWard = getWard.map((data) => data);
+  // console.log(getWard.map((data) => data[0].wards.map((data) => data.name)));
 
   //TODO: Create Product function
   const [fullname, setFullName] = useState("");
@@ -126,9 +142,9 @@ export default function CustomerEdit() {
 
   if (!authorized) {
     Swal.fire({
-      icon: 'error',
-      title: 'Bạn không có quyền truy cập !',
-    })
+      icon: "error",
+      title: "Bạn không có quyền truy cập !",
+    });
     return <Redirect to="/dang-nhap" />;
   }
   return (
@@ -171,9 +187,48 @@ export default function CustomerEdit() {
                     onChange={(e) => setEmail(e.target.value)}
                   />
                 </div>
-
                 <div className="form-block">
-                  <label for="adress">Địa chỉ*</label>
+                  <label for="address">Địa chỉ*</label>
+                  <select
+                    className="form-input"
+                    value={selectCity}
+                    onChange={(e) => setSelectCity(e.target.value)}
+                  >
+                    <option value="">Tỉnh, Thành phố </option>
+                    {city.map((data) => {
+                      return <option value={data.name}>{data.name}</option>;
+                    })}
+                  </select>
+                </div>
+                <div className="form-block">
+                  <select
+                    className="form-input"
+                    value={selectDistrict}
+                    onChange={(e) => setSelectDistrict(e.target.value)}
+                  >
+                    <option value="">Quận, Huyện </option>
+                    {getDistrict.map((data) =>
+                      data.districts.map((data) => {
+                        return <option value={data.name}>{data.name}</option>;
+                      })
+                    )}
+                  </select>
+                </div>
+                <div className="form-block">
+                  <select
+                    className="form-input"
+                    // value={roleCustomer}
+                    // onChange={(e) => setRoleCustomer(e.target.value)}
+                  >
+                    <option value="">Phường, Xã</option>
+                    {/* {getWard.map((data) =>
+                      data[0].wards.map((data) => {
+                        return <option value={data.name}>{data.name}</option>;
+                      })
+                    )} */}
+                  </select>
+                </div>
+                <div className="form-block">
                   <textarea
                     type="text"
                     id="quantity"

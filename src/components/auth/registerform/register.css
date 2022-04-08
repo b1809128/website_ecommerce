@@ -62,6 +62,7 @@
   align-items: center;
   color: #eb0028;
   background-color: rgba(255, 0, 0, 0.3);
+  cursor: pointer;
 }
 
 .register-password-wrapper {

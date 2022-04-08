@@ -67,7 +67,11 @@ export default function LoginForm() {
           onChange={(e) => setUserRef(e.target.value)}
         />
         {stateUser ? (
-          <div className="login-validate" style={{ display: "flex" }}>
+          <div
+            className="login-validate"
+            style={{ display: "flex" }}
+            onClick={() => setStateUser(false)}
+          >
             <TiDelete />
             Điền thông tin vào ô trống !
           </div>
@@ -78,7 +82,11 @@ export default function LoginForm() {
           </div>
         )}
         {validateUser ? (
-          <div className="login-validate" style={{ display: "flex" }}>
+          <div
+            className="login-validate"
+            style={{ display: "flex" }}
+            onClick={() => setValidateUser(false)}
+          >
             <TiDelete />
             Tên người dùng sai. Vui lòng thử lại !
           </div>
@@ -119,7 +127,11 @@ export default function LoginForm() {
           </div>
         )}
         {statePassword ? (
-          <div className="login-validate" style={{ display: "flex" }}>
+          <div
+            className="login-validate"
+            style={{ display: "flex" }}
+            onClick={() => setStatePassword(false)}
+          >
             <TiDelete />
             Điền thông tin vào ô trống !
           </div>
@@ -130,7 +142,11 @@ export default function LoginForm() {
           </div>
         )}
         {validatePassword ? (
-          <div className="login-validate" style={{ display: "flex" }}>
+          <div
+            className="login-validate"
+            style={{ display: "flex" }}
+            onClick={() => setValidatePassword(false)}
+          >
             <TiDelete />
             Sai mật khẩu. Vui lòng thử lại !
           </div>
