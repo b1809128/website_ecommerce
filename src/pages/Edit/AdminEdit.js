@@ -165,7 +165,9 @@ export default function AdminEdit() {
               <h2 className="check__method-title">UPLOAD HÌNH ẢNH</h2>
               <form className="form-section">
                 <div className="form-block">
-                  <label for="name">Mã sản phẩm*</label>
+                  <label for="name">
+                    Mã sản phẩm<span style={{ color: "#eb0028" }}>*</span>
+                  </label>
                   <select
                     className="form-input"
                     value={idProductUpload}
@@ -187,7 +189,9 @@ export default function AdminEdit() {
                     className="relative"
                     style={{ display: "flex", flexDirection: "column" }}
                   >
-                    <label for="images">Hình ảnh*</label>
+                    <label for="images">
+                      Hình ảnh<span style={{ color: "#eb0028" }}>*</span>
+                    </label>
                     <textarea
                       className="form-input textarea-sm "
                       placeholder='Example: ["https://cdn.hoanghamobile.com/i/productlist/ts/Uploads/2021/09/15/image-removebg-preview-15.png"]'
@@ -214,7 +218,9 @@ export default function AdminEdit() {
               <h2 className="check__form-title">XÓA SẢN PHẨM</h2>
               <form className="form-section">
                 <div className="form-block">
-                  <label for="name">Mã sản phẩm*</label>
+                  <label for="name">
+                    Mã sản phẩm<span style={{ color: "#eb0028" }}>*</span>
+                  </label>
                   <select
                     className="form-input"
                     value={idProductDelete}
@@ -241,7 +247,9 @@ export default function AdminEdit() {
               <h2 className="check__form-title">PHÂN QUYỀN NGƯỜI DÙNG</h2>
               <form className="form-section">
                 <div className="form-block">
-                  <label for="email">Tên người dùng*</label>
+                  <label for="email">
+                    Tên người dùng<span style={{ color: "#eb0028" }}>*</span>
+                  </label>
                   <select
                     className="form-input"
                     value={idCustomer}
@@ -260,7 +268,9 @@ export default function AdminEdit() {
                 </div>
 
                 <div className="form-block">
-                  <label for="role">Phân quyền*</label>
+                  <label for="role">
+                    Phân quyền<span style={{ color: "#eb0028" }}>*</span>
+                  </label>
                   <select
                     className="form-input"
                     value={roleCustomer}

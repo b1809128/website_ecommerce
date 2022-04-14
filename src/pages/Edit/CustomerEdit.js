@@ -10,16 +10,18 @@ import { vnAPI } from "./vnAPI";
 export default function CustomerEdit() {
   const { user, dispatch } = useContext(AuthContext);
   const [authorized, setAuthorized] = useState(true);
-  const [city] = useState(vnAPI);
 
   const [selectCity, setSelectCity] = useState("");
   const [selectDistrict, setSelectDistrict] = useState("");
+  const [selectWard, setSelectWard] = useState("");
+  const [dataWard, setDataWard] = useState([]);
 
   const history = useHistory();
 
   //TODO: Auto fetchAPI
   useEffect(() => {
     window.scrollTo(0, 0);
+
     const fetchAPI = async () => {
       const res1 = await axios.post("http://localhost:5000/auth/profile", {
         token: user.token,
@@ -31,17 +33,30 @@ export default function CustomerEdit() {
         setAuthorized(false);
       }
     };
-    fetchAPI();
-  }, [user.token]);
 
-  //TODO: Fetch District
-  const getDistrict = city.filter((data) => data.name === selectCity);
-  const resultDistrict = getDistrict.map((data) => data.districts);
-  const getWard = resultDistrict.map((data) =>
-    data.filter((data) => data.name === selectDistrict)
-  );
-  // const resultWard = getWard.map((data) => data);
-  // console.log(getWard.map((data) => data[0].wards.map((data) => data.name)));
+    const fetchLocation = () => {
+      if (selectCity) {
+        var resultCity = vnAPI.filter((data) => data.name === selectCity);
+        // console.log(resultCity);
+        if (selectDistrict) {
+          var getDataDistrict = resultCity.map((data) => data.districts);
+          var getDataDistrictOnly = getDataDistrict[0].filter(
+            (data) => data.name === selectDistrict
+          );
+          var getDataWard = getDataDistrictOnly.map((data) => data.wards)[0];
+          // console.log(getDataWard);s
+          setDataWard(getDataWard);
+        } else {
+          setDataWard([]);
+        }
+      } else {
+        setDataWard([]);
+      }
+    };
+
+    fetchLocation();
+    fetchAPI();
+  }, [selectCity, selectDistrict, user.token]);
 
   //TODO: Create Product function
   const [fullname, setFullName] = useState("");
@@ -154,23 +169,27 @@ export default function CustomerEdit() {
           <div className="row">
             <div className="check__form">
               {/*TODO: Address method */}
-              <h2 className="check__form-title">ĐỊA CHỈ GIAO HÀNG</h2>
+              <h2 className="check__form-title">THÔNG TIN KHÁCH HÀNG</h2>
               <form className="form-section">
                 <div className="form-block">
-                  <label for="name">Họ tên*</label>
+                  <label for="name">
+                    Họ tên<span style={{ color: "#eb0028" }}>*</span>
+                  </label>
                   <input
                     type="text"
-                    id="name"
+                    id="name1"
                     placeholder="Full Name"
                     className="form-input"
                     onChange={(e) => setFullName(e.target.value)}
                   />
                 </div>
                 <div className="form-block">
-                  <label for="name">Số điện thoại*</label>
+                  <label for="name">
+                    Số điện thoại<span style={{ color: "#eb0028" }}>*</span>
+                  </label>
                   <input
                     type="text"
-                    id="name"
+                    id="name2"
                     placeholder="Phone Number"
                     className="form-input"
                     onChange={(e) => setPhoneNumber(e.target.value)}
@@ -178,7 +197,9 @@ export default function CustomerEdit() {
                 </div>
 
                 <div className="form-block">
-                  <label for="email">Email*</label>
+                  <label for="email">
+                    Email<span style={{ color: "#eb0028" }}>*</span>
+                  </label>
                   <input
                     type="email"
                     id="price"
@@ -188,14 +209,16 @@ export default function CustomerEdit() {
                   />
                 </div>
                 <div className="form-block">
-                  <label for="address">Địa chỉ*</label>
+                  <label for="address">
+                    Địa chỉ<span style={{ color: "#eb0028" }}>*</span>
+                  </label>
                   <select
                     className="form-input"
                     value={selectCity}
                     onChange={(e) => setSelectCity(e.target.value)}
                   >
                     <option value="">Tỉnh, Thành phố </option>
-                    {city.map((data) => {
+                    {vnAPI.map((data) => {
                       return <option value={data.name}>{data.name}</option>;
                     })}
                   </select>
@@ -207,25 +230,28 @@ export default function CustomerEdit() {
                     onChange={(e) => setSelectDistrict(e.target.value)}
                   >
                     <option value="">Quận, Huyện </option>
-                    {getDistrict.map((data) =>
-                      data.districts.map((data) => {
-                        return <option value={data.name}>{data.name}</option>;
-                      })
-                    )}
+                    {selectCity !== ""
+                      ? vnAPI
+                          .filter((data) => data.name === selectCity)
+                          .map((data) => data.districts)[0]
+                          .map((data) => {
+                            return (
+                              <option value={data.name}>{data.name}</option>
+                            );
+                          })
+                      : []}
                   </select>
                 </div>
                 <div className="form-block">
                   <select
                     className="form-input"
-                    // value={roleCustomer}
-                    // onChange={(e) => setRoleCustomer(e.target.value)}
+                    value={selectWard}
+                    onChange={(e) => setSelectWard(e.target.value)}
                   >
                     <option value="">Phường, Xã</option>
-                    {/* {getWard.map((data) =>
-                      data[0].wards.map((data) => {
-                        return <option value={data.name}>{data.name}</option>;
-                      })
-                    )} */}
+                    {dataWard?.map((data) => {
+                      return <option value={data.name}>{data.name}</option>;
+                    })}
                   </select>
                 </div>
                 <div className="form-block">
@@ -249,29 +275,35 @@ export default function CustomerEdit() {
               <h2 className="check__form-title">ĐỔI MẬT KHẨU</h2>
               <form className="form-section">
                 <div className="form-block">
-                  <label for="email">Tên đăng nhập*</label>
+                  <label for="email">
+                    Tên đăng nhập<span style={{ color: "#eb0028" }}>*</span>
+                  </label>
                   <input
                     type="text"
-                    id="price"
+                    id="price2"
                     className="form-input"
                     placeholder="Your Username"
                   />
                 </div>
 
                 <div className="form-block">
-                  <label for="role">Mật khẩu cũ*</label>
+                  <label for="role">
+                    Mật khẩu cũ<span style={{ color: "#eb0028" }}>*</span>
+                  </label>
                   <input
                     type="password"
-                    id="role"
+                    id="role1"
                     placeholder="Old Password"
                     className="form-input"
                   />
                 </div>
                 <div className="form-block">
-                  <label for="role">Mật khẩu mới*</label>
+                  <label for="role">
+                    Mật khẩu mới<span style={{ color: "#eb0028" }}>*</span>
+                  </label>
                   <input
                     type="password"
-                    id="role"
+                    id="role2"
                     placeholder="New Password"
                     className="form-input"
                     onChange={(e) => setPassword(e.target.value)}
@@ -287,10 +319,10 @@ export default function CustomerEdit() {
               <h2 className="check__form-title">XÓA TÀI KHOẢN</h2>
               <form className="form-section">
                 <div className="form-block">
-                  <label for="name">Ghi chú*</label>
+                  <label for="name">Ghi chú</label>
                   <textarea
                     type="text"
-                    id="quantity"
+                    id="quantity2"
                     placeholder="Write your reason about delete account to support me become better. Thank you and See you later !"
                     // onChange={(e) => setQuantityProduct(e.target.value)}
                   />

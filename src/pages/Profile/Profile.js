@@ -82,34 +82,48 @@ export default function Profile() {
                     onClick={showModal}
                   />
                 </div>
-                {customerData.map((data) => {
-                  return (
-                    <ul className="cart__total-list">
-                      <li className="cart__total-item">
-                        <p className="cart__total-item-text">
-                          Mã số khách hàng:{" "}
-                        </p>
-                        <p className="">{data.id}</p>
-                      </li>
-                      <li className="cart__total-item">
-                        <p className="cart__total-item-text">Họ tên: </p>
-                        <p className="">{data.fullname}</p>
-                      </li>
-                      <li className="cart__total-item">
-                        <p className="cart__total-item-text">Số điện thoại: </p>
-                        <p className="">{data.phonenumber}</p>
-                      </li>
-                      <li className="cart__total-item">
-                        <p className="cart__total-item-text">Email: </p>
-                        <p className="">{data.email}</p>
-                      </li>
-                      <li className="cart__total-item">
-                        <p className="cart__total-item-text">Địa chỉ: </p>
-                        <p className="">{data.addressdetails}</p>
-                      </li>
-                    </ul>
-                  );
-                })}
+                {customerData.length > 0 ? (
+                  customerData.map((data) => {
+                    return (
+                      <ul className="cart__total-list">
+                        <li className="cart__total-item">
+                          <p className="cart__total-item-text">
+                            Mã số khách hàng:{" "}
+                          </p>
+                          <p className="">{data.id}</p>
+                        </li>
+                        <li className="cart__total-item">
+                          <p className="cart__total-item-text">Họ tên: </p>
+                          <p className="">{data.fullname}</p>
+                        </li>
+                        <li className="cart__total-item">
+                          <p className="cart__total-item-text">
+                            Số điện thoại:{" "}
+                          </p>
+                          <p className="">{data.phonenumber}</p>
+                        </li>
+                        <li className="cart__total-item">
+                          <p className="cart__total-item-text">Email: </p>
+                          <p className="">{data.email}</p>
+                        </li>
+                        <li className="cart__total-item">
+                          <p className="cart__total-item-text">Địa chỉ: </p>
+                          <p className="">{data.addressdetails}</p>
+                        </li>
+                      </ul>
+                    );
+                  })
+                ) : (
+                  <h4
+                    style={{
+                      color: "#eb0028",
+                      paddingTop: "25%",
+                      textAlign: "center",
+                    }}
+                  >
+                    {"< Bạn chưa điền vào thông tin khách hàng >"}
+                  </h4>
+                )}
               </div>
 
               <div className="profile__form-section">
@@ -123,6 +137,7 @@ export default function Profile() {
                           search: `?id_order=${data.id_order}&id=${data.id}`,
                         }}
                         className="profile__link"
+                        title="Nhấp vào để xem chi tiết"
                       >
                         <div className="profile__order">
                           <ul className="cart__total-list">

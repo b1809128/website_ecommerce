@@ -153,7 +153,6 @@ export default function AdminOrderDetails() {
                   </li>
                   <li className="cart__heading-item">
                     <h4>{data.TenHH}</h4>
-                    <p style={{ textAlign: "center" }}>Gray/256GB</p>
                   </li>
                   <li className="cart__heading-item">
                     {new Intl.NumberFormat().format(data.Gia)}VND
@@ -230,7 +229,12 @@ export default function AdminOrderDetails() {
             </div>
             <form className="order-details__form-section">
               <div className="order-details__form-block">
-                <label for="name">Mã đơn đặt hàng*</label>
+                <label for="name">
+                  Mã đơn đặt hàng
+                  <span style={{ color: "#eb0028" }}>
+                    (Cập nhật trạng thái)
+                  </span>
+                </label>
                 <input
                   type="text"
                   id="name"
@@ -271,7 +275,12 @@ export default function AdminOrderDetails() {
                 />
               </div>
               <div className="order-details__form-block">
-                <label for="adress">Tình trạng đơn hàng*</label>
+                <label for="adress">
+                  Tình trạng đơn hàng
+                  <span style={{ color: "#eb0028" }}>
+                    (Cập nhật trạng thái)
+                  </span>
+                </label>
                 <select
                   className="form-input"
                   value={statusOrderUpdate}

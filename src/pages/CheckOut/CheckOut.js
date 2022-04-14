@@ -7,6 +7,8 @@ import "./checkout.css";
 import "../Profile/Profile.css";
 import Swal from "sweetalert2";
 import { AuthContext } from "../../context/AuthContext";
+import Modal from "../../components/modal/Modal";
+import CustomerEdit from "../Edit/CustomerEdit";
 
 export default function CheckOut({
   cartItems,
@@ -71,8 +73,28 @@ export default function CheckOut({
     }
     alertOrderSuccess();
   };
+
+  const orderHandleNotInfo = (e) => {
+    e.preventDefault();
+    Swal.fire(
+      "Bạn chưa điền thông tin khách hàng !",
+      "Nhấn để tiếp tục !",
+      "success"
+    );
+  };
   // console.log(getCartProduct().map(data=> JSON.parse(data.pr1.MoTa)));
   // console.log(cartItems.map(data=>{return  {id_order:8898,...data}}));
+
+  //TODO: Modal
+  const [statusModal, setStatusModal] = useState(false);
+  const showModal = () => {
+    setStatusModal(true);
+  };
+
+  const closeModal = () => {
+    setStatusModal(false);
+  };
+
   if (cartItems.length === 0) {
     Swal.fire({
       icon: "success",
@@ -83,23 +105,28 @@ export default function CheckOut({
 
   return (
     <div className="check">
+      <Modal
+        status={statusModal}
+        children={<CustomerEdit />}
+        closeModal={closeModal}
+      />
       <div className="check-section">
         <div className="check__row">
           <LocationBar />
           <div className="row">
             <div className="check__form">
-              {customerData.length > 0 ? (
-                <div className="checkout__total">
-                  <div className="profile__header">
-                    <h2 className="cart__total-title">THÔNG TIN KHÁCH HÀNG</h2>
-                    <FaEdit
-                      style={{
-                        color: "#28a745",
-                      }}
-                      // onClick={showModal}
-                    />
-                  </div>
-                  {customerData.map((data) => {
+              <div className="checkout__total">
+                <div className="profile__header">
+                  <h2 className="cart__total-title">THÔNG TIN KHÁCH HÀNG</h2>
+                  <FaEdit
+                    style={{
+                      color: "#28a745",
+                    }}
+                    onClick={showModal}
+                  />
+                </div>
+                {customerData.length > 0 ? (
+                  customerData.map((data) => {
                     return (
                       <ul className="cart__total-list">
                         <li className="cart__total-item">
@@ -128,79 +155,19 @@ export default function CheckOut({
                         </li>
                       </ul>
                     );
-                  })}
-                </div>
-              ) : (
-                <div className="order__information">
-                  <h2 className="check__form-title">THÔNG TIN ĐƠN HÀNG</h2>
-                  <form className="form-section">
-                    <div className="form-block">
-                      <label for="name">Họ tên*</label>
-                      <input
-                        type="text"
-                        id="name"
-                        placeholder="Full name"
-                        className="form-input"
-                      />
-                    </div>
-                    <div className="form-flex">
-                      <label>Giới tính </label>
-                      <input
-                        id="gender"
-                        type="checkbox"
-                        class="input-radio"
-                        name="gender"
-                        value="nam"
-                        checked="checked"
-                        style={{ width: "10%" }}
-                      />
-                      <span style={{ marginRight: "10%" }}>Nam</span>
-                      <input
-                        id="gender"
-                        type="checkbox"
-                        className="input-radio"
-                        name="gender"
-                        value="nữ"
-                        style={{ width: "10%" }}
-                      />
-                      <span>Nữ</span>
-                    </div>
-
-                    <div className="form-block">
-                      <label for="email">Email*</label>
-                      <input
-                        type="email"
-                        id="email"
-                        className="form-input"
-                        placeholder="expample@gmail.com"
-                      />
-                    </div>
-
-                    <div className="form-block">
-                      <label for="adress">Địa chỉ*</label>
-                      <input
-                        className="form-input"
-                        type="text"
-                        id="adress"
-                        placeholder="Street Address"
-                      />
-                    </div>
-
-                    <div className="form-block">
-                      <label for="phone">Số điện thoại*</label>
-                      <input type="text" id="phone" className="form-input" />
-                    </div>
-
-                    <div className="form-block">
-                      <label for="notes">Ghi chú</label>
-                      <textarea id="notes"></textarea>
-                    </div>
-                    <div className="form-block">
-                      <button className="btn">Gửi</button>
-                    </div>
-                  </form>
-                </div>
-              )}
+                  })
+                ) : (
+                  <h4
+                    style={{
+                      color: "#eb0028",
+                      paddingTop: "25%",
+                      textAlign: "center",
+                    }}
+                  >
+                    {"< Bạn chưa điền vào thông tin khách hàng >"}
+                  </h4>
+                )}
+              </div>
             </div>
             {/* Check method */}
             <div className="check__method">
@@ -322,11 +289,17 @@ export default function CheckOut({
                   <button className="btn" onClick={deleteCheckOut}>
                     HỦY ĐƠN HÀNG
                   </button>
-                  <button className="btn" onClick={orderHandle}>
-                    <Link to="/" className="link__btn">
+                  {customerData.length > 0 ? (
+                    <button className="btn" onClick={orderHandle}>
+                      <Link to="/" className="link__btn">
+                        ĐẶT HÀNG <FaAngleRight />
+                      </Link>
+                    </button>
+                  ) : (
+                    <button className="btn" onClick={orderHandleNotInfo}>
                       ĐẶT HÀNG <FaAngleRight />
-                    </Link>
-                  </button>
+                    </button>
+                  )}
                 </div>
               </form>
             </div>

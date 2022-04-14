@@ -77,7 +77,6 @@ export default function Cart({
                       </li>
                       <li className="cart__heading-item">
                         <h4>{data.pr1.TenHH}</h4>
-                        <p style={{ textAlign: "center" }}>Gray/256GB</p>
                       </li>
                       <li className="cart__heading-item">
                         {new Intl.NumberFormat().format(data.pr1.Gia)}VND
@@ -149,7 +148,9 @@ export default function Cart({
                       className="cart__shipping-select-item"
                       onChange={() => setCheckStatus(!checkStatus)}
                     />
-                    Vận chuyển (+0.5%)
+                    <span style={{ margin: "0 8px" }}>
+                      Phí vận chuyển (+0.5%)
+                    </span>
                   </div>
                 </div>
               </div>
@@ -215,7 +216,7 @@ export default function Cart({
         <div className="cart">
           <div className="cart-section">
             <div className="cart__row">
-              <LocationBar/>
+              <LocationBar />
               <div className="row">
                 <div className="cart-empty-wrapper">
                   <h2 className="cart-empty"> {"< GIỎ HÀNG TRỐNG ! >"} </h2>

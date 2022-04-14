@@ -117,7 +117,9 @@ export default function FormProduct() {
   return (
     <form className="form-section">
       <div className="form-block">
-        <label for="name">Mã sản phẩm*</label>
+        <label for="name">
+          Mã sản phẩm<span style={{ color: "#eb0028" }}>*</span>
+        </label>
         <input
           type="text"
           id="name"
@@ -127,7 +129,9 @@ export default function FormProduct() {
         />
       </div>
       <div className="form-block">
-        <label for="name">Tên sản phẩm*</label>
+        <label for="name">
+          Tên sản phẩm<span style={{ color: "#eb0028" }}>*</span>
+        </label>
         <input
           type="text"
           id="name"
@@ -138,7 +142,9 @@ export default function FormProduct() {
       </div>
 
       <div className="form-block">
-        <label for="email">Giá*</label>
+        <label for="email">
+          Giá<span style={{ color: "#eb0028" }}>*</span>
+        </label>
         <input
           type="text"
           id="price"
@@ -149,7 +155,9 @@ export default function FormProduct() {
       </div>
 
       <div className="form-block">
-        <label for="adress">Số lượng hàng*</label>
+        <label for="adress">
+          Số lượng hàng<span style={{ color: "#eb0028" }}>*</span>
+        </label>
         <input
           className="form-input"
           type="text"
@@ -160,7 +168,9 @@ export default function FormProduct() {
       </div>
 
       <div className="form-block">
-        <label for="type">Loại hàng*</label>
+        <label for="type">
+          Loại hàng<span style={{ color: "#eb0028" }}>*</span>
+        </label>
         <select
           className="form-input"
           value={typeProduct}
@@ -179,7 +189,9 @@ export default function FormProduct() {
       </div>
 
       <div className="form-block">
-        <label for="phone">Tags*</label>
+        <label for="phone">
+          Tags<span style={{ color: "#eb0028" }}>*</span>
+        </label>
         <input
           type="text"
           id="tag"
@@ -193,7 +205,9 @@ export default function FormProduct() {
           className="relative"
           style={{ display: "flex", flexDirection: "column" }}
         >
-          <label for="images">Hình ảnh*</label>
+          <label for="images">
+            Hình ảnh<span style={{ color: "#eb0028" }}>*</span>
+          </label>
           <textarea
             className="form-input textarea-sm "
             placeholder='Example: ["/images/products/BRAND_FOLDER/PRODUCT_NAME_FOLDER"]'
@@ -215,7 +229,9 @@ export default function FormProduct() {
           className="relative"
           style={{ display: "flex", flexDirection: "column" }}
         >
-          <label for="notes">Mô tả*</label>
+          <label for="notes">
+            Mô tả<span style={{ color: "#eb0028" }}>*</span>
+          </label>
           <textarea
             // className="textarea-sm"
             placeholder='Example: {                      
