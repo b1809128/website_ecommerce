@@ -237,6 +237,7 @@ function App() {
           cartItems={cartItems.length}
           deleteCartAfterCheckOut={deleteCartAfterCheckOut}
         />
+
         <Switch>
           <Route exact path="/">
             <Home addCart={addCart} />
@@ -302,6 +303,7 @@ function App() {
           </Route>
         </Switch>
         <Footer />
+
         <ScrollTop />
       </Router>
     </div>

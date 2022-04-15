@@ -75,7 +75,14 @@ export default function CustomerEdit() {
           fullname: fullname,
           phonenumber: phoneNumber,
           email: email,
-          addressdetails: address,
+          addressdetails:
+            selectCity +
+            ", " +
+            selectDistrict +
+            ", " +
+            selectWard +
+            ".\n Số nhà: " +
+            address,
         }
       );
       if (res.data) {
@@ -258,7 +265,7 @@ export default function CustomerEdit() {
                   <textarea
                     type="text"
                     id="quantity"
-                    placeholder="29/13, 30/4 Street, Ninh Kieu District, Can Tho City"
+                    placeholder="Số nhà: 29/13, đường 30/4 , Quận Ninh Kiều , Thành phố Cần Thơ "
                     onChange={(e) => setAddress(e.target.value)}
                   />
                 </div>
