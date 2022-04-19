@@ -12,7 +12,7 @@ export default function FormProduct() {
   const [tagProduct, setTagProduct] = useState("");
   const [imageProductUpload, setImageProductUpload] = useState({});
   const [brandProduct, setBrandProduct] = useState([]);
-
+  console.log(imageProductUpload);
   useEffect(() => {
     const fetchAPI = async () => {
       try {
@@ -208,6 +208,12 @@ export default function FormProduct() {
           <label for="images">
             Hình ảnh<span style={{ color: "#eb0028" }}>*</span>
           </label>
+          {/* <input
+            type="file"
+            id="fileimage"
+            className="form-input"
+            onChange={(e) => setImageProductUpload(e.target.value)}
+          /> */}
           <textarea
             className="form-input textarea-sm "
             placeholder='Example: ["/images/products/BRAND_FOLDER/PRODUCT_NAME_FOLDER"]'

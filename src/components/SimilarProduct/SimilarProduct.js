@@ -10,7 +10,7 @@ export default function SimilarProduct({ groupBy }) {
         const res = await axios.get(
           `http://localhost:5000/product/group/${groupBy}`
         );
-        setProductData(res.data);
+        setProductData(res.data.filter((data, index) => index < 10));
       } catch (error) {
         console.log(error);
       }

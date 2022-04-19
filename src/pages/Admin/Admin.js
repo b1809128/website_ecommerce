@@ -51,9 +51,9 @@ function Admin() {
   //TODO: authorized
   if (!authorized) {
     Swal.fire({
-      icon: 'error',
-      title: 'Bạn không có quyền truy cập !',
-    })
+      icon: "error",
+      title: "Bạn không có quyền truy cập !",
+    });
     return <Redirect to="/dang-nhap" />;
   }
 
@@ -111,6 +111,7 @@ function Admin() {
                 color={dataSet[5].color}
                 data={dataSet[5].data}
               />
+              
             </div>
           </div>
         </div>

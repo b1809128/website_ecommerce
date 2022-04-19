@@ -68,31 +68,84 @@ export default function CustomerEdit() {
   const createHandle = async () => {
     // e.preventDefault();
     try {
-      const res = await axios.post(
-        "http://localhost:5000/customer/address/add",
-        {
-          id: user.result[0].id,
-          fullname: fullname,
-          phonenumber: phoneNumber,
-          email: email,
-          addressdetails:
-            selectCity +
-            ", " +
-            selectDistrict +
-            ", " +
-            selectWard +
-            ".\n Số nhà: " +
-            address,
+      if (
+        fullname !== "" &&
+        phoneNumber !== "" &&
+        email !== "" &&
+        selectCity !== "" &&
+        selectDistrict !== "" &&
+        selectWard !== "" &&
+        address !== ""
+      ) {
+        const res = await axios.post(
+          "http://localhost:5000/customer/address/add",
+          {
+            id: user.result[0].id,
+            fullname: fullname,
+            phonenumber: phoneNumber,
+            email: email,
+            addressdetails:
+              selectCity +
+              ", " +
+              selectDistrict +
+              ", " +
+              selectWard +
+              ".\n  - Số nhà: " +
+              address,
+          }
+        );
+        if (res.data) {
+          Swal.fire({
+            position: "center",
+            icon: "success",
+            title: "Thêm thông tin thành công",
+            showConfirmButton: false,
+            timer: 1500,
+          });
         }
-      );
-      if (res.data) {
-        Swal.fire({
-          position: "center",
-          icon: "success",
-          title: "Thêm địa chỉ thành công",
-          showConfirmButton: false,
-          timer: 1500,
-        });
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const updateHandle = async () => {
+    // e.preventDefault();
+    try {
+      if (
+        fullname !== "" &&
+        phoneNumber !== "" &&
+        email !== "" &&
+        selectCity !== "" &&
+        selectDistrict !== "" &&
+        selectWard !== "" &&
+        address !== ""
+      ) {
+        const res = await axios.put(
+          `http://localhost:5000/customer/update/address/${user.result[0].id}`,
+          {
+            fullname: fullname,
+            phonenumber: phoneNumber,
+            email: email,
+            addressdetails:
+              selectCity +
+              ", " +
+              selectDistrict +
+              ", " +
+              selectWard +
+              ".\n  - Số nhà: " +
+              address,
+          }
+        );
+        if (res.data) {
+          Swal.fire({
+            position: "center",
+            icon: "success",
+            title: "Cập nhật thông tin thành công",
+            showConfirmButton: false,
+            timer: 1500,
+          });
+        }
       }
     } catch (error) {
       console.log(error);
@@ -188,6 +241,7 @@ export default function CustomerEdit() {
                     placeholder="Full Name"
                     className="form-input"
                     onChange={(e) => setFullName(e.target.value)}
+                    required
                   />
                 </div>
                 <div className="form-block">
@@ -200,6 +254,7 @@ export default function CustomerEdit() {
                     placeholder="Phone Number"
                     className="form-input"
                     onChange={(e) => setPhoneNumber(e.target.value)}
+                    required
                   />
                 </div>
 
@@ -213,6 +268,7 @@ export default function CustomerEdit() {
                     className="form-input"
                     placeholder="rabbit@gmail.com"
                     onChange={(e) => setEmail(e.target.value)}
+                    required
                   />
                 </div>
                 <div className="form-block">
@@ -223,6 +279,7 @@ export default function CustomerEdit() {
                     className="form-input"
                     value={selectCity}
                     onChange={(e) => setSelectCity(e.target.value)}
+                    required
                   >
                     <option value="">Tỉnh, Thành phố </option>
                     {vnAPI.map((data) => {
@@ -235,6 +292,7 @@ export default function CustomerEdit() {
                     className="form-input"
                     value={selectDistrict}
                     onChange={(e) => setSelectDistrict(e.target.value)}
+                    required
                   >
                     <option value="">Quận, Huyện </option>
                     {selectCity !== ""
@@ -254,6 +312,7 @@ export default function CustomerEdit() {
                     className="form-input"
                     value={selectWard}
                     onChange={(e) => setSelectWard(e.target.value)}
+                    required
                   >
                     <option value="">Phường, Xã</option>
                     {dataWard?.map((data) => {
@@ -267,13 +326,16 @@ export default function CustomerEdit() {
                     id="quantity"
                     placeholder="Số nhà: 29/13, đường 30/4 , Quận Ninh Kiều , Thành phố Cần Thơ "
                     onChange={(e) => setAddress(e.target.value)}
+                    required
                   />
                 </div>
                 <div className="form-flex__btn">
                   <button className="btn" onClick={createHandle}>
                     THÊM
                   </button>
-                  <button className="btn">CẬP NHẬT</button>
+                  <button className="btn" onClick={updateHandle}>
+                    CẬP NHẬT
+                  </button>
                 </div>
               </form>
             </div>

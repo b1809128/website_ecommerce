@@ -57,6 +57,32 @@ export default function AdminEdit() {
     }
   };
 
+  const [image, setImage] = useState({ preview: "", data: "" });
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    let formData = new FormData();
+    formData.append("file", image.data);
+    const response = await axios.post("http://localhost:5000/upload", formData);
+
+    if (response) {
+      Swal.fire({
+        position: "center",
+        icon: "success",
+        title: "Upload hình ảnh thành công !",
+        showConfirmButton: false,
+        timer: 1500,
+      });
+    }
+  };
+
+  const handleFileChange = (e) => {
+    const img = {
+      preview: URL.createObjectURL(e.target.files[0]),
+      data: e.target.files[0],
+    };
+    setImage(img);
+  };
+
   //TODO: Delete Product function
   //FIXME: After delete product modal appears when go admin page
   const [idProductDelete, setIdProductDelete] = useState("");
@@ -208,11 +234,25 @@ export default function AdminEdit() {
                     </button>
                   </div>
                 </div>
-                <div className="form-flex__btn">
-                  <button className="btn" onClick={uploadHandle}>
-                    CẬP NHẬT
-                  </button>
-                </div>
+                <button className="btn" onClick={uploadHandle}>
+                  CẬP NHẬT
+                </button>
+              </form>
+
+              {image.preview && (
+                <img src={image.preview} width="100" height="100" alt="" />
+              )}
+              <hr></hr>
+              <form className="form-section" onSubmit={handleSubmit}>
+                <input
+                  type="file"
+                  name="file"
+                  className="form-input"
+                  onChange={handleFileChange}
+                ></input>
+                <button className="btn" type="submit">
+                  Cập nhật
+                </button>
               </form>
               {/*TODO: Delete method */}
               <h2 className="check__form-title">XÓA SẢN PHẨM</h2>
@@ -237,11 +277,9 @@ export default function AdminEdit() {
                     })}
                   </select>
                 </div>
-                <div className="form-flex__btn">
-                  <button className="btn" onClick={checkProductDelete}>
-                    XÓA SẢN PHẨM
-                  </button>
-                </div>
+                <button className="btn" onClick={checkProductDelete}>
+                  XÓA SẢN PHẨM
+                </button>
               </form>
               {/*TODO: Customer method */}
               <h2 className="check__form-title">PHÂN QUYỀN NGƯỜI DÙNG</h2>
@@ -281,11 +319,9 @@ export default function AdminEdit() {
                     <option value="administrator">Administrator</option>
                   </select>
                 </div>
-                <div className="form-flex__btn">
-                  <button className="btn" onClick={updateCustomerHandle}>
-                    CẬP NHẬT
-                  </button>
-                </div>
+                <button className="btn" onClick={updateCustomerHandle}>
+                  CẬP NHẬT
+                </button>
               </form>
             </div>
           </div>

@@ -122,7 +122,6 @@ export default function AdminOrderDetails() {
                   </li>
                   <li className="cart__heading-item">
                     <h4>{data.TenHH}</h4>
-                    <p style={{ textAlign: "center" }}>Gray/256GB</p>
                   </li>
                   <li className="cart__heading-item">
                     {new Intl.NumberFormat().format(data.Gia)}VND
