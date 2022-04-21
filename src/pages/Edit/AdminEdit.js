@@ -4,7 +4,6 @@ import React, { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../context/AuthContext";
 import axios from "axios";
 import { Redirect } from "react-router-dom";
-import { AiOutlineCopy } from "react-icons/ai";
 import FormProduct from "../../components/form/FormProduct";
 import Swal from "sweetalert2";
 
@@ -37,32 +36,53 @@ export default function AdminEdit() {
   }, [user.token]);
 
   //TODO: Upload Images function
-  const [idProductUpload, setIdProductUpload] = useState("");
-  const [imageProductUpload, setImageProductUpload] = useState({});
+  const [folder, setFolder] = useState("");
 
-  const uploadHandle = async () => {
-    try {
-      const res = await axios.post(
-        "http://localhost:5000/manage/image/upload",
-        {
-          MSHH: idProductUpload,
-          PATH: JSON.parse(imageProductUpload),
-        }
-      );
-      if (res.data) {
-        alert(res.data);
-      }
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
-  const [image, setImage] = useState({ preview: "", data: "" });
+  const [image, setImage] = useState({ preview: [], data: [] });
   const handleSubmit = async (e) => {
     e.preventDefault();
     let formData = new FormData();
-    formData.append("file", image.data);
-    const response = await axios.post("http://localhost:5000/upload", formData);
+    // formData.append("file", image.data);
+    let imagesDataArray = [];
+    let newImagesName = [];
+    let now = new Date();
+    for (let i = 0; i < image.data.length; i++) {
+      formData.append("file", image.data[i]);
+      imagesDataArray.push(image.data[i].name);
+    }
+    //TODO:Images Name Process
+    for (let i = 0; i < imagesDataArray.length; i++) {
+      let originalName = imagesDataArray[i].substring(
+        0,
+        imagesDataArray[i].lastIndexOf(".")
+      );
+      let ext = imagesDataArray[i].substring(
+        imagesDataArray[i].lastIndexOf(".") + 1,
+        imagesDataArray[i].length
+      );
+      const uniqueSuffix =
+        originalName +
+        "_" +
+        now.getMonth() +
+        now.getDate() +
+        now.getFullYear() +
+        "_" +
+        now.getHours() +
+        now.getMinutes() +
+        now.getSeconds();
+
+      newImagesName.push(uniqueSuffix + "." + ext);
+    }
+
+    let lastImageNameForUpdate = newImagesName.map(
+      (data) => `http://localhost:5000/images/product/${folder}/` + data
+    );
+    console.log(lastImageNameForUpdate);
+
+    const response = await axios.post(
+      `http://localhost:5000/upload?folderData=${folder}`,
+      formData
+    );
 
     if (response) {
       Swal.fire({
@@ -76,9 +96,17 @@ export default function AdminEdit() {
   };
 
   const handleFileChange = (e) => {
+    const arrayFile = e.target.files;
+    let previewArray = [];
+    let previewURLArray = [];
+    for (let i = 0; i < arrayFile.length; i++) {
+      previewArray.push(arrayFile[i]);
+      previewURLArray.push(URL.createObjectURL(arrayFile[i]));
+    }
+    // console.log(previewArray.map(data=>data));
     const img = {
-      preview: URL.createObjectURL(e.target.files[0]),
-      data: e.target.files[0],
+      preview: previewURLArray,
+      data: previewArray,
     };
     setImage(img);
   };
@@ -146,28 +174,6 @@ export default function AdminEdit() {
     }
   };
 
-  //TODO:Copy to clipboard function
-  const copyArray = [
-    '["/images/products/BRAND_FOLDER/PRODUCT_NAME_FOLDER","/images/products/apple/12pro/1.png"]',
-    {
-      Description: "abc",
-      Brand: "Apple",
-      Type: "Phone",
-      Color: "white",
-      Memory: 512,
-      Screen:
-        "OLED Resolution: 1284 x 2778 Pixels, 3 cameras 12 MP, 12 MP Wide screen: 6.7",
-      OS: "iOS 14",
-      CPU: "Apple A14 Bionic 6 cores",
-      ROM: "512GB",
-      RAM: "6GB",
-      Network: "5G",
-      SIM: "1 Nano SIM & 1 eSIM",
-      Weight: "228g",
-      Battery: "3687mAh",
-    },
-  ];
-
   if (!authorized) {
     Swal.fire({
       icon: "error",
@@ -189,67 +195,36 @@ export default function AdminEdit() {
             <div className="check__method">
               {/*TODO:Upload method */}
               <h2 className="check__method-title">UPLOAD HÌNH ẢNH</h2>
-              <form className="form-section">
+
+              <form
+                className="form-section"
+                enctype="multipart/form-data"
+                onSubmit={handleSubmit}
+              >
                 <div className="form-block">
                   <label for="name">
-                    Mã sản phẩm<span style={{ color: "#eb0028" }}>*</span>
+                    Folder:<span style={{ color: "#eb0028" }}>*</span>
                   </label>
-                  <select
+                  <input
                     className="form-input"
-                    value={idProductUpload}
-                    onChange={(e) => setIdProductUpload(e.target.value)}
-                  >
-                    {allProduct.map((data, index) => {
-                      return (
-                        <>
-                          <option value={data.MSHH}>
-                            {(index += 1)} - {data.MSHH}
-                          </option>
-                        </>
-                      );
+                    value={folder}
+                    onChange={(e) => setFolder(e.target.value)}
+                    type="text"
+                  />
+                  <div className="form-flex">
+                    {image.preview.map((data) => {
+                      return <img src={data} width="100" height="100" alt="" />;
                     })}
-                  </select>
-                </div>
-                <div className="form-block">
-                  <div
-                    className="relative"
-                    style={{ display: "flex", flexDirection: "column" }}
-                  >
-                    <label for="images">
-                      Hình ảnh<span style={{ color: "#eb0028" }}>*</span>
-                    </label>
-                    <textarea
-                      className="form-input textarea-sm "
-                      placeholder='Example: ["https://cdn.hoanghamobile.com/i/productlist/ts/Uploads/2021/09/15/image-removebg-preview-15.png"]'
-                      onChange={(e) => setImageProductUpload(e.target.value)}
-                    ></textarea>
-                    <button
-                      className="copy-btn"
-                      onClick={(e) => {
-                        e.preventDefault();
-                        navigator.clipboard.writeText(copyArray[0]);
-                      }}
-                    >
-                      <AiOutlineCopy />
-                    </button>
                   </div>
+                  <input
+                    type="file"
+                    name="file"
+                    multiple
+                    className="form-input"
+                    onChange={handleFileChange}
+                    style={{ margin: "10px 0" }}
+                  />
                 </div>
-                <button className="btn" onClick={uploadHandle}>
-                  CẬP NHẬT
-                </button>
-              </form>
-
-              {image.preview && (
-                <img src={image.preview} width="100" height="100" alt="" />
-              )}
-              <hr></hr>
-              <form className="form-section" onSubmit={handleSubmit}>
-                <input
-                  type="file"
-                  name="file"
-                  className="form-input"
-                  onChange={handleFileChange}
-                ></input>
                 <button className="btn" type="submit">
                   Cập nhật
                 </button>

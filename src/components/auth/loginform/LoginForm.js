@@ -33,10 +33,10 @@ export default function LoginForm() {
       } else if (!password) {
         setStatePassword(true);
       } else {
-        var hashPash = crypto.createHash("md5").update(password).digest("hex");
+        var hashPass = crypto.createHash("md5").update(password).digest("hex");
         const res = await axios.post("http://localhost:5000/auth/login", {
           user: userRef,
-          password: hashPash,
+          password: hashPass,
         });
         if (res.data.wrongUser) {
           setValidateUser(true);

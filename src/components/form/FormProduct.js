@@ -12,7 +12,7 @@ export default function FormProduct() {
   const [tagProduct, setTagProduct] = useState("");
   const [imageProductUpload, setImageProductUpload] = useState({});
   const [brandProduct, setBrandProduct] = useState([]);
-  console.log(imageProductUpload);
+  // console.log(imageProductUpload);
   useEffect(() => {
     const fetchAPI = async () => {
       try {
