@@ -36,9 +36,10 @@ export default function AdminEdit() {
   }, [user.token]);
 
   //TODO: Upload Images function
-  const [folder, setFolder] = useState("");
-
+  const [idUpload, setIdUpload] = useState("");
+  // const [folder, setFolder] = useState("");
   const [image, setImage] = useState({ preview: [], data: [] });
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     let formData = new FormData();
@@ -74,13 +75,21 @@ export default function AdminEdit() {
       newImagesName.push(uniqueSuffix + "." + ext);
     }
 
-    let lastImageNameForUpdate = newImagesName.map(
-      (data) => `http://localhost:5000/images/product/${folder}/` + data
+    var lastImageNameForUpdate = newImagesName.map(
+      (data) => `http://localhost:5000/images/products/${idUpload}/` + data
     );
-    console.log(lastImageNameForUpdate);
+
+
+    await axios.put(
+      `http://localhost:5000/manage/product/image/update/${idUpload}`,
+      {
+        MSHH: idUpload,
+        PATH: lastImageNameForUpdate,
+      }
+    );
 
     const response = await axios.post(
-      `http://localhost:5000/upload?folderData=${folder}`,
+      `http://localhost:5000/upload?folderData=${idUpload}`,
       formData
     );
 
@@ -194,7 +203,7 @@ export default function AdminEdit() {
             </div>
             <div className="check__method">
               {/*TODO:Upload method */}
-              <h2 className="check__method-title">UPLOAD HÌNH ẢNH</h2>
+              <h2 className="check__method-title">CẬP NHẬT HÌNH ẢNH</h2>
 
               <form
                 className="form-section"
@@ -203,12 +212,31 @@ export default function AdminEdit() {
               >
                 <div className="form-block">
                   <label for="name">
-                    Folder:<span style={{ color: "#eb0028" }}>*</span>
+                    Mã sản phẩm<span style={{ color: "#eb0028" }}>*</span>
+                  </label>
+                  <select
+                    className="form-input"
+                    value={idUpload}
+                    onChange={(e) => setIdUpload(e.target.value)}
+                  >
+                    {allProduct.map((data, index) => {
+                      return (
+                        <>
+                          <option value={data.MSHH}>{data.MSHH}</option>
+                        </>
+                      );
+                    })}
+                  </select>
+                  <label for="name">
+                    Tên thư mục:
+                    <span style={{ color: "#eb0028" }}>
+                      * (Mặc định)
+                    </span>
                   </label>
                   <input
                     className="form-input"
-                    value={folder}
-                    onChange={(e) => setFolder(e.target.value)}
+                    value={idUpload}
+                    // onChange={(e) => setFolder(e.target.value)}
                     type="text"
                   />
                   <div className="form-flex">
@@ -244,9 +272,7 @@ export default function AdminEdit() {
                     {allProduct.map((data, index) => {
                       return (
                         <>
-                          <option value={data.MSHH}>
-                            {(index += 1)} - {data.MSHH}
-                          </option>
+                          <option value={data.MSHH}>{data.MSHH}</option>
                         </>
                       );
                     })}
@@ -272,7 +298,7 @@ export default function AdminEdit() {
                       return (
                         <>
                           <option value={data.id}>
-                            {(index += 1)} - {data.user}
+                            {(index += 1)}. {data.user}
                           </option>
                         </>
                       );

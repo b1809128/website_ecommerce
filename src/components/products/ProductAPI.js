@@ -20,9 +20,13 @@ export default function ProductAPI({ data, addCart }) {
             />
             <ModalProduct addCart={addCart} id={data.MSHH} />
           </div>
-          <p className="product-name link" title={data.TenHH}>
+          <Link
+            to={"/chi-tiet-san-pham/" + data.MSHH}
+            title={data.TenHH}
+            className="product-name link"
+          >
             {data.TenHH}
-          </p>
+          </Link>
           <p className="product-price">
             {new Intl.NumberFormat().format(data.Gia)} VND
           </p>
