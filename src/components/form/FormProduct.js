@@ -10,7 +10,6 @@ export default function FormProduct() {
   const [descProduct, setDescProduct] = useState("");
   const [typeProduct, setTypeProduct] = useState("");
   const [tagProduct, setTagProduct] = useState("");
-  const [imageProductUpload, setImageProductUpload] = useState({});
   const [brandProduct, setBrandProduct] = useState([]);
   // console.log(imageProductUpload);
   useEffect(() => {
@@ -49,7 +48,9 @@ export default function FormProduct() {
     },
   ];
 
-  //FIXME: Must be parse to JSON after push to server
+  //TODO: Upload Images function
+  const [image, setImage] = useState({ preview: [], data: [] });
+
   const createHandle = async (e) => {
     e.preventDefault();
     try {
@@ -62,15 +63,12 @@ export default function FormProduct() {
         MaLoaiHang: typeProduct,
         tags: `'${tagProduct}'`,
       });
-      await axios.post("http://localhost:5000/manage/image/upload", {
-        MSHH: idProduct,
-        PATH: JSON.parse(imageProductUpload),
-      });
+      handleSubmit();
       if (res.data) {
         Swal.fire({
           position: "center",
           icon: "success",
-          title: "Added Product Successfully",
+          title: "Thêm sản phẩm thành công !",
           showConfirmButton: false,
           timer: 1500,
         });
@@ -81,7 +79,7 @@ export default function FormProduct() {
   };
 
   //FIXME: Update wrong in database
-  const updateHandle = async () => {
+  const updateHandle = async (e) => {
     try {
       const res = await axios.put(
         `http://localhost:5000/manage/product/update/${idProduct}`,
@@ -96,17 +94,11 @@ export default function FormProduct() {
         }
       );
 
-      await axios.put(
-        `http://localhost:5000/manage/product/image/update/${idProduct}`,
-        {
-          MSHH: idProduct,
-          PATH: JSON.parse(imageProductUpload),
-        }
-      );
+      handleSubmitForUpdate();
       if (res.data) {
         Swal.fire(
-          "Updated product successfully !",
-          "You clicked the button!",
+          "Cập nhật sản phẩm thành công !",
+          "Nhấn để tiếp tục",
           "success"
         );
       }
@@ -114,8 +106,132 @@ export default function FormProduct() {
       console.log(error);
     }
   };
+
+  const handleSubmit = async () => {
+    // e.preventDefault();
+    let formData = new FormData();
+    // formData.append("file", image.data);
+    let imagesDataArray = [];
+    let newImagesName = [];
+    let now = new Date();
+    for (let i = 0; i < image.data.length; i++) {
+      formData.append("file", image.data[i]);
+      imagesDataArray.push(image.data[i].name);
+    }
+    //TODO:Images Name Process
+    for (let i = 0; i < imagesDataArray.length; i++) {
+      let originalName = imagesDataArray[i].substring(
+        0,
+        imagesDataArray[i].lastIndexOf(".")
+      );
+      let ext = imagesDataArray[i].substring(
+        imagesDataArray[i].lastIndexOf(".") + 1,
+        imagesDataArray[i].length
+      );
+      const uniqueSuffix =
+        originalName +
+        "_" +
+        now.getMonth() +
+        now.getDate() +
+        now.getFullYear() +
+        "_" +
+        now.getHours() +
+        now.getMinutes() +
+        now.getSeconds();
+
+      newImagesName.push(uniqueSuffix + "." + ext);
+    }
+
+    var lastImageNameForUpdate = newImagesName.map(
+      (data) => `http://localhost:5000/images/${idProduct}/` + data
+    );
+
+    axios.post(
+      `http://localhost:5000/upload?folderData=${idProduct}`,
+      formData
+    );
+
+    axios.post("http://localhost:5000/manage/image/upload", {
+      MSHH: idProduct,
+      PATH: lastImageNameForUpdate,
+    });
+  };
+
+  const handleSubmitForUpdate = async () => {
+    // e.preventDefault();
+    let formData = new FormData();
+    // formData.append("file", image.data);
+    let imagesDataArray = [];
+    let newImagesName = [];
+    let now = new Date();
+    for (let i = 0; i < image.data.length; i++) {
+      formData.append("file", image.data[i]);
+      imagesDataArray.push(image.data[i].name);
+    }
+    //TODO:Images Name Process
+    for (let i = 0; i < imagesDataArray.length; i++) {
+      let originalName = imagesDataArray[i].substring(
+        0,
+        imagesDataArray[i].lastIndexOf(".")
+      );
+      let ext = imagesDataArray[i].substring(
+        imagesDataArray[i].lastIndexOf(".") + 1,
+        imagesDataArray[i].length
+      );
+      const uniqueSuffix =
+        originalName +
+        "_" +
+        now.getMonth() +
+        now.getDate() +
+        now.getFullYear() +
+        "_" +
+        now.getHours() +
+        now.getMinutes() +
+        now.getSeconds();
+
+      newImagesName.push(uniqueSuffix + "." + ext);
+    }
+
+    var lastImageNameForUpdate = newImagesName.map(
+      (data) => `http://localhost:5000/images/${idProduct}/` + data
+    );
+
+    axios.post(
+      `http://localhost:5000/upload?folderData=${idProduct}`,
+      formData
+    );
+
+    axios.put(
+      `http://localhost:5000/manage/product/image/update/${idProduct}`,
+      {
+        MSHH: idProduct,
+        PATH: lastImageNameForUpdate,
+      }
+    );
+  };
+
+  const handleFileChange = (e) => {
+    const arrayFile = e.target.files;
+    let previewArray = [];
+    let previewURLArray = [];
+    for (let i = 0; i < arrayFile.length; i++) {
+      previewArray.push(arrayFile[i]);
+      previewURLArray.push(URL.createObjectURL(arrayFile[i]));
+    }
+    // console.log(previewArray.map(data=>data));
+    const img = {
+      preview: previewURLArray,
+      data: previewArray,
+    };
+    setImage(img);
+  };
+
   return (
-    <form className="form-section">
+    <form
+      className="form-section"
+      enctype="multipart/form-data"
+      // onSubmit={createHandle}
+    >
       <div className="form-block">
         <label for="name">
           Mã sản phẩm<span style={{ color: "#eb0028" }}>*</span>
@@ -169,13 +285,14 @@ export default function FormProduct() {
 
       <div className="form-block">
         <label for="type">
-          Loại hàng<span style={{ color: "#eb0028" }}>*</span>
+          Mã loại hàng<span style={{ color: "#eb0028" }}>*</span>
         </label>
         <select
           className="form-input"
           value={typeProduct}
           onChange={(e) => setTypeProduct(e.target.value)}
         >
+          <option value="Chọn">Lựa chọn</option>
           {brandProduct.map((data) => {
             return (
               <>
@@ -201,34 +318,24 @@ export default function FormProduct() {
         />
       </div>
       <div className="form-block">
-        <div
-          className="relative"
-          style={{ display: "flex", flexDirection: "column" }}
-        >
-          <label for="images">
-            Hình ảnh<span style={{ color: "#eb0028" }}>*</span>
-          </label>
-          {/* <input
-            type="file"
-            id="fileimage"
-            className="form-input"
-            onChange={(e) => setImageProductUpload(e.target.value)}
-          /> */}
-          <textarea
-            className="form-input textarea-sm "
-            placeholder='Example: ["/images/products/BRAND_FOLDER/PRODUCT_NAME_FOLDER"]'
-            onChange={(e) => setImageProductUpload(e.target.value)}
-          ></textarea>
-          <button
-            className="copy-btn"
-            onClick={(e) => {
-              e.preventDefault();
-              navigator.clipboard.writeText(copyArray[0]);
-            }}
-          >
-            <AiOutlineCopy />
-          </button>
+        <label for="name">
+          Tên thư mục:
+          <span style={{ color: "#eb0028" }}>* (Mặc định)</span>
+        </label>
+        <input className="form-input" value={idProduct} type="text" />
+        <div className="form-flex">
+          {image.preview.map((data) => {
+            return <img src={data} width="100" height="100" alt="" />;
+          })}
         </div>
+        <input
+          type="file"
+          name="file"
+          multiple
+          className="form-input"
+          onChange={handleFileChange}
+          style={{ margin: "10px 0" }}
+        />
       </div>
       <div className="form-block">
         <div
@@ -262,7 +369,7 @@ export default function FormProduct() {
         </div>
       </div>
       <div className="form-flex__btn">
-        <button className="btn" onClick={createHandle}>
+        <button onClick={createHandle} className="btn">
           THÊM
         </button>
         <button className="btn" onClick={updateHandle}>

@@ -37,7 +37,6 @@ export default function AdminEdit() {
 
   //TODO: Upload Images function
   const [idUpload, setIdUpload] = useState("");
-  // const [folder, setFolder] = useState("");
   const [image, setImage] = useState({ preview: [], data: [] });
 
   const handleSubmit = async (e) => {
@@ -76,7 +75,7 @@ export default function AdminEdit() {
     }
 
     var lastImageNameForUpdate = newImagesName.map(
-      (data) => `http://localhost:5000/images/products/${idUpload}/` + data
+      (data) => `http://localhost:5000/images/${idUpload}/` + data
     );
 
 
@@ -236,7 +235,6 @@ export default function AdminEdit() {
                   <input
                     className="form-input"
                     value={idUpload}
-                    // onChange={(e) => setFolder(e.target.value)}
                     type="text"
                   />
                   <div className="form-flex">
