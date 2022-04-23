@@ -52,9 +52,8 @@ export default function FormProduct() {
   const [image, setImage] = useState({ preview: [], data: [] });
 
   const createHandle = async () => {
-    // e.preventDefault();
     try {
-      const res = await axios.post("http://localhost:5000/manage/product/add", {
+      await axios.post("http://localhost:5000/manage/product/add", {
         MSHH: idProduct,
         TenHH: nameProduct,
         Gia: priceProduct,
@@ -102,15 +101,6 @@ export default function FormProduct() {
         MSHH: idProduct,
         PATH: lastImageNameForUpdate,
       });
-      if (res.data) {
-        // Swal.fire({
-        //   position: "center",
-        //   icon: "success",
-        //   title: "Thêm sản phẩm thành công !",
-        //   showConfirmButton: false,
-        //   timer: 1500,
-        // });
-      }
     } catch (error) {
       console.log(error);
     }
@@ -118,6 +108,7 @@ export default function FormProduct() {
 
   //FIXME: Update wrong in database
   const updateHandle = async (e) => {
+    e.preventDefault();
     try {
       const res = await axios.put(
         `http://localhost:5000/manage/product/update/${idProduct}`,
@@ -132,7 +123,6 @@ export default function FormProduct() {
         }
       );
 
-      handleSubmitForUpdate();
       if (res.data) {
         Swal.fire(
           "Cập nhật sản phẩm thành công !",
@@ -143,59 +133,6 @@ export default function FormProduct() {
     } catch (error) {
       console.log(error);
     }
-  };
-
-  const handleSubmitForUpdate = async () => {
-    // e.preventDefault();
-    let formData = new FormData();
-    // formData.append("file", image.data);
-    let imagesDataArray = [];
-    let newImagesName = [];
-    let now = new Date();
-    for (let i = 0; i < image.data.length; i++) {
-      formData.append("file", image.data[i]);
-      imagesDataArray.push(image.data[i].name);
-    }
-    //TODO:Images Name Process
-    for (let i = 0; i < imagesDataArray.length; i++) {
-      let originalName = imagesDataArray[i].substring(
-        0,
-        imagesDataArray[i].lastIndexOf(".")
-      );
-      let ext = imagesDataArray[i].substring(
-        imagesDataArray[i].lastIndexOf(".") + 1,
-        imagesDataArray[i].length
-      );
-      const uniqueSuffix =
-        originalName +
-        "_" +
-        now.getMonth() +
-        now.getDate() +
-        now.getFullYear() +
-        "_" +
-        now.getHours() +
-        now.getMinutes() +
-        now.getSeconds();
-
-      newImagesName.push(uniqueSuffix + "." + ext);
-    }
-
-    var lastImageNameForUpdate = newImagesName.map(
-      (data) => `http://localhost:5000/images/${idProduct}/` + data
-    );
-
-    axios.post(
-      `http://localhost:5000/upload?folderData=${idProduct}`,
-      formData
-    );
-
-    axios.put(
-      `http://localhost:5000/manage/product/image/update/${idProduct}`,
-      {
-        MSHH: idProduct,
-        PATH: lastImageNameForUpdate,
-      }
-    );
   };
 
   const handleFileChange = (e) => {
@@ -382,9 +319,11 @@ export default function FormProduct() {
         </div>
       </div>
       <div className="form-flex__btn">
-        <button className="btn">THÊM</button>
+        <button className="btn">
+          <p className="link__btn">THÊM</p>
+        </button>
         <button className="btn" onClick={updateHandle}>
-          CẬP NHẬT
+          <p className="link__btn">CẬP NHẬT</p>
         </button>
       </div>
     </form>

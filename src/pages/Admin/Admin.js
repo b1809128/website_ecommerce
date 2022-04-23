@@ -13,6 +13,7 @@ import { FaEdit } from "react-icons/fa";
 import AdminEdit from "../Edit/AdminEdit";
 import Modal from "../../components/modal/Modal";
 import Swal from "sweetalert2";
+import TableMUI from "../../components/table/TableMUI";
 function Admin() {
   const { user } = useContext(AuthContext);
   const [authorized, setAuthorized] = useState(true);
@@ -111,7 +112,6 @@ function Admin() {
                 color={dataSet[5].color}
                 data={dataSet[5].data}
               />
-              
             </div>
           </div>
         </div>
@@ -153,6 +153,9 @@ function Admin() {
               <TableOrder />
             </div>
           </div>
+        </div>
+        <div className="admin__row">
+          <TableMUI />
         </div>
       </div>
     </div>
