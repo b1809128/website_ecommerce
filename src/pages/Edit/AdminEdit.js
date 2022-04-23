@@ -78,7 +78,6 @@ export default function AdminEdit() {
       (data) => `http://localhost:5000/images/${idUpload}/` + data
     );
 
-
     await axios.put(
       `http://localhost:5000/manage/product/image/update/${idUpload}`,
       {
@@ -228,15 +227,9 @@ export default function AdminEdit() {
                   </select>
                   <label for="name">
                     Tên thư mục:
-                    <span style={{ color: "#eb0028" }}>
-                      * (Mặc định)
-                    </span>
+                    <span style={{ color: "#eb0028" }}>* (Mặc định)</span>
                   </label>
-                  <input
-                    className="form-input"
-                    value={idUpload}
-                    type="text"
-                  />
+                  <input className="form-input" value={idUpload} type="text" />
                   <div className="form-flex">
                     {image.preview.map((data) => {
                       return <img src={data} width="100" height="100" alt="" />;

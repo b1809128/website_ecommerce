@@ -63,7 +63,53 @@ export default function FormProduct() {
         MaLoaiHang: typeProduct,
         tags: `'${tagProduct}'`,
       });
-      handleSubmit();
+
+      let formData = new FormData();
+      // formData.append("file", image.data);
+      let imagesDataArray = [];
+      let newImagesName = [];
+      let now = new Date();
+      for (let i = 0; i < image.data.length; i++) {
+        formData.append("file", image.data[i]);
+        imagesDataArray.push(image.data[i].name);
+      }
+      //TODO:Images Name Process
+      for (let i = 0; i < imagesDataArray.length; i++) {
+        let originalName = imagesDataArray[i].substring(
+          0,
+          imagesDataArray[i].lastIndexOf(".")
+        );
+        let ext = imagesDataArray[i].substring(
+          imagesDataArray[i].lastIndexOf(".") + 1,
+          imagesDataArray[i].length
+        );
+        const uniqueSuffix =
+          originalName +
+          "_" +
+          now.getMonth() +
+          now.getDate() +
+          now.getFullYear() +
+          "_" +
+          now.getHours() +
+          now.getMinutes() +
+          now.getSeconds();
+
+        newImagesName.push(uniqueSuffix + "." + ext);
+      }
+
+      var lastImageNameForUpdate = newImagesName.map(
+        (data) => `http://localhost:5000/images/${idProduct}/` + data
+      );
+
+      await axios.post(
+        `http://localhost:5000/upload?folderData=${idProduct}`,
+        formData
+      );
+
+      await axios.post("http://localhost:5000/manage/image/upload", {
+        MSHH: idProduct,
+        PATH: lastImageNameForUpdate,
+      });
       if (res.data) {
         Swal.fire({
           position: "center",
@@ -105,56 +151,6 @@ export default function FormProduct() {
     } catch (error) {
       console.log(error);
     }
-  };
-
-  const handleSubmit = async () => {
-    // e.preventDefault();
-    let formData = new FormData();
-    // formData.append("file", image.data);
-    let imagesDataArray = [];
-    let newImagesName = [];
-    let now = new Date();
-    for (let i = 0; i < image.data.length; i++) {
-      formData.append("file", image.data[i]);
-      imagesDataArray.push(image.data[i].name);
-    }
-    //TODO:Images Name Process
-    for (let i = 0; i < imagesDataArray.length; i++) {
-      let originalName = imagesDataArray[i].substring(
-        0,
-        imagesDataArray[i].lastIndexOf(".")
-      );
-      let ext = imagesDataArray[i].substring(
-        imagesDataArray[i].lastIndexOf(".") + 1,
-        imagesDataArray[i].length
-      );
-      const uniqueSuffix =
-        originalName +
-        "_" +
-        now.getMonth() +
-        now.getDate() +
-        now.getFullYear() +
-        "_" +
-        now.getHours() +
-        now.getMinutes() +
-        now.getSeconds();
-
-      newImagesName.push(uniqueSuffix + "." + ext);
-    }
-
-    var lastImageNameForUpdate = newImagesName.map(
-      (data) => `http://localhost:5000/images/${idProduct}/` + data
-    );
-
-    axios.post(
-      `http://localhost:5000/upload?folderData=${idProduct}`,
-      formData
-    );
-
-    axios.post("http://localhost:5000/manage/image/upload", {
-      MSHH: idProduct,
-      PATH: lastImageNameForUpdate,
-    });
   };
 
   const handleSubmitForUpdate = async () => {
@@ -227,11 +223,7 @@ export default function FormProduct() {
   };
 
   return (
-    <form
-      className="form-section"
-      enctype="multipart/form-data"
-      // onSubmit={createHandle}
-    >
+    <form className="form-section" enctype="multipart/form-data">
       <div className="form-block">
         <label for="name">
           Mã sản phẩm<span style={{ color: "#eb0028" }}>*</span>
