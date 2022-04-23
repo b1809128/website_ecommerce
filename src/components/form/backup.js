@@ -51,8 +51,8 @@ export default function FormProduct() {
   //TODO: Upload Images function
   const [image, setImage] = useState({ preview: [], data: [] });
 
-  const createHandle = async () => {
-    // e.preventDefault();
+  const createHandle = async (e) => {
+    e.preventDefault();
     try {
       const res = await axios.post("http://localhost:5000/manage/product/add", {
         MSHH: idProduct,
@@ -64,10 +64,13 @@ export default function FormProduct() {
         tags: `'${tagProduct}'`,
       });
 
+      let formData = new FormData();
+      // formData.append("file", image.data);
       let imagesDataArray = [];
       let newImagesName = [];
       let now = new Date();
       for (let i = 0; i < image.data.length; i++) {
+        formData.append("file", image.data[i]);
         imagesDataArray.push(image.data[i].name);
       }
       //TODO:Images Name Process
@@ -98,18 +101,23 @@ export default function FormProduct() {
         (data) => `http://localhost:5000/images/${idProduct}/` + data
       );
 
+      await axios.post(
+        `http://localhost:5000/upload?folderData=${idProduct}`,
+        formData
+      );
+
       await axios.post("http://localhost:5000/manage/image/upload", {
         MSHH: idProduct,
         PATH: lastImageNameForUpdate,
       });
       if (res.data) {
-        // Swal.fire({
-        //   position: "center",
-        //   icon: "success",
-        //   title: "Thêm sản phẩm thành công !",
-        //   showConfirmButton: false,
-        //   timer: 1500,
-        // });
+        Swal.fire({
+          position: "center",
+          icon: "success",
+          title: "Thêm sản phẩm thành công !",
+          showConfirmButton: false,
+          timer: 1500,
+        });
       }
     } catch (error) {
       console.log(error);
@@ -214,37 +222,8 @@ export default function FormProduct() {
     setImage(img);
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-
-    let formData = new FormData();
-    for (let i = 0; i < image.data.length; i++) {
-      formData.append("file", image.data[i]);
-    }
-    const response = await axios.post(
-      `http://localhost:5000/upload?folderData=${idProduct}`,
-      formData
-    );
-
-    await createHandle();
-
-    if (response) {
-      Swal.fire({
-        position: "center",
-        icon: "success",
-        title: "Upload hình ảnh thành công !",
-        showConfirmButton: false,
-        timer: 1500,
-      });
-    }
-  };
-
   return (
-    <form
-      onSubmit={handleSubmit}
-      className="form-section"
-      enctype="multipart/form-data"
-    >
+    <form className="form-section" enctype="multipart/form-data">
       <div className="form-block">
         <label for="name">
           Mã sản phẩm<span style={{ color: "#eb0028" }}>*</span>
@@ -382,7 +361,9 @@ export default function FormProduct() {
         </div>
       </div>
       <div className="form-flex__btn">
-        <button className="btn">THÊM</button>
+        <button onClick={createHandle} className="btn">
+          THÊM
+        </button>
         <button className="btn" onClick={updateHandle}>
           CẬP NHẬT
         </button>
