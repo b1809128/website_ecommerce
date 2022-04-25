@@ -38,17 +38,10 @@ export default function TableMUI() {
     return newArr;
   }
 
-  function createData(tensanpham, soluongban, doanhthu, giamgia, tongdoanhthu) {
-    return { tensanpham, soluongban, doanhthu, giamgia, tongdoanhthu };
+  function createData(masanpham, soluongban, tongdoanhthu) {
+    return { masanpham, soluongban, tongdoanhthu };
   }
 
-  const rows = [
-    createData("Frozen yoghurt", 159, 6.0, 24, 4.0),
-    createData("Ice cream sandwich", 237, 9.0, 37, 4.3),
-    createData("Eclair", 262, 16.0, 24, 6.0),
-    createData("Cupcake", 305, 3.7, 67, 4.3),
-    createData("Gingerbread", 356, 16.0, 49, 3.9),
-  ];
   // console.log(unique(product));
   const codeProduct = unique(product);
 
@@ -58,34 +51,103 @@ export default function TableMUI() {
     let check = product.filter((data) => data.MSHH === codeProduct[i]);
     productArray.push(check);
   }
-  console.log(productArray);
+
+  var quantityArray = [];
+  for (let i = 0; i < productArray.length; i++) {
+    var quantity = 0;
+    for (let j = 0; j < productArray[i].length; j++) {
+      quantity += productArray[i][j].SoLuong;
+    }
+    quantityArray.push(quantity);
+  }
+
+  var rows = [];
+
+  for (let i = 0; i < codeProduct.length; i++) {
+    rows[i] = createData(codeProduct[i], quantityArray[i], codeProduct[i], 4.0);
+  }
+
+  let tongDoanhThu = 0;
+  let tongLoiNhuan = 0;
   return (
     <TableContainer component={Paper}>
       <Table sx={{ minWidth: 650 }} aria-label="simple table">
         <TableHead>
           <TableRow>
             <TableCell>Tên sản phẩm</TableCell>
-            <TableCell align="right">Số lượng bán</TableCell>
-            <TableCell align="right">Doanh thu&nbsp;(VND)</TableCell>
-            <TableCell align="right">Giảm giá&nbsp;(VND)</TableCell>
+            <TableCell fontWeight="700" align="right">Số lượng bán</TableCell>
+            <TableCell align="right">Giá nhập hàng&nbsp;(VND)</TableCell>
+            <TableCell align="right">Giá bán&nbsp;(VND)</TableCell>
             <TableCell align="right">Tổng doanh thu&nbsp;(VND)</TableCell>
+            <TableCell align="right">Tổng lợi nhuận&nbsp;(VND)</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
           {rows.map((row) => (
             <TableRow
-              key={row.tensanpham}
+              key={row.masanpham}
               sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
             >
               <TableCell component="th" scope="row">
-                {row.tensanpham}
+                {allProduct
+                  .filter((data) => data.MSHH === row.masanpham)
+                  .map((data) => data.TenHH)}
               </TableCell>
               <TableCell align="right">{row.soluongban}</TableCell>
-              <TableCell align="right">{row.doanhthu}</TableCell>
-              <TableCell align="right">{row.giamgia}</TableCell>
-              <TableCell align="right">{row.tongdoanhthu}</TableCell>
+              <TableCell align="right">
+                {new Intl.NumberFormat().format(
+                  allProduct
+                    .filter((data) => data.MSHH === row.masanpham)
+                    .map((data) => data.GiaNhapHang)
+                )}
+              </TableCell>
+              <TableCell align="right">
+                {new Intl.NumberFormat().format(
+                  allProduct
+                    .filter((data) => data.MSHH === row.masanpham)
+                    .map((data) => data.Gia)
+                )}
+              </TableCell>
+              <TableCell align="right">
+                {new Intl.NumberFormat().format(
+                  allProduct
+                    .filter((data) => data.MSHH === row.masanpham)
+                    .map((data) => {
+                      tongDoanhThu += data.Gia * row.soluongban;
+                      return data.Gia * row.soluongban;
+                    })
+                )}
+              </TableCell>
+
+              <TableCell align="right">
+                {new Intl.NumberFormat().format(
+                  allProduct
+                    .filter((data) => data.MSHH === row.masanpham)
+                    .map((data) => {
+                      tongLoiNhuan +=
+                        data.Gia * row.soluongban -
+                        data.GiaNhapHang * row.soluongban;
+                      return (
+                        data.Gia * row.soluongban -
+                        data.GiaNhapHang * row.soluongban
+                      );
+                    })
+                )}
+              </TableCell>
             </TableRow>
           ))}
+          <TableRow style={{ width: "100%" }}>
+            <TableCell></TableCell>
+            <TableCell></TableCell>
+            <TableCell></TableCell>
+            <TableCell></TableCell>
+            <TableCell>
+              Tổng doanh thu: {new Intl.NumberFormat().format(tongDoanhThu)} VND
+            </TableCell>
+            <TableCell>
+              Tổng lợi nhuận: {new Intl.NumberFormat().format(tongLoiNhuan)} VND
+            </TableCell>
+          </TableRow>
         </TableBody>
       </Table>
     </TableContainer>

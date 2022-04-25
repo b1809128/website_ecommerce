@@ -14,6 +14,7 @@ import AdminEdit from "../Edit/AdminEdit";
 import Modal from "../../components/modal/Modal";
 import Swal from "sweetalert2";
 import TableMUI from "../../components/table/TableMUI";
+import TableMUI2 from "../../components/table/TableMUI2";
 function Admin() {
   const { user } = useContext(AuthContext);
   const [authorized, setAuthorized] = useState(true);
@@ -69,6 +70,7 @@ function Admin() {
         <div className="admin__row">
           <LocationBar />
         </div>
+
         <div className="admin__row">
           <div className="admin__col-6">
             <div className="admin__item-sm">
@@ -116,6 +118,14 @@ function Admin() {
           </div>
         </div>
         <div className="admin__row">
+          <h1 className="admin__title">THỐNG KÊ DOANH THU</h1>
+          <TableMUI />
+        </div>
+        <div className="admin__row">
+          <h1 className="admin__title">THỐNG KÊ DOANH THU</h1>
+          <TableMUI2 />
+        </div>
+        <div className="admin__row">
           <div className="admin__col-6">
             <div className="admin__item-lg">
               <div className="admin__header">
@@ -153,9 +163,6 @@ function Admin() {
               <TableOrder />
             </div>
           </div>
-        </div>
-        <div className="admin__row">
-          <TableMUI />
         </div>
       </div>
     </div>

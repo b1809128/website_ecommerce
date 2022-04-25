@@ -5,6 +5,7 @@ import Swal from "sweetalert2";
 export default function FormProduct() {
   const [idProduct, setIdProduct] = useState("");
   const [nameProduct, setNameProduct] = useState("");
+  const [priceProductIn, setPriceProductIn] = useState("");
   const [priceProduct, setPriceProduct] = useState("");
   const [quantityProduct, setQuantityProduct] = useState("");
   const [descProduct, setDescProduct] = useState("");
@@ -56,6 +57,7 @@ export default function FormProduct() {
       await axios.post("http://localhost:5000/manage/product/add", {
         MSHH: idProduct,
         TenHH: nameProduct,
+        GiaNhapHang: priceProductIn,
         Gia: priceProduct,
         SoLuongHang: quantityProduct,
         Mota: JSON.parse(descProduct),
@@ -115,6 +117,7 @@ export default function FormProduct() {
         {
           MSHH: idProduct,
           TenHH: nameProduct,
+          GiaNhapHang: priceProductIn,
           Gia: priceProduct,
           SoLuongHang: quantityProduct,
           Mota: JSON.parse(descProduct),
@@ -169,7 +172,7 @@ export default function FormProduct() {
       Swal.fire({
         position: "center",
         icon: "success",
-        title: "Upload hình ảnh thành công !",
+        title: "Thêm sản phẩm thành công !",
         showConfirmButton: false,
         timer: 1500,
       });
@@ -209,7 +212,20 @@ export default function FormProduct() {
 
       <div className="form-block">
         <label for="email">
-          Giá<span style={{ color: "#eb0028" }}>*</span>
+          Giá nhập hàng<span style={{ color: "#eb0028" }}>*</span>
+        </label>
+        <input
+          type="text"
+          id="price"
+          className="form-input"
+          placeholder="10.000.000 VND"
+          onChange={(e) => setPriceProductIn(e.target.value)}
+        />
+      </div>
+
+      <div className="form-block">
+        <label for="email">
+          Giá bán<span style={{ color: "#eb0028" }}>*</span>
         </label>
         <input
           type="text"
