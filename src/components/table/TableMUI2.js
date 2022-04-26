@@ -1,14 +1,20 @@
 import React, { useEffect, useState } from "react";
 import { DataGrid } from "@mui/x-data-grid";
+import Table from "@mui/material/Table";
+import TableBody from "@mui/material/TableBody";
+import TableCell from "@mui/material/TableCell";
+import TableContainer from "@mui/material/TableContainer";
+import TableRow from "@mui/material/TableRow";
+import Paper from "@mui/material/Paper";
 import axios from "axios";
 const columns = [
   { field: "id", headerName: "ID", width: 50 },
-  { field: "tensanpham", headerName: "Tên sản phẩm", width: 200 },
+  { field: "tensanpham", headerName: "Tên sản phẩm", width: 250 },
   {
     field: "soluongban",
     headerName: "Số lượng bán",
     type: "number",
-    width: 150,
+    width: 100,
   },
   {
     field: "gianhaphang",
@@ -32,14 +38,15 @@ const columns = [
     field: "loinhuan",
     headerName: "Lợi nhuận",
     type: "number",
-    width: 200,
+    width: 250,
   },
 ];
 
 export default function TableMUI2() {
   const [product, setProduct] = useState([]);
   const [allProduct, setAllProduct] = useState([]);
-
+  let tongDoanhThu = 0;
+  let tongLoiNhuan = 0;
   useEffect(() => {
     const fetchAPI = async () => {
       try {
@@ -99,26 +106,58 @@ export default function TableMUI2() {
       ),
       giaban: new Intl.NumberFormat().format(getData.map((data) => data.Gia)),
       doanhthu: new Intl.NumberFormat().format(
-        getData.map((data) => data.Gia * quantityArray[i])
+        // eslint-disable-next-line no-loop-func
+        getData.map((data) => {
+          tongDoanhThu += data.Gia * quantityArray[i];
+          return data.Gia * quantityArray[i];
+        })
       ),
       loinhuan: new Intl.NumberFormat().format(
         getData.map(
-          (data) =>
-            data.Gia * quantityArray[i] - data.GiaNhapHang * quantityArray[i]
+          // eslint-disable-next-line no-loop-func
+          (data) => {
+            tongLoiNhuan +=
+              data.Gia * quantityArray[i] - data.GiaNhapHang * quantityArray[i];
+            return (
+              data.Gia * quantityArray[i] - data.GiaNhapHang * quantityArray[i]
+            );
+          }
         )
       ),
     };
   }
 
   return (
-    <div style={{ height: 400, width: "100%" }}>
-      <DataGrid
-        rows={rows}
-        columns={columns}
-        pageSize={5}
-        rowsPerPageOptions={[5]}
-        checkboxSelection
-      />
-    </div>
+    <>
+      <div style={{ height: 400, width: "100%" }}>
+        <DataGrid
+          rows={rows}
+          columns={columns}
+          pageSize={5}
+          rowsPerPageOptions={[5]}
+          checkboxSelection
+        />
+      </div>
+      <TableContainer component={Paper}>
+        <Table sx={{ minWidth: 650 }} aria-label="simple table">
+          <TableBody>
+            <TableRow style={{ width: "100%" }}>
+              <TableCell></TableCell>
+              <TableCell></TableCell>
+              <TableCell></TableCell>
+              <TableCell></TableCell>
+              <TableCell>
+                Tổng doanh thu: {new Intl.NumberFormat().format(tongDoanhThu)}{" "}
+                VND
+              </TableCell>
+              <TableCell>
+                Tổng lợi nhuận: {new Intl.NumberFormat().format(tongLoiNhuan)}{" "}
+                VND
+              </TableCell>
+            </TableRow>
+          </TableBody>
+        </Table>
+      </TableContainer>
+    </>
   );
 }

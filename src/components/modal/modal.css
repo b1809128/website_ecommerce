@@ -38,7 +38,7 @@
 }
 
 .modal::-webkit-scrollbar {
-  width: 10px;
+  width: 0px;
 }
 
 .modal::-webkit-scrollbar-track {

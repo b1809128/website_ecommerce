@@ -50,7 +50,8 @@ function TableProduct() {
             <th style={{ textAlign: "center" }}>TÊN SẢN PHẨM</th>
             <th style={{ textAlign: "center" }}>HÌNH ẢNH</th>
             <th style={{ textAlign: "center" }}>SỐ LƯỢNG</th>
-            <th style={{ textAlign: "center" }}>GIÁ (VND)</th>
+            <th style={{ textAlign: "center" }}>GIÁ NHẬP HÀNG</th>
+            <th style={{ textAlign: "center" }}>GIÁ BÁN</th>
           </tr>
         </thead>
         <tbody>
@@ -73,7 +74,10 @@ function TableProduct() {
                     {data.SoLuongHang}
                   </td>
                   <td style={{ textAlign: "right" }}>
-                    {new Intl.NumberFormat().format(data.Gia)}
+                    {new Intl.NumberFormat().format(data.GiaNhapHang)} VND
+                  </td>
+                  <td style={{ textAlign: "right" }}>
+                    {new Intl.NumberFormat().format(data.Gia)} VND
                   </td>
                 </tr>
               </>

@@ -6,6 +6,11 @@
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
     Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
 }
+
+html {
+  scroll-behavior: smooth;
+}
+
 .row {
   display: flex;
   flex-wrap: wrap;
@@ -24,11 +29,11 @@
 .link__btn {
   color: #eb0028;
   text-decoration: none;
-  display: flex;
+  display: block;
   width: 100%;
   height: 100%;
-  justify-content: center;
-  align-items: center;
+  text-align: center;
+  line-height: 30px;
 }
 
 .link:hover {

@@ -338,6 +338,7 @@ export default function FormProduct() {
         <button className="btn">
           <p className="link__btn">THÊM</p>
         </button>
+        {/* <input type="submit" className="btn" value="THÊM" /> */}
         <button className="btn" onClick={updateHandle}>
           <p className="link__btn">CẬP NHẬT</p>
         </button>
