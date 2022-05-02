@@ -24,7 +24,6 @@ import Swal from "sweetalert2";
 import Posts from "./pages/Posts/Posts";
 import Introduce from "./pages/Introduce/Introduce";
 import Contact from "./pages/Contact/Contact";
-
 function App() {
   const { user } = useContext(AuthContext);
 
@@ -303,8 +302,12 @@ function App() {
           </Route>
         </Switch>
         <Footer />
-
         <ScrollTop />
+        {/* <iframe
+          style={{ position: "fixed", background: "none", top: "-100px", right: "0", width: "30%",height: "100%", border:"none"}}
+          src="http://127.0.0.1:5000"
+          title="ChatBot"
+        ></iframe> */}
       </Router>
     </div>
   );

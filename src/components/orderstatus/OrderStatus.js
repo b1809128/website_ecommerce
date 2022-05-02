@@ -2,7 +2,7 @@ import React from "react";
 import { FiCheck } from "react-icons/fi";
 import { ImArrowRight } from "react-icons/im";
 export default function OrderStatus({ status }) {
-  if (status[0] === "Đã giao hàng") {
+  if (status[0] === "Đã nhận hàng") {
     return (
       <>
         <div className="order-details__status-flex">

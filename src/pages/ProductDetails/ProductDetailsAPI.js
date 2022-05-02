@@ -6,6 +6,9 @@ import ReviewBar from "../../components/bar/reviewtextbar/ReviewBar";
 import "./productdetails.css";
 import SimilarProduct from "../../components/SimilarProduct/SimilarProduct";
 import { AiOutlineShoppingCart } from "react-icons/ai";
+import { PostData } from "../Posts/PostData";
+import Comment from "../../components/main/comment/Comment";
+import { FaAngleRight } from "react-icons/fa";
 
 export default function ProductDetailsAPI({ addCart, addCheckOut }) {
   // Them param id vao duong dan
@@ -32,6 +35,17 @@ export default function ProductDetailsAPI({ addCart, addCheckOut }) {
 
   //Onclick Events
   const [click, setClick] = useState(0);
+
+  //Fetch Posts
+  const q = product.map((data) => JSON.parse(data.MoTa).Brand);
+  // const q ="Apple"
+  const search = () => {
+    return PostData.map((data) => data).filter((data) =>
+      ["text","content"].some((item) => data[item].toString().includes(q))
+    );
+  };
+
+  // console.log(search());
 
   return (
     <>
@@ -310,6 +324,30 @@ export default function ProductDetailsAPI({ addCart, addCheckOut }) {
       })}
       <div className="product-details-section">
         <SimilarProduct groupBy={product.map((data) => data.MaLoaiHang)} />
+      </div>
+
+      <div className="product-details">
+        <div className="product-details-section">
+          <div className="row">
+            <h2 className="title__tag">
+              <FaAngleRight />
+              BÀI VIẾT LIÊN QUAN
+            </h2>
+          </div>
+          <div className="row">
+            {search().map((data) => {
+              return (
+                <Comment
+                  id={data.id}
+                  image={data.image}
+                  title={data.title}
+                  date={data.date}
+                  tags={data.tags}
+                />
+              );
+            })}
+          </div>
+        </div>
       </div>
     </>
   );

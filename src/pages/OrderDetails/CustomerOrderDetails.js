@@ -89,7 +89,7 @@ export default function AdminOrderDetails() {
 
   //TODO:Order status
   const orderStatus = orderData.map((data) => data.status);
-
+// console.log(orderStatus);
   if (!authorized) {
     return <Redirect to="/dang-nhap" />;
   }
@@ -195,9 +195,13 @@ export default function AdminOrderDetails() {
                   </ul>
                 );
               })}
-              <button className="btn" onClick={deleteHandle}>
-                XÓA ĐƠN HÀNG
-              </button>
+              {orderStatus[0] === "Chờ xác nhận" ? (
+                <button className="btn" onClick={deleteHandle}>
+                  XÓA ĐƠN HÀNG
+                </button>
+              ) : (
+                ""
+              )}
             </div>
             <div
               className="order-details__form-section"

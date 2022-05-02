@@ -30,14 +30,16 @@ export default function ScrollTop() {
   return (
     <>
       {isVisible && (
-        <a
-          onClick={scrollToTop}
-          href=""
-          className="goto-top show-top link"
-          title="Về đầu trang"
-        >
-          <FaArrowUp />
-        </a>
+        <div>
+          <a
+            onClick={scrollToTop}
+            href=""
+            className="goto-top show-top link"
+            title="Về đầu trang"
+          >
+            <FaArrowUp />
+          </a>
+        </div>
       )}
     </>
   );
