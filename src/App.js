@@ -303,8 +303,17 @@ function App() {
         </Switch>
         <Footer />
         <ScrollTop />
+
         {/* <iframe
-          style={{ position: "fixed", background: "none", top: "-100px", right: "0", width: "30%",height: "100%", border:"none"}}
+          style={{
+            position: "fixed",
+            background: "none",
+            bottom: "100px",
+            right: "0",
+            width: "30%",
+            height: "100%",
+            border: "none",
+          }}
           src="http://127.0.0.1:5000"
           title="ChatBot"
         ></iframe> */}
