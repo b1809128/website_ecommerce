@@ -4,10 +4,8 @@ import { AuthContext } from "../../context/AuthContext";
 import axios from "axios";
 import TableCustomer from "../../components/table/TableCustomer";
 import TableProduct from "../../components/table/TableProduct";
-import Chart from "../../components/chart/Chart";
 import "./Admin.css";
 import LocationBar from "../../components/bar/locationbar/LocationBar";
-import { chartData } from "../../components/chart/chartData";
 import TableOrder from "../../components/table/TableOrder";
 import { FaEdit } from "react-icons/fa";
 import AdminEdit from "../Edit/AdminEdit";
@@ -15,10 +13,17 @@ import Modal from "../../components/modal/Modal";
 import Swal from "sweetalert2";
 import TableMUI2 from "../../components/table/TableMUI2";
 import AdminBar from "../../components/bar/adminbar/AdminBar";
+import Chart from "../../components/chart/Chart";
+import { chartData } from "../../components/chart/chartData";
 function Admin() {
   const { user } = useContext(AuthContext);
   const [authorized, setAuthorized] = useState(true);
   const [bestSaleData, setBestSaleData] = useState([]);
+  const [customerData, setCustomerData] = useState([]);
+  const [allProduct, setAllProduct] = useState([]);
+  const [productOrder, setProductOrder] = useState([]);
+  let tongDoanhThu = 0;
+
   useEffect(() => {
     window.scrollTo(0, 0);
     const fetch = async () => {
@@ -30,11 +35,72 @@ function Admin() {
       } else {
         setAuthorized(false);
       }
-      const res3 = await axios.get("http://localhost:5000/product/bestsale");
-      setBestSaleData(res3.data);
+      const res2 = await axios.get("http://localhost:5000/product/bestsale");
+      const res3 = await axios.get("http://localhost:5000/manage/api");
+      const res4 = await axios.get("http://localhost:5000/manage/product");
+      const res5 = await axios.get(
+        "http://localhost:5000/manage/order/details"
+      );
+
+      setBestSaleData(res2.data);
+      setCustomerData(res3.data);
+      setAllProduct(res4.data);
+      setProductOrder(res5.data);
     };
     fetch();
   }, [user.token]);
+
+  function unique(arr) {
+    var newArr = [];
+    for (var i = 0; i < arr.length; i++) {
+      if (newArr.indexOf(arr[i].MSHH) === -1) {
+        newArr.push(arr[i].MSHH);
+      }
+    }
+    return newArr;
+  }
+
+  const codeProduct = unique(productOrder);
+
+  var productArray = [];
+  for (var i = 0; i < codeProduct.length; i++) {
+    // eslint-disable-next-line no-loop-func
+    let check = productOrder.filter((data) => data.MSHH === codeProduct[i]);
+    productArray.push(check);
+  }
+
+  var quantityArray = [];
+  for (let i = 0; i < productArray.length; i++) {
+    var quantity = 0;
+    for (let j = 0; j < productArray[i].length; j++) {
+      quantity += productArray[i][j].SoLuong;
+    }
+    quantityArray.push(quantity);
+  }
+
+  var rows = [];
+
+  for (let i = 0; i < codeProduct.length; i++) {
+    let getData = allProduct
+      // eslint-disable-next-line no-loop-func
+      .filter((data) => data.MSHH === codeProduct[i]);
+    rows[i] = {
+      id: i,
+      tensanpham: getData.map((data) => data.TenHH),
+      soluongban: quantityArray[i],
+      gianhaphang: new Intl.NumberFormat().format(
+        getData.map((data) => data.GiaNhapHang)
+      ),
+      giaban: new Intl.NumberFormat().format(getData.map((data) => data.Gia)),
+      doanhthu: new Intl.NumberFormat().format(
+        // eslint-disable-next-line no-loop-func
+        getData.map((data) => {
+          tongDoanhThu += data.Gia * quantityArray[i];
+          return data.Gia * quantityArray[i];
+        })
+      ),
+    };
+  }
 
   //TODO: Modal
   const [statusModal, setStatusModal] = useState(false);
@@ -46,8 +112,7 @@ function Admin() {
     setStatusModal(false);
   };
 
-  //TODO: chart
-  // console.log(chartData.map(data => data))
+  //TODO: Chart Data map
   var dataSet = chartData.map((data) => data);
 
   //TODO: authorized
@@ -73,54 +138,41 @@ function Admin() {
         <div className="admin__row">
           <AdminBar />
         </div>
-
         <div className="admin__row">
-          <div className="admin__col-6">
-            <div className="admin__item-sm">
-              <Chart
-                title={dataSet[0].title}
-                color={dataSet[0].color}
-                data={dataSet[0].data}
-              />
-            </div>
-            <div className="admin__item-sm">
-              <Chart
-                title={dataSet[1].title}
-                color={dataSet[1].color}
-                data={dataSet[1].data}
-              />
-            </div>
-            <div className="admin__item-sm">
-              <Chart
-                title={dataSet[2].title}
-                color={dataSet[2].color}
-                data={dataSet[2].data}
-              />
-            </div>
-            <div className="admin__item-sm">
-              <Chart
-                title={dataSet[3].title}
-                color={dataSet[3].color}
-                data={dataSet[3].data}
-              />
-            </div>
+          <div className="admin__item-sm">
+            <Chart
+              title={dataSet[0].title}
+              color={dataSet[0].color}
+              data={dataSet[0].data}
+              number={customerData.length}
+            />
           </div>
-          <div className="admin__col-4">
-            <div className="admin__item-lg">
-              <Chart
-                title={dataSet[4].title}
-                color={dataSet[4].color}
-                data={dataSet[4].data}
-              />
-              <Chart
-                title={dataSet[5].title}
-                color={dataSet[5].color}
-                data={dataSet[5].data}
-              />
-            </div>
+          <div className="admin__item-sm">
+            <Chart
+              title={dataSet[1].title}
+              color={dataSet[1].color}
+              data={dataSet[1].data}
+              number={productOrder.length}
+            />
           </div>
-          <div id="thongkedoanhso"></div>
+          <div className="admin__item-sm">
+            <Chart
+              title={dataSet[2].title}
+              color={dataSet[2].color}
+              data={dataSet[2].data}
+              number={allProduct.length}
+            />
+          </div>
+          <div className="admin__item-sm">
+            <Chart
+              title={dataSet[3].title}
+              color={dataSet[3].color}
+              data={dataSet[3].data}
+              number={tongDoanhThu}
+            />
+          </div>
         </div>
+        <div id="thongkedoanhso"></div>
 
         <div className="admin__row">
           <h1 className="admin__title">THỐNG KÊ DOANH THU</h1>

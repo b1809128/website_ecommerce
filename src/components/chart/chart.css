@@ -1,9 +1,9 @@
-.chart {
+/* .chart {
   margin: 20px;
   padding: 20px;
   -webkit-box-shadow: 0px 0px 15px -5px rgba(0, 0, 0, 0.8);
   box-shadow: 0px 0px 15px -5px rgba(0, 0, 0, 0.8);
-}
+} */
 
 .chart__image {
   width: 100%;
@@ -12,7 +12,13 @@
 
 .chart__title {
   font-family: monospace;
-  font-size: 1rem;
+  font-size: 1.2rem;
   /* color: #eb0028; */
   text-decoration: underline;
+}
+
+.chart__number{
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
 }

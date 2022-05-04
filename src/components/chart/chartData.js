@@ -1,22 +1,22 @@
 export const chartData = [
   {
-    title: "LƯỢT MUA TRONG THÁNG",
-    color: "#4d54f7",
+    title: "KHÁCH HÀNG",
+    color: "#67b7dc",
     data: "./images/charts/chart.jpg",
   },
   {
-    title: "LƯỢT XEM TRONG THÁNG",
-    color: "#eb0028",
+    title: "ĐƠN ĐẶT HÀNG",
+    color: "#e36860",
     data: "./images/charts/chart1.jpg",
   },
   {
-    title: "LƯỢT ĐẶT HÀNG TRONG THÁNG",
-    color: "#64f8a8",
+    title: "SẢN PHẨM MỚI",
+    color: "#3fb28f",
     data: "./images/charts/chart2.jpg",
   },
   {
-    title: "LƯỢT ĐẶT HÀNG ONLINE",
-    color: "#f7d345",
+    title: "DOANH THU",
+    color: "#50c0d6",
     data: "./images/charts/chart3.jpg",
   },
   {

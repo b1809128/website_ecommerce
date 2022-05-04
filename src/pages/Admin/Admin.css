@@ -33,6 +33,14 @@
   flex-wrap: wrap;
 }
 
+.admin__col-2{
+  flex-basis:19%;
+  padding: 10px;
+  margin: 0 5px;
+  display: flex;
+  flex-wrap: wrap;
+}
+
 .admin__col-4 {
   flex-basis: 40%;
 }
@@ -43,9 +51,10 @@
 }
 
 .admin__item-sm {
-  width: 340px;
-  /* height: 180px; */
-  margin: 10px;
+  /* width: 340px; */
+  flex-basis:24%;
+  padding: 5px;
+  margin: 0 5px;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.8);
 }
