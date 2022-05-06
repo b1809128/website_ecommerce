@@ -9,10 +9,13 @@ export default function Chart({ title, color, data, number }) {
         {title}
       </h1>
       <h1 className="chart__number" style={{ color: color }}>
-        {new Intl.NumberFormat().format(number)} - <BsArrowUp />
+        {number > 1000000
+          ? new Intl.NumberFormat().format(Math.round(number / 1000000))
+          : new Intl.NumberFormat().format(number)}{" "}
+        - <BsArrowUp />
         {number > 1000000
           ? new Intl.NumberFormat().format(
-              number /100000000 * 0.1 + Math.floor(Math.random() * 10)
+              (number / 100000000) * 0.1 + Math.floor(Math.random() * 10)
             )
           : new Intl.NumberFormat().format(
               number * 0.1 + Math.floor(Math.random() * 10)

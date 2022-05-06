@@ -7,6 +7,7 @@ import TableProduct from "../../components/table/TableProduct";
 import "./Admin.css";
 import LocationBar from "../../components/bar/locationbar/LocationBar";
 import TableOrder from "../../components/table/TableOrder";
+import { FaEdit } from "react-icons/fa";
 import AdminEdit from "../Edit/AdminEdit";
 import Modal from "../../components/modal/Modal";
 import Swal from "sweetalert2";
@@ -184,6 +185,25 @@ function Admin() {
           <h1 className="admin__title">QUẢN LÝ SẢN PHẨM</h1>
           <TableProductMUISimple2 showModal={showModal} />
           <div id="quanlysanpham"></div>
+        </div>
+
+        <div className="admin__row">
+          <div className="admin__col-12">
+            <div className="admin__item-lg-12">
+              <div className="admin__header">
+                <h1 className="admin__title">QUẢN LÝ SẢN PHẨM</h1>
+                <FaEdit
+                  style={{
+                    color: "#28a745",
+                    cursor: "pointer",
+                  }}
+                  onClick={showModal}
+                />
+              </div>
+              <div id="banchay"></div>
+              <TableProduct />
+            </div>
+          </div>
         </div>
 
         <div className="admin__row">
