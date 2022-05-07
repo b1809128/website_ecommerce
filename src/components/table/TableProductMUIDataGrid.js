@@ -24,7 +24,7 @@ const columns = [
     field: "soluongban",
     headerName: "Số lượng",
     type: "number",
-    width: 100,
+    width: 80,
   },
   {
     field: "gianhaphang",
@@ -38,8 +38,13 @@ const columns = [
     type: "number",
     width: 150,
   },
+  {
+    field: "tags",
+    headerName: "Tags",
+    width: 150,
+  },
 ];
-function TableProductMUISimple2({ showModal }) {
+function TableProductMUIDataGrid({ showModal }) {
   //Search
   const [tagName, setTagName] = useState("");
   const [searchData, setSearchData] = useState([]);
@@ -79,6 +84,7 @@ function TableProductMUISimple2({ showModal }) {
       soluongban: searchData[i].SoLuongHang,
       gianhaphang: new Intl.NumberFormat().format(searchData[i].GiaNhapHang),
       giaban: new Intl.NumberFormat().format(searchData[i].Gia),
+      tags: searchData[i].tags,
     };
   }
 
@@ -104,7 +110,7 @@ function TableProductMUISimple2({ showModal }) {
               <TableCell></TableCell>
               <TableCell></TableCell>
               <TableCell></TableCell>
-              <TableCell>
+              <TableCell style={{ textAlign: "right" }}>
                 <FaEdit
                   style={{
                     color: "#28a745",
@@ -118,13 +124,13 @@ function TableProductMUISimple2({ showModal }) {
           </TableBody>
         </Table>
       </TableContainer>
-      <div style={{ height: 870, width: "100%" }}>
+      <div style={{ height: 570, width: "100%" }}>
         <DataGrid
           rows={rows}
           columns={columns}
           rowHeight={150}
-          pageSize={5}
-          rowsPerPageOptions={[5]}
+          pageSize={3}
+          rowsPerPageOptions={[3]}
           checkboxSelection
         />
       </div>
@@ -132,4 +138,4 @@ function TableProductMUISimple2({ showModal }) {
   );
 }
 
-export default TableProductMUISimple2;
+export default TableProductMUIDataGrid;

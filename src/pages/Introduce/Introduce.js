@@ -31,7 +31,7 @@ export default function Introduce() {
               <hr />
               <div className="contact-wrapper" style={{ margin: "12px 0" }}>
                 <div className="contact-item">
-                  <h2 className="contact-title">CHI NHÁNH CẦN THƠ</h2>
+                  <h2 className="contact-title">TRỤ SỞ CHÍNH CẦN THƠ</h2>
                   <p className="contact-address">
                     <span style={{ fontWeight: "700" }}>
                       Văn phòng đại diện:

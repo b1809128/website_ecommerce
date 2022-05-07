@@ -8,7 +8,7 @@ import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import axios from "axios";
 
-export default function TableMUI() {
+export default function TableMUISimple() {
   const [product, setProduct] = useState([]);
   const [allProduct, setAllProduct] = useState([]);
 

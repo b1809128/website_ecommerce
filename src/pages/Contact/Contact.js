@@ -67,7 +67,7 @@ export default function Contact() {
             <div className="check__method">
               <div className="contact-wrapper">
                 <div className="contact-item">
-                  <h2 className="contact-title">CHI NHÁNH CẦN THƠ</h2>
+                  <h2 className="contact-title">TRỤ SỞ CHÍNH CẦN THƠ</h2>
                   <p className="contact-address">
                     <span style={{ fontWeight: "700" }}>
                       Văn phòng đại diện:

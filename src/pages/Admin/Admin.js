@@ -3,22 +3,21 @@ import { Redirect } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
 import axios from "axios";
 import TableCustomer from "../../components/table/TableCustomer";
-import TableProduct from "../../components/table/TableProduct";
 import "./Admin.css";
 import LocationBar from "../../components/bar/locationbar/LocationBar";
 import TableOrder from "../../components/table/TableOrder";
 import AdminEdit from "../Edit/AdminEdit";
 import Modal from "../../components/modal/Modal";
 import Swal from "sweetalert2";
-import TableMUI2 from "../../components/table/TableMUI2";
+import TableMUIDataGrid from "../../components/table/TableMUIDataGrid";
 import AdminBar from "../../components/bar/adminbar/AdminBar";
 import Chart from "../../components/chart/Chart";
 import { chartData } from "../../components/chart/chartData";
-import TableProductMUISimple2 from "../../components/table/TableProductMUISimple2";
+import TableProductMUIDataGrid from "../../components/table/TableProductMUIDataGrid";
+import TableBestSaleMUIDataGrid from "../../components/table/TableBestSaleMUIDataGrid";
 function Admin() {
   const { user } = useContext(AuthContext);
   const [authorized, setAuthorized] = useState(true);
-  const [bestSaleData, setBestSaleData] = useState([]);
   const [customerData, setCustomerData] = useState([]);
   const [allProduct, setAllProduct] = useState([]);
   const [productOrder, setProductOrder] = useState([]);
@@ -35,14 +34,12 @@ function Admin() {
       } else {
         setAuthorized(false);
       }
-      const res2 = await axios.get("http://localhost:5000/product/bestsale");
       const res3 = await axios.get("http://localhost:5000/manage/api");
       const res4 = await axios.get("http://localhost:5000/manage/product");
       const res5 = await axios.get(
         "http://localhost:5000/manage/order/details"
       );
 
-      setBestSaleData(res2.data);
       setCustomerData(res3.data);
       setAllProduct(res4.data);
       setProductOrder(res5.data);
@@ -176,24 +173,20 @@ function Admin() {
 
         <div className="admin__row">
           <h1 className="admin__title">THỐNG KÊ DOANH THU</h1>
-          <TableMUI2 />
+          <TableMUIDataGrid />
           <div id="quanlysanpham"></div>
         </div>
 
         <div className="admin__row">
           <h1 className="admin__title">QUẢN LÝ SẢN PHẨM</h1>
-          <TableProductMUISimple2 showModal={showModal} />
+          <TableProductMUIDataGrid showModal={showModal} />
           <div id="quanlysanpham"></div>
         </div>
 
         <div className="admin__row">
-          <div className="admin__col-12">
-            <div className="admin__item-lg-12">
-              <h1 className="admin__title">BÁN CHẠY NHẤT TRONG THÁNG</h1>
-              <div id="quanlynguoidung_donhang"></div>
-              <TableProduct props={bestSaleData} />
-            </div>
-          </div>
+          <h1 className="admin__title">SẢN PHẨM BÁN CHẠY</h1>
+          <TableBestSaleMUIDataGrid showModal={showModal} />
+          <div id="quanlysanpham"></div>
         </div>
 
         <div className="admin__row">

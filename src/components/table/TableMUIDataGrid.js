@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { DataGrid } from "@mui/x-data-grid";
 import Table from "@mui/material/Table";
-import TableBody from "@mui/material/TableBody";
+import TableHead from "@mui/material/TableHead";
 import TableCell from "@mui/material/TableCell";
 import TableContainer from "@mui/material/TableContainer";
 import TableRow from "@mui/material/TableRow";
@@ -42,7 +42,7 @@ const columns = [
   },
 ];
 
-export default function TableMUI2() {
+export default function TableMUIDataGrid() {
   const [product, setProduct] = useState([]);
   const [allProduct, setAllProduct] = useState([]);
   let tongDoanhThu = 0;
@@ -129,7 +129,7 @@ export default function TableMUI2() {
 
   return (
     <>
-      <div style={{ height: 400, width: "100%" }}>
+      <div style={{ height: 375, width: "100%" }}>
         <DataGrid
           rows={rows}
           columns={columns}
@@ -140,7 +140,7 @@ export default function TableMUI2() {
       </div>
       <TableContainer component={Paper}>
         <Table sx={{ minWidth: 650 }} aria-label="simple table">
-          <TableBody>
+          <TableHead>
             <TableRow style={{ width: "100%" }}>
               <TableCell></TableCell>
               <TableCell></TableCell>
@@ -155,7 +155,7 @@ export default function TableMUI2() {
                 VND
               </TableCell>
             </TableRow>
-          </TableBody>
+          </TableHead>
         </Table>
       </TableContainer>
     </>
