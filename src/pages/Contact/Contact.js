@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import Swal from "sweetalert2";
 import LocationBar from "../../components/bar/locationbar/LocationBar";
 import "../CheckOut/checkout.css";
 import "./contact.css";
@@ -6,6 +7,18 @@ export default function Contact() {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
+
+  const contactSubmit = (e) => {
+    e.preventDefault();
+    Swal.fire({
+      position: "center",
+      icon: "success",
+      title: "Chúng tôi đã tiếp nhận phản hồi!",
+      showConfirmButton: false,
+      timer: 1500,
+    })
+  }
+
   return (
     <div className="check">
       <div className="check-section">
@@ -58,7 +71,7 @@ export default function Contact() {
                     <textarea id="notes"></textarea>
                   </div>
                   <div className="form-block">
-                    <button className="btn">Gửi</button>
+                    <button className="btn" onClick={contactSubmit}>Gửi</button>
                   </div>
                 </form>
               </div>

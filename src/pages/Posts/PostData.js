@@ -227,4 +227,39 @@ một thiết bị như vậy. Với Samsung thì điều đó là hoàn toàn c
     <li><strong>Galaxy A53 5G 8GB/128GB</strong> giá chỉ <del>9.990.000đ</del> &gt;&gt; <strong>8.790.000đ</strong></li>
     </ul>`,
   },
+  {
+    id: 11,
+    image: "/images/tincongnghe/8.png",
+    tags: "Sản phẩm mới",
+    date: "06 tháng 05 năm 2022",
+    title:
+      "iPhone 14 có thể sẽ là dòng iPhone đắt nhất trong lịch sử của Apple",
+      text:"Dự đoán ra mắt vào tháng 6/2022, iPhone 14 có thể sẽ là dòng iPhone đắt nhất trong lịch sử của Apple",
+    content: `<p><strong>Một vài người dám nghĩ dám làm và dũng cảm đã bắt đầu &#8220;mổ&#8221; chiếc Apple Studio Display để khám phá. Các linh kiện bên trong cho thấy, đây thực sự không chỉ là một chiếc màn hình. Nó chẳng khác gì một chiếc iMac 27 inches cả.</strong></p>
+    <h2><strong>Có rất nhiều linh kiện &#8220;đáng ngờ&#8221; trong Studio Display</strong></h2>
+    <p>Apple đã trang bị rất nhiều các tính năng thông minh tiên tiến cho Studio Display. Chẳng hạn như hỗ trợ trợ lý ảo Siri và webcam được điều khiển bởi AI nhằm bù đắp cho mức giá  khá cao của thiết bị. Quá trình &#8220;mổ xẻ&#8221; Studio Display đã cho thấy sự phức tạp bên trong chiếc màn hình này.</p>
+    <p>Theo thông tin từ Mac Rumors, bên trong thiết bị có chứa con chip A13 Bionic &#8211; con chip tương tự được tìm thấy trong iPad và iPhone và được sử dụng cho các tính năng AI. Điều thú vị là dường như chiếc màn hình này cũng đi kèm bộ nhớ trong 64GB. Đây là mức dung lượng lưu trữ khá cao cho một chiếc màn hình. Nó thậm chí còn tương đương với những chiếc iPhone hay iPad giá rẻ.</p>
+    <p>Mặc dù Studio Display chạy trên iOS 15.4, nhưng vẫn chưa ai rõ liệu dung lượng lưu trữ 64GB dùng để làm gì. Bên trong Studio Display cũng có hai chiếc quạt tản nhiệt, cùng với sáu loa, tương tự như những gì có trong chiếc iMac 24 inches.</p>
+    <h2><strong>Tại sao Apple không làm luôn một chiếc iMac 27 inch?</strong></h2>
+    <p>Khi Apple cho ra mắt Studio Display, cùng với Mac Studio mới vào đầu tháng 3, nhiều người đã tự hỏi tại sao hãng không làm luôn một chiếc iMac 27 inches? Xét cho cùng, Studio Display tạo cho người ta cảm giác về sự liên quan tới iMac.</p>
+    <p><img src="/images/posts/11.png" alt="tin-cong-nghe" width="100%" /></p>
+    <p>Tuy nhiên, quá trình &#8220;mổ xẻ&#8221; này cho thấy đây có thể là sự lãng phí cơ hội của Apple. Nếu Apple đã đưa nhiều công nghệ đến mức đó vào trong chiếc màn hình, bao gồm cả ổ cứng và quạt tản nhiệt, thì tại sao hãng không thêm luôn con chip M1 cùng ổ cứng và tạo ra một chiếc iMac mới?</p>
+    <p>Nếu Apple tung ra một chiếc iMac 27 inches đi kèm con chip M1, có thể nó sẽ được đón nhận nồng nhiệt hơn nhiều.</p>`,
+  },
+  {
+    id: 12,
+    image: "/images/tincongnghe/6.png",
+    tags: "Sản phẩm mới",
+    date: "07 tháng 05 năm 2022",
+    title: "Có nên mua Samsung Galaxy S22 Ultra thời điểm này? Câu trả lời là…",
+    text:"Sau những đánh giá về việc giảm hiệu năng S22, nhà sản xuất Samsung đã lên tiếng xin lỗi về sự cố trên.",
+    content: `<p><strong>Tháng trước, Samsung đã giới thiệu dòng flagship Galaxy S22 Series thế hệ mới. Bây giờ, công ty tiếp tục ra mắt phiên bản Galaxy S22 Ultra 1TB. Tuy nhiên phiên bản này chỉ giới hạn tại một số thị trường. </strong></p>
+      <h2><strong>Samsung ra mắt Galaxy S22 Ultra 1TB</strong></h2>
+      <p>Phiên bản đắt nhất trong dòng flagship mới của Samsung không ai khác chính là Galaxy S22 Ultra với bộ nhớ lên tới 1TB. Hồi tháng 9 năm ngoái, Apple cũng lần đầu tiên giới thiệu một chiếc iPhone với dung lượng lưu trữ khổng lồ lên tới 1TB. Bây giờ, Samsung cũng mang nó đến với Galaxy S22 Ultra.</p>
+      <p><img src="/images/posts/6.png" alt="thong-so-ky-thuat-cua-dien-thoai-gap-huawei-mate-x3-duoc-tiet-lo-1" width="100%" /></p>
+      <p>Trước đó, Samsung đã giới thiệu biến thể Ultra với hai tùy chọn lưu trữ là 256GB và 512GB. Cả hai đều có mức giá khá đắt đỏ so với các phiên bản còn lại trong dòng sản phẩm. Phiên bản dung lượng 1TB này sẽ giới hạn bán tại một số thị trường trên thế giới. Cụ thể người dùng tại thị trường Ấn Độ đã có thể mua và sở hữu phiên bản này.</p>
+      <p><img src="/images/posts/6_1.png" alt="thong-so-ky-thuat-cua-dien-thoai-gap-huawei-mate-x3-duoc-tiet-lo-1" width="100%" /></p>
+      <p>Về thông số kỹ thuật, Galaxy S22 Ultra 1TB vẫn trang bị chip Snapdragon 8 Gen 1 và đi kèm với viên pin lớn 5000mAh. Điện thoại có hỗ trợ sạc nhanh 45W và sạc không dây 15W. Màn hình của Galaxy S22 Ultra là tấm nền Dynamic AMOLED 2x 6.8 inch với độ phân giải QHD+. Nó cũng đi kèm với khả năng làm mới màn hình 120Hz. Mặt sau của điện thoại là hệ thống camera 108MP với những tính năng chụp ảnh hiện đại nhất. Hiện tại chưa có thông tin liệu Samsung có đem phiên bản 1TB về thị trường Việt Nam hay không?</p>
+      <p>Trên đây là thông tin Galaxy S22 Ultra 1TB ra mắt.</p>`,
+  },
 ];

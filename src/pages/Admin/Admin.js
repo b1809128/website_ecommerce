@@ -180,13 +180,13 @@ function Admin() {
         <div className="admin__row">
           <h1 className="admin__title">QUẢN LÝ SẢN PHẨM</h1>
           <TableProductMUIDataGrid showModal={showModal} />
-          <div id="quanlysanpham"></div>
+          <div id="banchay"></div>
         </div>
 
         <div className="admin__row">
           <h1 className="admin__title">SẢN PHẨM BÁN CHẠY</h1>
           <TableBestSaleMUIDataGrid showModal={showModal} />
-          <div id="quanlysanpham"></div>
+          <div id="quanlynguoidung_donhang"></div>
         </div>
 
         <div className="admin__row">

@@ -8,6 +8,7 @@ import {
   FaYoutube,
   FaGoogle,
 } from "react-icons/fa";
+import Swal from "sweetalert2";
 
 function Footer() {
   //To get Animation with Aos library
@@ -16,6 +17,17 @@ function Footer() {
       duration: 2000,
     });
   }, []);
+
+  const contactSubmit = (e) => {
+    e.preventDefault();
+    Swal.fire({
+      position: "center",
+      icon: "success",
+      title: "Thông tin mới nhất về sản phẩm sẽ được gửi đến bạn !",
+      showConfirmButton: false,
+      timer: 1500,
+    });
+  };
 
   return (
     <div className="footer-container" id="footer">
@@ -30,7 +42,9 @@ function Footer() {
           <p className="footer-search-content-text-item">
             NHIỀU HÌNH THỨC THANH TOÁN
           </p>
-          <p className="footer-search-content-text-item">HỖ TRỢ TRỰC TUYẾN 24/7</p>
+          <p className="footer-search-content-text-item">
+            HỖ TRỢ TRỰC TUYẾN 24/7
+          </p>
         </div>
         <div data-aos="fade-up">
           <form className="footer-search-content-form" action="">
@@ -39,7 +53,9 @@ function Footer() {
               placeholder="Your Email"
               className="footer-search-content-input"
             />
-            <button className="btn">Nhận mã giảm giá</button>
+            <button className="btn" onClick={contactSubmit}>
+              Nhận mã giảm giá
+            </button>
           </form>
         </div>
       </div>

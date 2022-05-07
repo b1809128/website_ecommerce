@@ -98,8 +98,8 @@ export default function Posts() {
                         src="/images/tincongnghe/13.png"
                       />
                       <h3 className="post__title-header">
-                        iPad Pro 2021 ra mắt: chip M1 siêu mạnh, màn hình
-                        mini-LED mới, giá chỉ từ 18.4 triệu
+                        iPhone 14 có thể sẽ là dòng iPhone đắt nhất trong lịch
+                        sử của Apple
                       </h3>
                     </div>
                   </div>
@@ -110,19 +110,24 @@ export default function Posts() {
                         className="post__image-header"
                         src="/images/tincongnghe/14.png"
                       />
-                      <h3 className="post__title-header">
-                        Top 5 điện thoại đôi dành cho fan Samsung
-                      </h3>
+                      <Link to={`/tin-cong-nghe?idPost=12`} className="link">
+                        <h3 className="post__title-header">
+                          Có nên mua Samsung Galaxy S22 Ultra thời điểm này? Câu
+                          trả lời là…
+                        </h3>
+                      </Link>
                     </div>
                     <div className="post__wrapper-header">
                       <img
                         className="post__image-header"
                         src="/images/tincongnghe/13.png"
                       />
-                      <h3 className="post__title-header">
-                        iPad Pro 2021 ra mắt: chip M1 siêu mạnh, màn hình
-                        mini-LED mới, giá chỉ từ 18.4 triệu
-                      </h3>
+                      <Link to={`/tin-cong-nghe?idPost=11`} className="link">
+                        <h3 className="post__title-header">
+                          iPhone 14 có thể sẽ là dòng iPhone đắt nhất trong lịch
+                          sử của Apple
+                        </h3>
+                      </Link>
                     </div>
                   </div>
                 )}

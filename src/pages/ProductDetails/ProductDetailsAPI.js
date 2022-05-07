@@ -41,7 +41,7 @@ export default function ProductDetailsAPI({ addCart, addCheckOut }) {
   // const q ="Apple"
   const search = () => {
     return PostData.map((data) => data).filter((data) =>
-      ["text","content"].some((item) => data[item].toString().includes(q))
+      ["text","content"].some((item) => data[item].includes(q[0]))
     );
   };
 
