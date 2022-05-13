@@ -310,7 +310,7 @@ function App() {
             background: "none",
             bottom: "100px",
             right: "0",
-            width: "30%",
+            width: "350px",
             height: "100%",
             border: "none",
           }}

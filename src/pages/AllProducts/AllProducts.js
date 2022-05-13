@@ -25,6 +25,7 @@ export default function AllProducts({ addCart }) {
   //Fetch API
   const [product, setProduct] = useState([]);
   const [brand, setBrand] = useState([]);
+  const [allBrand, setAllBrand] = useState([]);
   const [searchData, setSearchData] = useState([]);
   const [numberPage, setNumberPage] = useState(0);
 
@@ -41,6 +42,11 @@ export default function AllProducts({ addCart }) {
       const allProducts = await axios.get(
         `http://localhost:5000/product/all?sortBy=${sortBy}`
       );
+
+      const allBrand = await axios.get(
+        "http://localhost:5000/product/categories"
+      );
+      setAllBrand(allBrand.data);
 
       setNumberPage(Math.ceil(allProducts.data.length / 15));
       const brandFilter = await axios.get(
@@ -96,14 +102,9 @@ export default function AllProducts({ addCart }) {
     return array.map((data) => data);
   };
 
-  const brandArray = [
-    { type: "AP", nameType: "Apple" },
-    { type: "SS", nameType: "Samsung" },
-    { type: "SN", nameType: "Sony" },
-    { type: "DL", nameType: "DELL" },
-    { type: "AS", nameType: "Asus" },
-    { type: "OP", nameType: "Oppo" },
-  ];
+  const brandArray = allBrand.map((data) => {
+    return { type: data.MaLoaiHang, nameType: data.TenLoaiHang };
+  });
   const nameBrandLocation = brandArray.filter((data) => data.type === brandID);
 
   return (
@@ -134,7 +135,7 @@ export default function AllProducts({ addCart }) {
               </div>
             )}
           </div>
-          {searchQuery ? (
+          {searchQuery || brand.length >= 0 ? (
             <div className="row" style={{ display: "none" }}>
               <Pagination props={numberPage} page={parseInt(pageQuery)} />
             </div>

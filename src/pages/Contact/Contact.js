@@ -1,23 +1,37 @@
-import React, { useEffect } from "react";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
 import Swal from "sweetalert2";
 import LocationBar from "../../components/bar/locationbar/LocationBar";
 import "../CheckOut/checkout.css";
 import "./contact.css";
 export default function Contact() {
+  const [name, setName] = useState("");
+  const [mail, setMail] = useState("");
+  const [company, setCompany] = useState("");
+  const [phone, setPhone] = useState("");
+  const [note, setNote] = useState("");
+
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
 
-  const contactSubmit = (e) => {
+  const contactSubmit = async (e) => {
     e.preventDefault();
+    await axios.post("http://localhost:5000/customer/send-mail/client-information", {
+      name: name,
+      mail: mail,
+      company: company,
+      phone: phone,
+      note: note,
+    });
     Swal.fire({
       position: "center",
       icon: "success",
       title: "Chúng tôi đã tiếp nhận phản hồi!",
       showConfirmButton: false,
       timer: 1500,
-    })
-  }
+    });
+  };
 
   return (
     <div className="check">
@@ -38,6 +52,7 @@ export default function Contact() {
                       id="name"
                       placeholder="Full name"
                       className="form-input"
+                      onChange={(e) => setName(e.target.value)}
                     />
                   </div>
 
@@ -48,6 +63,7 @@ export default function Contact() {
                       id="email"
                       className="form-input"
                       placeholder="expample@gmail.com"
+                      onChange={(e) => setMail(e.target.value)}
                     />
                   </div>
 
@@ -58,20 +74,31 @@ export default function Contact() {
                       type="text"
                       id="adress"
                       placeholder="Street Address"
+                      onChange={(e) => setCompany(e.target.value)}
                     />
                   </div>
 
                   <div className="form-block">
                     <label for="phone">Số điện thoại*</label>
-                    <input type="text" id="phone" className="form-input" />
+                    <input
+                      type="text"
+                      id="phone"
+                      className="form-input"
+                      onChange={(e) => setPhone(e.target.value)}
+                    />
                   </div>
 
                   <div className="form-block">
                     <label for="notes">Ghi chú</label>
-                    <textarea id="notes"></textarea>
+                    <textarea
+                      id="notes"
+                      onChange={(e) => setNote(e.target.value)}
+                    ></textarea>
                   </div>
                   <div className="form-block">
-                    <button className="btn" onClick={contactSubmit}>Gửi</button>
+                    <button className="btn" onClick={contactSubmit}>
+                      Gửi
+                    </button>
                   </div>
                 </form>
               </div>
