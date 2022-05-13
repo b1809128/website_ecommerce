@@ -12,6 +12,8 @@ export default function AdminEdit() {
   const [authorized, setAuthorized] = useState(true);
   const [allProduct, setAllProduct] = useState([]);
   const [allCustomer, setAllCustomer] = useState([]);
+  const [codeNewBrand, setCodeNewBrand] = useState("");
+  const [newBrand, setNewBrand] = useState("");
   //TODO: Auto fetchAPI
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -181,6 +183,50 @@ export default function AdminEdit() {
     }
   };
 
+  const addNewBrand = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await axios.post(
+        `http://localhost:5000/manage/categories/add`,
+        {
+          MaLoaiHang: codeNewBrand,
+          TenLoaiHang: newBrand,
+        }
+      );
+      if (response.data) {
+        Swal.fire({
+          position: "center",
+          icon: "success",
+          title: "Thêm danh mục sản phẩm thành công !",
+          showConfirmButton: false,
+          timer: 1500,
+        });
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const deleteNewBrand = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await axios.delete(
+        `http://localhost:5000/manage/categories/delete/${codeNewBrand}`
+      );
+      if (response.data) {
+        Swal.fire({
+          position: "center",
+          icon: "success",
+          title: "Xóa danh mục sản phẩm thành công !",
+          showConfirmButton: false,
+          timer: 1500,
+        });
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   if (!authorized) {
     Swal.fire({
       icon: "error",
@@ -201,8 +247,45 @@ export default function AdminEdit() {
             </div>
             <div className="check__method">
               {/*TODO:Upload method */}
+              <h2 className="check__method-title">THÊM DANH MỤC SẢN PHẨM</h2>
+              <form className="form-section">
+                <div className="form-block">
+                  <label for="phone">
+                    Mã danh mục sản phẩm
+                    <span style={{ color: "#eb0028" }}>*</span>
+                  </label>
+                  <input
+                    type="text"
+                    id="codenewbrand"
+                    className="form-input"
+                    placeholder="MS, AP, SS,..."
+                    onChange={(e) => setCodeNewBrand(e.target.value)}
+                  />
+                </div>
+                <div className="form-block">
+                  <label for="phone">
+                    Tên danh mục sản phẩm
+                    <span style={{ color: "#eb0028" }}>*</span>
+                  </label>
+                  <input
+                    type="text"
+                    id="newbrand"
+                    className="form-input"
+                    placeholder="Microsoft,Apple,Samsung"
+                    onChange={(e) => setNewBrand(e.target.value)}
+                  />
+                </div>
+                <div className="form-flex__btn">
+                  <button className="btn" onClick={addNewBrand}>
+                    THÊM
+                  </button>
+                  <button className="btn" onClick={deleteNewBrand}>
+                    XÓA
+                  </button>
+                </div>
+              </form>
+              {/*TODO:Upload method */}
               <h2 className="check__method-title">CẬP NHẬT HÌNH ẢNH</h2>
-
               <form
                 className="form-section"
                 enctype="multipart/form-data"
@@ -245,7 +328,7 @@ export default function AdminEdit() {
                   />
                 </div>
                 <button className="btn" type="submit">
-                  Cập nhật
+                  CẬP NHẬT
                 </button>
               </form>
               {/*TODO: Delete method */}

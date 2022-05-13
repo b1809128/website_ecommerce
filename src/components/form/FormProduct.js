@@ -251,7 +251,7 @@ export default function FormProduct() {
 
       <div className="form-block">
         <label for="type">
-          Mã loại hàng<span style={{ color: "#eb0028" }}>*</span>
+          Thương hiệu sản phẩm<span style={{ color: "#eb0028" }}>*</span>
         </label>
         <select
           className="form-input"
