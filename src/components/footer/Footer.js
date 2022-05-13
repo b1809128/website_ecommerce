@@ -1,7 +1,8 @@
 import "./footer.css";
 import "aos/dist/aos.css";
 import Aos from "aos";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
+import axios from "axios";
 import {
   FaFacebookSquare,
   FaInstagram,
@@ -11,6 +12,7 @@ import {
 import Swal from "sweetalert2";
 
 function Footer() {
+  const [mail, setMail] = useState("");
   //To get Animation with Aos library
   useEffect(() => {
     Aos.init({
@@ -18,8 +20,11 @@ function Footer() {
     });
   }, []);
 
-  const contactSubmit = (e) => {
+  const contactSubmit = async (e) => {
     e.preventDefault();
+    await axios.post("http://localhost:5000/customer/send-mail", {
+      mailtext: mail,
+    });
     Swal.fire({
       position: "center",
       icon: "success",
@@ -52,9 +57,10 @@ function Footer() {
               type="text"
               placeholder="Your Email"
               className="footer-search-content-input"
+              onChange={(e) => setMail(e.target.value)}
             />
             <button className="btn" onClick={contactSubmit}>
-              Nhận mã giảm giá
+              NHẬN THÔNG BÁO
             </button>
           </form>
         </div>
