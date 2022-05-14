@@ -31,7 +31,6 @@ export default function SlideProductAPI({ title, groupBy }) {
     fetchAPI();
   }, []);
 
-  //   console.log(productData);
   return (
     <div className="slide-product">
       <h2 className="title__tag">
@@ -39,7 +38,9 @@ export default function SlideProductAPI({ title, groupBy }) {
         {title}
       </h2>
       <Slider {...settings}>
-        <ProductAPI data={productData} />
+        {productData.map((data, index) => {
+          return <div key={index}>{<ProductAPI data={data} />}</div>;
+        })}
       </Slider>
     </div>
   );

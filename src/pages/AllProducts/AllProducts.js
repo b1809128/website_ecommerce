@@ -11,6 +11,7 @@ import ProductAPI from "../../components/products/ProductAPI";
 import axios from "axios";
 import { useLocation } from "react-router-dom";
 import Pagination from "../../components/bar/pagination/Pagination";
+// import SlideProductAPI from "../../components/main/slideproduct/SlideProductAPI";
 //Import API Dynamic
 /* import ProductNoneAPI from "../../components/products/ProductNoneAPI";
  import { productsData } from "../../data";
@@ -135,7 +136,7 @@ export default function AllProducts({ addCart }) {
               </div>
             )}
           </div>
-          {searchQuery || brand.length >= 0 ? (
+          {searchQuery ? (
             <div className="row" style={{ display: "none" }}>
               <Pagination props={numberPage} page={parseInt(pageQuery)} />
             </div>
@@ -150,6 +151,7 @@ export default function AllProducts({ addCart }) {
           )}
 
           <SlideProduct text="CÓ THỂ BẠN SẼ THÍCH" />
+          {/* <SlideProductAPI text="CÓ THỂ BẠN SẼ THÍCH" /> */}
         </div>
       </div>
     </div>

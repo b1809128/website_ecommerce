@@ -45,6 +45,7 @@ export default function SlideProduct({ text, groupBy }) {
     ],
   };
 
+  // console.log(slideProductData);
   return (
     <div className="slide-product">
       <h2 className="title__tag">
@@ -53,7 +54,7 @@ export default function SlideProduct({ text, groupBy }) {
       </h2>
       <Slider {...settings}>
         {slideProductData.map((data, index) => {
-          return <div key={index}>{data.case}</div>;
+          return <div key={index}>{data}</div>;
         })}
       </Slider>
     </div>
