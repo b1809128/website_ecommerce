@@ -24,3 +24,6 @@ yarn-error.log*
 
 #file vnAPI
 /src/pages/Edit/vnAPI.js
+
+#Google API Key
+/src/components/auth/loginform/GoogleLoginForm.js

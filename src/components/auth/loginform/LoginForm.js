@@ -7,6 +7,7 @@ import { useState, useContext } from "react";
 import axios from "axios";
 import crypto from "crypto";
 import { AuthContext } from "../../../context/AuthContext";
+// import GoogleLoginForm from "./GoogleLoginForm";
 
 export default function LoginForm() {
   //Can [ref,useRef] to no replace values after action
@@ -160,6 +161,10 @@ export default function LoginForm() {
         <button className="btn" onClick={signin}>
           ĐĂNG NHẬP
         </button>
+        {/* <div style={{ margin: "10px 20px" }}>
+          <GoogleLoginForm></GoogleLoginForm>
+        </div> */}
+
         <p className="login-text-none">
           {" "}
           Bạn chưa có tài khoản ?{" "}
