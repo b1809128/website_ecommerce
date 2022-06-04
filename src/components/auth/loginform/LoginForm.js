@@ -8,7 +8,7 @@ import axios from "axios";
 import crypto from "crypto";
 import { AuthContext } from "../../../context/AuthContext";
 // import GoogleLoginForm from "./GoogleLoginForm";
-
+import {FcGoogle} from "react-icons/fc"
 export default function LoginForm() {
   //Can [ref,useRef] to no replace values after action
   const [userRef, setUserRef] = useState("");
@@ -54,9 +54,13 @@ export default function LoginForm() {
     }
   };
 
+  const googleSignIn = () => {
+    window.open("http://localhost:5000/auth/google", "_self");
+  };
+
   return (
     <div className="login-wrapper">
-      <form className="login-form">
+      <div className="login-form">
         <h3 className="login-text-none">ĐĂNG NHẬP</h3>
         <div className="login-text">
           <FaUserAlt /> Tên đăng nhập:
@@ -161,9 +165,13 @@ export default function LoginForm() {
         <button className="btn" onClick={signin}>
           ĐĂNG NHẬP
         </button>
-        {/* <div style={{ margin: "10px 20px" }}>
-          <GoogleLoginForm></GoogleLoginForm>
-        </div> */}
+
+        <div style={{ margin: "10px 20px" }}>
+          {/* <GoogleLoginForm></GoogleLoginForm> */}
+          <button className="btn-login" onClick={googleSignIn}>
+            <FcGoogle style={{fontSize:"1.4rem", margin: "5px"}}/>Đăng nhập với Google
+          </button>
+        </div>
 
         <p className="login-text-none">
           {" "}
@@ -174,7 +182,7 @@ export default function LoginForm() {
             </Link>
           </span>
         </p>
-      </form>
+      </div>
     </div>
   );
 }

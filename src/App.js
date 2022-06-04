@@ -1,5 +1,5 @@
 import "./App.css";
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Home from "./pages/Home/Home";
 import AllProducts from "./pages/AllProducts/AllProducts";
@@ -24,6 +24,7 @@ import Swal from "sweetalert2";
 import Posts from "./pages/Posts/Posts";
 import Introduce from "./pages/Introduce/Introduce";
 import Contact from "./pages/Contact/Contact";
+// import axios from "axios";
 function App() {
   const { user } = useContext(AuthContext);
 
@@ -228,6 +229,33 @@ function App() {
     localStorage.setItem("cartItems", JSON.stringify([]));
     setCartItems(getData());
   };
+
+  const [googleSign, setGoogleSign] = useState(null);
+  useEffect(() => {
+    const fetchAPI =  () => {
+      fetch("http://localhost:5000/auth/login/success", {
+        method: "GET",
+        credentials: "include",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+          "Access-Control-Allow-Credentials": true,
+        },
+      })
+        .then((response) => {
+          if (response.status === 200) return response.json();
+          throw new Error("authentication has been failed!");
+        })
+        .then((resObject) => {
+          setGoogleSign(resObject.user);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    };
+    fetchAPI();
+  }, []);
+  console.log(googleSign);
 
   return (
     <div>
