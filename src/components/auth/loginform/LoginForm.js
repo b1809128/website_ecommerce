@@ -1,5 +1,5 @@
 import "./login.css";
-import { FaUserAlt, FaLock } from "react-icons/fa";
+import { FaUserAlt, FaLock, FaFacebookSquare } from "react-icons/fa";
 import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
 import { TiDelete } from "react-icons/ti";
 import { Link, useHistory } from "react-router-dom";
@@ -8,7 +8,7 @@ import axios from "axios";
 import crypto from "crypto";
 import { AuthContext } from "../../../context/AuthContext";
 // import GoogleLoginForm from "./GoogleLoginForm";
-import {FcGoogle} from "react-icons/fc"
+import { FcGoogle } from "react-icons/fc";
 export default function LoginForm() {
   //Can [ref,useRef] to no replace values after action
   const [userRef, setUserRef] = useState("");
@@ -54,8 +54,26 @@ export default function LoginForm() {
     }
   };
 
-  const googleSignIn = () => {
+  const googleSignIn = async () => {
+    // e.preventDefault();
     window.open("http://localhost:5000/auth/google", "_self");
+    const res = await axios.get(
+      "http://localhost:5000/auth/google/login/success"
+    );
+    if (res.data) {
+      dispatch({ type: "LOGIN_SUCCESS", payload: res.data });
+    }
+  };
+
+  const facebookSignIn = async () => {
+    // e.preventDefault();
+    window.open("http://localhost:5000/auth/facebook", "_self");
+    // const res = await axios.get(
+    //   "http://localhost:5000/auth/facebook/login/success"
+    // );
+    // if (res.data) {
+    //   dispatch({ type: "LOGIN_SUCCESS", payload: res.data });
+    // }
   };
 
   return (
@@ -166,10 +184,17 @@ export default function LoginForm() {
           ĐĂNG NHẬP
         </button>
 
-        <div style={{ margin: "10px 20px" }}>
+        <div className="login-btn-social">
           {/* <GoogleLoginForm></GoogleLoginForm> */}
           <button className="btn-login" onClick={googleSignIn}>
-            <FcGoogle style={{fontSize:"1.4rem", margin: "5px"}}/>Đăng nhập với Google
+            <FcGoogle style={{ fontSize: "1.4rem", margin: "5px" }} />
+            Đăng nhập với Google
+          </button>
+          <button className="btn-login" onClick={facebookSignIn}>
+            <FaFacebookSquare
+              style={{ color: "#1877f2", fontSize: "1.4rem", margin: "5px" }}
+            />
+            Đăng nhập với Facebook
           </button>
         </div>
 

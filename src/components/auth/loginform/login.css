@@ -67,47 +67,67 @@
   position: relative;
 }
 
-.login-password-input{
+.login-password-input {
   width: 100%;
   height: 40px;
   outline: none;
   margin: 0 auto;
 }
 
-.login-password-icon{
+.login-password-icon {
   position: absolute;
   top: 28%;
   right: 6%;
-  font-size:1.2rem;
+  font-size: 1.2rem;
   color: #eb0028;
   cursor: pointer;
 }
 
-.login-password-icon:hover{
+.login-password-icon:hover {
   opacity: 0.5;
 }
 
-.btn-login{
+.login-btn-social {
+  display: block;
+  margin: 0px auto;
+}
+
+.btn-login {
   display: flex;
   align-items: center;
-  justify-content:center;
+  justify-content: center;
   height: 40px;
-  min-width:150px;
+  min-width: 250px;
+  margin: 10px 0;
   background-color: #fff;
   outline: none;
-  border: 1px solid #999;
+  box-shadow: 3px 0 6px rgba(0, 0, 0, 0.5);
+  border: none;
   border-radius: 3px;
   font-weight: 600;
   padding: 5px;
   cursor: pointer;
+  color: #999;
 }
 
-.btn-login:hover{
-opacity: 0.8;
+/* .btn-login:nth-child(2){
+  background-color: #1877f2;
+  color: #fff;
+} */
+
+.btn-login:hover {
+  opacity: 0.8;
 }
 
 @media screen and (max-width: 960px) {
   .login-form {
     box-shadow: none;
+  }
+  .login-btn-social {
+    width: 100%;
+  }
+  .btn-login {
+    margin: 0 auto;
+    width: 80%;
   }
 }
