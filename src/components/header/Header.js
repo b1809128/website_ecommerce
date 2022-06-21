@@ -17,6 +17,7 @@ export default function Header({ cartItems, deleteCartAfterCheckOut }) {
   const [scrollTop, setScrollTop] = useState(false);
   const [click, setClick] = useState(false);
   const [button, setButton] = useState(true);
+  // const [googleState, setGoogleState] = useState(false);
 
   //Change background color when scrolling
   const changeBackgroundColor = () => {
@@ -43,13 +44,23 @@ export default function Header({ cartItems, deleteCartAfterCheckOut }) {
   };
 
   window.addEventListener("resize", showButton);
+  //Local Storage -> Context API
+  const { user, dispatch } = useContext(AuthContext);
 
   useEffect(() => {
     showButton();
-  }, []);
+    const fetchAPI = async () => {
+      const res = await axios.get(
+        "http://localhost:5000/auth/google/login/success"
+      );
+      if (res.data) {
+        dispatch({ type: "LOGIN_SUCCESS", payload: res.data });
+        // setGoogleState(true);
+      }
+    };
 
-  //Local Storage -> Context API
-  const { user, dispatch } = useContext(AuthContext);
+    fetchAPI();
+  }, [dispatch]);
 
   //LogOut
   var history = useHistory();
@@ -59,6 +70,7 @@ export default function Header({ cartItems, deleteCartAfterCheckOut }) {
       const res = await axios.get("http://localhost:5000/auth/logout");
       // console.log(res)
       if (res.data) {
+        // localStorage.removeItem("x-access-token");
         deleteCartAfterCheckOut();
         history.push("/");
         dispatch({ type: "LOGOUT" });
@@ -67,6 +79,10 @@ export default function Header({ cartItems, deleteCartAfterCheckOut }) {
       console.error(error);
     }
   };
+
+  // const googleLogout = async () => {
+  //   window.open("http://localhost:5000/auth/google/logout", "_self");
+  // };
 
   const urlArray = [
     { name: "Trang Chủ", link: "/" },
@@ -120,7 +136,7 @@ export default function Header({ cartItems, deleteCartAfterCheckOut }) {
             );
           })}
         </ul>
-        
+
         {user ? (
           <ul className="nav-menu">
             <li className="">
@@ -145,7 +161,11 @@ export default function Header({ cartItems, deleteCartAfterCheckOut }) {
             </li>
 
             <li className="nav-item">
-              <div className="link" onClick={logout}>
+              <div
+                className="link"
+                // onClick={googleState ? googleLogout : logout}
+                onClick={logout}
+              >
                 <FiLogOut />
               </div>
             </li>

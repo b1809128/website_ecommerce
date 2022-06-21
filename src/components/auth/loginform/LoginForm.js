@@ -55,25 +55,17 @@ export default function LoginForm() {
   };
 
   const googleSignIn = async () => {
-    // e.preventDefault();
     window.open("http://localhost:5000/auth/google", "_self");
-    const res = await axios.get(
-      "http://localhost:5000/auth/google/login/success"
-    );
-    if (res.data) {
-      dispatch({ type: "LOGIN_SUCCESS", payload: res.data });
-    }
+    // const result = await axios.get(
+    //   "http://localhost:5000/auth/google/login/success"
+    // );
+    // if (result) {
+    //   dispatch({ type: "LOGIN_SUCCESS", payload: result.data });
+    // }
   };
 
   const facebookSignIn = async () => {
-    // e.preventDefault();
     window.open("http://localhost:5000/auth/facebook", "_self");
-    // const res = await axios.get(
-    //   "http://localhost:5000/auth/facebook/login/success"
-    // );
-    // if (res.data) {
-    //   dispatch({ type: "LOGIN_SUCCESS", payload: res.data });
-    // }
   };
 
   return (

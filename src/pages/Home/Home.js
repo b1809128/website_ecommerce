@@ -10,8 +10,11 @@ import {
   infoDataThree,
   infoDataFour,
 } from "../../components/main/info/infoData";
-import Introduce from "../../components/main/introduce/Introduce";
-import { introduceData } from "../../components/main/introduce/introduceData";
+import BannerAdvertisement from "../../components/main/introduce/BannerAdvertisement";
+import {
+  introduceData,
+  bannerDiscount,
+} from "../../components/main/introduce/introduceData";
 import Comment from "../../components/main/comment/Comment";
 import axios from "axios";
 import ProductAPI from "../../components/products/ProductAPI";
@@ -87,12 +90,20 @@ export default function Home({ addCart }) {
   const dataAPIFilterHeadphone = dataAPI5.filter((data, index) => index < 5);
   const dataAPI6 = tabletData.map((data) => data);
   const dataAPIFilterTablet = dataAPI6.filter((data, index) => index < 5);
-
   return (
     <div className="home">
       <IntroduceTop />
       <div className="home-section">
         <div className="home__row">
+          <div className="row">
+            <div style={{ display: "flex", flexWrap: "wrap" }}>
+              {bannerDiscount.map((data, index) => {
+                return (
+                  <img className="banner-discount" src={data} alt={data} />
+                );
+              })}
+            </div>
+          </div>
           <TagsBar />
 
           <div id="categories" className="row">
@@ -167,7 +178,7 @@ export default function Home({ addCart }) {
               RABBIT TECHNOLOGY
             </h2>
           </div>
-          <Introduce data={introduceData} />
+          <BannerAdvertisement data={introduceData} />
           <div className="row">
             <h2 className="title__tag">
               <FaAngleRight />

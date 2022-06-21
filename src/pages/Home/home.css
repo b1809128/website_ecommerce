@@ -17,3 +17,18 @@
 .home__row {
   align-items: center;
 }
+
+.banner-discount {
+  width: 260px;
+  height: 200px;
+  margin: 0 15px;
+  border-radius: 4px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.8);
+  cursor: pointer;
+}
+
+@media screen and (max-width: 960px) {
+  .banner-discount{
+    width: 100%;
+  }
+}

@@ -26,8 +26,8 @@
 }
 
 .introduce-company__logo {
-  width: 200px;
-  height: 200px;
+  width: 1200px;
+  height: 400px;
   border-radius: 8px;
 }
 
@@ -38,9 +38,13 @@
 
 .push-right {
   position: absolute;
-  right: 50px;
-  font-size: 3rem;
-  color: rgba(150, 150, 150, 0.8);
+  right: 25px;
+  font-size: 2.4rem;
+  color: #fff;
+  width: 50px;
+  height: 50px;
+  background-color: #e3e3e3;
+  border-radius: 50%;
   z-index: 10;
   cursor: pointer;
   user-select: none;
@@ -48,9 +52,13 @@
 
 .push-left {
   position: absolute;
-  left: 50px;
-  font-size: 3rem;
-  color: rgba(150, 150, 150, 0.8);
+  left: 25px;
+  font-size: 2.4rem;
+  color: #fff;
+  width: 50px;
+  height: 50px;
+  background-color: #e3e3e3;
+  border-radius: 50%;
   z-index: 10;
   cursor: pointer;
   user-select: none;
@@ -58,9 +66,9 @@
 
 .introduce-company.introduce-company__active {
   opacity: 1;
-  /* transition-duration: 1s; */
-  /* transform: scale(1.08); */
-  width: 70%;
+  /* transition-duration: 1s;
+  transform: scale(1.08); */
+  width: 100%;
 }
 
 @media screen and (max-width: 960px) {

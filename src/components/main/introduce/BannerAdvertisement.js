@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./introduce.css";
-import { introduceData } from "./introduceData";
+import { bannerAdvertisement } from "./introduceData";
 import { FaAngleLeft, FaAngleRight } from "react-icons/fa";
 
 export default function Introduce({ data }) {
@@ -11,7 +11,6 @@ export default function Introduce({ data }) {
   const nextSlide = () => {
     setCurrent(current === length - 1 ? 0 : current + 1);
   };
-
 
   const prevSlide = () => {
     setCurrent(current === 0 ? length - 1 : current - 1);
@@ -25,12 +24,9 @@ export default function Introduce({ data }) {
     <div id="services" className="introduce-wrapper">
       <FaAngleLeft className="push-left" onClick={prevSlide} />
       <FaAngleRight className="push-right" onClick={nextSlide} />
-      <img
-        src="https://images.samsung.com/is/image/samsung/assets/vn/home/luxo2022/The-Freestyle-HomeKV_PC_02.jpg?imwidth=1366"
-        alt="Slide introduce"
-        className="introduce-image"
-      />
-      {introduceData.map((data, index) => {
+
+      <div className="introduce-image"></div>
+      {bannerAdvertisement.map((data, index) => {
         return (
           <div
             className={
@@ -41,17 +37,7 @@ export default function Introduce({ data }) {
             key={index}
           >
             {index === current && (
-              <img
-                src={data.image}
-                alt="Logo"
-                className="introduce-company__logo"
-              />
-            )}
-
-            {index === current && (
-              <div className="introduce-company__text">
-                <p>{data.text}</p>
-              </div>
+              <img src={data} alt="Logo" className="introduce-company__logo" />
             )}
           </div>
         );

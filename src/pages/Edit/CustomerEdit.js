@@ -218,7 +218,7 @@ export default function CustomerEdit() {
   if (!authorized) {
     Swal.fire({
       icon: "error",
-      title: "Bạn không có quyền truy cập !",
+      title: "Bạn không có quyền truy cập hoặc hết hạn đăng nhập !",
     });
     return <Redirect to="/dang-nhap" />;
   }

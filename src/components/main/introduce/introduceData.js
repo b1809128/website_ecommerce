@@ -12,3 +12,20 @@ export const introduceData = [
     text: "Cam kết của chúng tôi về chất lượng dịch vụ khách hàng là một trong những điều quan trọng nhất của Rabbit Technologies",
   },
 ];
+
+export const bannerAdvertisement = [
+  "./images/khuyenmai/banner/1.jpg",
+  "./images/khuyenmai/banner/2.jpg",
+  "./images/khuyenmai/banner/3.jpg",
+  "./images/khuyenmai/banner/4.jpg",
+  "./images/khuyenmai/banner/5.jpg",
+];
+
+
+export const bannerDiscount = [
+  "./images/khuyenmai/1.jpg",
+  "./images/khuyenmai/2.jpg",
+  "./images/khuyenmai/3.jpg",
+  "./images/khuyenmai/4.jpg",
+  
+];
