@@ -71,6 +71,13 @@ html {
   box-shadow: inset 400px 50px 0 0 #eb0028;
 }
 
+.download-icon {
+  color: #eb0028;
+  font-size: 1.4rem;
+  margin: 0 10px;
+  cursor: pointer;
+}
+
 .title__tag {
   height: 30px;
   width: 250px;

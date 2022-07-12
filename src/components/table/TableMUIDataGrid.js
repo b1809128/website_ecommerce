@@ -7,6 +7,7 @@ import TableContainer from "@mui/material/TableContainer";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import axios from "axios";
+import { ExportCSV } from "../ExportCSV/ExportCSV";
 const columns = [
   { field: "id", headerName: "ID", width: 50 },
   { field: "tensanpham", headerName: "Tên sản phẩm", width: 250 },
@@ -99,7 +100,7 @@ export default function TableMUIDataGrid() {
       .filter((data) => data.MSHH === codeProduct[i]);
     rows[i] = {
       id: i,
-      tensanpham: getData.map((data) => data.TenHH),
+      tensanpham: getData.map((data) => data.TenHH).map((data) => data)[0],
       soluongban: quantityArray[i],
       gianhaphang: new Intl.NumberFormat().format(
         getData.map((data) => data.GiaNhapHang)
@@ -127,6 +128,7 @@ export default function TableMUIDataGrid() {
     };
   }
 
+  // console.log(rows[0].tensanpham);
   return (
     <>
       <div style={{ height: 375, width: "100%" }}>
@@ -145,7 +147,19 @@ export default function TableMUIDataGrid() {
               <TableCell></TableCell>
               <TableCell></TableCell>
               <TableCell></TableCell>
-              <TableCell></TableCell>
+              <TableCell>
+                <ExportCSV
+                  csvData={rows}
+                  fileName={
+                    "ThongKeDoanhThu" +
+                    new Date().getDay() +
+                    "_" +
+                    new Date().getMonth() +
+                    "_" +
+                    new Date().getYear()
+                  }
+                />
+              </TableCell>
               <TableCell>
                 Tổng doanh thu: {new Intl.NumberFormat().format(tongDoanhThu)}{" "}
                 VND

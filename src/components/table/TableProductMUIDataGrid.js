@@ -8,6 +8,7 @@ import TableContainer from "@mui/material/TableContainer";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import { FaEdit } from "react-icons/fa";
+import { ExportCSV } from "../ExportCSV/ExportCSV";
 const columns = [
   { field: "id", headerName: "ID", width: 50 },
   { field: "masp", headerName: "Mã sản phẩm", width: 100 },
@@ -110,7 +111,8 @@ function TableProductMUIDataGrid({ showModal }) {
               <TableCell></TableCell>
               <TableCell></TableCell>
               <TableCell></TableCell>
-              <TableCell style={{ textAlign: "right" }}>
+              <TableCell>
+                <ExportCSV csvData={searchData} fileName={"QuanLySanPham"} />
                 <FaEdit
                   style={{
                     color: "#28a745",

@@ -6,6 +6,7 @@ import { MdDeleteForever } from "react-icons/md";
 import { FaEdit } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
+import { ExportCSV } from "../ExportCSV/ExportCSV";
 
 function TableOrder() {
   const [idOrder, setIdOrder] = useState(0);
@@ -71,15 +72,19 @@ function TableOrder() {
 
   return (
     <>
-      <form className="nav-bar__form">
-        <input
-          type="text"
-          className="nav-bar__form-input-admin"
-          placeholder="Tìm kiếm"
-          name="search"
-          onChange={(e) => setTagName(e.target.value)}
-        />
-      </form>
+      <div style={{ display: "flex", alignItems: "center", width: "100%" }}>
+        <form className="nav-bar__form">
+          <input
+            type="text"
+            className="nav-bar__form-input-admin"
+            placeholder="Tìm kiếm"
+            name="search"
+            onChange={(e) => setTagName(e.target.value)}
+          />
+        </form>
+        <ExportCSV csvData={searchData} fileName={"QuanLyDatHang"} />
+      </div>
+
       <table className="table">
         <thead>
           <tr>
