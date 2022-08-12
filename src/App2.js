@@ -64,7 +64,7 @@ function App2() {
     }
   };
 
-  //TODO: Delete cart
+  //TODO: Delete cart function
   const deleteCart = () => {
     Swal.fire({
       title: "Bạn có chắc muốn xóa ?",
